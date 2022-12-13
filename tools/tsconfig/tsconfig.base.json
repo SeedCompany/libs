@@ -1,0 +1,15 @@
+{
+  "extends": "@tsconfig/node-lts/tsconfig.json",
+  "compilerOptions": {
+    "strictPropertyInitialization": false,
+    "noImplicitReturns": true,
+    // We're not compiling with tsc
+    "noEmit": true,
+    // Specify the base directory and workspace paths to allow importing
+    // workspace packages as npm dependencies.
+    "baseUrl": ".",
+    "paths": {
+      "@seedcompany/*": ["./packages/*"]
+    }
+  }
+}

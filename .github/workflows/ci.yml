@@ -1,0 +1,73 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Node Setup & Yarn Install
+        uses: ./.github/actions/setup
+
+      - name: Check for no duplicate dependencies
+        run: yarn dedupe --check
+
+      - name: Build
+        run: yarn build
+
+      - name: Check TypeScript
+        run: yarn typecheck
+
+      - name: Lint
+        run: yarn lint:check
+
+      - name: Test
+        run: yarn test -- --reporters=github-actions
+
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    needs: ci
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          # `token` might be needed to push to protected branches
+
+      - name: Node Setup & Yarn Install
+        uses: ./.github/actions/setup
+        with:
+          registry-url: https://registry.npmjs.org/
+
+      - name: Build
+        run: yarn build
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v3
+        with:
+          main-branch-name: master
+
+      - name: Set git user to "🤖 Release Bot"
+        shell: bash
+        run: git config user.email "-" && git config user.name "🤖 Release Bot"
+
+      - name: Bump & publish changed packages
+        # Use npx instead of yarn because yarn automagically sets NPM_* environment variables, like NPM_CONFIG_REGISTRY.
+        # So npm publish ends up ignoring the .npmrc file which is set up by `setup-node` action.
+        run: npx nx affected --target=version --parallel=false --push
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Push release commits & tags
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}

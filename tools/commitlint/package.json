@@ -1,0 +1,8 @@
+{
+  "name": "commitlint-plugin-internal",
+  "private": true,
+  "main": "src/index.ts",
+  "dependencies": {
+    "@commitlint/types": "^17.0.0"
+  }
+}

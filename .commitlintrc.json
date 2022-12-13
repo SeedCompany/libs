@@ -1,0 +1,21 @@
+{
+  "extends": ["@commitlint/config-conventional"],
+  "plugins": ["internal"],
+  "rules": {
+    "type-enum": [2, "always", [
+      "build",
+      "chore",
+      "ci",
+      "docs",
+      "feat",
+      "fix",
+      "perf",
+      "refactor",
+      "release",
+      "revert",
+      "style",
+      "test"
+    ]],
+    "scope-enum": [2, "always", ["tools"]]
+  }
+}

@@ -1,0 +1,35 @@
+# Use in other repos
+# uses: SeedCompany/libs/.github/actions/setup.yml@master
+#
+name: Node Setup & Yarn Install
+description: 'Setup Node.js and install dependencies with Yarn'
+
+inputs:
+  registry-url:
+    description: >
+      Optional registry to set up for auth. Will set the registry in a project level .npmrc and .yarnrc file,
+      and set up auth to read in from env.NODE_AUTH_TOKEN.
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        registry-url: ${{ inputs.registry-url }}
+
+    - name: Yarn cache
+      uses: actions/cache@v3
+      with:
+        path: |
+          .yarn/cache
+          node_modules
+        key: yarn-cache-${{ hashFiles('yarn.lock', '.yarnrc.yml') }}
+        restore-keys: yarn-cache-
+
+    - name: Install dependencies
+      shell: bash
+      run: yarn install
+      env:
+        YARN_ENABLE_GLOBAL_CACHE: 'false' # Use local cache folder to keep downloaded archives
+        YARN_NM_MODE: 'hardlinks-local' # Hardlinks-(local|global) reduces io / node_modules size

@@ -1,0 +1,7 @@
+{
+  "name": "tsconfig",
+  "private": true,
+  "dependencies": {
+    "@tsconfig/node-lts": "^18.12.1"
+  }
+}
