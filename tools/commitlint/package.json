@@ -2,6 +2,10 @@
   "name": "commitlint-plugin-internal",
   "private": true,
   "main": "src/index.ts",
+  "scripts": {
+    "lint": "eslint",
+    "typecheck": "tsc"
+  },
   "dependencies": {
     "@commitlint/types": "^17.0.0"
   }

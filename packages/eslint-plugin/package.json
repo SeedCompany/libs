@@ -1,0 +1,83 @@
+{
+  "name": "@seedcompany/eslint-plugin",
+  "version": "3.3.0",
+  "description": "Seed Company's ESLint config / rules",
+  "license": "MIT",
+  "keywords": [
+    "eslint",
+    "eslintconfig",
+    "eslintplugin",
+    "typescript"
+  ],
+  "engines": {
+    "node": ">=16"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/parser": "^5.28.0",
+    "@typescript-eslint/utils": "^5.28.0",
+    "confusing-browser-globals": "^1.0.11",
+    "eslint": "^8.17.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-import-helpers": "^1.2.1",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-react-hooks": "^4.5.0",
+    "ignore": "^5.2.0",
+    "prettier": "^2.7.0",
+    "pupa": "^2.1.1",
+    "type-fest": "^2.13.1"
+  },
+  "peerDependencies": {
+    "eslint": "^8.0.0",
+    "prettier": "^2.0.0",
+    "react": "^16.14.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "typecheck": "tsc",
+    "lint": "yarn lint:check --fix",
+    "lint:check": "eslint --max-warnings 0",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/common-tags": "^1.8.1",
+    "@typescript-eslint/types": "^5.28.0",
+    "common-tags": "^1.8.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seedcompany/libs/.git",
+    "directory": "packages/eslint-plugin"
+  },
+  "bugs": {
+    "url": "https://github.com/seedcompany/libs/issues"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "packageManager": "yarn@3.3.0"
+}

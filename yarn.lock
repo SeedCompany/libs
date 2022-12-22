@@ -2577,13 +2577,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@seedcompany/eslint-plugin@npm:^3.3.0":
-  version: 3.3.0
-  resolution: "@seedcompany/eslint-plugin@npm:3.3.0"
+"@seedcompany/eslint-plugin@workspace:packages/eslint-plugin":
+  version: 0.0.0-use.local
+  resolution: "@seedcompany/eslint-plugin@workspace:packages/eslint-plugin"
   dependencies:
+    "@types/common-tags": ^1.8.1
     "@typescript-eslint/eslint-plugin": ^5.28.0
     "@typescript-eslint/parser": ^5.28.0
+    "@typescript-eslint/types": ^5.28.0
     "@typescript-eslint/utils": ^5.28.0
+    common-tags: ^1.8.2
     confusing-browser-globals: ^1.0.11
     eslint: ^8.17.0
     eslint-config-prettier: ^8.5.0
@@ -2596,6 +2599,8 @@ __metadata:
     ignore: ^5.2.0
     prettier: ^2.7.0
     pupa: ^2.1.1
+    react: ^18.0.0
+    react-dom: ^18.0.0
     type-fest: ^2.13.1
   peerDependencies:
     eslint: ^8.0.0
@@ -2607,9 +2612,8 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: da2cdbfdc8ce8d6b494cb140faa425b0a287e1245d9ba92a596269fba5f0f93d7dca3c4c1f8ae30061a951c1092e0b0c3d5164be20bae4961979ac3c5942c4d6
-  languageName: node
-  linkType: hard
+  languageName: unknown
+  linkType: soft
 
 "@seedcompany/libs-monorepo@workspace:.":
   version: 0.0.0-use.local
@@ -2625,8 +2629,6 @@ __metadata:
     "@jscutlery/semver": ^2.30.1
     "@nrwl/devkit": ^15.7.2
     "@nrwl/nest": ^15.7.2
-    "@seedcompany/eslint-plugin": ^3.3.0
-    "@types/eslint": ^8.4.10
     "@types/node": ^16.11.7
     eslint: ^8.30.0
     husky: ^8.0.2
@@ -2637,6 +2639,7 @@ __metadata:
     nx: 15.7.2
     prettier: ^2.8.1
     ts-jest: ^29.0.3
+    ts-node: ^10.9.1
     tslib: ^2.4.1
     tsup: 6.5.0
     typescript: ^4.9.4
@@ -2756,20 +2759,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/eslint@npm:^8.4.10":
-  version: 8.21.1
-  resolution: "@types/eslint@npm:8.21.1"
-  dependencies:
-    "@types/estree": "*"
-    "@types/json-schema": "*"
-  checksum: 584068441e4000c7b41c8928274fdcc737bc62f564928c30eb64ec41bbdbac31612f9fedaf490bceab31ec8305e99615166428188ea345d58878394683086fae
-  languageName: node
-  linkType: hard
-
-"@types/estree@npm:*":
-  version: 1.0.0
-  resolution: "@types/estree@npm:1.0.0"
-  checksum: 910d97fb7092c6738d30a7430ae4786a38542023c6302b95d46f49420b797f21619cdde11fa92b338366268795884111c2eb10356e4bd2c8ad5b92941e9e6443
+"@types/common-tags@npm:^1.8.1":
+  version: 1.8.1
+  resolution: "@types/common-tags@npm:1.8.1"
+  checksum: bec6f68c8c434834380abd1dc057aa6ba26661bb0c65c700b65049e9b104d7be96a987d93dbe8726be68554a23a52514a6967d8903fdb51fb8c78cf909d1e4c1
   languageName: node
   linkType: hard
 
@@ -2807,7 +2800,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/json-schema@npm:*, @types/json-schema@npm:^7.0.9":
+"@types/json-schema@npm:^7.0.9":
   version: 7.0.11
   resolution: "@types/json-schema@npm:7.0.11"
   checksum: 527bddfe62db9012fccd7627794bd4c71beb77601861055d87e3ee464f2217c85fca7a4b56ae677478367bbd248dbde13553312b7d4dbc702a2f2bbf60c4018d
@@ -2971,6 +2964,13 @@ __metadata:
   version: 5.47.0
   resolution: "@typescript-eslint/types@npm:5.47.0"
   checksum: 5a856e190cc2103427dbe15ccbbf87238261b5ed0859390a9e55f93afc2057f79dcbb4ac0db4d35787466f5e73f271111d19b2e725cf444af41d30e09678bf7a
+  languageName: node
+  linkType: hard
+
+"@typescript-eslint/types@npm:^5.28.0":
+  version: 5.54.0
+  resolution: "@typescript-eslint/types@npm:5.54.0"
+  checksum: 0f66b1b93078f3afea6dfcd3d4e2f0abea4f60cd0c613c2cf13f85098e5bf786185484c9846ed80b6c4272de2c31a70c5a8aacb91314cf1b6da7dcb8855cb7ac
   languageName: node
   linkType: hard
 
@@ -4111,6 +4111,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"common-tags@npm:^1.8.2":
+  version: 1.8.2
+  resolution: "common-tags@npm:1.8.2"
+  checksum: 767a6255a84bbc47df49a60ab583053bb29a7d9687066a18500a516188a062c4e4cd52de341f22de0b07062e699b1b8fe3cfa1cb55b241cb9301aeb4f45b4dff
+  languageName: node
+  linkType: hard
+
 "compare-func@npm:^2.0.0":
   version: 2.0.0
   resolution: "compare-func@npm:2.0.0"
@@ -5082,15 +5089,6 @@ __metadata:
   checksum: 98b48897d93060f2322108bf29db0feba7dd774be96cd069458d1453347b25ce8682ecc39859d4bca2203cc0ab19c237bcc71755eff49a0f8d90beadeeba5cc5
   languageName: node
   linkType: hard
-
-"eslint-config-internal@workspace:tools/eslint":
-  version: 0.0.0-use.local
-  resolution: "eslint-config-internal@workspace:tools/eslint"
-  dependencies:
-    "@seedcompany/eslint-plugin": ^3.3.0
-    "@tsconfig/node-lts": ^18.12.1
-  languageName: unknown
-  linkType: soft
 
 "eslint-config-prettier@npm:^8.5.0":
   version: 8.5.0
@@ -7968,7 +7966,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loose-envify@npm:^1.4.0":
+"loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
   dependencies:
@@ -9137,6 +9135,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-dom@npm:^18.0.0":
+  version: 18.2.0
+  resolution: "react-dom@npm:18.2.0"
+  dependencies:
+    loose-envify: ^1.1.0
+    scheduler: ^0.23.0
+  peerDependencies:
+    react: ^18.2.0
+  checksum: 7d323310bea3a91be2965f9468d552f201b1c27891e45ddc2d6b8f717680c95a75ae0bc1e3f5cf41472446a2589a75aed4483aee8169287909fcd59ad149e8cc
+  languageName: node
+  linkType: hard
+
 "react-is@npm:^16.13.1":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -9148,6 +9158,15 @@ __metadata:
   version: 18.2.0
   resolution: "react-is@npm:18.2.0"
   checksum: e72d0ba81b5922759e4aff17e0252bd29988f9642ed817f56b25a3e217e13eea8a7f2322af99a06edb779da12d5d636e9fda473d620df9a3da0df2a74141d53e
+  languageName: node
+  linkType: hard
+
+"react@npm:^18.0.0":
+  version: 18.2.0
+  resolution: "react@npm:18.2.0"
+  dependencies:
+    loose-envify: ^1.1.0
+  checksum: 88e38092da8839b830cda6feef2e8505dec8ace60579e46aa5490fc3dc9bba0bd50336507dc166f43e3afc1c42939c09fe33b25fae889d6f402721dcd78fca1b
   languageName: node
   linkType: hard
 
@@ -9549,6 +9568,15 @@ __metadata:
   version: 2.1.2
   resolution: "safer-buffer@npm:2.1.2"
   checksum: cab8f25ae6f1434abee8d80023d7e72b598cf1327164ddab31003c51215526801e40b66c5e65d658a0af1e9d6478cadcb4c745f4bd6751f97d8644786c0978b0
+  languageName: node
+  linkType: hard
+
+"scheduler@npm:^0.23.0":
+  version: 0.23.0
+  resolution: "scheduler@npm:0.23.0"
+  dependencies:
+    loose-envify: ^1.1.0
+  checksum: d79192eeaa12abef860c195ea45d37cbf2bbf5f66e3c4dcd16f54a7da53b17788a70d109ee3d3dde1a0fd50e6a8fc171f4300356c5aee4fc0171de526bf35f8a
   languageName: node
   linkType: hard
 
@@ -10316,7 +10344,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-node@npm:^10.8.1":
+"ts-node@npm:^10.8.1, ts-node@npm:^10.9.1":
   version: 10.9.1
   resolution: "ts-node@npm:10.9.1"
   dependencies:

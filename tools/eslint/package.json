@@ -1,8 +1,0 @@
-{
-  "name": "eslint-config-internal",
-  "private": true,
-  "dependencies": {
-    "@seedcompany/eslint-plugin": "^3.3.0",
-    "@tsconfig/node-lts": "^18.12.1"
-  }
-}
