@@ -12,3 +12,6 @@
 .env.*.local
 dist
 node_modules
+
+nx.json
+project.json

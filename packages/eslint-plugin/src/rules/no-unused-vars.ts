@@ -23,7 +23,9 @@ export const noUnusedVars: TSESLint.RuleModule<string, any[]> = {
 
       (descriptor as Writable<typeof descriptor>).fix = (fixer) => {
         const sourceCode = context.getSourceCode();
-        const unusedImport = node.parent as TSESTree.ImportSpecifier | TSESTree.ImportDefaultSpecifier;
+        const unusedImport = node.parent as
+          | TSESTree.ImportSpecifier
+          | TSESTree.ImportDefaultSpecifier;
         const declaration = unusedImport.parent as TSESTree.ImportDeclaration;
         const { specifiers: imports } = declaration;
 
@@ -96,14 +98,20 @@ const isImportSpecifier = (node: TSESTree.Node) =>
 
 const isNamespaceImportSpecifier = (
   node: TSESTree.Node,
-): node is TSESTree.ImportNamespaceSpecifier => node.type === 'ImportNamespaceSpecifier';
+): node is TSESTree.ImportNamespaceSpecifier =>
+  node.type === 'ImportNamespaceSpecifier';
 
-const isNamedImportSpecifier = (node: TSESTree.Node): node is TSESTree.ImportSpecifier =>
-  node.type === 'ImportSpecifier';
+const isNamedImportSpecifier = (
+  node: TSESTree.Node,
+): node is TSESTree.ImportSpecifier => node.type === 'ImportSpecifier';
 
-const isDefaultImportSpecifier = (node: TSESTree.Node): node is TSESTree.ImportDefaultSpecifier =>
+const isDefaultImportSpecifier = (
+  node: TSESTree.Node,
+): node is TSESTree.ImportDefaultSpecifier =>
   node.type === 'ImportDefaultSpecifier';
 
-const isComma = (token: TSESTree.Token | TSESTree.Comment) => token.value === ',';
+const isComma = (token: TSESTree.Token | TSESTree.Comment) =>
+  token.value === ',';
 
-const isClosingBracket = (token: TSESTree.Token | TSESTree.Comment) => token.value === '}';
+const isClosingBracket = (token: TSESTree.Token | TSESTree.Comment) =>
+  token.value === '}';

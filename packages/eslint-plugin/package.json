@@ -47,8 +47,6 @@
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts --clean",
     "typecheck": "tsc",
-    "lint": "yarn lint:check --fix",
-    "lint:check": "eslint --max-warnings 0",
     "test": "jest"
   },
   "devDependencies": {
@@ -78,6 +76,5 @@
       "require": "./dist/index.cjs",
       "types": "./dist/index.d.ts"
     }
-  },
-  "packageManager": "yarn@3.3.0"
+  }
 }

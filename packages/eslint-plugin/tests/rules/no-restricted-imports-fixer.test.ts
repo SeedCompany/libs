@@ -73,7 +73,9 @@ type Case = [
   code: keyof typeof imports,
   config: keyof typeof configs,
   output: string | null,
-  other?: Partial<Omit<InferInvalidTestCaseFromRule<typeof rule>, 'errors'>> & { errors?: number },
+  other?: Partial<Omit<InferInvalidTestCaseFromRule<typeof rule>, 'errors'>> & {
+    errors?: number;
+  },
 ];
 
 const cases: Case[] = [

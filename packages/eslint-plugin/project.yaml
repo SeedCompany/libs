@@ -1,0 +1,17 @@
+targets:
+  lint: {}
+
+  version:
+    options:
+      commitMessageFormat: >
+        release(${projectName}): ${version}
+      postTargets:
+        - eslint-plugin:publish-npm
+        - eslint-plugin:publish-github
+  publish-npm:
+    options:
+      distFolderPath: packages/eslint-plugin
+  publish-github:
+    options:
+      tag: ${tag}
+      notesStartTag: ${previousTag}
