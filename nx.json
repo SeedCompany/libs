@@ -34,7 +34,10 @@
       "options": {
         "baseBranch": "master",
         "preset": "conventional"
-      }
+      },
+      "dependsOn": [
+        "build"
+      ]
     },
     "publish-npm": {
       "executor": "ngx-deploy-npm:deploy",
