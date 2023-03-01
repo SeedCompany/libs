@@ -2,8 +2,10 @@ import { parse } from 'yaml';
 import { readFile, writeFile } from 'node:fs/promises';
 import { globby as glob } from 'globby';
 
-const files = process.argv[2] ? [process.argv[2]] : await glob(['nx.yaml', './{packages,tools}/*/project.yaml']);
-await Promise.all(files.map(convert));
+(async () => {
+  const files = process.argv[2] ? [process.argv[2]] : await glob(['nx.yaml', './{packages,tools}/*/project.yaml']);
+  await Promise.all(files.map(convert));
+})();
 
 async function convert(yamlFile: string) {
   let jsonFile = yamlFile.replace(/\.yaml$/, '.json');

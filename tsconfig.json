@@ -1,7 +1,6 @@
 {
   "extends": "tsconfig/tsconfig.base.json",
   "compilerOptions": {
-    "module": "ESNext",
     "allowJs": true,
     "checkJs": true
   }
