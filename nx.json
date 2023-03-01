@@ -45,10 +45,8 @@
     "publish-github": {
       "executor": "@jscutlery/semver:github",
       "options": {
-        "tag": "${tag}",
         "draft": true,
-        "generateNotes": true,
-        "notesStartTag": "${previousTag}"
+        "generateNotes": true
       }
     }
   }

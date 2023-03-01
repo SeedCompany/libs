@@ -12,6 +12,11 @@
         "distFolderPath": "packages/eslint-plugin"
       }
     },
-    "publish-github": {}
+    "publish-github": {
+      "options": {
+        "tag": "${tag}",
+        "notesStartTag": "${previousTag}"
+      }
+    }
   }
 }
