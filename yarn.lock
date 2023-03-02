@@ -3109,7 +3109,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/common@npm:^9.2.1":
+"@nestjs/common@npm:^9, @nestjs/common@npm:^9.2.1":
   version: 9.3.9
   resolution: "@nestjs/common@npm:9.3.9"
   dependencies:
@@ -3133,7 +3133,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/core@npm:^9.2.1":
+"@nestjs/core@npm:^9, @nestjs/core@npm:^9.2.1":
   version: 9.3.9
   resolution: "@nestjs/core@npm:9.3.9"
   dependencies:
@@ -3161,7 +3161,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/platform-express@npm:^9.2.1":
+"@nestjs/platform-express@npm:^9, @nestjs/platform-express@npm:^9.2.1":
   version: 9.3.9
   resolution: "@nestjs/platform-express@npm:9.3.9"
   dependencies:
@@ -3192,7 +3192,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/testing@npm:^9.2.1":
+"@nestjs/testing@npm:^9, @nestjs/testing@npm:^9.2.1":
   version: 9.3.9
   resolution: "@nestjs/testing@npm:9.3.9"
   dependencies:
@@ -3717,6 +3717,22 @@ __metadata:
 "@seedcompany/common@workspace:packages/common":
   version: 0.0.0-use.local
   resolution: "@seedcompany/common@workspace:packages/common"
+  languageName: unknown
+  linkType: soft
+
+"@seedcompany/data-loader@workspace:packages/data-loader":
+  version: 0.0.0-use.local
+  resolution: "@seedcompany/data-loader@workspace:packages/data-loader"
+  dependencies:
+    "@nestjs/common": ^9
+    "@nestjs/core": ^9
+    "@nestjs/platform-express": ^9
+    "@nestjs/testing": ^9
+    rxjs: ^7.5.7
+  peerDependencies:
+    "@nestjs/common": ^9
+    "@nestjs/core": ^9
+    reflect-metadata: ^0.1.12
   languageName: unknown
   linkType: soft
 

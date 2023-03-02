@@ -1,0 +1,51 @@
+{
+  "name": "@seedcompany/data-loader",
+  "version": "0.0.0",
+  "description": "NestJS library wrapper for data loaders",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16"
+  },
+  "dependencies": {
+    "@nestjs/common": "^9",
+    "@nestjs/core": "^9"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^9",
+    "@nestjs/core": "^9",
+    "reflect-metadata": "^0.1.12"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "typecheck": "tsc",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@nestjs/common": "^9",
+    "@nestjs/core": "^9",
+    "@nestjs/platform-express": "^9",
+    "@nestjs/testing": "^9",
+    "rxjs": "^7.5.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seedcompany/libs.git",
+    "directory": "packages/data-loader"
+  },
+  "bugs": {
+    "url": "https://github.com/seedcompany/libs/issues"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  }
+}
