@@ -40,6 +40,16 @@ export const config: TSESLint.Linter.Config = {
         minimumDescriptionLength: 20, // default 3
       },
     ],
+    '@typescript-eslint/ban-types': [
+      'error',
+      {
+        types: {
+          // Allow {} assuming usage is intersected with another type enforcing non-nullable
+          '{}': false,
+        },
+        extendDefaults: true,
+      },
+    ],
 
     '@typescript-eslint/consistent-type-assertions': [
       'error',
