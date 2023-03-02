@@ -58,7 +58,6 @@ targetDefaults:
   publish-github:
     executor: '@jscutlery/semver:github'
     options:
-      draft: true
       generateNotes: true
 
 namedInputs: # aka "sets of files"
