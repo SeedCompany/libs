@@ -1,0 +1,17 @@
+targets:
+  lint: {}
+
+  version:
+    options:
+      commitMessageFormat: >
+        release(${projectName}): ${version}
+      postTargets:
+        - email:publish-npm
+        - email:publish-github
+  publish-npm:
+    options:
+      distFolderPath: packages/email
+  publish-github:
+    options:
+      tag: ${tag}
+      notesStartTag: ${previousTag}
