@@ -46,6 +46,7 @@ targetDefaults:
     options:
       baseBranch: master
       preset: conventional
+      skipCommitTypes: [build, chore, ci, docs, release, style, test]
     dependsOn:
       - build
 
