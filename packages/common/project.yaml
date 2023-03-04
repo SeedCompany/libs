@@ -1,0 +1,17 @@
+targets:
+  lint: {}
+
+  version:
+    options:
+      commitMessageFormat: >
+        release(${projectName}): ${version}
+      postTargets:
+        - common:publish-npm
+        - common:publish-github
+  publish-npm:
+    options:
+      distFolderPath: packages/common
+  publish-github:
+    options:
+      tag: ${tag}
+      notesStartTag: ${previousTag}
