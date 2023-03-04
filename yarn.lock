@@ -3714,6 +3714,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@seedcompany/common@workspace:packages/common":
+  version: 0.0.0-use.local
+  resolution: "@seedcompany/common@workspace:packages/common"
+  languageName: unknown
+  linkType: soft
+
 "@seedcompany/eslint-plugin@workspace:packages/eslint-plugin":
   version: 0.0.0-use.local
   resolution: "@seedcompany/eslint-plugin@workspace:packages/eslint-plugin"
