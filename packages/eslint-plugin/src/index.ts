@@ -1,7 +1,4 @@
-import * as configs from './configs';
-import rules from './rules';
+export * as configs from './configs';
+export { default as rules } from './rules';
 
-export = {
-  rules,
-  configs,
-};
+export { ImportRestriction } from './rules';
