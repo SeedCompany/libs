@@ -1,6 +1,6 @@
 {
   "name": "@seedcompany/eslint-plugin",
-  "version": "3.4.0",
+  "version": "3.4.1",
   "description": "Seed Company's ESLint config / rules",
   "license": "MIT",
   "keywords": [
