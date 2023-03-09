@@ -1,3 +1,6 @@
+implicitDependencies:
+  - common
+
 targets:
   lint: {}
 
