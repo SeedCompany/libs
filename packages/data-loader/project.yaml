@@ -1,0 +1,20 @@
+implicitDependencies:
+  - common
+
+targets:
+  lint: {}
+
+  version:
+    options:
+      commitMessageFormat: >
+        release(${projectName}): ${version}
+      postTargets:
+        - data-loader:publish-npm
+        - data-loader:publish-github
+  publish-npm:
+    options:
+      distFolderPath: packages/data-loader
+  publish-github:
+    options:
+      tag: ${tag}
+      notesStartTag: ${previousTag}
