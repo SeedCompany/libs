@@ -1,6 +1,6 @@
 {
   "name": "@seedcompany/data-loader",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "NestJS library wrapper for data loaders",
   "license": "MIT",
   "engines": {
