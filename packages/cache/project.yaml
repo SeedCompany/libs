@@ -1,0 +1,20 @@
+implicitDependencies:
+  - common
+
+targets:
+  lint: {}
+
+  version:
+    options:
+      commitMessageFormat: >
+        release(${projectName}): ${version}
+      postTargets:
+        - cache:publish-npm
+        - cache:publish-github
+  publish-npm:
+    options:
+      distFolderPath: packages/cache
+  publish-github:
+    options:
+      tag: ${tag}
+      notesStartTag: ${previousTag}
