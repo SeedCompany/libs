@@ -1,0 +1,65 @@
+{
+  "name": "@seedcompany/data-loader",
+  "version": "0.0.0",
+  "description": "NestJS library wrapper for data loaders",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16"
+  },
+  "dependencies": {
+    "@nestjs/common": "^9",
+    "@nestjs/core": "^9",
+    "@seedcompany/common": "workspace:^",
+    "dataloader": "^2.2.2"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^9",
+    "@nestjs/core": "^9",
+    "@nestjs/graphql": ">=7",
+    "reflect-metadata": "^0.1.12"
+  },
+  "peerDependenciesMeta": {
+    "@nestjs/graphql": {
+      "optional": true
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "typecheck": "tsc",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@nestjs/apollo": "^10.2.0",
+    "@nestjs/graphql": "^10.2.0",
+    "@nestjs/platform-express": "^9",
+    "@nestjs/testing": "^9",
+    "@types/supertest": "^2.0.12",
+    "apollo-server-core": "^3.12.0",
+    "apollo-server-express": "^3.12.0",
+    "express": "^4.18.2",
+    "graphql": "^16",
+    "rxjs": "^7.5.7",
+    "supertest": "^6.3.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seedcompany/libs.git",
+    "directory": "packages/data-loader"
+  },
+  "bugs": {
+    "url": "https://github.com/seedcompany/libs/issues"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  }
+}
