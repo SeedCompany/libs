@@ -1,4 +1,4 @@
-import { parseHumanToDurationLike } from '@seedcompany/common';
+import { delayFnImpl, parseHumanToDurationLike } from '@seedcompany/common';
 import { Duration, DurationLike } from 'luxon';
 import { Writable } from 'type-fest';
 import { inspect } from 'util';
@@ -48,4 +48,16 @@ D.fromHuman = (input: string) =>
 Duration.prototype[inspect.custom] = function (this: Duration) {
   const str = this.toHuman({ unitDisplay: 'short' });
   return `[Duration] ${str}`;
+};
+
+declare module '@seedcompany/common' {
+  export interface DelayFn {
+    // eslint-disable-next-line @typescript-eslint/prefer-function-type
+    (duration: DurationIn): Promise<void>;
+  }
+}
+
+delayFnImpl.current = async (duration: DurationIn) => {
+  const d = Duration.from(duration);
+  await new Promise((resolve) => setTimeout(resolve, d.toMillis()));
 };
