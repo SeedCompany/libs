@@ -1,6 +1,7 @@
 import { parseHumanToDurationLike } from '@seedcompany/common';
 import { Duration, DurationLike } from 'luxon';
 import { Writable } from 'type-fest';
+import { inspect } from 'util';
 
 /**
  * A duration represented as an:
@@ -42,3 +43,9 @@ D.from = (input: DurationIn) =>
 
 D.fromHuman = (input: string) =>
   Duration.fromObject(parseHumanToDurationLike(input));
+
+// @ts-expect-error Yes, it doesn't have to be defined, we are adding it.
+Duration.prototype[inspect.custom] = function (this: Duration) {
+  const str = this.toHuman({ unitDisplay: 'short' });
+  return `[Duration] ${str}`;
+};
