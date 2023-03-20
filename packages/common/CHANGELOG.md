@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.0](https://github.com/SeedCompany/libs/compare/common-0.2.0...common-0.3.0) (2023-03-20)
+
+
+### Features
+
+* **common:** add Luxon `Duration` custom inspection ([dd43890](https://github.com/SeedCompany/libs/commit/dd438904246e4dbba861ffda2185c37277ca886e))
+* **common:** add optional Luxon `Duration.from` addition ([135cbe8](https://github.com/SeedCompany/libs/commit/135cbe8ae89960eec7eadaf6bcace2faff01d7e3))
+* **common:** add overload to delay function when luxon duration patches are applied ([34d87de](https://github.com/SeedCompany/libs/commit/34d87dec7aea9f66c769e6f0d9e2d746ca9d13ba))
+* **common:** add parseHumanToDurationLike function ([6354476](https://github.com/SeedCompany/libs/commit/63544767401d14a19e9ab4e6439b8620fa4c1d26))
+
 ## [0.2.0](https://github.com/SeedCompany/libs/compare/common-0.1.0...common-0.2.0) (2023-03-17)
 
 
