@@ -1,4 +1,5 @@
 export * from './cache';
+export * from './temporal';
 export * from './async-pool';
 export * from './buffer';
 export * from './delay';
