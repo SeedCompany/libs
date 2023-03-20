@@ -1,7 +1,11 @@
 {
   "extends": "tsconfig/tsconfig.base.json",
   "compilerOptions": {
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "paths": {
+      "@seedcompany/common": ["./src"]
+    },
   },
   "include": ["src"],
   "exclude": ["dist", "node_modules"]
