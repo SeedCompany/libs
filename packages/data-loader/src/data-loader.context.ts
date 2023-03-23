@@ -22,6 +22,16 @@ export class DataLoaderContext {
   constructor(private readonly factory: DataLoaderFactory) {}
 
   /**
+   * Grab a data loader instance for the given type and context.
+   */
+  async getLoader<T, Key, CachedKey = Key>(
+    type: Type<DataLoaderStrategy<T, Key, CachedKey>>,
+    context: ExecutionContext,
+  ) {
+    return await this.attachToExecutionContext(context).getLoader(type);
+  }
+
+  /**
    * Returns (and creates if needed) a loader context for this execution context.
    */
   attachToExecutionContext(context: ExecutionContext) {
