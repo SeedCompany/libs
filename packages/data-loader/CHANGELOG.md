@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.2.0](https://github.com/SeedCompany/libs/compare/data-loader-0.1.1...data-loader-0.2.0) (2023-03-23)
+
+
+### Features
+
+* **data-loader:** add `DataLoaderContext.getLoader` shortcut ([#11](https://github.com/SeedCompany/libs/issues/11)) ([7eee8db](https://github.com/SeedCompany/libs/commit/7eee8db11a899667a26569702d6575cb38a142f8))
+
 ## [0.1.1](https://github.com/SeedCompany/libs/compare/data-loader-0.1.0...data-loader-0.1.1) (2023-03-21)
 
 
