@@ -7,7 +7,11 @@ import * as textFormatters from 'html-to-text/lib/formatter';
 import openUrl from 'open';
 import { createElement, ReactElement } from 'react';
 import { file as tempFile } from 'tempy';
-import { EMAIL_MODULE_OPTIONS, EmailOptions, SES_TOKEN } from './email.options';
+import {
+  EMAIL_MODULE_OPTIONS,
+  type EmailOptions,
+  SES_TOKEN,
+} from './email.options';
 import { EmailMessage } from './message';
 import { AttachmentCollector } from './templates/attachment';
 import { RenderForText } from './templates/text-rendering';

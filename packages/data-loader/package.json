@@ -24,7 +24,7 @@
     }
   },
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "build": "tsup",
     "typecheck": "tsc",
     "test": "jest"
   },

@@ -1,7 +1,7 @@
 import { Inject, Injectable, Type } from '@nestjs/common';
 import { ContextId, ModuleRef } from '@nestjs/core';
 import DataLoaderLib from 'dataloader';
-import { DataLoaderOptions } from './data-loader-options.type';
+import type { DataLoaderOptions } from './data-loader-options.type';
 import { MODULE_OPTIONS_TOKEN } from './data-loader.module-builder';
 import { DataLoaderStrategy } from './data-loader.strategy';
 import { DataLoader } from './data-loader.type';
