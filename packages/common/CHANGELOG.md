@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.4.0](https://github.com/SeedCompany/libs/compare/common-0.3.0...common-0.4.0) (2023-03-25)
+
+
+### Features
+
+* **common:** add `IterableItem` type helper ([be0ebf7](https://github.com/SeedCompany/libs/commit/be0ebf7f27ea43b09bf97eef6a01fbe59261dc61))
+
 ## [0.3.0](https://github.com/SeedCompany/libs/compare/common-0.2.0...common-0.3.0) (2023-03-20)
 
 
