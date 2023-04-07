@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.9](https://github.com/SeedCompany/libs/compare/cache-0.1.8...cache-0.1.9) (2023-04-07)
+
+
+### Bug Fixes
+
+* **cache:** restore exports and declare stores with wildcard ([3686740](https://github.com/SeedCompany/libs/commit/3686740ed4cafb23579a055a017460c7d1e54534))
+
 ## [0.1.8](https://github.com/SeedCompany/libs/compare/cache-0.1.7...cache-0.1.8) (2023-04-07)
 
 
