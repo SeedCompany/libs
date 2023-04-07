@@ -4139,7 +4139,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@seedcompany/common@^0.3.0, @seedcompany/common@workspace:packages/common":
+"@seedcompany/common@>=0.3.0 <1.0.0, @seedcompany/common@workspace:packages/common":
   version: 0.0.0-use.local
   resolution: "@seedcompany/common@workspace:packages/common"
   dependencies:
@@ -4163,7 +4163,7 @@ __metadata:
     "@nestjs/graphql": ^10.2.0
     "@nestjs/platform-express": ^9
     "@nestjs/testing": ^9
-    "@seedcompany/common": ^0.3.0
+    "@seedcompany/common": ">=0.3.0 <1.0.0"
     "@types/supertest": ^2.0.12
     apollo-server-core: ^3.12.0
     apollo-server-express: ^3.12.0
