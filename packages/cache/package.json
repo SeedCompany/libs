@@ -56,7 +56,7 @@
     "url": "https://github.com/seedcompany/libs/issues"
   },
   "files": [
-    "dist"
+    "*"
   ],
   "type": "module",
   "main": "./index.cjs",
