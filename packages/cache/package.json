@@ -1,0 +1,71 @@
+{
+  "name": "@seedcompany/cache",
+  "version": "0.0.0",
+  "description": "NestJS library wrapper for external caching",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16"
+  },
+  "dependencies": {
+    "@nestjs/common": "^9",
+    "@nestjs/core": "^9",
+    "@seedcompany/common": ">0.3 <1",
+    "@types/luxon": "^3.2.0",
+    "luxon": "^3.3.0",
+    "type-fest": "^3.6.1"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^9",
+    "@nestjs/core": "^9",
+    "ioredis": "^5",
+    "keyv": "^4",
+    "lru-cache": "^8",
+    "reflect-metadata": "^0.1.12"
+  },
+  "peerDependenciesMeta": {
+    "ioredis": {
+      "optional": true
+    },
+    "keyv": {
+      "optional": true
+    },
+    "lru-cache": {
+      "optional": true
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@apollo/utils.keyvaluecache": "^2.1.0",
+    "@nestjs/testing": "^9",
+    "cache-manager": "^5.2.0",
+    "ioredis": "^5.3.1",
+    "keyv": "^4.5.2",
+    "lru-cache": "^8.0.4",
+    "rxjs": "^7.5.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seedcompany/libs.git",
+    "directory": "packages/cache"
+  },
+  "bugs": {
+    "url": "https://github.com/seedcompany/libs/issues"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  }
+}
