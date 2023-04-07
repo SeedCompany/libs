@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.2.2](https://github.com/SeedCompany/libs/compare/email-3.2.1...email-3.2.2) (2023-04-07)
+
+
+### Bug Fixes
+
+* **email:** restore templates/ path in exports ([df81703](https://github.com/SeedCompany/libs/commit/df81703972ed09592f231334de65aafe391e027d))
+
 ## [3.2.1](https://github.com/SeedCompany/libs/compare/email-3.2.0...email-3.2.1) (2023-04-07)
 
 
