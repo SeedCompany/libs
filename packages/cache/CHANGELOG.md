@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.1](https://github.com/SeedCompany/libs/compare/cache-0.1.0...cache-0.1.1) (2023-04-07)
+
+
+### Bug Fixes
+
+* **cache:** stores sub-path export ([d581c13](https://github.com/SeedCompany/libs/commit/d581c13ad77f933847a424d20d074c5eafeb9bef))
+
 ## 0.1.0 (2023-04-07)
 
 
