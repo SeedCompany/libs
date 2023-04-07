@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.5.0](https://github.com/SeedCompany/libs/compare/common-0.4.0...common-0.5.0) (2023-04-07)
+
+
+### Features
+
+* **common:** add FnLike & UnknownFn type helpers ([d9196bf](https://github.com/SeedCompany/libs/commit/d9196bf008b855cb1be8d0b4c5cb97e2fe5f7542))
+
 ## [0.4.0](https://github.com/SeedCompany/libs/compare/common-0.3.0...common-0.4.0) (2023-03-25)
 
 
