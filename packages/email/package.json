@@ -59,6 +59,11 @@
       "import": "./index.js",
       "require": "./index.cjs",
       "types": "./index.d.ts"
+    },
+    "./templates": {
+      "import": "./templates/index.js",
+      "require": "./templates/index.cjs",
+      "types": "./templates/index.d.ts"
     }
   }
 }
