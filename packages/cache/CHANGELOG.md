@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.4](https://github.com/SeedCompany/libs/compare/cache-0.1.3...cache-0.1.4) (2023-04-07)
+
+
+### Bug Fixes
+
+* **cache:** fix target name reference ([0ffb972](https://github.com/SeedCompany/libs/commit/0ffb972a6c4b5d9d8a63e67f2b835048265a6fcf))
+
 ## [0.1.3](https://github.com/SeedCompany/libs/compare/cache-0.1.2...cache-0.1.3) (2023-04-07)
 
 
