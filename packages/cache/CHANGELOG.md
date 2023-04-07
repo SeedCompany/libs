@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.2.0](https://github.com/SeedCompany/libs/compare/cache-0.1.9...cache-0.2.0) (2023-04-07)
+
+
+### Features
+
+* **cache:** parse ttl once where possible ([e8948c5](https://github.com/SeedCompany/libs/commit/e8948c5deff8e1d1306b0b7e2634c8040ad72db4))
+
 ## [0.1.9](https://github.com/SeedCompany/libs/compare/cache-0.1.8...cache-0.1.9) (2023-04-07)
 
 
