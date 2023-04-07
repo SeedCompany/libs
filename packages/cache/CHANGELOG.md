@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.6](https://github.com/SeedCompany/libs/compare/cache-0.1.5...cache-0.1.6) (2023-04-07)
+
 ## [0.1.5](https://github.com/SeedCompany/libs/compare/cache-0.1.4...cache-0.1.5) (2023-04-07)
 
 
