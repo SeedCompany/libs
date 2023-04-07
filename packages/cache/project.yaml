@@ -13,7 +13,7 @@ targets:
         - cache:publish-github
   publish-npm:
     options:
-      distFolderPath: packages/cache
+      distFolderPath: packages/cache/dist
   publish-github:
     options:
       tag: ${tag}
