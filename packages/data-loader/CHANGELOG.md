@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.2.2](https://github.com/SeedCompany/libs/compare/data-loader-0.2.1...data-loader-0.2.2) (2023-04-07)
+
+
+### Bug Fixes
+
+* **data-loader:** common version constraint ([1202670](https://github.com/SeedCompany/libs/commit/12026709529bc3f8efb86fc801a3e4f20b042200))
+
 ## [0.2.1](https://github.com/SeedCompany/libs/compare/data-loader-0.2.0...data-loader-0.2.1) (2023-03-24)
 
 
