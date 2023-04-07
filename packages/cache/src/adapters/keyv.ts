@@ -1,15 +1,16 @@
 import { DurationIn } from '@seedcompany/common/temporal/luxon';
 import type { Store as KeyvStore } from 'keyv';
 import { CacheService, ItemOptions } from '../cache.service';
+import { resolveOptions } from '../resolve-options';
 
 /**
  * A `keyv` store backed by our CacheService.
  */
 export class KeyvAdapter<Value> implements KeyvStore<Value> {
-  constructor(
-    private readonly cache: CacheService,
-    private readonly options: ItemOptions = {},
-  ) {}
+  private readonly options: ItemOptions;
+  constructor(private readonly cache: CacheService, options: ItemOptions = {}) {
+    this.options = resolveOptions(options);
+  }
 
   async get(key: string): Promise<Value | undefined> {
     return await this.cache.get(key, this.options);

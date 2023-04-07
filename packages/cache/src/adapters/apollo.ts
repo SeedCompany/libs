@@ -3,15 +3,16 @@ import type {
   KeyValueCacheSetOptions,
 } from '@apollo/utils.keyvaluecache';
 import { CacheService, ItemOptions } from '../cache.service';
+import { resolveOptions } from '../resolve-options';
 
 /**
  * A drop-in adapter for Apollo Server's cache to use our CacheService.
  */
 export class ApolloCacheAdapter implements KeyValueCache {
-  constructor(
-    private readonly cache: CacheService,
-    private readonly options: ItemOptions = {},
-  ) {}
+  private readonly options: ItemOptions;
+  constructor(private readonly cache: CacheService, options: ItemOptions = {}) {
+    this.options = resolveOptions(options);
+  }
 
   async get(key: string): Promise<string | undefined> {
     return await this.cache.get(key, this.options);

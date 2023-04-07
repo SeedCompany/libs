@@ -5,6 +5,7 @@ import type {
 import { DurationIn } from '@seedcompany/common/temporal/luxon';
 import type { Store as CacheManagerStore } from 'cache-manager';
 import { CacheService, ItemOptions } from '../cache.service';
+import { resolveOptions } from '../resolve-options';
 
 // noinspection SpellCheckingInspection
 
@@ -12,10 +13,10 @@ import { CacheService, ItemOptions } from '../cache.service';
  * A store for `cache-manager` which is also what `@nestjs/common` uses.
  */
 export class CacheManagerAdapter implements CacheManagerStore, NestCacheStore {
-  constructor(
-    private readonly cache: CacheService,
-    private readonly options: ItemOptions = {},
-  ) {}
+  private readonly options: ItemOptions;
+  constructor(private readonly cache: CacheService, options: ItemOptions = {}) {
+    this.options = resolveOptions(options);
+  }
 
   async get<T>(key: string): Promise<T | undefined> {
     return await this.cache.get<T>(key, {

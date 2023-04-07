@@ -1,6 +1,7 @@
 import { Inject } from '@nestjs/common';
 import { Except } from 'type-fest';
 import { CacheableCalculationOptions, CacheService } from './cache.service';
+import { resolveOptions } from './resolve-options';
 
 const CacheKey = Symbol('CacheService');
 
@@ -49,11 +50,18 @@ export const Cache =
       target[CacheKey] = null;
     }
 
+    const resolvedOptions: CacheOptionsOrFn<Args> =
+      typeof options !== 'function'
+        ? (resolveOptions(options) as CacheOptions)
+        : options;
+
     // Wrap the method
     const origMethod = descriptor.value!;
     descriptor.value = async function (...args) {
       return await this[CacheKey].getOrCalculate({
-        ...(typeof options === 'function' ? options(...args) : options),
+        ...(typeof resolvedOptions === 'function'
+          ? resolvedOptions(...args)
+          : resolvedOptions),
         calculate: () => origMethod.apply(this, args),
       });
     };

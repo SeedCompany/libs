@@ -3,6 +3,7 @@ import type { DurationIn } from '@seedcompany/common/temporal/luxon';
 import { Duration } from 'luxon';
 import { Promisable } from 'type-fest';
 import { CacheAdapters } from './adapters/adapters.facade';
+import { resolveOptions } from './resolve-options';
 import { NamespaceStore } from './stores/namespace';
 import {
   CacheStore,
@@ -26,24 +27,15 @@ export class CacheService {
   }
 
   item<T>(key: string, options?: ItemOptions): CacheItem<T> {
-    return new CacheItem<T>(key, this, options);
+    return new CacheItem<T>(key, this, options ? resolveOptions(options) : {});
   }
 
   async get<T>(key: string, options: ItemOptions = {}): Promise<T | undefined> {
-    return await this.store.get<T>(key, this.resolveOptions(options));
+    return await this.store.get<T>(key, resolveOptions(options));
   }
 
   async set(key: string, value: unknown, options: ItemOptions = {}) {
-    await this.store.set(key, value, this.resolveOptions(options));
-  }
-
-  private resolveOptions(options: ItemOptions): StoreItemOptions {
-    const { ttl: rawTtl, ...rest } = options;
-    let ttl = rawTtl ? Duration.from(rawTtl) : undefined;
-    const ttlMs = ttl?.toMillis();
-    // Treat 0 as infinite
-    ttl = ttlMs === 0 || ttlMs === Infinity ? undefined : ttl;
-    return { ttl, ...rest };
+    await this.store.set(key, value, resolveOptions(options));
   }
 
   async delete(key: string) {
