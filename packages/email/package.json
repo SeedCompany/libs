@@ -49,21 +49,16 @@
     "url": "https://github.com/seedcompany/libs/issues"
   },
   "files": [
-    "dist"
+    "*"
   ],
   "type": "module",
-  "main": "./dist/index.cjs",
-  "types": "./dist/index.d.ts",
+  "main": "./index.cjs",
+  "types": "./index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts"
-    },
-    "./templates": {
-      "import": "./dist/templates/index.js",
-      "require": "./dist/templates/index.cjs",
-      "types": "./dist/templates/index.d.ts"
+      "import": "./index.js",
+      "require": "./index.cjs",
+      "types": "./index.d.ts"
     }
   }
 }

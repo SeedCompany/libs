@@ -6,11 +6,15 @@ targets:
       commitMessageFormat: >
         release(${projectName}): ${version}
       postTargets:
+        - email:copy-assets-to-dist
         - email:publish-npm
         - email:publish-github
+  copy-assets-to-dist:
+    options:
+      cwd: packages/email
   publish-npm:
     options:
-      distFolderPath: packages/email
+      distFolderPath: packages/email/dist
   publish-github:
     options:
       tag: ${tag}
