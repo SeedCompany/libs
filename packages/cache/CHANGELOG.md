@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.3](https://github.com/SeedCompany/libs/compare/cache-0.1.2...cache-0.1.3) (2023-04-07)
+
+
+### Bug Fixes
+
+* **cache:** when assets are copied to dist ([de26dce](https://github.com/SeedCompany/libs/commit/de26dcea535d39432b994b9381180c528a31213e))
+
 ## [0.1.2](https://github.com/SeedCompany/libs/compare/cache-0.1.1...cache-0.1.2) (2023-04-07)
 
 
