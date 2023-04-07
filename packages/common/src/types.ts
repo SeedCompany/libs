@@ -11,3 +11,15 @@ export type IterableItem<T> = T extends {
   : never;
 
 export type ArrayItem<T> = IterableItem<T>;
+
+/**
+ * Only use as a generic constraint.
+ * @example
+ * function foo<T extends FnLike>(fn: T) {}
+ */
+export type FnLike = (...args: any[]) => any;
+
+/**
+ * A type safe function whose signature is unknown.
+ */
+export type UnknownFn = (...args: unknown[]) => unknown;
