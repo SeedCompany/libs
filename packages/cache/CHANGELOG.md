@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.8](https://github.com/SeedCompany/libs/compare/cache-0.1.7...cache-0.1.8) (2023-04-07)
+
+
+### Bug Fixes
+
+* **cache:** try removing exports so node will import sub-paths ([24db538](https://github.com/SeedCompany/libs/commit/24db538b6d70475b296e4f46b7c6d1f9c1da6638))
+
 ## [0.1.7](https://github.com/SeedCompany/libs/compare/cache-0.1.6...cache-0.1.7) (2023-04-07)
 
 
