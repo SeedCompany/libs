@@ -13,11 +13,8 @@ targets:
         - cache:publish-npm
         - cache:publish-github
   copy-assets-to-dist:
-    executor: nx:run-commands
     options:
       cwd: packages/cache
-      commands:
-        - command: cp package.json README.md CHANGELOG.md dist/
   publish-npm:
     options:
       distFolderPath: packages/cache/dist

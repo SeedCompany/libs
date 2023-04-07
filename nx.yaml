@@ -50,6 +50,12 @@ targetDefaults:
     dependsOn:
       - build
 
+  copy-assets-to-dist:
+    executor: nx:run-commands
+    options:
+      commands:
+        - command: "cp package.json README.md CHANGELOG.md dist/ || true #"
+
   publish-npm:
     executor: ngx-deploy-npm:deploy
     options:
