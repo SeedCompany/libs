@@ -12,7 +12,7 @@ targets:
         - cache:copy-assets-to-dist
         - cache:publish-npm
         - cache:publish-github
-  publish-copy-assets-to-dist:
+  copy-assets-to-dist:
     executor: nx:run-commands
     options:
       cwd: packages/cache
