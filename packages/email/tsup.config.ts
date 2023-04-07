@@ -1,0 +1,9 @@
+import { defineConfig } from 'tsup';
+
+export const tsup = defineConfig({
+  entry: ['src/index.ts', 'src/templates/index.ts', '!src/**/*.test.ts'],
+  format: ['cjs', 'esm'],
+  dts: true,
+  sourcemap: true,
+  clean: true,
+});
