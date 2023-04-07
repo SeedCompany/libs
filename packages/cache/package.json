@@ -1,6 +1,6 @@
 {
   "name": "@seedcompany/cache",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "NestJS library wrapper for external caching",
   "license": "MIT",
   "engines": {

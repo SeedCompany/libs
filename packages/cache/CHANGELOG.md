@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.7](https://github.com/SeedCompany/libs/compare/cache-0.1.6...cache-0.1.7) (2023-04-07)
+
+
+### Bug Fixes
+
+* **cache:** files filter since we are our cwd is dist now ([eb4cb7a](https://github.com/SeedCompany/libs/commit/eb4cb7ac6569de5fca23999c2ed6cc6ac68a5895))
+
 ## [0.1.6](https://github.com/SeedCompany/libs/compare/cache-0.1.5...cache-0.1.6) (2023-04-07)
 
 ## [0.1.5](https://github.com/SeedCompany/libs/compare/cache-0.1.4...cache-0.1.5) (2023-04-07)
