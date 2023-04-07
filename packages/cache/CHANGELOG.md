@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.5](https://github.com/SeedCompany/libs/compare/cache-0.1.4...cache-0.1.5) (2023-04-07)
+
+
+### Bug Fixes
+
+* **cache:** move copy command to nx. suffix with "#" to workaround excessive interpolation by nx ([fd20f24](https://github.com/SeedCompany/libs/commit/fd20f2441b5bc73f80aae5adf1b3cd119970d499))
+
 ## [0.1.4](https://github.com/SeedCompany/libs/compare/cache-0.1.3...cache-0.1.4) (2023-04-07)
 
 
