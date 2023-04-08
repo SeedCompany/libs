@@ -4,6 +4,7 @@ export * from './async-pool';
 export * from './buffer';
 export * from './delay';
 export * from './iterator';
+export * from './json-col';
 export * from './many';
 export * from './non-enumerable';
 export * from './types';
