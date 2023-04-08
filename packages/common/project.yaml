@@ -6,11 +6,15 @@ targets:
       commitMessageFormat: >
         release(${projectName}): ${version}
       postTargets:
+        - common:copy-assets-to-dist
         - common:publish-npm
         - common:publish-github
+  copy-assets-to-dist:
+    options:
+      cwd: packages/common
   publish-npm:
     options:
-      distFolderPath: packages/common
+      distFolderPath: packages/common/dist
   publish-github:
     options:
       tag: ${tag}

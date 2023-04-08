@@ -31,21 +31,21 @@
     "url": "https://github.com/seedcompany/libs/issues"
   },
   "files": [
-    "dist"
+    "*"
   ],
   "type": "module",
-  "main": "./dist/index.cjs",
-  "types": "./dist/index.d.ts",
+  "main": "./index.cjs",
+  "types": "./index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts"
+      "import": "./index.js",
+      "require": "./index.cjs",
+      "types": "./index.d.ts"
     },
     "./temporal/luxon": {
-      "import": "./dist/temporal/luxon/index.js",
-      "require": "./dist/temporal/luxon/index.cjs",
-      "types": "./dist/temporal/luxon/index.d.ts"
+      "import": "./temporal/luxon/index.js",
+      "require": "./temporal/luxon/index.cjs",
+      "types": "./temporal/luxon/index.d.ts"
     }
   }
 }
