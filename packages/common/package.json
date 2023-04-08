@@ -18,7 +18,7 @@
     "luxon": "^3.3.0"
   },
   "scripts": {
-    "build": "tsup src/index.ts src/temporal/luxon/index.ts --external=\"@seedcompany/common\" --format cjs,esm --dts --clean",
+    "build": "tsup",
     "typecheck": "tsc",
     "test": "jest"
   },
