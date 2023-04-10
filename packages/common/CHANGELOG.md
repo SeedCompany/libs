@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.7.0](https://github.com/SeedCompany/libs/compare/common-0.6.9...common-0.7.0) (2023-04-10)
+
+
+### Features
+
+* **common:** trigger release ([0d880f5](https://github.com/SeedCompany/libs/commit/0d880f569cad65e7979db77ba99ad1eb5adc112f))
+
 ## [0.5.0](https://github.com/SeedCompany/libs/compare/common-0.4.0...common-0.5.0) (2023-04-07)
 
 
