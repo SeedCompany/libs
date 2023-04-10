@@ -6,9 +6,9 @@ import { resolve } from 'node:path';
   const dir = resolve('dist');
   const pkg = JSON.parse(await readFile(`${dir}/package.json`, 'utf8'));
   pkg.exports = mapValues(pkg.exports, (exp: Record<PackageJson.ExportCondition, string>) => ({
-    import: exp.import.replace(/\/src\//, '/').replace(/.ts$/, '.js'),
-    require: exp.require.replace(/\/src\//, '/').replace(/.ts$/, '.cjs'),
-    types: exp.types.replace(/\/src\//, '/').replace(/.ts$/, '.d.ts'),
+    import: exp.import.replace(/\/src\//, '/').replace(/\.ts$/, '.js'),
+    require: exp.require.replace(/\/src\//, '/').replace(/\.ts$/, '.cjs'),
+    types: exp.types.replace(/\/src\//, '/').replace(/(?<!\.d).ts$/, '.d.ts'),
   }))
   await writeFile(`${dir}/package.json`, JSON.stringify(pkg, null, 2), 'utf8');
 })();
