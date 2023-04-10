@@ -34,7 +34,7 @@ export class DataLoaderContext {
   /**
    * Returns (and creates if needed) a loader context for this execution context.
    */
-  attachToExecutionContext(context: ExecutionContext) {
+  attachToExecutionContext(context: ExecutionContext): LoaderContextType {
     return cached(loaderContexts, lifetimeIdFromExecutionContext(context), () =>
       this.createContext(),
     );
