@@ -4,6 +4,7 @@ export default (): JestConfigWithTsJest => ({
   preset: 'ts-jest/presets/default-esm',
   testRegex: '\\.test\\.tsx?$',
   moduleNameMapper: {
+    '^@seedcompany/(.*)$': '<rootDir>/../$1/src',
     '^(\\.{1,2}/.*)\\.js$': '$1',
   },
   transform: {
