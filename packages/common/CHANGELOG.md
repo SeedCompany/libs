@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.8.2](https://github.com/SeedCompany/libs/compare/common-0.8.1...common-0.8.2) (2023-04-10)
+
+
+### Bug Fixes
+
+* **common:** type on setHas ([07b04b1](https://github.com/SeedCompany/libs/commit/07b04b19724394e57abeb56a29bc61a3ab7f0531))
+
 ## [0.8.1](https://github.com/SeedCompany/libs/compare/common-0.8.0...common-0.8.1) (2023-04-10)
 
 
