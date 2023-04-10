@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.8.0](https://github.com/SeedCompany/libs/compare/common-0.7.0...common-0.8.0) (2023-04-10)
+
+
+### Features
+
+* **common:** add setHas helper along with WidenLiteral ([14295a0](https://github.com/SeedCompany/libs/commit/14295a09adaf20d7e8bf2ee21ef82fb30e1fd3c9))
+
 ## [0.7.0](https://github.com/SeedCompany/libs/compare/common-0.6.9...common-0.7.0) (2023-04-10)
 
 
