@@ -7,9 +7,13 @@ targets:
         release(${projectName}): ${version}
       postTargets:
         - common:copy-assets-to-dist
+        - common:adjust-package-exports
         - common:publish-npm
         - common:publish-github
   copy-assets-to-dist:
+    options:
+      cwd: packages/common
+  adjust-package-exports:
     options:
       cwd: packages/common
   publish-npm:

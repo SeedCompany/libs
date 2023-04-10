@@ -38,14 +38,14 @@
   "types": "./index.d.ts",
   "exports": {
     ".": {
-      "import": "./index.js",
-      "require": "./index.cjs",
-      "types": "./index.d.ts"
+      "import": "./src/index.ts",
+      "require": "./src/index.ts",
+      "types": "./src/index.ts"
     },
     "./temporal/luxon": {
-      "import": "./temporal/luxon/index.js",
-      "require": "./temporal/luxon/index.cjs",
-      "types": "./temporal/luxon/index.d.ts"
+      "import": "./src/temporal/luxon/index.ts",
+      "require": "./src/temporal/luxon/index.ts",
+      "types": "./src/temporal/luxon/index.ts"
     }
   }
 }

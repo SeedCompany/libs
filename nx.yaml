@@ -56,6 +56,12 @@ targetDefaults:
       commands:
         - command: "cp package.json README.md CHANGELOG.md dist/ || true #"
 
+  adjust-package-exports:
+    executor: nx:run-commands
+    options:
+      commands:
+        - command: node --loader ts-node/esm/transpile-only ../../tools/adjust-package-exports.mjs
+
   publish-npm:
     executor: ngx-deploy-npm:deploy
     options:
