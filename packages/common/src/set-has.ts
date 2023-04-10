@@ -20,6 +20,6 @@ import { WidenLiteral } from './types';
  * }
  */
 export const setHas = <T>(
-  set: ReadonlySet<T & {}>,
+  set: ReadonlySet<T>,
   key: WidenLiteral<T> & {},
 ): key is WidenLiteral<T> & {} & T => set.has(key as any);
