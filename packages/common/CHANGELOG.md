@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.10.0](https://github.com/SeedCompany/libs/compare/common-0.9.0...common-0.10.0) (2023-04-29)
+
+
+### Features
+
+* **common:** setOf to create readonly set ([6a8660b](https://github.com/SeedCompany/libs/commit/6a8660be20f41ae4adcaf784bc375cbc8aeae3f5))
+
 ## [0.9.0](https://github.com/SeedCompany/libs/compare/common-0.8.2...common-0.9.0) (2023-04-11)
 
 
