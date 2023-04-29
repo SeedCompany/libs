@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.4.0](https://github.com/SeedCompany/libs/compare/data-loader-0.3.0...data-loader-0.4.0) (2023-04-29)
+
+
+### Features
+
+* **data-loader:** add typeName to createError args ([6a1bf5f](https://github.com/SeedCompany/libs/commit/6a1bf5f5805fc6bb3e31926c93080f935d142328))
+
 ## [0.3.0](https://github.com/SeedCompany/libs/compare/data-loader-0.2.2...data-loader-0.3.0) (2023-04-29)
 
 
