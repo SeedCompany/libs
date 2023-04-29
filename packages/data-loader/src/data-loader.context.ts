@@ -1,5 +1,6 @@
 import { ExecutionContext, Injectable, Type } from '@nestjs/common';
 import { ContextId, ContextIdFactory } from '@nestjs/core';
+import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-host';
 import { cacheable, cached } from '@seedcompany/common';
 import { DataLoaderFactory } from './data-loader.factory';
 import { DataLoaderStrategy } from './data-loader.strategy';
@@ -26,21 +27,38 @@ export class DataLoaderContext {
    */
   async getLoader<T, Key, CachedKey = Key>(
     type: Type<DataLoaderStrategy<T, Key, CachedKey>>,
-    context: ExecutionContext,
+    context: ExecutionContext | object,
   ) {
-    return await this.attachToExecutionContext(context).getLoader(type);
+    const lifetimeId =
+      context instanceof ExecutionContextHost
+        ? lifetimeIdFromExecutionContext(context)
+        : context;
+    return await this.forLifetime(lifetimeId).getLoader(type);
   }
 
   /**
    * Returns (and creates if needed) a loader context for this execution context.
    */
   attachToExecutionContext(context: ExecutionContext): LoaderContextType {
-    return cached(loaderContexts, lifetimeIdFromExecutionContext(context), () =>
-      this.createContext(),
-    );
+    return this.forLifetime(lifetimeIdFromExecutionContext(context));
   }
 
-  createContext(): LoaderContextType {
+  /**
+   * Returns (and creates if needed) a loader context for this object.
+   */
+  forLifetime(
+    lifetimeId: object,
+    notFoundAction: 'throw' | 'create' = 'create',
+  ): LoaderContextType {
+    return cached(loaderContexts, lifetimeId, () => {
+      if (notFoundAction === 'create') {
+        return this.createContext();
+      }
+      throw new Error('Loader context not found.');
+    });
+  }
+
+  private createContext(): LoaderContextType {
     const contextId = ContextIdFactory.create();
     const loaders: LoaderContextType['loaders'] = new Map();
     return {
@@ -72,5 +90,7 @@ export const getLoaderContextFromLifetimeId = (lifetimeId: object) => {
  * so that the loader decorator can access it.
  * We could mutate the lifetime object and store the loader context on a symbol there.
  * But this is better because it doesn't modify that object.
+ * This will only be a problem if there are multiple versions of the library in use,
+ * which would then have different maps.
  */
 const loaderContexts = new WeakMap<object, LoaderContextType>();
