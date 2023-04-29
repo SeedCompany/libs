@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.0](https://github.com/SeedCompany/libs/compare/data-loader-0.2.2...data-loader-0.3.0) (2023-04-29)
+
+
+### Features
+
+* **data-loader:** expose loaders from lifetime object ([95baa30](https://github.com/SeedCompany/libs/commit/95baa30e3ccf7a6436335b25c38f67e23e4336a0))
+
 ## [0.2.2](https://github.com/SeedCompany/libs/compare/data-loader-0.2.1...data-loader-0.2.2) (2023-04-07)
 
 
