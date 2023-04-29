@@ -15,7 +15,11 @@ export interface DataLoaderOptions<T, Key, CachedKey = Key>
    */
   typeName?: string;
 
-  createError?: ({ key, cacheKey }: { key: Key; cacheKey: CachedKey }) => Error;
+  createError?: (info: {
+    key: Key;
+    cacheKey: CachedKey;
+    typeName: string;
+  }) => Error;
 }
 
 /**

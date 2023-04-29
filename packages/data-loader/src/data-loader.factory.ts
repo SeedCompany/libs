@@ -98,7 +98,10 @@ export class DataLoaderFactory {
 
       return keys.map((key) => {
         const cacheKey = getCacheKey(key);
-        return docsMap.get(cacheKey) || options.createError({ key, cacheKey });
+        return (
+          docsMap.get(cacheKey) ||
+          options.createError({ key, cacheKey, typeName: options.typeName })
+        );
       });
     };
     return batchFn;
