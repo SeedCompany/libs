@@ -1,0 +1,42 @@
+{
+  "name": "@seedcompany/scripture",
+  "version": "0.0.0",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16"
+  },
+  "dependencies": {
+    "@seedcompany/common": ">=0.10.0 <1.0.0"
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seedcompany/libs.git",
+    "directory": "packages/scripture"
+  },
+  "bugs": {
+    "url": "https://github.com/seedcompany/libs/issues"
+  },
+  "files": [
+    "*"
+  ],
+  "type": "module",
+  "main": "./index.cjs",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "require": "./src/index.ts",
+      "types": "./src/index.ts"
+    },
+    "./temporal/luxon": {
+      "import": "./src/temporal/luxon/index.ts",
+      "require": "./src/temporal/luxon/index.ts",
+      "types": "./src/temporal/luxon/index.ts"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+targets:
+  lint: {}
+
+  version:
+    options:
+      commitMessageFormat: >
+        release(${projectName}): ${version}
+      postTargets:
+        - common:copy-assets-to-dist
+        - common:adjust-package-exports
+        - common:publish-npm
+        - common:publish-github
+  copy-assets-to-dist:
+    options:
+      cwd: packages/scripture
+  adjust-package-exports:
+    options:
+      cwd: packages/scripture
+  publish-npm:
+    options:
+      distFolderPath: packages/scripture/dist
+  publish-github:
+    options:
+      tag: ${tag}
+      notesStartTag: ${previousTag}

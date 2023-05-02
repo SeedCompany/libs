@@ -4197,7 +4197,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@seedcompany/common@>0.3 <1, @seedcompany/common@>=0.3.0 <1.0.0, @seedcompany/common@workspace:packages/common":
+"@seedcompany/common@>0.3 <1, @seedcompany/common@>=0.10.0 <1.0.0, @seedcompany/common@>=0.3.0 <1.0.0, @seedcompany/common@workspace:packages/common":
   version: 0.0.0-use.local
   resolution: "@seedcompany/common@workspace:packages/common"
   dependencies:
@@ -4345,6 +4345,14 @@ __metadata:
     react: ">=17.0.0"
     react-dom: ">=17.0.0"
     reflect-metadata: ^0.1.12
+  languageName: unknown
+  linkType: soft
+
+"@seedcompany/scripture@workspace:packages/scripture":
+  version: 0.0.0-use.local
+  resolution: "@seedcompany/scripture@workspace:packages/scripture"
+  dependencies:
+    "@seedcompany/common": ">=0.10.0 <1.0.0"
   languageName: unknown
   linkType: soft
 
