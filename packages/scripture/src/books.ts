@@ -113,11 +113,24 @@ export class Book implements Iterable<Chapter> {
   }
 
   chapter(chapterNumber: OneBasedIndex) {
-    const totalVerses = this.#book.chapters[chapterNumber - 1];
-    if (totalVerses > 0) {
-      return new Chapter(this, chapterNumber, totalVerses);
+    const maybe = this.chapterMaybe(chapterNumber);
+    if (maybe) {
+      return maybe;
     }
-    throw new Error(`Chapter ${chapterNumber} of ${this.label} does not exist`);
+    if (chapterNumber === 0) {
+      throw new Error('Chapters are 1-indexed');
+    }
+    throw new Error(
+      `${this.label} has ${this.totalChapters} chapter(s), not ${chapterNumber}`,
+    );
+  }
+
+  chapterMaybe(index: OneBasedIndex) {
+    const totalVerses = this.#book.chapters.at(index - 1);
+    if (totalVerses && totalVerses > 0) {
+      return new Chapter(this, index, totalVerses);
+    }
+    return undefined;
   }
 
   equals(other: Book) {
@@ -202,8 +215,24 @@ export class Chapter implements Iterable<Verse> {
   }
 
   verse(verseNumber: OneBasedIndex) {
+    const verse = this.verseMaybe(verseNumber);
+    if (verse) {
+      return verse;
+    }
+    if (verseNumber === 0) {
+      throw new Error('Verses are 1-indexed');
+    }
+    throw new Error(
+      `${this.label} has ${this.totalVerses} verse(s), not ${verseNumber}`,
+    );
+  }
+
+  verseMaybe(verseNumber: OneBasedIndex) {
+    if (verseNumber === 0) {
+      return undefined;
+    }
     if (verseNumber <= 0 || verseNumber > this.totalVerses) {
-      throw new Error(`Verse ${verseNumber} of ${this.label} does not exist`);
+      return undefined;
     }
     return new Verse(this, verseNumber);
   }
