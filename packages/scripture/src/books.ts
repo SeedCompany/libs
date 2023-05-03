@@ -1,9 +1,10 @@
 import { LazyGetter as Once } from 'lazy-get-decorator';
 import { random, range, sumBy } from 'lodash';
-import { inspect } from 'util';
 import { iterate } from '../../common';
 import { BookData, BookList } from './raw-book-data';
 import { ScriptureReference } from './scripture-reference.type';
+
+const inspect = Symbol.for('nodejs.util.inspect.custom');
 
 const bookCache = new Map<string, BookData | null>();
 
@@ -137,7 +138,7 @@ export class Book implements Iterable<Chapter> {
     }
   }
 
-  [inspect.custom]() {
+  [inspect]() {
     return `[Book] ${this.label}`;
   }
 }
@@ -228,7 +229,7 @@ export class Chapter implements Iterable<Verse> {
     return iterate(this);
   }
 
-  [inspect.custom]() {
+  [inspect]() {
     return `[Chapter] ${this.label}`;
   }
 }
@@ -360,7 +361,7 @@ export class Verse {
     return this.reference;
   }
 
-  [inspect.custom]() {
+  [inspect]() {
     return `[Verse] ${this.label}`;
   }
 }
