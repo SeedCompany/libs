@@ -1,5 +1,5 @@
 import { LazyGetter as Once } from 'lazy-get-decorator';
-import { random, range, sumBy } from 'lodash';
+import { range, sumBy } from 'lodash';
 import { iterate } from '../../common';
 import { BookData, BookList } from './raw-book-data';
 import { ScriptureReference } from './scripture-reference.type';
@@ -54,13 +54,6 @@ export class Book implements Iterable<Chapter> {
     return !!Book.tryFind(book);
   }
 
-  static random(after?: Book) {
-    const min = after ? BookList.indexOf(after.#book) : 0;
-    const max = BookList.length - 1;
-    const book = BookList[random(min, max)];
-    return new Book(book);
-  }
-
   get label() {
     return this.name;
   }
@@ -108,10 +101,6 @@ export class Book implements Iterable<Chapter> {
 
   get chapters() {
     return iterate(this);
-  }
-
-  randomChapter(after?: Chapter) {
-    return this.chapter(random(after?.chapter ?? 1, this.totalChapters));
   }
 
   chapter(chapterNumber: number) {
@@ -162,11 +151,6 @@ export class Chapter implements Iterable<Verse> {
     return Book.fromRef(ref).chapter(ref.chapter);
   }
 
-  static random(after?: Chapter) {
-    const book = Book.random(after?.book);
-    return book.randomChapter(after?.book.equals(book) ? after : undefined);
-  }
-
   static isValid(book: Book, chapter: number) {
     try {
       book.chapter(chapter);
@@ -206,10 +190,6 @@ export class Chapter implements Iterable<Verse> {
 
   equals(other: Chapter) {
     return this.book.equals(other.book) && this.chapter === other.chapter;
-  }
-
-  randomVerse(after?: Verse) {
-    return this.verse(random(after?.verse ?? 1, this.totalVerses));
   }
 
   verse(verseNumber: number) {
@@ -278,13 +258,6 @@ export class Verse {
     }
 
     throw new Error('Invalid verse number');
-  }
-
-  static random(after?: Verse) {
-    const chapter = Chapter.random(after?.chapter);
-    return chapter.randomVerse(
-      after?.chapter.equals(chapter) ? after : undefined,
-    );
   }
 
   static isValid(chapter: Chapter, verse: number) {
