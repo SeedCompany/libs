@@ -10,11 +10,11 @@ export class Book implements Iterable<Chapter> {
     this.#book = book;
   }
 
-  static first() {
+  static get first() {
     return new Book(BookList[0]);
   }
 
-  static last() {
+  static get last() {
     return new Book(BookList[BookList.length - 1]);
   }
 
@@ -131,12 +131,12 @@ export class Chapter implements Iterable<Verse> {
     readonly totalVerses: number,
   ) {}
 
-  static first() {
-    return Book.first().firstChapter;
+  static get first() {
+    return Book.first.firstChapter;
   }
 
-  static last() {
-    return Book.last().lastChapter;
+  static get last() {
+    return Book.last.lastChapter;
   }
 
   static fromRef(ref: ScriptureReference) {
@@ -209,12 +209,12 @@ export class Chapter implements Iterable<Verse> {
 export class Verse {
   constructor(readonly chapter: Chapter, readonly verse: number) {}
 
-  static first() {
-    return Chapter.first().firstVerse;
+  static get first() {
+    return Chapter.first.firstVerse;
   }
 
-  static last() {
-    return Chapter.last().lastVerse;
+  static get last() {
+    return Chapter.last.lastVerse;
   }
 
   static fromRef(ref: ScriptureReference) {
@@ -225,7 +225,7 @@ export class Verse {
     // Start by converting the 0-indexed number to the 1-indexed verse total
     let versesRemaining = verseId + 1;
 
-    let book: Book | undefined = Book.first();
+    let book: Book | undefined = Book.first;
     while (book && versesRemaining > 0) {
       // First narrow it down to the book
       if (versesRemaining - book.totalVerses > 0) {
