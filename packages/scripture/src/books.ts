@@ -221,7 +221,7 @@ export class Verse {
     return Chapter.fromRef(ref).verse(ref.verse);
   }
 
-  static fromId(verseId: number) {
+  static fromId(verseId: VerseId) {
     // Start by converting the 0-indexed number to the 1-indexed verse total
     let versesRemaining = verseId + 1;
 
@@ -281,7 +281,7 @@ export class Verse {
     return this.id === other.id;
   }
 
-  get id() {
+  get id(): VerseId {
     // Verse ID is just a 0-indexed number starting from Genesis 1:1.
     // Since all verses are 1-indexed, we start with the offset.
     let verseCount = -1;
@@ -330,6 +330,12 @@ export class Verse {
     return `[Verse] ${this.label}`;
   }
 }
+
+/**
+ * A 0-based index representing the absolute position
+ * of a verse in the Bible across all books and chapters.
+ */
+export type VerseId = number;
 
 function setPropValue(obj: object, key: string, value: unknown) {
   Object.defineProperty(obj, key, {
