@@ -39,24 +39,21 @@ export class Book implements Iterable<Chapter> {
     return book ? new Book(book, absoluteIndex) : undefined;
   }
 
-  static tryFind(name: string | null | undefined) {
-    if (!name) {
-      return undefined;
-    }
-    const index = BookLookupMap.get(name.toLowerCase());
-    return index !== undefined ? Book.at(index + 1) : undefined;
-  }
-
-  static find(name: string) {
-    const book = Book.tryFind(name);
+  static named(name: string) {
+    const book = Book.namedMaybe(name);
     if (book) {
       return book;
     }
     throw new Error(`Book "${name}" does not exist`);
   }
 
+  static namedMaybe(name: string) {
+    const index = BookLookupMap.get(name.toLowerCase());
+    return index !== undefined ? Book.at(index + 1) : undefined;
+  }
+
   static fromRef(ref: ScriptureReference) {
-    return Book.find(ref.book);
+    return Book.named(ref.book);
   }
 
   get label() {
@@ -139,7 +136,7 @@ export class Book implements Iterable<Chapter> {
 
   static *[Symbol.iterator]() {
     for (const book of BookList) {
-      yield Book.find(book.names[0]);
+      yield Book.named(book.names[0]);
     }
   }
 
