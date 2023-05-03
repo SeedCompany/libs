@@ -11,11 +11,32 @@ export class Book implements Iterable<Chapter> {
   }
 
   static get first() {
-    return new Book(BookList[0], 1);
+    return Book.at(1);
   }
 
   static get last() {
-    return new Book(BookList[BookList.length - 1], BookList.length);
+    return Book.at(-1);
+  }
+
+  static at(index: RelativeOneBasedIndex) {
+    const book = this.atMaybe(index);
+    if (book) {
+      return book;
+    }
+    if (index === 0) {
+      throw new Error('Books are 1-indexed');
+    }
+    throw new Error('There are only 66 books in the Bible');
+  }
+
+  static atMaybe(index: RelativeOneBasedIndex): Book | undefined {
+    if (index === 0) {
+      return undefined;
+    }
+    const absoluteIndex: OneBasedIndex =
+      index < 0 ? BookList.length + index + 1 : index;
+    const book = BookList.at(absoluteIndex - 1);
+    return book ? new Book(book, absoluteIndex) : undefined;
   }
 
   static tryFind(name: string | null | undefined) {
@@ -23,9 +44,7 @@ export class Book implements Iterable<Chapter> {
       return undefined;
     }
     const index = BookLookupMap.get(name.toLowerCase());
-    return index !== undefined
-      ? new Book(BookList[index], index + 1)
-      : undefined;
+    return index !== undefined ? Book.at(index + 1) : undefined;
   }
 
   static find(name: string) {
@@ -60,16 +79,12 @@ export class Book implements Iterable<Chapter> {
     return this.index === BookList.length;
   }
 
-  get previous(): Book | undefined {
-    return this.isFirst
-      ? undefined
-      : new Book(BookList[this.index - 1 - 1], this.index - 1);
+  get previous() {
+    return Book.atMaybe(this.index - 1);
   }
 
-  get next(): Book | undefined {
-    return this.isLast
-      ? undefined
-      : new Book(BookList[this.index - 1 + 1], this.index + 1);
+  get next() {
+    return Book.atMaybe(this.index + 1);
   }
 
   get totalChapters() {
@@ -343,6 +358,12 @@ export type VerseId = number;
  * A 1-based index number.
  */
 export type OneBasedIndex = number;
+
+/**
+ * A 1-based index number.
+ * Negative numbers can be used to reference items starting from the end of the list, just like {@link Array.at}
+ */
+export type RelativeOneBasedIndex = number;
 
 function setPropValue(obj: object, key: string, value: unknown) {
   Object.defineProperty(obj, key, {
