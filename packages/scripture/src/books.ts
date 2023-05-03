@@ -1,9 +1,7 @@
-import { BookData, BookList } from './raw-book-data';
+import { BookData, BookList, BookLookupMap } from './raw-book-data';
 import { ScriptureReference } from './scripture-reference.type';
 
 const inspect = Symbol.for('nodejs.util.inspect.custom');
-
-const bookCache = new Map<string, BookData | null>();
 
 export class Book implements Iterable<Chapter> {
   readonly #book: BookData;
@@ -24,15 +22,8 @@ export class Book implements Iterable<Chapter> {
     if (!name) {
       return undefined;
     }
-    const normalizedName = name.toLowerCase();
-    if (!bookCache.has(normalizedName)) {
-      const book = BookList.find((book) =>
-        book.names.map((n) => n.toLowerCase()).includes(normalizedName),
-      );
-      bookCache.set(normalizedName, book ?? null);
-    }
-    const cached = bookCache.get(normalizedName);
-    return cached ? new Book(cached) : undefined;
+    const index = BookLookupMap.get(name.toLowerCase());
+    return index !== undefined ? new Book(BookList[index]) : undefined;
   }
 
   static find(name: string) {

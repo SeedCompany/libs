@@ -373,6 +373,12 @@ export const BookList: readonly BookData[] = [
   },
 ];
 
+export const BookLookupMap: ReadonlyMap<string, number> = new Map(
+  BookList.flatMap((book, index) =>
+    book.names.map((name) => [name.toLowerCase(), index]),
+  ),
+);
+
 function generateOrdinalNameVariations(ordinal: 1 | 2 | 3, names: string[]) {
   const ordinalMap = {
     1: ['1', 'I', 'First'],
