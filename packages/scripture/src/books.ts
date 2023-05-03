@@ -95,7 +95,7 @@ export class Book implements Iterable<Chapter> {
     return Array.from(this);
   }
 
-  chapter(chapterNumber: number) {
+  chapter(chapterNumber: OneBasedIndex) {
     const totalVerses = this.#book.chapters[chapterNumber - 1];
     if (totalVerses > 0) {
       return new Chapter(this, chapterNumber, totalVerses);
@@ -127,7 +127,7 @@ export class Book implements Iterable<Chapter> {
 export class Chapter implements Iterable<Verse> {
   constructor(
     readonly book: Book,
-    readonly chapter: number,
+    readonly chapter: OneBasedIndex,
     readonly totalVerses: number,
   ) {}
 
@@ -184,7 +184,7 @@ export class Chapter implements Iterable<Verse> {
     return this.book.equals(other.book) && this.chapter === other.chapter;
   }
 
-  verse(verseNumber: number) {
+  verse(verseNumber: OneBasedIndex) {
     if (verseNumber <= 0 || verseNumber > this.totalVerses) {
       throw new Error(`Verse ${verseNumber} of ${this.label} does not exist`);
     }
@@ -207,7 +207,7 @@ export class Chapter implements Iterable<Verse> {
 }
 
 export class Verse {
-  constructor(readonly chapter: Chapter, readonly verse: number) {}
+  constructor(readonly chapter: Chapter, readonly verse: OneBasedIndex) {}
 
   static get first() {
     return Chapter.first.firstVerse;
@@ -336,6 +336,11 @@ export class Verse {
  * of a verse in the Bible across all books and chapters.
  */
 export type VerseId = number;
+
+/**
+ * A 1-based index number.
+ */
+export type OneBasedIndex = number;
 
 function setPropValue(obj: object, key: string, value: unknown) {
   Object.defineProperty(obj, key, {
