@@ -22,7 +22,7 @@ export class Book implements Iterable<Chapter> {
 
   static tryFind(name: string | null | undefined) {
     if (!name) {
-      return null;
+      return undefined;
     }
     const normalizedName = name.toLowerCase();
     if (!bookCache.has(normalizedName)) {
@@ -32,7 +32,7 @@ export class Book implements Iterable<Chapter> {
       bookCache.set(normalizedName, book ?? null);
     }
     const cached = bookCache.get(normalizedName);
-    return cached ? new Book(cached) : null;
+    return cached ? new Book(cached) : undefined;
   }
 
   static find(name: string) {
@@ -71,12 +71,12 @@ export class Book implements Iterable<Chapter> {
     return this.index === BookList.length - 1;
   }
 
-  get previous(): Book | null {
-    return this.isFirst ? null : new Book(BookList[this.index - 1]);
+  get previous(): Book | undefined {
+    return this.isFirst ? undefined : new Book(BookList[this.index - 1]);
   }
 
-  get next(): Book | null {
-    return this.isLast ? null : new Book(BookList[this.index + 1]);
+  get next(): Book | undefined {
+    return this.isLast ? undefined : new Book(BookList[this.index + 1]);
   }
 
   get totalChapters() {
@@ -181,12 +181,12 @@ export class Chapter implements Iterable<Verse> {
     return this.chapter === this.book.totalChapters;
   }
 
-  get previousInBook(): Chapter | null {
-    return this.isFirst ? null : this.book.chapter(this.chapter - 1);
+  get previousInBook(): Chapter | undefined {
+    return this.isFirst ? undefined : this.book.chapter(this.chapter - 1);
   }
 
-  get nextInBook(): Chapter | null {
-    return this.isLast ? null : this.book.chapter(this.chapter + 1);
+  get nextInBook(): Chapter | undefined {
+    return this.isLast ? undefined : this.book.chapter(this.chapter + 1);
   }
 
   equals(other: Chapter) {
@@ -234,7 +234,7 @@ export class Verse {
     // Start by converting the 0-indexed number to the 1-indexed verse total
     let versesRemaining = verseId + 1;
 
-    let book: Book | null = Book.first();
+    let book: Book | undefined = Book.first();
     while (book && versesRemaining > 0) {
       // First narrow it down to the book
       if (versesRemaining - book.totalVerses > 0) {
@@ -243,7 +243,7 @@ export class Verse {
         continue;
       }
 
-      let chapter: Chapter | null = book.firstChapter;
+      let chapter: Chapter | undefined = book.firstChapter;
       while (chapter && versesRemaining > 0) {
         // Now narrow it down to the chapter
         if (versesRemaining - chapter.totalVerses > 0) {
