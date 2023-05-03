@@ -1,5 +1,4 @@
 import { LazyGetter as Once } from 'lazy-get-decorator';
-import { range, sumBy } from 'lodash';
 import { iterate } from '../../common';
 import { BookData, BookList } from './raw-book-data';
 import { ScriptureReference } from './scripture-reference.type';
@@ -88,7 +87,10 @@ export class Book implements Iterable<Chapter> {
 
   @Once()
   get totalVerses() {
-    return sumBy(this.chapters, (chapter) => chapter.totalVerses);
+    return this.chapters.reduce(
+      (total, chapter) => total + chapter.totalVerses,
+      0,
+    );
   }
 
   get firstChapter() {
@@ -122,8 +124,8 @@ export class Book implements Iterable<Chapter> {
   }
 
   *[Symbol.iterator]() {
-    for (const chapter of range(1, this.totalChapters + 1)) {
-      yield this.chapter(chapter);
+    for (const chapter of Array(this.totalChapters).keys()) {
+      yield this.chapter(chapter + 1);
     }
   }
 
@@ -200,8 +202,8 @@ export class Chapter implements Iterable<Verse> {
   }
 
   *[Symbol.iterator]() {
-    for (const verseNum of range(1, this.totalVerses + 1)) {
-      yield this.verse(verseNum);
+    for (const verseNum of Array(this.totalVerses).keys()) {
+      yield this.verse(verseNum + 1);
     }
   }
 
