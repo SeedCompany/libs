@@ -153,6 +153,11 @@ export class Book implements Iterable<Chapter> {
     return this.name;
   }
 
+  /** @internal Don't call directly. Only for JSON.stringify */
+  toJSON() {
+    return this.name;
+  }
+
   [inspect]() {
     return `[Book] ${this.name}`;
   }
@@ -253,6 +258,11 @@ export class Chapter implements Iterable<Verse> {
       return this.chapter;
     }
     return this.label;
+  }
+
+  /** @internal Don't call directly. Only for JSON.stringify */
+  toJSON() {
+    return { book: this.book, chapter: this.chapter };
   }
 
   [inspect]() {
