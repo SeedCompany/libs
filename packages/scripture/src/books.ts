@@ -1,4 +1,3 @@
-import { LazyGetter as Once } from 'lazy-get-decorator';
 import { iterate } from '../../common';
 import { BookData, BookList } from './raw-book-data';
 import { ScriptureReference } from './scripture-reference.type';
@@ -85,12 +84,13 @@ export class Book implements Iterable<Chapter> {
     return this.#book.chapters.length;
   }
 
-  @Once()
   get totalVerses() {
-    return this.chapters.reduce(
+    const total = this.chapters.reduce(
       (total, chapter) => total + chapter.totalVerses,
       0,
     );
+    setPropValue(this, 'totalVerses', total);
+    return total;
   }
 
   get firstChapter() {
@@ -291,7 +291,6 @@ export class Verse {
     return this.id === other.id;
   }
 
-  @Once()
   get id() {
     // Verse ID is just a 0-indexed number starting from Genesis 1:1.
     // Since all verses are 1-indexed, we start with the offset.
@@ -314,6 +313,7 @@ export class Verse {
     // 3. Add all verses in current chapter including current verse
     verseCount += this.verse;
 
+    setPropValue(this, 'id', verseCount);
     return verseCount;
   }
 
@@ -339,4 +339,13 @@ export class Verse {
   [inspect]() {
     return `[Verse] ${this.label}`;
   }
+}
+
+function setPropValue(obj: object, key: string, value: unknown) {
+  Object.defineProperty(obj, key, {
+    value,
+    writable: false,
+    enumerable: false,
+    configurable: true,
+  });
 }
