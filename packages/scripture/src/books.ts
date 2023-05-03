@@ -59,10 +59,6 @@ export class Book implements Iterable<Chapter> {
     return Book.find(ref.book);
   }
 
-  static isValid(book: string | null | undefined) {
-    return !!Book.tryFind(book);
-  }
-
   get label() {
     return this.name;
   }
@@ -171,15 +167,6 @@ export class Chapter implements Iterable<Verse> {
 
   static fromRef(ref: ScriptureReference) {
     return Book.fromRef(ref).chapter(ref.chapter);
-  }
-
-  static isValid(book: Book, chapter: number) {
-    try {
-      book.chapter(chapter);
-      return true;
-    } catch {
-      return false;
-    }
   }
 
   get label() {
@@ -296,15 +283,6 @@ export class Verse {
     }
 
     throw new Error('Invalid verse number');
-  }
-
-  static isValid(chapter: Chapter, verse: number) {
-    try {
-      chapter.verse(verse);
-      return true;
-    } catch {
-      return false;
-    }
   }
 
   get book() {
