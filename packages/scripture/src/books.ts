@@ -1,4 +1,3 @@
-import { iterate } from '../../common';
 import { BookData, BookList } from './raw-book-data';
 import { ScriptureReference } from './scripture-reference.type';
 
@@ -101,8 +100,8 @@ export class Book implements Iterable<Chapter> {
     return this.chapter(this.totalChapters);
   }
 
-  get chapters() {
-    return iterate(this);
+  get chapters(): readonly Chapter[] {
+    return Array.from(this);
   }
 
   chapter(chapterNumber: number) {
@@ -207,8 +206,8 @@ export class Chapter implements Iterable<Verse> {
     }
   }
 
-  get verses() {
-    return iterate(this);
+  get verses(): readonly Verse[] {
+    return Array.from(this);
   }
 
   [inspect]() {
