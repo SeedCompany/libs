@@ -101,14 +101,14 @@ export class Book implements Iterable<Chapter> {
   }
 
   get lastChapter() {
-    return this.chapter(this.totalChapters);
+    return this.chapter(-1);
   }
 
   get chapters(): readonly Chapter[] {
     return Array.from(this);
   }
 
-  chapter(chapterNumber: OneBasedIndex) {
+  chapter(chapterNumber: RelativeOneBasedIndex) {
     const maybe = this.chapterMaybe(chapterNumber);
     if (maybe) {
       return maybe;
@@ -117,14 +117,18 @@ export class Book implements Iterable<Chapter> {
       throw new Error('Chapters are 1-indexed');
     }
     throw new Error(
-      `${this.label} has ${this.totalChapters} chapter(s), not ${chapterNumber}`,
+      `${this.label} has ${this.totalChapters} chapter(s), not ${Math.abs(
+        chapterNumber,
+      )}`,
     );
   }
 
-  chapterMaybe(index: OneBasedIndex) {
-    const totalVerses = this.#book.chapters.at(index - 1);
+  chapterMaybe(index: RelativeOneBasedIndex) {
+    const absoluteIndex: OneBasedIndex =
+      index < 0 ? this.totalChapters + index + 1 : index;
+    const totalVerses = this.#book.chapters.at(absoluteIndex - 1);
     if (totalVerses && totalVerses > 0) {
-      return new Chapter(this, index, totalVerses);
+      return new Chapter(this, absoluteIndex, totalVerses);
     }
     return undefined;
   }
@@ -178,7 +182,7 @@ export class Chapter implements Iterable<Verse> {
   }
 
   get lastVerse() {
-    return this.verse(this.totalVerses);
+    return this.verse(-1);
   }
 
   get isFirst() {
@@ -201,7 +205,7 @@ export class Chapter implements Iterable<Verse> {
     return this.book.equals(other.book) && this.chapter === other.chapter;
   }
 
-  verse(verseNumber: OneBasedIndex) {
+  verse(verseNumber: RelativeOneBasedIndex) {
     const verse = this.verseMaybe(verseNumber);
     if (verse) {
       return verse;
@@ -210,13 +214,18 @@ export class Chapter implements Iterable<Verse> {
       throw new Error('Verses are 1-indexed');
     }
     throw new Error(
-      `${this.label} has ${this.totalVerses} verse(s), not ${verseNumber}`,
+      `${this.label} has ${this.totalVerses} verse(s), not ${Math.abs(
+        verseNumber,
+      )}`,
     );
   }
 
-  verseMaybe(verseNumber: OneBasedIndex) {
+  verseMaybe(verseNumber: RelativeOneBasedIndex) {
     if (verseNumber === 0) {
       return undefined;
+    }
+    if (verseNumber < 0) {
+      verseNumber = this.totalVerses + verseNumber + 1;
     }
     if (verseNumber <= 0 || verseNumber > this.totalVerses) {
       return undefined;
