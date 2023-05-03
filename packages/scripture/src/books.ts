@@ -6,16 +6,16 @@ const inspect = Symbol.for('nodejs.util.inspect.custom');
 export class Book implements Iterable<Chapter> {
   readonly #book: BookData;
 
-  private constructor(book: BookData) {
+  private constructor(book: BookData, readonly index: OneBasedIndex) {
     this.#book = book;
   }
 
   static get first() {
-    return new Book(BookList[0]);
+    return new Book(BookList[0], 1);
   }
 
   static get last() {
-    return new Book(BookList[BookList.length - 1]);
+    return new Book(BookList[BookList.length - 1], BookList.length);
   }
 
   static tryFind(name: string | null | undefined) {
@@ -23,7 +23,9 @@ export class Book implements Iterable<Chapter> {
       return undefined;
     }
     const index = BookLookupMap.get(name.toLowerCase());
-    return index !== undefined ? new Book(BookList[index]) : undefined;
+    return index !== undefined
+      ? new Book(BookList[index], index + 1)
+      : undefined;
   }
 
   static find(name: string) {
@@ -50,24 +52,24 @@ export class Book implements Iterable<Chapter> {
     return this.#book.names[0];
   }
 
-  private get index() {
-    return BookList.indexOf(this.#book);
-  }
-
   get isFirst() {
-    return this.index === 0;
+    return this.index === 1;
   }
 
   get isLast() {
-    return this.index === BookList.length - 1;
+    return this.index === BookList.length;
   }
 
   get previous(): Book | undefined {
-    return this.isFirst ? undefined : new Book(BookList[this.index - 1]);
+    return this.isFirst
+      ? undefined
+      : new Book(BookList[this.index - 1 - 1], this.index - 1);
   }
 
   get next(): Book | undefined {
-    return this.isLast ? undefined : new Book(BookList[this.index + 1]);
+    return this.isLast
+      ? undefined
+      : new Book(BookList[this.index - 1 + 1], this.index + 1);
   }
 
   get totalChapters() {
