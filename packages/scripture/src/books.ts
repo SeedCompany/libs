@@ -282,6 +282,16 @@ export class Verse {
     return Chapter.last.lastVerse;
   }
 
+  static from(verse: VerseLike) {
+    if (verse instanceof Verse) {
+      return verse;
+    }
+    if (typeof verse === 'number') {
+      return Verse.fromId(verse);
+    }
+    return Verse.fromRef(verse);
+  }
+
   static fromRef(ref: ScriptureReference) {
     return Chapter.fromRef(ref).verse(ref.verse);
   }
@@ -387,6 +397,8 @@ export class Verse {
     return `[Verse] ${this.label}`;
   }
 }
+
+export type VerseLike = ScriptureReference | VerseId | Verse;
 
 /**
  * A 0-based index representing the absolute position
