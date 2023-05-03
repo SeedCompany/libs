@@ -146,12 +146,20 @@ export class Book implements Iterable<Chapter> {
     }
   }
 
+  [Symbol.toPrimitive](hint: PrimitiveHint) {
+    if (hint === 'number') {
+      return this.index;
+    }
+    return this.name;
+  }
+
   [inspect]() {
-    return `[Book] ${this.label}`;
+    return `[Book] ${this.name}`;
   }
 }
 
 export class Chapter implements Iterable<Verse> {
+  /** @internal */
   constructor(
     readonly book: Book,
     readonly chapter: OneBasedIndex,
@@ -240,12 +248,20 @@ export class Chapter implements Iterable<Verse> {
     return Array.from(this);
   }
 
+  [Symbol.toPrimitive](hint: PrimitiveHint) {
+    if (hint === 'number') {
+      return this.chapter;
+    }
+    return this.label;
+  }
+
   [inspect]() {
     return `[Chapter] ${this.label}`;
   }
 }
 
 export class Verse {
+  /** @internal */
   constructor(readonly chapter: Chapter, readonly verse: OneBasedIndex) {}
 
   static get first() {
@@ -345,13 +361,14 @@ export class Verse {
     };
   }
 
-  // For comparison
-  // noinspection JSUnusedGlobalSymbols
-  valueOf() {
-    return this.id;
+  [Symbol.toPrimitive](hint: PrimitiveHint) {
+    if (hint === 'number') {
+      return this.id;
+    }
+    return this.label;
   }
 
-  // For JSON.stringify()
+  /** @internal Don't call directly. Only for JSON.stringify */
   toJSON() {
     return this.reference;
   }
@@ -377,6 +394,8 @@ export type OneBasedIndex = number;
  * Negative numbers can be used to reference items starting from the end of the list, just like {@link Array.at}
  */
 export type RelativeOneBasedIndex = number;
+
+type PrimitiveHint = 'string' | 'number' | 'default';
 
 function setPropValue(obj: object, key: string, value: unknown) {
   Object.defineProperty(obj, key, {
