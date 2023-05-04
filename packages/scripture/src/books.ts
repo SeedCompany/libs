@@ -170,7 +170,7 @@ export class Chapter implements Iterable<Verse> {
   /** @internal */
   constructor(
     readonly book: Book,
-    readonly chapter: OneBasedIndex,
+    readonly index: OneBasedIndex,
     readonly totalVerses: number,
   ) {}
 
@@ -191,7 +191,7 @@ export class Chapter implements Iterable<Verse> {
   }
 
   get label() {
-    return `${this.book.label} ${this.chapter}`;
+    return `${this.book.label} ${this.index}`;
   }
 
   get firstVerse() {
@@ -203,23 +203,23 @@ export class Chapter implements Iterable<Verse> {
   }
 
   get isFirst() {
-    return this.chapter === 1;
+    return this.index === 1;
   }
 
   get isLast() {
-    return this.chapter === this.book.totalChapters;
+    return this.index === this.book.totalChapters;
   }
 
   get previousInBook(): Chapter | undefined {
-    return this.isFirst ? undefined : this.book.chapter(this.chapter - 1);
+    return this.isFirst ? undefined : this.book.chapter(this.index - 1);
   }
 
   get nextInBook(): Chapter | undefined {
-    return this.isLast ? undefined : this.book.chapter(this.chapter + 1);
+    return this.isLast ? undefined : this.book.chapter(this.index + 1);
   }
 
   equals(other: Chapter) {
-    return this.book.equals(other.book) && this.chapter === other.chapter;
+    return this.book.equals(other.book) && this.index === other.index;
   }
 
   verse(verseNumber: RelativeOneBasedIndex) {
@@ -262,14 +262,14 @@ export class Chapter implements Iterable<Verse> {
 
   [Symbol.toPrimitive](hint: PrimitiveHint) {
     if (hint === 'number') {
-      return this.chapter;
+      return this.index;
     }
     return this.label;
   }
 
   /** @internal Don't call directly. Only for JSON.stringify */
   toJSON() {
-    return { book: this.book, chapter: this.chapter };
+    return { book: this.book, chapter: this.index };
   }
 
   [inspect]() {
@@ -279,7 +279,7 @@ export class Chapter implements Iterable<Verse> {
 
 export class Verse {
   /** @internal */
-  constructor(readonly chapter: Chapter, readonly verse: OneBasedIndex) {}
+  constructor(readonly chapter: Chapter, readonly index: OneBasedIndex) {}
 
   static get first() {
     return Chapter.first.firstVerse;
@@ -348,15 +348,15 @@ export class Verse {
   }
 
   get label() {
-    return `${this.chapter.label}:${this.verse}`;
+    return `${this.chapter.label}:${this.index}`;
   }
 
   get isFirst() {
-    return this.verse === 1;
+    return this.index === 1;
   }
 
   get isLast() {
-    return this.verse === this.chapter.totalVerses;
+    return this.index === this.chapter.totalVerses;
   }
 
   equals(other: Verse) {
@@ -383,7 +383,7 @@ export class Verse {
     }
 
     // 3. Add all verses in current chapter including current verse
-    verseCount += this.verse;
+    verseCount += this.index;
 
     setPropValue(this, 'id', verseCount);
     return verseCount;
@@ -392,8 +392,8 @@ export class Verse {
   get reference() {
     return {
       book: this.chapter.book.name,
-      chapter: this.chapter.chapter,
-      verse: this.verse,
+      chapter: this.chapter.index,
+      verse: this.index,
     };
   }
 

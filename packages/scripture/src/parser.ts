@@ -64,9 +64,9 @@ const parseRange = (input: string, fallbackBook?: string): Range<Verse> => {
 
   const endBook = Book.named(given.end.book ?? start.book.name);
   const endChapter = endBook.chapter(
-    given.end.chapter ?? given.start.chapter ?? endBook.lastChapter.chapter,
+    given.end.chapter ?? given.start.chapter ?? endBook.lastChapter.index,
   );
-  const end = endChapter.verse(given.end.verse ?? endChapter.lastVerse.verse);
+  const end = endChapter.verse(given.end.verse ?? endChapter.lastVerse.index);
 
   return start.to(end);
 };
