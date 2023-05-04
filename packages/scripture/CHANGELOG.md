@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.1](https://github.com/SeedCompany/libs/compare/scripture-0.1.0...scripture-0.1.1) (2023-05-04)
+
+
+### Bug Fixes
+
+* **scripture:** tweak changelog and re-trigger npm deployment ([8e5952c](https://github.com/SeedCompany/libs/commit/8e5952c57a932dd4dd90d8fc21f25ba880e7ba5e))
+
 ## 0.1.0 (2023-05-04)
 
 
