@@ -6,10 +6,10 @@ targets:
       commitMessageFormat: >
         release(${projectName}): ${version}
       postTargets:
-        - common:copy-assets-to-dist
-        - common:adjust-package-exports
-        - common:publish-npm
-        - common:publish-github
+        - scripture:copy-assets-to-dist
+        - scripture:adjust-package-exports
+        - scripture:publish-npm
+        - scripture:publish-github
   copy-assets-to-dist:
     options:
       cwd: packages/scripture
