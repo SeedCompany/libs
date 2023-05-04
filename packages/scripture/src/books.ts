@@ -1,4 +1,5 @@
 import { BookList, BookLookupMap } from './raw-book-data';
+import { Range } from './scripture-range';
 import { ScriptureReference } from './scripture-reference.type';
 
 const inspect = Symbol.for('nodejs.util.inspect.custom');
@@ -56,6 +57,10 @@ export class Book implements Iterable<Chapter> {
 
   static fromRef(ref: ScriptureReference) {
     return Book.named(ref.book);
+  }
+
+  get full() {
+    return this.firstChapter.firstVerse.to(this.lastChapter.lastVerse);
   }
 
   get label() {
@@ -179,6 +184,10 @@ export class Chapter implements Iterable<Verse> {
 
   static fromRef(ref: ScriptureReference) {
     return Book.fromRef(ref).chapter(ref.chapter);
+  }
+
+  get full() {
+    return this.firstVerse.to(this.lastVerse);
   }
 
   get label() {
@@ -323,6 +332,15 @@ export class Verse {
     }
 
     throw new Error('Invalid verse number');
+  }
+
+  to(other: VerseLike): Range<Verse> {
+    const v = Verse.from(other);
+    return v.id <= this.id ? { start: v, end: this } : { start: this, end: v };
+  }
+
+  get full() {
+    return this.to(this);
   }
 
   get book() {

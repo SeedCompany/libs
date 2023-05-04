@@ -59,7 +59,7 @@ const parseRange = (input: string, fallbackBook?: string): Range<Verse> => {
 
   const isSingleVerse = given.start.verse && !given.end.verse;
   if (isSingleVerse) {
-    return { start, end: start };
+    return start.to(start);
   }
 
   const endBook = Book.named(given.end.book ?? start.book.name);
@@ -68,7 +68,7 @@ const parseRange = (input: string, fallbackBook?: string): Range<Verse> => {
   );
   const end = endChapter.verse(given.end.verse ?? endChapter.lastVerse.verse);
 
-  return { start, end };
+  return start.to(end);
 };
 
 const lexRange = (input: string) => {
