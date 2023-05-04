@@ -1,14 +1,14 @@
-import { BookData, BookList, BookLookupMap } from './raw-book-data';
+import { BookList, BookLookupMap } from './raw-book-data';
 import { ScriptureReference } from './scripture-reference.type';
 
 const inspect = Symbol.for('nodejs.util.inspect.custom');
 
 export class Book implements Iterable<Chapter> {
-  readonly #book: BookData;
-
-  private constructor(book: BookData, readonly index: OneBasedIndex) {
-    this.#book = book;
-  }
+  private constructor(
+    readonly name: string,
+    readonly index: OneBasedIndex,
+    private readonly chapterLengths: readonly number[],
+  ) {}
 
   static get first() {
     return Book.at(1);
@@ -36,7 +36,9 @@ export class Book implements Iterable<Chapter> {
     const absoluteIndex: OneBasedIndex =
       index < 0 ? BookList.length + index + 1 : index;
     const book = BookList.at(absoluteIndex - 1);
-    return book ? new Book(book, absoluteIndex) : undefined;
+    return book
+      ? new Book(book.names[0], absoluteIndex, book.chapters)
+      : undefined;
   }
 
   static named(name: string) {
@@ -60,10 +62,6 @@ export class Book implements Iterable<Chapter> {
     return this.name;
   }
 
-  get name(): string {
-    return this.#book.names[0];
-  }
-
   get isFirst() {
     return this.index === 1;
   }
@@ -81,7 +79,7 @@ export class Book implements Iterable<Chapter> {
   }
 
   get totalChapters() {
-    return this.#book.chapters.length;
+    return this.chapterLengths.length;
   }
 
   get totalVerses() {
@@ -123,7 +121,7 @@ export class Book implements Iterable<Chapter> {
   chapterMaybe(index: RelativeOneBasedIndex) {
     const absoluteIndex: OneBasedIndex =
       index < 0 ? this.totalChapters + index + 1 : index;
-    const totalVerses = this.#book.chapters.at(absoluteIndex - 1);
+    const totalVerses = this.chapterLengths.at(absoluteIndex - 1);
     if (totalVerses && totalVerses > 0) {
       return new Chapter(this, absoluteIndex, totalVerses);
     }
