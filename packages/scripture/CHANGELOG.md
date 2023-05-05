@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.2](https://github.com/SeedCompany/libs/compare/scripture-0.1.1...scripture-0.1.2) (2023-05-05)
+
+
+### Bug Fixes
+
+* **scripture:** transpile es2020 ([f09a822](https://github.com/SeedCompany/libs/commit/f09a82221ffe092d4ab66455789f67f3b64f5e15))
+
 ## [0.1.1](https://github.com/SeedCompany/libs/compare/scripture-0.1.0...scripture-0.1.1) (2023-05-04)
 
 
