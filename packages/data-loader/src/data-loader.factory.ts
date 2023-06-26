@@ -32,10 +32,7 @@ export class DataLoaderFactory {
       DataLoaderStrategy<Item, Key, CachedKey>
     >(strategyType, contextId, { strict: false });
 
-    const options = this.resolveOptions(
-      strategy.getOptions?.() ?? {},
-      this.defaultOptions,
-    );
+    const options = this.resolveOptions(strategy, this.defaultOptions);
 
     const loader = new DataLoaderLib<Key, Item, CachedKey>(
       this.makeBatchFn(strategy, options),
@@ -48,13 +45,14 @@ export class DataLoaderFactory {
   }
 
   protected resolveOptions<Item, Key, CacheKey>(
-    options: DataLoaderOptions<Item, Key, CacheKey>,
+    strategy: DataLoaderStrategy<Item, Key, CacheKey>,
     defaults: DataLoaderOptions<Item, Key, CacheKey>,
   ): ResolvedDataLoaderOptions<Item, Key, CacheKey> {
-    const merged = { ...defaults, ...options };
+    const merged = { ...defaults, ...(strategy.getOptions?.() ?? {}) };
+
     const { propertyKey } = merged;
 
-    merged.name ??= this.constructor.name;
+    merged.name ??= strategy.constructor.name;
     merged.typeName ??= merged.name.replace(/(Loader|Strategy)$/, '');
 
     merged.propertyKey =
