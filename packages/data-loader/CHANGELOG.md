@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.4.1](https://github.com/SeedCompany/libs/compare/data-loader-0.4.0...data-loader-0.4.1) (2023-06-26)
+
+
+### Bug Fixes
+
+* **data-loader:** default to correct strategy name ([462c68f](https://github.com/SeedCompany/libs/commit/462c68ffb1525b4de3bda66d006d02fd176c6484))
+
 ## [0.4.0](https://github.com/SeedCompany/libs/compare/data-loader-0.3.0...data-loader-0.4.0) (2023-04-29)
 
 
