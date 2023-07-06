@@ -134,7 +134,7 @@ export const BookList: readonly BookData[] = [
     ],
   },
   {
-    names: 'Psalm Ps Psa Pss Psalms'.split(' '),
+    names: 'Psalms Ps Psa Pss Psalm'.split(' '),
     chapters: [
       6, 12, 8, 8, 12, 10, 17, 9, 20, 18, 7, 8, 6, 7, 5, 11, 15, 50, 14, 9, 13,
       31, 6, 10, 22, 12, 14, 9, 11, 12, 24, 11, 22, 22, 28, 12, 40, 22, 13, 17,
