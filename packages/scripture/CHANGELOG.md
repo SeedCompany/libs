@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.2.0](https://github.com/SeedCompany/libs/compare/scripture-0.1.2...scripture-0.2.0) (2023-07-06)
+
+
+### Features
+
+* **scripture:** change Psalms to be plural canonically ([3bf0f68](https://github.com/SeedCompany/libs/commit/3bf0f68fdb98b3f3d47aa4bb7422f6fbdcb4d362))
+
 ## [0.1.2](https://github.com/SeedCompany/libs/compare/scripture-0.1.1...scripture-0.1.2) (2023-05-05)
 
 
