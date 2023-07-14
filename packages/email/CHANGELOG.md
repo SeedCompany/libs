@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.2.3](https://github.com/SeedCompany/libs/compare/email-3.2.2...email-3.2.3) (2023-07-14)
+
+
+### Bug Fixes
+
+* **email:** jsx compilation in built files ([5375f76](https://github.com/SeedCompany/libs/commit/5375f769542b74a33c962181cf9d8e8308e8a2d2))
+
 ## [3.2.2](https://github.com/SeedCompany/libs/compare/email-3.2.1...email-3.2.2) (2023-04-07)
 
 
