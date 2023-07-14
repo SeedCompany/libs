@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.2.4](https://github.com/SeedCompany/libs/compare/email-3.2.3...email-3.2.4) (2023-07-14)
+
+
+### Bug Fixes
+
+* **email:** title context being lost ([533923e](https://github.com/SeedCompany/libs/commit/533923ed016e667af8463adea02233a32b50144b))
+
 ## [3.2.3](https://github.com/SeedCompany/libs/compare/email-3.2.2...email-3.2.3) (2023-07-14)
 
 
