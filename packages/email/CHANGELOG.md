@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.2.5](https://github.com/SeedCompany/libs/compare/email-3.2.4...email-3.2.5) (2023-07-14)
+
+
+### Bug Fixes
+
+* **email:** attempt to fix cjs import being interpreted as a reference to an esm js file ([4d333e6](https://github.com/SeedCompany/libs/commit/4d333e6ce8678700ad0f5390992f9cbfa0163e2d))
+
 ## [3.2.4](https://github.com/SeedCompany/libs/compare/email-3.2.3...email-3.2.4) (2023-07-14)
 
 
