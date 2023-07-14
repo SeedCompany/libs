@@ -56,12 +56,19 @@ export class EmailService {
     template: (props: P) => ReactElement,
     props: P,
   ) {
-    const docEl = this.options.wrappers.reduceRight(
+    const subjectRef = new SubjectCollector();
+    const attachmentsRef = new AttachmentCollector();
+
+    const docEl = [
+      ...this.options.wrappers,
+      subjectRef.collect,
+      attachmentsRef.collect,
+    ].reduceRight(
       (prev: ReactElement, wrap) => wrap(prev),
       createElement(template, props),
     );
 
-    const { html, subject, attachments } = this.renderHtml(docEl);
+    const html = this.renderHtml(docEl);
     const text = this.renderText(docEl);
     const message = new EmailMessage({
       templateName: template.name,
@@ -72,12 +79,12 @@ export class EmailService {
         : {
             'reply-to': many(this.options.replyTo).join(', '),
           }),
-      subject,
+      subject: subjectRef.subject,
       text,
       html,
       attachment: [
         { data: html, alternative: true },
-        ...attachments.map((file) => ({ ...file })),
+        ...attachmentsRef.attachments.map((file) => ({ ...file })),
       ],
     });
     this.logger.debug(
@@ -111,20 +118,10 @@ export class EmailService {
   }
 
   private renderHtml(templateEl: ReactElement) {
-    const collector = new SubjectCollector();
-    const attachments = new AttachmentCollector();
-
-    const { html } = render(
-      attachments.collect(collector.collect(templateEl)),
-      {
-        minify: false,
-      },
-    );
-    return {
-      html,
-      subject: collector.subject,
-      attachments: attachments.attachments,
-    };
+    const { html } = render(templateEl, {
+      minify: false,
+    });
+    return html;
   }
 
   private renderText(templateEl: ReactElement) {

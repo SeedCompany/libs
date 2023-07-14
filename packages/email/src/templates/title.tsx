@@ -10,14 +10,14 @@ const SubjectContext = createContext<SubjectContextType>({});
 export class SubjectCollector {
   private context?: SubjectContextType;
 
-  collect(children: ReactNode) {
+  collect = (children: ReactNode) => {
     this.context = {};
     return (
       <SubjectContext.Provider value={this.context}>
         {children}
       </SubjectContext.Provider>
     );
-  }
+  };
 
   get subject(): string {
     if (!this.context?.subject) {
