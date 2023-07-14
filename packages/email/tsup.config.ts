@@ -6,6 +6,9 @@ export const tsup = defineConfig({
   format: ['cjs', 'esm'],
   inject: ['./react-shim.ts'],
   dts: true,
+  outExtension: ({ format }) => ({
+    js: format === 'cjs' ? '.cjs' : '.mjs',
+  }),
   sourcemap: true,
   clean: true,
 });
