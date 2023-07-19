@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.2.6](https://github.com/SeedCompany/libs/compare/email-3.2.5...email-3.2.6) (2023-07-19)
+
+
+### Bug Fixes
+
+* **email:** drop ESM support ([#15](https://github.com/SeedCompany/libs/issues/15)) ([f6a36eb](https://github.com/SeedCompany/libs/commit/f6a36eb8f33d8d6ae17cf172f7b7d7a7c2b95639))
+
 ## [3.2.5](https://github.com/SeedCompany/libs/compare/email-3.2.4...email-3.2.5) (2023-07-14)
 
 
