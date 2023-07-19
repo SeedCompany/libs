@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.5.0](https://github.com/SeedCompany/libs/compare/data-loader-0.4.1...data-loader-0.5.0) (2023-07-19)
+
+
+### Features
+
+* **data-loader:** support NestJS v10 ([5d79554](https://github.com/SeedCompany/libs/commit/5d795549b27c8cfeccd8f05d7e2d515ede27e5d3))
+
 ## [0.4.1](https://github.com/SeedCompany/libs/compare/data-loader-0.4.0...data-loader-0.4.1) (2023-06-26)
 
 
