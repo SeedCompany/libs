@@ -5,6 +5,7 @@ export const tsup = defineConfig({
   bundle: false,
   format: ['cjs'],
   inject: ['./react-shim.ts'],
+  dts: true,
   sourcemap: true,
   clean: true,
 });
