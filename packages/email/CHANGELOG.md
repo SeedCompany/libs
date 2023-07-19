@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.3.0](https://github.com/SeedCompany/libs/compare/email-3.2.7...email-3.3.0) (2023-07-19)
+
+
+### Features
+
+* **email:** support NestJS v10 ([b19b60f](https://github.com/SeedCompany/libs/commit/b19b60f83cd8b621dddf3410d938481d234d90a0))
+
 ## [3.2.7](https://github.com/SeedCompany/libs/compare/email-3.2.6...email-3.2.7) (2023-07-19)
 
 
