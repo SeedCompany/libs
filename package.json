@@ -38,7 +38,7 @@
     "ts-node": "^10.9.1",
     "tslib": "^2.5.0",
     "tsup": "^7.1.0",
-    "typescript": "^5.0.2",
+    "typescript": "5.0.4",
     "yaml": "^2.2.1"
   },
   "resolutions": {

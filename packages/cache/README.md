@@ -170,12 +170,12 @@ CacheModule.register({
 
 We provide a few adapters to help integrate with other libraries.
 
-## NestJS (HTTP?) Cache
+## NestJS Cache Manager
 
-Here's how to set up the NestJS cache module to be based on this one.
+Here's how to set up the NestJS Cache Manager module to be based on this one.
 
 ```ts
-import { CacheModule as NestHttpCacheModule } from '@nestjs/common';
+import { CacheModule as NestHttpCacheModule } from '@nestjs/cache-manager';
 import { CacheModule, CacheService } from '@seedcompany/cache';
 
 NestHttpCacheModule.registerAsync({

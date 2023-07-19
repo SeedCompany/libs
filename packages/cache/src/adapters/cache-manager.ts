@@ -1,7 +1,7 @@
 import type {
   CacheStoreSetOptions,
   CacheStore as NestCacheStore,
-} from '@nestjs/common';
+} from '@nestjs/cache-manager';
 import { DurationIn } from '@seedcompany/common/temporal/luxon';
 import type { Store as CacheManagerStore } from 'cache-manager';
 import { CacheService, ItemOptions } from '../cache.service';
