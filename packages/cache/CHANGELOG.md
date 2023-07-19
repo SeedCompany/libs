@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.0](https://github.com/SeedCompany/libs/compare/cache-0.2.0...cache-0.3.0) (2023-07-19)
+
+
+### Features
+
+* **cache:** support NestJS v10 ([fa41353](https://github.com/SeedCompany/libs/commit/fa4135393fd13b2b2676d5a20f909e4880443b6e))
+
 ## [0.2.0](https://github.com/SeedCompany/libs/compare/cache-0.1.9...cache-0.2.0) (2023-04-07)
 
 
