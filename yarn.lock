@@ -3607,6 +3607,40 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nestjs/cache-manager@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@nestjs/cache-manager@npm:2.1.0"
+  peerDependencies:
+    "@nestjs/common": ^9.0.0 || ^10.0.0
+    "@nestjs/core": ^9.0.0 || ^10.0.0
+    cache-manager: <=5
+    reflect-metadata: ^0.1.12
+    rxjs: ^7.0.0
+  checksum: f38cff32a17ce2277f90b80c9b58ed5d915ed4e3b644067d9315a71d8ba5e3caba99d283a9e2103a14673df529235f29c9e345ead0c0f6a7bb458f1c8cf6dcd5
+  languageName: node
+  linkType: hard
+
+"@nestjs/common@npm:^10":
+  version: 10.1.0
+  resolution: "@nestjs/common@npm:10.1.0"
+  dependencies:
+    iterare: 1.2.1
+    tslib: 2.6.0
+    uid: 2.0.2
+  peerDependencies:
+    class-transformer: "*"
+    class-validator: "*"
+    reflect-metadata: ^0.1.12
+    rxjs: ^7.1.0
+  peerDependenciesMeta:
+    class-transformer:
+      optional: true
+    class-validator:
+      optional: true
+  checksum: 304b3e8f6396ef5b74079ad7c5d0294b81a671979e9f5a50fe3a9ea629d3b7d55edf57921b007503ea688c28eafc060749271d8b5d224ead1e275ea6b75edb81
+  languageName: node
+  linkType: hard
+
 "@nestjs/common@npm:^9, @nestjs/common@npm:^9.2.1":
   version: 9.3.11
   resolution: "@nestjs/common@npm:9.3.11"
@@ -3628,6 +3662,34 @@ __metadata:
     class-validator:
       optional: true
   checksum: c39dfa9f02268e3f7fa22c4e9eecff0cfbee39c4d4dd0efc757a52117696dc9aec1f87588252b8b267a18469a6c12987707708b44f97ccbb5c6297396c0d9c00
+  languageName: node
+  linkType: hard
+
+"@nestjs/core@npm:^10":
+  version: 10.1.0
+  resolution: "@nestjs/core@npm:10.1.0"
+  dependencies:
+    "@nuxtjs/opencollective": 0.3.2
+    fast-safe-stringify: 2.1.1
+    iterare: 1.2.1
+    path-to-regexp: 3.2.0
+    tslib: 2.6.0
+    uid: 2.0.2
+  peerDependencies:
+    "@nestjs/common": ^10.0.0
+    "@nestjs/microservices": ^10.0.0
+    "@nestjs/platform-express": ^10.0.0
+    "@nestjs/websockets": ^10.0.0
+    reflect-metadata: ^0.1.12
+    rxjs: ^7.1.0
+  peerDependenciesMeta:
+    "@nestjs/microservices":
+      optional: true
+    "@nestjs/platform-express":
+      optional: true
+    "@nestjs/websockets":
+      optional: true
+  checksum: 69a5f8471c52931ce0795c2797dc1351ebeda93e4292810269f588c92714bc9eab31f8280896407456d969b15f30376e1204df10b7c03cdb173c917dee83c939
   languageName: node
   linkType: hard
 
@@ -4168,8 +4230,9 @@ __metadata:
   resolution: "@seedcompany/cache@workspace:packages/cache"
   dependencies:
     "@apollo/utils.keyvaluecache": ^2.1.0
-    "@nestjs/common": ^9
-    "@nestjs/core": ^9
+    "@nestjs/cache-manager": ^2.1.0
+    "@nestjs/common": ^10
+    "@nestjs/core": ^10
     "@nestjs/testing": ^9
     "@seedcompany/common": ">0.3 <1"
     "@types/luxon": ^3.2.0
@@ -4181,13 +4244,16 @@ __metadata:
     rxjs: ^7.5.7
     type-fest: ^3.6.1
   peerDependencies:
-    "@nestjs/common": ^9
-    "@nestjs/core": ^9
+    "@nestjs/cache-manager": ^2
+    "@nestjs/common": ^9 || ^10
+    "@nestjs/core": ^9 || ^10
     ioredis: ^5
     keyv: ^4
     lru-cache: ^8
     reflect-metadata: ^0.1.12
   peerDependenciesMeta:
+    "@nestjs/cache-manager":
+      optional: true
     ioredis:
       optional: true
     keyv:
@@ -14540,10 +14606,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"tslib@npm:2.5.0, tslib@npm:^2.1.0, tslib@npm:^2.2.0, tslib@npm:^2.3.0, tslib@npm:^2.3.1, tslib@npm:^2.4.0, tslib@npm:^2.5.0":
+"tslib@npm:2.5.0":
   version: 2.5.0
   resolution: "tslib@npm:2.5.0"
   checksum: ae3ed5f9ce29932d049908ebfdf21b3a003a85653a9a140d614da6b767a93ef94f460e52c3d787f0e4f383546981713f165037dc2274df212ea9f8a4541004e1
+  languageName: node
+  linkType: hard
+
+"tslib@npm:2.6.0, tslib@npm:^2.1.0, tslib@npm:^2.2.0, tslib@npm:^2.3.0, tslib@npm:^2.3.1, tslib@npm:^2.4.0, tslib@npm:^2.5.0":
+  version: 2.6.0
+  resolution: "tslib@npm:2.6.0"
+  checksum: c01066038f950016a18106ddeca4649b4d76caa76ec5a31e2a26e10586a59fceb4ee45e96719bf6c715648e7c14085a81fee5c62f7e9ebee68e77a5396e5538f
   languageName: node
   linkType: hard
 
@@ -14726,6 +14799,15 @@ __metadata:
   dependencies:
     "@lukeed/csprng": ^1.0.0
   checksum: 0a3c697d8dd1f3b647afa35c411b11fd8fa2fb6dbd8a49fe109a4aa5214068c2c58781aa6e4516dfd16f0fc524fb7bba0833e9c1dc1ed3f1965b520349be9ad5
+  languageName: node
+  linkType: hard
+
+"uid@npm:2.0.2":
+  version: 2.0.2
+  resolution: "uid@npm:2.0.2"
+  dependencies:
+    "@lukeed/csprng": ^1.0.0
+  checksum: 98aabddcd6fe46f9b331b0378a93ee9cc51474348ada02006df9d10b4abc783ed596748ed9f20d7f6c5ff395dbcd1e764a65a68db6f39a31c95ae85ef13fe979
   languageName: node
   linkType: hard
 
