@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.2.7](https://github.com/SeedCompany/libs/compare/email-3.2.6...email-3.2.7) (2023-07-19)
+
+
+### Bug Fixes
+
+* **email:** accidentally dropped DTS emission ([d5593ce](https://github.com/SeedCompany/libs/commit/d5593cea622bce9654c62f79cc699320ef92f82f))
+
 ## [3.2.6](https://github.com/SeedCompany/libs/compare/email-3.2.5...email-3.2.6) (2023-07-19)
 
 
