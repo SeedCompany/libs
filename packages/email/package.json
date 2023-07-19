@@ -51,18 +51,16 @@
   "files": [
     "*"
   ],
-  "type": "module",
-  "main": "./index.cjs",
+  "type": "commonjs",
+  "main": "./index.js",
   "types": "./index.d.ts",
   "exports": {
     ".": {
-      "import": "./index.mjs",
-      "require": "./index.cjs",
+      "require": "./index.js",
       "types": "./index.d.ts"
     },
     "./templates": {
-      "import": "./templates/index.mjs",
-      "require": "./templates/index.cjs",
+      "require": "./templates/index.js",
       "types": "./templates/index.d.ts"
     }
   }
