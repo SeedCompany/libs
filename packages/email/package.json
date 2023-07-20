@@ -56,11 +56,11 @@
   "types": "./index.d.ts",
   "exports": {
     ".": {
-      "require": "./index.js",
+      "default": "./index.js",
       "types": "./index.d.ts"
     },
     "./templates": {
-      "require": "./templates/index.js",
+      "default": "./templates/index.js",
       "types": "./templates/index.d.ts"
     }
   }
