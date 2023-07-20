@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.3.1](https://github.com/SeedCompany/libs/compare/email-3.3.0...email-3.3.1) (2023-07-20)
+
+
+### Bug Fixes
+
+* **email:** export require -> default ([04e73da](https://github.com/SeedCompany/libs/commit/04e73da1d83d71cd8c1bec4d893b586b9382201d))
+
 ## [3.3.0](https://github.com/SeedCompany/libs/compare/email-3.2.7...email-3.3.0) (2023-07-19)
 
 
