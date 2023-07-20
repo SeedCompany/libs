@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.5.1](https://github.com/SeedCompany/libs/compare/data-loader-0.5.0...data-loader-0.5.1) (2023-07-20)
+
+
+### Bug Fixes
+
+* **data-loader:** import of ExecutionContextHost for ESM ([35a3e6b](https://github.com/SeedCompany/libs/commit/35a3e6bbd406bef408e3f8b644097a59cfee32a7))
+
 ## [0.5.0](https://github.com/SeedCompany/libs/compare/data-loader-0.4.1...data-loader-0.5.0) (2023-07-19)
 
 
