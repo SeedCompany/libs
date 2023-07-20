@@ -1,6 +1,6 @@
 import { ExecutionContext, Injectable, Type } from '@nestjs/common';
 import { ContextId, ContextIdFactory } from '@nestjs/core';
-import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-host';
+import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-host.js';
 import { cacheable, cached } from '@seedcompany/common';
 import { DataLoaderFactory } from './data-loader.factory';
 import { DataLoaderStrategy } from './data-loader.strategy';
