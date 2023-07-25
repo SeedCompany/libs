@@ -42,7 +42,7 @@ let GqlExecutionContext: {
     );
   },
 };
-void (async () => {
+export const loadingGqlExecutionContext = (async () => {
   const mod = await import('@nestjs/graphql');
   GqlExecutionContext = mod.GqlExecutionContext;
 })();

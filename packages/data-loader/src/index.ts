@@ -5,4 +5,4 @@ export * from './data-loader.strategy';
 export * from './data-loader.type';
 export * from './data-loader-options.type';
 export * from './loader.decorator';
-export * from './lifetime-id-from-execution-context';
+export { lifetimeIdFromExecutionContext } from './lifetime-id-from-execution-context';
