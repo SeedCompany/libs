@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.5.2](https://github.com/SeedCompany/libs/compare/data-loader-0.5.1...data-loader-0.5.2) (2023-07-25)
+
+
+### Bug Fixes
+
+* **data-loader:** race condition with loading gql execution context for lifetime id ([49dedab](https://github.com/SeedCompany/libs/commit/49dedab93f56c7a692fbd750cb88e216f4bdadad))
+
 ## [0.5.1](https://github.com/SeedCompany/libs/compare/data-loader-0.5.0...data-loader-0.5.1) (2023-07-20)
 
 
