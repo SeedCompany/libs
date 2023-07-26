@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.3.2](https://github.com/SeedCompany/libs/compare/email-3.3.1...email-3.3.2) (2023-07-26)
+
+
+### Bug Fixes
+
+* **email:** attachment optional props ([f173951](https://github.com/SeedCompany/libs/commit/f173951123e6c1eb3d6b682f7f2211e5c83f15d3))
+
 ## [3.3.1](https://github.com/SeedCompany/libs/compare/email-3.3.0...email-3.3.1) (2023-07-20)
 
 
