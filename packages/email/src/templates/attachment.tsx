@@ -2,7 +2,7 @@ import { MessageAttachment } from 'emailjs/smtp/message';
 import { createContext, ReactNode, useContext } from 'react';
 
 export interface AttachmentProps
-  extends Pick<MessageAttachment, 'charset' | 'method'> {
+  extends Partial<Pick<MessageAttachment, 'charset' | 'method'>> {
   /** The file data */
   data: string;
   /** The file's content-type */
