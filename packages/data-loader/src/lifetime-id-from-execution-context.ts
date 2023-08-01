@@ -1,8 +1,5 @@
 import { ExecutionContext } from '@nestjs/common';
-import type {
-  GqlContextType,
-  GqlExecutionContext as GqlExecutionContextType,
-} from '@nestjs/graphql';
+import { GqlContextType, GqlExecutionContext } from '@nestjs/graphql';
 
 /**
  * Determines which object contained in the execution context should be used as the lifetime identity.
@@ -28,25 +25,4 @@ export const lifetimeIdFromExecutionContext = (
     return firstArg;
   }
   throw new Error('Unable to determine lifetime object from execution context');
-};
-
-/**
- * Going through the trouble of not specifically requiring the @nestjs/graphql library.
- */
-let GqlExecutionContext: {
-  create: (exe: ExecutionContext) => GqlExecutionContextType;
-} = {
-  create: () => {
-    throw new Error(
-      '@nestjs/graphql library is not listed in package.json dependencies',
-    );
-  },
-};
-export const loadGqlExecutionContext = async () => {
-  try {
-    const mod = await import('@nestjs/graphql');
-    GqlExecutionContext = mod.GqlExecutionContext;
-  } catch (e) {
-    // Ignore if not using graphql
-  }
 };
