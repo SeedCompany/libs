@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.5.3](https://github.com/SeedCompany/libs/compare/data-loader-0.5.2...data-loader-0.5.3) (2023-08-01)
+
+
+### Bug Fixes
+
+* **data-loader:** dont load gql module immediately ([219c1c5](https://github.com/SeedCompany/libs/commit/219c1c5f54a38e7ab73d1e1a5043f3193a1d3175))
+
 ## [0.5.2](https://github.com/SeedCompany/libs/compare/data-loader-0.5.1...data-loader-0.5.2) (2023-07-25)
 
 
