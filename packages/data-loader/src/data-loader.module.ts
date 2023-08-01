@@ -4,7 +4,7 @@ import { DataLoaderContext } from './data-loader.context';
 import { DataLoaderFactory } from './data-loader.factory';
 import { DataLoaderGuard } from './data-loader.guard';
 import { ConfigurableModuleClass } from './data-loader.module-builder';
-import { loadingGqlExecutionContext } from './lifetime-id-from-execution-context';
+import { loadGqlExecutionContext } from './lifetime-id-from-execution-context';
 
 @Module({
   providers: [
@@ -19,6 +19,6 @@ export class DataLoaderModule
   implements OnModuleInit
 {
   async onModuleInit() {
-    await loadingGqlExecutionContext;
+    await loadGqlExecutionContext();
   }
 }
