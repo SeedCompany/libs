@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.5.4](https://github.com/SeedCompany/libs/compare/data-loader-0.5.3...data-loader-0.5.4) (2023-08-01)
+
+
+### Bug Fixes
+
+* **data-loader:** give up on graphql module optionality ([f0997e5](https://github.com/SeedCompany/libs/commit/f0997e50ed2d81bc7ff829e7c247e43481f747da))
+
 ## [0.5.3](https://github.com/SeedCompany/libs/compare/data-loader-0.5.2...data-loader-0.5.3) (2023-08-01)
 
 
