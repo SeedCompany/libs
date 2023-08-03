@@ -30,7 +30,7 @@ export const parseScripture = (
 
   const rawRefs = input
     .replace(/ and /gi, ' , ')
-    .split(/[,;]/)
+    .split(/[,;&]/)
     .map((p) => p.trim())
     .filter(Boolean);
 
