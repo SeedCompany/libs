@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.0](https://github.com/SeedCompany/libs/compare/scripture-0.2.0...scripture-0.3.0) (2023-08-03)
+
+
+### Features
+
+* **scripture:** handle "&" separators when parsing scripture ([cbf62ae](https://github.com/SeedCompany/libs/commit/cbf62ae3ef908cb2be278c4e8f1993f1cec8c31d))
+* **scripture:** handle 1st 2nd 3rd forms of book names ([fb13579](https://github.com/SeedCompany/libs/commit/fb13579488639064cf9f0ffda1ad4aadb0c9fefe))
+
 ## [0.2.0](https://github.com/SeedCompany/libs/compare/scripture-0.1.2...scripture-0.2.0) (2023-07-06)
 
 
