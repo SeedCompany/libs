@@ -17,6 +17,7 @@ describe('parseScripture', () => {
     ['Genesis 3:5-6:20', ['Genesis', 3, 5, 'Genesis', 6, 20]],
     ['1 John 3-4', ['1 John', 3, 1, '1 John', 4, 21]],
     ['1 John 3, 4', ['1 John', 3, 1, '1 John', 4, 21]],
+    ['1 John 3 & 4', ['1 John', 3, 1, '1 John', 4, 21]],
     [
       'I John 3, 5',
       ['1 John', 3, 1, '1 John', 3, 24],
@@ -55,6 +56,7 @@ describe('parseScripture', () => {
     [''],
     [' '],
     [' and '],
+    [' & '],
   ])('%s', (input, ...refs) => {
     expect(
       parseScripture(input).map((r) => mapRange(r, (e) => e.reference)),
