@@ -381,9 +381,9 @@ export const BookLookupMap: ReadonlyMap<string, number> = new Map(
 
 function generateOrdinalNameVariations(ordinal: 1 | 2 | 3, names: string[]) {
   const ordinalMap = {
-    1: ['1', 'I', 'First'],
-    2: ['2', 'II', 'Second'],
-    3: ['3', 'III', 'Third'],
+    1: ['1', '1st', 'I', 'First'],
+    2: ['2', '2nd', 'II', 'Second'],
+    3: ['3', '3rd', 'III', 'Third'],
   };
   return names.flatMap((name) =>
     ordinalMap[ordinal].flatMap((numeral) => [

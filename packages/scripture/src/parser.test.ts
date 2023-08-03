@@ -18,6 +18,7 @@ describe('parseScripture', () => {
     ['1 John 3-4', ['1 John', 3, 1, '1 John', 4, 21]],
     ['1 John 3, 4', ['1 John', 3, 1, '1 John', 4, 21]],
     ['1 John 3 & 4', ['1 John', 3, 1, '1 John', 4, 21]],
+    ['1st John 3 & 4', ['1 John', 3, 1, '1 John', 4, 21]],
     [
       'I John 3, 5',
       ['1 John', 3, 1, '1 John', 3, 24],
