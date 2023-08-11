@@ -306,7 +306,7 @@ const resolveDeclarationReplacement = (
           // @ts-expect-error This arg property should be typed as nullable ^
           localName: undefined,
         })
-      : restriction.replacement!;
+      : restriction.replacement;
   const replacement = {
     path: maybe(path, (path) =>
       interpolate(path, {
@@ -336,7 +336,7 @@ const resolveSpecifierReplacement = (
       importName: result.importName ?? specifier.name,
     };
   } else {
-    const { importName, importNames, ...rest } = restriction.replacement!;
+    const { importName, importNames, ...rest } = restriction.replacement;
     replacement = {
       ...rest,
       importName: importName ?? importNames?.[specifier.name] ?? specifier.name,
