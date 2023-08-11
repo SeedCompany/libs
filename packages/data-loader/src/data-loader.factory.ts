@@ -78,21 +78,19 @@ export class DataLoaderFactory {
     const batchFn: DataLoaderLib.BatchLoadFn<Key, Item> = async (keys) => {
       const docs = await strategy.loadMany(keys);
 
-      // Put documents (docs) into a map where key is a document's ID or some
-      // property (prop) of a document and value is a document.
-      const docsMap = new Map();
-      for (const doc of docs) {
-        if (
-          doc &&
-          typeof doc === 'object' &&
-          'error' in doc &&
-          doc.error instanceof Error
-        ) {
-          docsMap.set(getCacheKey(doc.key), doc.error);
-        } else {
-          docsMap.set(getCacheKey(getKey(doc as Item)), doc);
-        }
-      }
+      const pairs: ReadonlyArray<[Key, Item | Error]> =
+        docs instanceof Map
+          ? [...docs]
+          : !Array.isArray(docs)
+          ? [] // Just for TS safety
+          : Array.isArray(docs[0])
+          ? docs
+          : docs.map((doc) =>
+              isErrorForKey(doc) ? [doc.key, doc.error] : [getKey(doc), doc],
+            );
+      const docsMap = new Map(
+        pairs.map(([key, val]) => [getCacheKey(key), val]),
+      );
 
       return keys.map((key) => {
         const cacheKey = getCacheKey(key);
@@ -119,3 +117,11 @@ export class DataLoaderFactory {
 }
 
 const identity = <T>(x: T) => x;
+
+const isErrorForKey = <Key, Item>(
+  doc: { key: Key; error: Error } | Item,
+): doc is { key: Key; error: Error } =>
+  doc &&
+  typeof doc === 'object' &&
+  'error' in doc &&
+  doc.error instanceof Error;
