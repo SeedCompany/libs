@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.11.0](https://github.com/SeedCompany/libs/compare/common-0.10.0...common-0.11.0) (2023-09-05)
+
+
+### Features
+
+* **common:** allow CachedByArg to work with no args ([7365017](https://github.com/SeedCompany/libs/commit/7365017a62314fc44f79f5dd62ef225f85c8e7eb))
+
 ## [0.10.0](https://github.com/SeedCompany/libs/compare/common-0.9.0...common-0.10.0) (2023-04-29)
 
 
