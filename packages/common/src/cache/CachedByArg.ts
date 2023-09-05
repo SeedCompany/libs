@@ -10,17 +10,19 @@ import { cached } from './cached';
  */
 export const CachedByArg =
   <Weak extends boolean | undefined>(options: { weak?: Weak } = {}) =>
-  <Arg extends Weak extends true ? object : any, R>(
+  <Args extends [Weak extends true ? object : any] | [], R>(
     staticClass: any,
     methodName: string | symbol,
-    descriptor: TypedPropertyDescriptor<(...args: [Arg]) => R>,
+    descriptor: TypedPropertyDescriptor<(...args: Args) => R>,
   ) => {
     const execute = descriptor.value!;
     const getInstance = cacheable(
       new WeakMap<object, CacheableMap<any, any>>(),
       options.weak ? () => new WeakMap() : () => new Map(),
     );
-    descriptor.value = function (arg) {
-      return cached(getInstance(this), arg, () => execute.call(this, arg));
+    descriptor.value = function (...args) {
+      return cached(getInstance(this), args[0], () =>
+        execute.call(this, ...args),
+      );
     };
   };
