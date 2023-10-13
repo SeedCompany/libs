@@ -4,6 +4,7 @@ export * from './async-pool';
 export * from './buffer';
 export * from './clean-join';
 export * from './delay';
+export * from './entries';
 export * from './group-by';
 export * from './iterator';
 export * from './json-col';
