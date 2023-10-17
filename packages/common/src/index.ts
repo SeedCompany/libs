@@ -12,6 +12,7 @@ export * from './iterator';
 export * from './json-col';
 export * from './many';
 export * from './map-of';
+export * from './map-to';
 export * from './non-enumerable';
 export * from './set-has';
 export * from './set-of';
