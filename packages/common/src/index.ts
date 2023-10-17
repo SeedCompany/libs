@@ -15,5 +15,6 @@ export * from './map-of';
 export * from './non-enumerable';
 export * from './set-has';
 export * from './set-of';
+export * from './simple-switch';
 export * from './sort-by';
 export * from './types';
