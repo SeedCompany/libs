@@ -2,6 +2,22 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.12.0](https://github.com/SeedCompany/libs/compare/common-0.11.0...common-0.12.0) (2023-10-17)
+
+
+### Features
+
+* **common:** csv ([66f11a0](https://github.com/SeedCompany/libs/commit/66f11a07027770ec4ad4ed691766affa4d81b7e0))
+* **common:** entries (of Records/Maps) ([#23](https://github.com/SeedCompany/libs/issues/23)) ([c1a437d](https://github.com/SeedCompany/libs/commit/c1a437d3ce135a5d8d1e1d567f070ee332705e87))
+* **common:** forward json generics ([e87c6dd](https://github.com/SeedCompany/libs/commit/e87c6dde626ce3868ec97e749bd8cd3723a0787b))
+* **common:** groupBy / groupToMapBy ([#22](https://github.com/SeedCompany/libs/issues/22)) ([2b36420](https://github.com/SeedCompany/libs/commit/2b36420cdde7589fff1c62a65e011f3cda030b42))
+* **common:** isNotFalsy, isNotNil ([e1fb914](https://github.com/SeedCompany/libs/commit/e1fb91487b42a24bb0d2f6c66fa2f1b3fd0d3dd8))
+* **common:** mapEntries, mapKeys, mapValues ([#26](https://github.com/SeedCompany/libs/issues/26)) ([48f58cf](https://github.com/SeedCompany/libs/commit/48f58cffdd72adb858952ce839f50d172f24c894))
+* **common:** mapOf ([#24](https://github.com/SeedCompany/libs/issues/24)) ([2f1e479](https://github.com/SeedCompany/libs/commit/2f1e479961a2d14ca9cf244cc902da00972ca06c))
+* **common:** mark setOf as const generic ([b7278a1](https://github.com/SeedCompany/libs/commit/b7278a1003a3f0097c729f94f5a5d9956e500e1f))
+* **common:** simpleSwitch ([e156b6a](https://github.com/SeedCompany/libs/commit/e156b6a02c8d3c6b829bc4945811fde512621578))
+* **common:** sortBy / cmpBy ([#21](https://github.com/SeedCompany/libs/issues/21)) ([a5b5e8a](https://github.com/SeedCompany/libs/commit/a5b5e8a9f3501237009f1a71ef58408fe9aacd04))
+
 ## [0.11.0](https://github.com/SeedCompany/libs/compare/common-0.10.0...common-0.11.0) (2023-09-05)
 
 
