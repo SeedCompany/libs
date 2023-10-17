@@ -3778,11 +3778,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/testing@npm:^10.1.0":
-  version: 10.1.0
-  resolution: "@nestjs/testing@npm:10.1.0"
+"@nestjs/testing@npm:^10, @nestjs/testing@npm:^10.1.0":
+  version: 10.2.7
+  resolution: "@nestjs/testing@npm:10.2.7"
   dependencies:
-    tslib: 2.6.0
+    tslib: 2.6.2
   peerDependencies:
     "@nestjs/common": ^10.0.0
     "@nestjs/core": ^10.0.0
@@ -3793,7 +3793,7 @@ __metadata:
       optional: true
     "@nestjs/platform-express":
       optional: true
-  checksum: 80e609e4d072ec9aa3a66ca22933e3d2303ecb3a9bf97db1b81a8f700d3303e6cba2769b701a237793488edf4c102fb2c4828ff9431129008ecec492ca95df34
+  checksum: 598f6b206d4dad0e03ef78fd5579df07212443983dfa2c7036f56e1f865f5175ee6d44aadca873e9f75c04550b0cb375d03b9f1343db9b55f4765bdb277cf95d
   languageName: node
   linkType: hard
 
@@ -4365,6 +4365,22 @@ __metadata:
       built: false
     core-js-pure:
       built: false
+  languageName: unknown
+  linkType: soft
+
+"@seedcompany/nest@workspace:packages/nest":
+  version: 0.0.0-use.local
+  resolution: "@seedcompany/nest@workspace:packages/nest"
+  dependencies:
+    "@nestjs/common": ^10
+    "@nestjs/core": ^10
+    "@nestjs/testing": ^10
+    "@seedcompany/common": ">0.3 <1"
+    rxjs: ^7.8.1
+  peerDependencies:
+    "@nestjs/common": ^10
+    "@nestjs/core": ^10
+    reflect-metadata: ^0.1.12
   languageName: unknown
   linkType: soft
 
@@ -13392,12 +13408,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rxjs@npm:7.8.0, rxjs@npm:^7.5.5, rxjs@npm:^7.5.7, rxjs@npm:^7.8.0":
+"rxjs@npm:7.8.0":
   version: 7.8.0
   resolution: "rxjs@npm:7.8.0"
   dependencies:
     tslib: ^2.1.0
   checksum: 61b4d4fd323c1043d8d6ceb91f24183b28bcf5def4f01ca111511d5c6b66755bc5578587fe714ef5d67cf4c9f2e26f4490d4e1d8cabf9bd5967687835e9866a2
+  languageName: node
+  linkType: hard
+
+"rxjs@npm:^7.5.5, rxjs@npm:^7.5.7, rxjs@npm:^7.8.0, rxjs@npm:^7.8.1":
+  version: 7.8.1
+  resolution: "rxjs@npm:7.8.1"
+  dependencies:
+    tslib: ^2.1.0
+  checksum: de4b53db1063e618ec2eca0f7965d9137cabe98cf6be9272efe6c86b47c17b987383df8574861bcced18ebd590764125a901d5506082be84a8b8e364bf05f119
   languageName: node
   linkType: hard
 
@@ -14485,10 +14510,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:2.6.0, tslib@npm:^2.1.0, tslib@npm:^2.2.0, tslib@npm:^2.3.0, tslib@npm:^2.3.1, tslib@npm:^2.4.0, tslib@npm:^2.5.0":
+"tslib@npm:2.6.0":
   version: 2.6.0
   resolution: "tslib@npm:2.6.0"
   checksum: c01066038f950016a18106ddeca4649b4d76caa76ec5a31e2a26e10586a59fceb4ee45e96719bf6c715648e7c14085a81fee5c62f7e9ebee68e77a5396e5538f
+  languageName: node
+  linkType: hard
+
+"tslib@npm:2.6.2, tslib@npm:^2.1.0, tslib@npm:^2.2.0, tslib@npm:^2.3.0, tslib@npm:^2.3.1, tslib@npm:^2.4.0, tslib@npm:^2.5.0":
+  version: 2.6.2
+  resolution: "tslib@npm:2.6.2"
+  checksum: 329ea56123005922f39642318e3d1f0f8265d1e7fcb92c633e0809521da75eeaca28d2cf96d7248229deb40e5c19adf408259f4b9640afd20d13aecc1430f3ad
   languageName: node
   linkType: hard
 

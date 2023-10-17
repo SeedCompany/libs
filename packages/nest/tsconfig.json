@@ -1,0 +1,12 @@
+{
+  "extends": "tsconfig/tsconfig.nestjs.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@seedcompany/common": ["../common/src"],
+      "@seedcompany/common/*": ["../common/src/*"],
+    },
+  },
+  "include": ["src"],
+  "exclude": ["dist", "node_modules"]
+}
