@@ -6,6 +6,7 @@ export * from './clean-join';
 export * from './delay';
 export * from './entries';
 export * from './group-by';
+export * from './is-not-falsy';
 export * from './iterator';
 export * from './json-col';
 export * from './many';
