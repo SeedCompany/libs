@@ -14,10 +14,6 @@ test('entries works', () => {
 
   const fromRecord = entries(colors);
   expect(fromRecord).toEqual(expected);
-  // @ts-expect-error the array should be declared as readonly
-  fromRecord.push(undefined);
-  // @ts-expect-error the tuple should be declared as readonly
-  fromRecord[0].push(undefined);
   // @ts-expect-error the keys should be strict
   fromRecord[0][0] === 'yellow';
   for (const [name, hex] of fromRecord) {
@@ -28,6 +24,10 @@ test('entries works', () => {
       hex === '#0000ff';
     }
   }
+  // @ts-expect-error the array should be declared as readonly
+  fromRecord.push(undefined);
+  // @ts-expect-error the tuple should be declared as readonly
+  fromRecord[0].push(undefined);
 
   // Map input works
   const colorMap = new Map(Object.entries(colors));
