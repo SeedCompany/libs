@@ -12,6 +12,6 @@ export function mapOf<const K, const V>(
 export function mapOf<const K extends string, const V>(
   entries: Partial<Record<K, V>>,
 ): ReadonlyMap<K, V>;
-export function mapOf<K, V>(items?: any): ReadonlyMap<K, V> {
-  return new Map(items ? entries(items) : undefined);
+export function mapOf<K, V>(items: any): ReadonlyMap<K, V> {
+  return new Map(entries<K, V>(items));
 }
