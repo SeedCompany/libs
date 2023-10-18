@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.13.1](https://github.com/SeedCompany/libs/compare/common-0.13.0...common-0.13.1) (2023-10-18)
+
+
+### Bug Fixes
+
+* **common:** entries: assume keys of objects are strings ([f6383ad](https://github.com/SeedCompany/libs/commit/f6383ad3d2601758aa01b05bd4b7ae72dd17c100))
+
 ## [0.13.0](https://github.com/SeedCompany/libs/compare/common-0.12.1...common-0.13.0) (2023-10-18)
 
 
