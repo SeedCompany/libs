@@ -29,4 +29,4 @@ export function entries<K, V>(o: any): ReadonlyArray<readonly [K, V]> {
 
 export type EntryOf<T extends object> = {
   [K in keyof T]: readonly [key: K, value: T[K]];
-}[keyof T];
+}[keyof T & string];
