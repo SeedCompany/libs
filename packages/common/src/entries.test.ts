@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions,@typescript-eslint/no-unnecessary-condition */
+// noinspection BadExpressionStatementJS
+
 import { expect, test } from '@jest/globals';
 import { entries } from './entries';
 
@@ -16,8 +19,15 @@ test('entries works', () => {
   // @ts-expect-error the tuple should be declared as readonly
   fromRecord[0].push(undefined);
   // @ts-expect-error the keys should be strict
-  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   fromRecord[0][0] === 'yellow';
+  for (const [name, hex] of fromRecord) {
+    // @ts-expect-error inference should succeed making these keys strict
+    name === 'yellow';
+    if (name === 'red') {
+      // @ts-expect-error pairs should be inferred as unique and narrow down to correct value from the associated key
+      hex === '#0000ff';
+    }
+  }
 
   // Map input works
   const colorMap = new Map(Object.entries(colors));
@@ -37,8 +47,35 @@ test('should infer strict keys from partial record', () => {
   const fromRecord = entries(colors);
   expect(fromRecord).toEqual(Object.entries(colors));
   // @ts-expect-error inference should succeed making these keys strict
-  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   fromRecord[0][0] === 'yellow';
+
+  for (const [name, _hex] of fromRecord) {
+    // @ts-expect-error inference should succeed making these keys strict
+    name === 'yellow';
+  }
+});
+
+test('strict entry pairs', () => {
+  class Car {
+    drive() {
+      // drove
+    }
+  }
+  class Dog {
+    bark() {
+      // barked
+    }
+  }
+  const things = { Car, Dog };
+
+  for (const [name, thingCls] of entries(things)) {
+    if (name === 'Car') {
+      new thingCls().drive();
+    }
+    if (name === 'Dog') {
+      new thingCls().bark();
+    }
+  }
 });
 
 test('array index entries', () => {

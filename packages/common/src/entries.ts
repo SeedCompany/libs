@@ -20,9 +20,13 @@
 export function entries<K, V>(
   map: Iterable<readonly [key: K, value: V]>,
 ): ReadonlyArray<readonly [key: K, value: V]>;
-export function entries<K extends string, V>(
-  object: Partial<Record<K, V>>,
-): ReadonlyArray<readonly [key: K, value: V]>;
+export function entries<T extends object>(
+  object: T,
+): ReadonlyArray<EntryOf<Required<T>>>;
 export function entries<K, V>(o: any): ReadonlyArray<readonly [K, V]> {
   return Symbol.iterator in o ? [...o] : Object.entries(o);
 }
+
+export type EntryOf<T extends object> = {
+  [K in keyof T]: readonly [key: K, value: T[K]];
+}[keyof T];
