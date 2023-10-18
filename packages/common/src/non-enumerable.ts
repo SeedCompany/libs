@@ -3,7 +3,9 @@
  */
 export const nonEnumerable = <T>(
   obj: T,
-  ...keys: Array<(keyof T & string) | 'constructor'>
+  ...keys: Array<
+    (keyof T & string) | 'constructor' | (string & Record<never, never>)
+  >
 ) =>
   Object.defineProperties(
     obj,
