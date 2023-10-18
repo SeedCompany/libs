@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.13.0](https://github.com/SeedCompany/libs/compare/common-0.12.1...common-0.13.0) (2023-10-18)
+
+
+### Features
+
+* **common:** allow any strings in nonEnumerable, for private or untyped properties ([aa021f5](https://github.com/SeedCompany/libs/commit/aa021f57501d30c1e72ca717b8709b886ca0e74c))
+
 ## [0.12.1](https://github.com/SeedCompany/libs/compare/common-0.12.0...common-0.12.1) (2023-10-18)
 
 
