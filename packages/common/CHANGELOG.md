@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.12.1](https://github.com/SeedCompany/libs/compare/common-0.12.0...common-0.12.1) (2023-10-18)
+
+
+### Bug Fixes
+
+* **common:** entries: associate types for key/value pairs ([edf32ac](https://github.com/SeedCompany/libs/commit/edf32aceaaddc42ac63277557dfed8f621dcd366))
+
 ## [0.12.0](https://github.com/SeedCompany/libs/compare/common-0.11.0...common-0.12.0) (2023-10-17)
 
 
