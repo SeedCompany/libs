@@ -1,4 +1,4 @@
-import { Plugin, Rule } from '@commitlint/types';
+import type { Plugin, Rule } from '@commitlint/types';
 import { readdirSync } from 'fs';
 import { join } from 'path';
 
