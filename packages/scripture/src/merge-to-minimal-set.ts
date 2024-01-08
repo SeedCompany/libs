@@ -20,7 +20,7 @@ export const mergeVerseRanges = (
         }
         // if current overlaps item or current's end is adjacent to item's start
         if (
-          (current.end > item.start && current.start < item.end) ||
+          (current.end >= item.start && current.start <= item.end) ||
           +current.end === +item.start - 1
         ) {
           return [
