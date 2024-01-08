@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.1](https://github.com/SeedCompany/libs/compare/scripture-0.3.0...scripture-0.3.1) (2024-01-08)
+
+
+### Bug Fixes
+
+* **scripture:** merging ranges with the same endpoint ([#29](https://github.com/SeedCompany/libs/issues/29)) ([26169b6](https://github.com/SeedCompany/libs/commit/26169b62b92b4b346164af306bc3ee0aafdcb5ec))
+
 ## [0.3.0](https://github.com/SeedCompany/libs/compare/scripture-0.2.0...scripture-0.3.0) (2023-08-03)
 
 
