@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.2](https://github.com/SeedCompany/libs/compare/scripture-0.3.1...scripture-0.3.2) (2024-04-18)
+
+
+### Bug Fixes
+
+* sourcemap paths ([#32](https://github.com/SeedCompany/libs/issues/32)) ([0d47cf4](https://github.com/SeedCompany/libs/commit/0d47cf47898fbe24f3adb8fdf4cb000b40f68a89))
+
 ## [0.3.1](https://github.com/SeedCompany/libs/compare/scripture-0.3.0...scripture-0.3.1) (2024-01-08)
 
 
