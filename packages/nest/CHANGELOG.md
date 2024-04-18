@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.2.1](https://github.com/SeedCompany/libs/compare/nest-0.2.0...nest-0.2.1) (2024-04-18)
+
+
+### Bug Fixes
+
+* sourcemap paths ([#32](https://github.com/SeedCompany/libs/issues/32)) ([0d47cf4](https://github.com/SeedCompany/libs/commit/0d47cf47898fbe24f3adb8fdf4cb000b40f68a89))
+
 ## [0.2.0](https://github.com/SeedCompany/libs/compare/nest-0.1.0...nest-0.2.0) (2024-03-05)
 
 
