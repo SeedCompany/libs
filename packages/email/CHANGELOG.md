@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.3.3](https://github.com/SeedCompany/libs/compare/email-3.3.2...email-3.3.3) (2024-04-18)
+
+
+### Bug Fixes
+
+* sourcemap paths ([#32](https://github.com/SeedCompany/libs/issues/32)) ([0d47cf4](https://github.com/SeedCompany/libs/commit/0d47cf47898fbe24f3adb8fdf4cb000b40f68a89))
+
 ## [3.3.2](https://github.com/SeedCompany/libs/compare/email-3.3.1...email-3.3.2) (2023-07-26)
 
 
