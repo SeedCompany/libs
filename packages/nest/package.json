@@ -4,7 +4,7 @@
   "description": "Common NestJS functionality for Seed Company",
   "license": "MIT",
   "engines": {
-    "node": ">=16"
+    "node": ">=20"
   },
   "dependencies": {
     "@nestjs/common": "^10",
@@ -39,13 +39,10 @@
     "*"
   ],
   "type": "module",
-  "main": "./index.cjs",
-  "types": "./index.d.ts",
   "exports": {
     ".": {
-      "import": "./index.js",
-      "require": "./index.cjs",
-      "types": "./index.d.ts"
+      "types": "./index.d.ts",
+      "default": "./index.js"
     }
   }
 }
