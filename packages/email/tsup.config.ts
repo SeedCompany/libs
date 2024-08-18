@@ -5,8 +5,8 @@ export const tsup = defineConfig({
   esbuildOptions: (opts) => {
     opts.sourceRoot = './email/dist/';
   },
+  format: ['esm'],
   bundle: false,
-  format: ['cjs'],
   inject: ['./react-shim.ts'],
   dts: true,
   sourcemap: true,

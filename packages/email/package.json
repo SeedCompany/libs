@@ -4,7 +4,7 @@
   "description": "NestJS library to generate emails via JSX and send them via AWS",
   "license": "MIT",
   "engines": {
-    "node": ">=16"
+    "node": ">=20"
   },
   "dependencies": {
     "@aws-sdk/client-sesv2": "^3.218.0",
@@ -51,17 +51,15 @@
   "files": [
     "*"
   ],
-  "type": "commonjs",
-  "main": "./index.js",
-  "types": "./index.d.ts",
+  "type": "module",
   "exports": {
     ".": {
-      "default": "./index.js",
-      "types": "./index.d.ts"
+      "types": "./index.d.ts",
+      "default": "./index.js"
     },
     "./templates": {
-      "default": "./templates/index.js",
-      "types": "./templates/index.d.ts"
+      "types": "./templates/index.d.ts",
+      "default": "./templates/index.js"
     }
   }
 }
