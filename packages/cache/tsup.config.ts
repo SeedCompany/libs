@@ -5,7 +5,8 @@ export const tsup = defineConfig({
   esbuildOptions: (opts) => {
     opts.sourceRoot = './dist/';
   },
-  format: ['cjs', 'esm'],
+  format: ['esm'],
+  bundle: false,
   dts: true,
   sourcemap: true,
   clean: true,
