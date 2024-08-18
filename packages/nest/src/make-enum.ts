@@ -1,5 +1,7 @@
 import { registerEnumType } from '@nestjs/graphql';
 import { cleanJoin, mapKeys, nonEnumerable } from '@seedcompany/common';
+import { noCase, splitSeparateNumbers } from 'change-case';
+import { titleCase } from 'title-case';
 import { inspect, InspectOptionsStylized } from 'util';
 
 export type EnumType<Enum> = Enum extends MadeEnum<infer Values, any, any>
@@ -13,7 +15,7 @@ export type MadeEnum<
 > = {
   readonly [Value in Values & string]: Value;
 } & Readonly<Extra> &
-  EnumHelpers<Values, ValueDeclaration>;
+  EnumHelpers<Values, ValueDeclaration & ImplicitValueDeclarationShape<Values>>;
 
 interface EnumOptions<
   ValueDeclaration extends EnumValueDeclarationShape,
@@ -48,9 +50,12 @@ interface EnumOptions<
    * This is given the built enum (without any extras), to prevent circular references.
    */
   readonly extra?: (
-    enumObject: MadeEnum<
+    // MadeEnum without Extras & ImplicitValueDeclarationShape
+    enumObject: {
+      readonly [Value in ValuesOfDeclarations<ValueDeclaration> &
+        string]: Value;
+    } & EnumHelpers<
       ValuesOfDeclarations<ValueDeclaration>,
-      unknown,
       NormalizedValueDeclaration<ValueDeclaration>
     >,
   ) => Extra;
@@ -144,6 +149,13 @@ export const makeEnum = <
     registerEnumType(object, { name, description, valuesMap });
   }
 
+  for (const entry of entries) {
+    // @ts-expect-error ignoring immutable here.
+    entry.label ??= titleCase(
+      noCase(entry.value, { split: splitSeparateNumbers }),
+    ).replace(/ and /g, ' & ');
+  }
+
   return object as any;
 };
 
@@ -169,6 +181,10 @@ interface EnumValueDeclarationObjectShape<Value extends string = string> {
    */
   readonly deprecationReason?: string;
 }
+
+type ImplicitValueDeclarationShape<Value extends string> = Required<
+  Pick<EnumValueDeclarationObjectShape<Value>, 'value' | 'label'>
+>;
 
 type ValuesOfDeclarations<ValueDeclaration extends EnumValueDeclarationShape> =
   ValueDeclaration extends string
