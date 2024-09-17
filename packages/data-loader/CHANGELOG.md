@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.6.0](https://github.com/SeedCompany/libs/compare/data-loader-0.5.4...data-loader-0.6.0) (2024-09-17)
+
+
+### Features
+
+* **data-loader:** pass loader context to loadMany ([#36](https://github.com/SeedCompany/libs/issues/36)) ([d7b2851](https://github.com/SeedCompany/libs/commit/d7b285162b4de5dcd419c9f72f8cba49b1ca6b7b))
+
 ## [0.5.4](https://github.com/SeedCompany/libs/compare/data-loader-0.5.3...data-loader-0.5.4) (2023-08-01)
 
 
