@@ -58,16 +58,17 @@ export class DataLoaderContext {
     });
   }
 
-  private createContext(): LoaderContextType {
+  private createContext() {
     const contextId = ContextIdFactory.create();
     const loaders: LoaderContextType['loaders'] = new Map();
-    return {
+    const loaderContext: LoaderContextType = {
       contextId,
       loaders,
       getLoader: cacheable(loaders, (strategyType) =>
-        this.factory.create(strategyType, contextId),
+        this.factory.create(strategyType, contextId, loaderContext),
       ),
     };
+    return loaderContext;
   }
 }
 
