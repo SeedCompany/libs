@@ -2,6 +2,7 @@ import { Inject, Injectable, Type } from '@nestjs/common';
 import { ContextId, ModuleRef } from '@nestjs/core';
 import DataLoaderLib from 'dataloader';
 import type { DataLoaderOptions } from './data-loader-options.type';
+import type { LoaderContextType } from './data-loader.context';
 import { MODULE_OPTIONS_TOKEN } from './data-loader.module-builder';
 import { DataLoaderStrategy } from './data-loader.strategy';
 import { DataLoader } from './data-loader.type';
@@ -27,6 +28,7 @@ export class DataLoaderFactory {
   async create<Item, Key, CachedKey = Key>(
     strategyType: Type<DataLoaderStrategy<Item, Key, CachedKey>>,
     contextId: ContextId,
+    loaderContext: LoaderContextType,
   ): Promise<DataLoader<Item, Key, CachedKey>> {
     const strategy = await this.moduleRef.resolve<
       DataLoaderStrategy<Item, Key, CachedKey>
@@ -35,7 +37,7 @@ export class DataLoaderFactory {
     const options = this.resolveOptions(strategy, this.defaultOptions);
 
     const loader = new DataLoaderLib<Key, Item, CachedKey>(
-      this.makeBatchFn(strategy, options),
+      this.makeBatchFn(strategy, options, loaderContext),
       options,
     ) as DataLoader<Item, Key, CachedKey>;
 
@@ -72,11 +74,12 @@ export class DataLoaderFactory {
   protected makeBatchFn<Item, Key, CachedKey = Key>(
     strategy: DataLoaderStrategy<Item, Key, CachedKey>,
     options: ResolvedDataLoaderOptions<Item, Key, CachedKey>,
+    loaderContext: LoaderContextType,
   ) {
     const { propertyKey: getKey, cacheKeyFn: getCacheKey } = options;
 
     const batchFn: DataLoaderLib.BatchLoadFn<Key, Item> = async (keys) => {
-      const docs = await strategy.loadMany(keys);
+      const docs = await strategy.loadMany(keys, loaderContext);
 
       // Put documents (docs) into a map where key is a document's ID or some
       // property (prop) of a document and value is a document.
