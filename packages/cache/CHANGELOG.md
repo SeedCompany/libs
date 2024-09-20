@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.0](https://github.com/SeedCompany/libs/compare/cache-0.3.1...cache-1.0.0) (2024-09-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **cache:** removed support for lru-cache v8
+
+### Features
+
+* **cache:** bump lru-cache & type-fest ([cc94db3](https://github.com/SeedCompany/libs/commit/cc94db39eb43ab242f06102d6fa62ea698c16366))
+
 ## [0.3.1](https://github.com/SeedCompany/libs/compare/cache-0.3.0...cache-0.3.1) (2024-04-18)
 
 
