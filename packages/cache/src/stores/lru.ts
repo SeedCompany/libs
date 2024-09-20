@@ -1,4 +1,4 @@
-import LRUCache from 'lru-cache';
+import { LRUCache } from 'lru-cache';
 import { CacheStore, CacheStoreItemOptions } from './store.interface';
 
 export class LruStore extends CacheStore {

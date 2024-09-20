@@ -8,8 +8,8 @@ export class KeyvStore extends CacheStore {
     super();
   }
 
-  async get(key: string, options: CacheStoreItemOptions) {
-    const val = await this.keyv.get(key);
+  async get<T>(key: string, options: CacheStoreItemOptions) {
+    const val = (await this.keyv.get(key)) as T | undefined;
     if (options.refreshTtlOnGet && options.ttl) {
       void this.keyv.set(key, val, options.ttl.toMillis());
     }
