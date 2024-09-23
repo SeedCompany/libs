@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Optional } from '@nestjs/common';
 import type { DurationIn } from '@seedcompany/common/temporal/luxon';
 import { Duration } from 'luxon';
 import { Promisable } from 'type-fest';
@@ -15,7 +15,7 @@ import '@seedcompany/common/temporal/luxon';
 export class CacheService {
   constructor(
     private readonly store: CacheStore,
-    private readonly defaultOptions?: StoreItemOptions,
+    @Optional() private readonly defaultOptions?: StoreItemOptions,
   ) {}
 
   get adaptTo() {
