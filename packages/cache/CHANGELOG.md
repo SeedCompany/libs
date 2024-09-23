@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.1.0](https://github.com/SeedCompany/libs/compare/cache-1.0.0...cache-1.1.0) (2024-09-23)
+
+
+### Features
+
+* **cache:** allow default options at service level ([2a60fb2](https://github.com/SeedCompany/libs/commit/2a60fb286811729a919b409a78b06e8bdfa47bac))
+
 ## [1.0.0](https://github.com/SeedCompany/libs/compare/cache-0.3.1...cache-1.0.0) (2024-09-20)
 
 
