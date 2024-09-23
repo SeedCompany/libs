@@ -7,7 +7,7 @@ import { resolveOptions } from './resolve-options';
 import { NamespaceStore } from './stores/namespace';
 import {
   CacheStore,
-  CacheStoreItemOptions as StoreItemOptions,
+  type CacheStoreItemOptions as StoreItemOptions,
 } from './stores/store.interface';
 import '@seedcompany/common/temporal/luxon';
 
