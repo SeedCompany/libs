@@ -13,17 +13,27 @@ import '@seedcompany/common/temporal/luxon';
 
 @Injectable()
 export class CacheService {
-  constructor(private readonly store: CacheStore) {}
+  constructor(
+    private readonly store: CacheStore,
+    private readonly defaultOptions?: StoreItemOptions,
+  ) {}
 
   get adaptTo() {
     return new CacheAdapters(this);
   }
 
-  namespace(subSpace: string) {
+  withDefaultOptions(options: ItemOptions) {
+    return new CacheService(this.store, resolveOptions(options));
+  }
+
+  namespace(subSpace: string, defaultOptions?: ItemOptions) {
     if (!subSpace) {
       return this;
     }
-    return new CacheService(new NamespaceStore(this.store, subSpace));
+    return new CacheService(
+      new NamespaceStore(this.store, subSpace),
+      defaultOptions ? resolveOptions(defaultOptions) : undefined,
+    );
   }
 
   item<T>(key: string, options?: ItemOptions): CacheItem<T> {
@@ -31,11 +41,16 @@ export class CacheService {
   }
 
   async get<T>(key: string, options: ItemOptions = {}): Promise<T | undefined> {
-    return await this.store.get<T>(key, resolveOptions(options));
+    return await this.store.get<T>(key, this.resolveOptions(options));
   }
 
   async set(key: string, value: unknown, options: ItemOptions = {}) {
-    await this.store.set(key, value, resolveOptions(options));
+    await this.store.set(key, value, this.resolveOptions(options));
+  }
+
+  private resolveOptions(options: ItemOptions) {
+    const opts = resolveOptions(options);
+    return this.defaultOptions ? { ...this.defaultOptions, ...opts } : opts;
   }
 
   async delete(key: string) {
