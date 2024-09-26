@@ -1,4 +1,4 @@
-import { MessageAttachment } from 'emailjs/smtp/message';
+import type { MessageAttachment } from 'emailjs';
 import { createContext, ReactNode, useContext } from 'react';
 
 export interface AttachmentProps

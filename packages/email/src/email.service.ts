@@ -2,11 +2,10 @@ import { SendEmailCommand, SESv2Client as SES } from '@aws-sdk/client-sesv2';
 import { render } from '@faire/mjml-react/utils/render';
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import { promises as fs } from 'fs';
-import { convert as htmlToText } from 'html-to-text';
-import * as textFormatters from 'html-to-text/lib/formatter';
+import { htmlToText } from 'html-to-text';
 import openUrl from 'open';
 import { createElement, ReactElement } from 'react';
-import { file as tempFile } from 'tempy';
+import { temporaryFile as tempFile } from 'tempy';
 import {
   EMAIL_MODULE_OPTIONS,
   type EmailOptions,
@@ -118,18 +117,13 @@ export class EmailService {
   }
 
   private renderHtml(templateEl: ReactElement) {
-    const { html } = render(templateEl, {
-      minify: false,
-    });
+    const { html } = render(templateEl);
     return html;
   }
 
   private renderText(templateEl: ReactElement) {
     const { html: htmlForText } = render(
       createElement(RenderForText, null, templateEl),
-      {
-        minify: false,
-      },
     );
 
     const text = htmlToText(htmlForText, {
@@ -143,7 +137,7 @@ export class EmailService {
         table: (el, walk, builder, options) =>
           el.attribs.role === 'presentation'
             ? walk(el.children, builder)
-            : textFormatters.dataTable(el, walk, builder, options),
+            : builder.options.formatters.dataTable(el, walk, builder, options),
       },
     });
 
@@ -154,9 +148,9 @@ export class EmailService {
     const temp = tempFile({ extension: 'html' });
     await fs.writeFile(temp, html);
     await openUrl(`file://${temp}`);
-    // try to wait for chrome to open before deleting temp file
+    // try to wait for chrome to open before deleting the temp file
     void sleep(10_000)
-      .then(() => fs.unlink(temp))
+      .then(() => fs.rm(temp, { recursive: true, force: true, maxRetries: 2 }))
       .catch();
   }
 }
