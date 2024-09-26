@@ -1,12 +1,12 @@
 import { readFile, writeFile } from 'node:fs/promises';
-import { PackageJson } from 'type-fest';
 import { resolve } from 'node:path';
 
 (async () => {
   const dir = resolve('dist');
   const pkg = JSON.parse(await readFile(`${dir}/package.json`, 'utf8'));
-  pkg.exports = mapValues(pkg.exports, (exp: Record<PackageJson.ExportCondition, string>) => ({
+  pkg.exports = mapValues(pkg.exports, (exp: Record<string, string>) => ({
     import: exp.import.replace(/\/src\//, '/').replace(/\.ts$/, '.js'),
+    default: exp.default.replace(/\/src\//, '/').replace(/\.ts$/, '.js'),
     require: exp.require.replace(/\/src\//, '/').replace(/\.ts$/, '.cjs'),
     types: exp.types.replace(/\/src\//, '/').replace(/(?<!\.d).ts$/, '.d.ts'),
   }))
