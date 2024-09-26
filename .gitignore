@@ -5,7 +5,7 @@
 !.yarn/versions
 .pnp.*
 
-.turbo
+.nx
 
 .env.local
 .env.*.local

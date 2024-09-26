@@ -4,7 +4,7 @@
   "description": "Common NestJS functionality for Seed Company",
   "license": "MIT",
   "engines": {
-    "node": ">=16"
+    "node": ">=20"
   },
   "dependencies": {
     "@nestjs/common": "^10",
@@ -25,6 +25,8 @@
   },
   "devDependencies": {
     "@nestjs/testing": "^10",
+    "graphql": "^16.9.0",
+    "reflect-metadata": "^0.1.12",
     "rxjs": "^7.8.1"
   },
   "repository": {
@@ -36,16 +38,13 @@
     "url": "https://github.com/seedcompany/libs/issues"
   },
   "files": [
-    "*"
+    "dist"
   ],
   "type": "module",
-  "main": "./index.cjs",
-  "types": "./index.d.ts",
   "exports": {
     ".": {
-      "import": "./index.js",
-      "require": "./index.cjs",
-      "types": "./index.d.ts"
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     }
   }
 }

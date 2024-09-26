@@ -47,14 +47,15 @@
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts --clean",
     "typecheck": "tsc",
-    "test": "jest"
+    "test": "node --experimental-vm-modules ../../node_modules/.bin/jest"
   },
   "devDependencies": {
     "@types/common-tags": "^1.8.1",
     "@typescript-eslint/utils": "^5.54.0",
     "common-tags": "^1.8.2",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "typescript": "5.0.4"
   },
   "repository": {
     "type": "git",

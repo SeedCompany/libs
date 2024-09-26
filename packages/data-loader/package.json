@@ -4,7 +4,7 @@
   "description": "NestJS library wrapper for data loaders",
   "license": "MIT",
   "engines": {
-    "node": ">=16"
+    "node": ">=20"
   },
   "dependencies": {
     "@nestjs/common": "^9 || ^10",
@@ -21,7 +21,7 @@
   "scripts": {
     "build": "tsup",
     "typecheck": "tsc",
-    "test": "jest"
+    "test": "node --experimental-vm-modules ../../node_modules/.bin/jest"
   },
   "devDependencies": {
     "@apollo/server": "^4.7.5",
@@ -32,6 +32,7 @@
     "@types/supertest": "^2.0.12",
     "express": "^4.18.2",
     "graphql": "^16",
+    "reflect-metadata": "^0.1.12",
     "rxjs": "^7.5.7",
     "supertest": "^6.3.3"
   },
@@ -47,13 +48,10 @@
     "dist"
   ],
   "type": "module",
-  "main": "./dist/index.cjs",
-  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts"
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     }
   }
 }

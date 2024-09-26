@@ -4,7 +4,7 @@
   "description": "NestJS library wrapper for external caching",
   "license": "MIT",
   "engines": {
-    "node": ">=16"
+    "node": ">=20"
   },
   "dependencies": {
     "@nestjs/common": "^10",
@@ -40,16 +40,17 @@
   "scripts": {
     "build": "tsup",
     "typecheck": "tsc",
-    "test": "jest"
+    "test": "node --experimental-vm-modules ../../node_modules/.bin/jest"
   },
   "devDependencies": {
     "@apollo/utils.keyvaluecache": "^2.1.0",
     "@nestjs/cache-manager": "^2.1.0",
-    "@nestjs/testing": "^9",
+    "@nestjs/testing": "^10.4.4",
     "cache-manager": "^5.2.0",
     "ioredis": "^5.3.1",
     "keyv": "^4.5.4",
     "lru-cache": "^11.0.1",
+    "reflect-metadata": "^0.1.12",
     "rxjs": "^7.5.7"
   },
   "repository": {
@@ -61,21 +62,17 @@
     "url": "https://github.com/seedcompany/libs/issues"
   },
   "files": [
-    "*"
+    "dist"
   ],
   "type": "module",
-  "main": "./index.cjs",
-  "types": "./index.d.ts",
   "exports": {
     ".": {
-      "import": "./index.js",
-      "require": "./index.cjs",
-      "types": "./index.d.ts"
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     },
     "./stores/*": {
-      "import": "./stores/*.js",
-      "require": "./stores/*.cjs",
-      "types": "./stores/*.d.ts"
+      "types": "./dist/stores/*.d.ts",
+      "default": "./dist/stores/*.js"
     }
   }
 }
