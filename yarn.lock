@@ -3495,25 +3495,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/testing@npm:^9":
-  version: 9.3.11
-  resolution: "@nestjs/testing@npm:9.3.11"
-  dependencies:
-    tslib: "npm:2.5.0"
-  peerDependencies:
-    "@nestjs/common": ^9.0.0
-    "@nestjs/core": ^9.0.0
-    "@nestjs/microservices": ^9.0.0
-    "@nestjs/platform-express": ^9.0.0
-  peerDependenciesMeta:
-    "@nestjs/microservices":
-      optional: true
-    "@nestjs/platform-express":
-      optional: true
-  checksum: 10c0/0d50b0d87f2e996d977e2201f621285be99394c92739b8be85060344cb9b9f581186a1d140d2196733258744ea5f4f07b303e52d00f0655b369e888502c31a29
-  languageName: node
-  linkType: hard
-
 "@nodelib/fs.scandir@npm:2.1.5":
   version: 2.1.5
   resolution: "@nodelib/fs.scandir@npm:2.1.5"
@@ -3926,7 +3907,7 @@ __metadata:
     "@nestjs/cache-manager": "npm:^2.1.0"
     "@nestjs/common": "npm:^10"
     "@nestjs/core": "npm:^10"
-    "@nestjs/testing": "npm:^9"
+    "@nestjs/testing": "npm:^10.4.4"
     "@seedcompany/common": "npm:>0.3 <1"
     "@types/luxon": "npm:^3.2.0"
     cache-manager: "npm:^5.2.0"
@@ -3934,6 +3915,7 @@ __metadata:
     keyv: "npm:^4.5.4"
     lru-cache: "npm:^11.0.1"
     luxon: "npm:^3.3.0"
+    reflect-metadata: "npm:^0.1.12"
     rxjs: "npm:^7.5.7"
     type-fest: "npm:^4.26.1"
   peerDependencies:
@@ -3986,6 +3968,7 @@ __metadata:
     dataloader: "npm:^2.2.2"
     express: "npm:^4.18.2"
     graphql: "npm:^16"
+    reflect-metadata: "npm:^0.1.12"
     rxjs: "npm:^7.5.7"
     supertest: "npm:^6.3.3"
   peerDependencies:
@@ -4020,6 +4003,7 @@ __metadata:
     react: "npm:^18.0.0"
     react-dom: "npm:^18.0.0"
     type-fest: "npm:^2.13.1"
+    typescript: "npm:5.0.4"
   peerDependencies:
     eslint: ^8.0.0
     prettier: ^2.0.0
@@ -4082,6 +4066,8 @@ __metadata:
     "@nestjs/graphql": "npm:^12"
     "@nestjs/testing": "npm:^10"
     "@seedcompany/common": "npm:>0.3 <1"
+    graphql: "npm:^16.9.0"
+    reflect-metadata: "npm:^0.1.12"
     rxjs: "npm:^7.8.1"
   peerDependencies:
     "@nestjs/common": ^10
@@ -8955,10 +8941,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql@npm:^16":
-  version: 16.6.0
-  resolution: "graphql@npm:16.6.0"
-  checksum: 10c0/3a2c15ff58b69d017618d2b224fa6f3c4a7937e1f711c3a5e0948db536b4931e6e649560b53de7cc26735e027ceea6e2d0a6bb7c29fc4639b290313e3aa71618
+"graphql@npm:^16, graphql@npm:^16.9.0":
+  version: 16.9.0
+  resolution: "graphql@npm:16.9.0"
+  checksum: 10c0/a8850f077ff767377237d1f8b1da2ec70aeb7623cdf1dfc9e1c7ae93accc0c8149c85abe68923be9871a2934b1bce5a2496f846d4d56e1cfb03eaaa7ddba9b6a
   languageName: node
   linkType: hard
 
@@ -13333,10 +13319,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"reflect-metadata@npm:^0.1.13":
-  version: 0.1.13
-  resolution: "reflect-metadata@npm:0.1.13"
-  checksum: 10c0/728bff0b376b05639fd11ed80c648b61f7fe653c5b506d7ca118e58b6752b9b00810fe0c86227ecf02bd88da6251ab3eb19fd403aaf2e9ff5ef36a2fda643026
+"reflect-metadata@npm:^0.1.12, reflect-metadata@npm:^0.1.13":
+  version: 0.1.14
+  resolution: "reflect-metadata@npm:0.1.14"
+  checksum: 10c0/3a6190c7f6cb224f26a012d11f9e329360c01c1945e2cbefea23976a8bacf9db6b794aeb5bf18adcb673c448a234fbc06fc41853c00a6c206b30f0777ecf019e
   languageName: node
   linkType: hard
 
@@ -14755,13 +14741,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"tslib@npm:2.5.0":
-  version: 2.5.0
-  resolution: "tslib@npm:2.5.0"
-  checksum: 10c0/e32fc99cc730dd514e53c44e668d76016e738f0bcc726aad5dbd2d335cf19b87a95a9b1e4f0a9993e370f1d702b5e471cdd4acabcac428a3099d496b9af2021e
-  languageName: node
-  linkType: hard
-
 "tslib@npm:2.6.0":
   version: 2.6.0
   resolution: "tslib@npm:2.6.0"
@@ -14937,7 +14916,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:5.0.4, typescript@npm:typescript@^5":
+"typescript@npm:5.0.4":
   version: 5.0.4
   resolution: "typescript@npm:5.0.4"
   bin:
@@ -14947,13 +14926,33 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A5.0.4#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3Atypescript@^5#optional!builtin<compat/typescript>":
+"typescript@npm:typescript@^5":
+  version: 5.6.2
+  resolution: "typescript@npm:5.6.2"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10c0/3ed8297a8c7c56b7fec282532503d1ac795239d06e7c4966b42d4330c6cf433a170b53bcf93a130a7f14ccc5235de5560df4f1045eb7f3550b46ebed16d3c5e5
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@npm%3A5.0.4#optional!builtin<compat/typescript>":
   version: 5.0.4
   resolution: "typescript@patch:typescript@npm%3A5.0.4#optional!builtin<compat/typescript>::version=5.0.4&hash=b5f058"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 10c0/c3f7b80577bddf6fab202a7925131ac733bfc414aec298c2404afcddc7a6f242cfa8395cf2d48192265052e11a7577c27f6e5fac8d8fe6a6602023c83d6b3292
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@npm%3Atypescript@^5#optional!builtin<compat/typescript>":
+  version: 5.6.2
+  resolution: "typescript@patch:typescript@npm%3A5.6.2#optional!builtin<compat/typescript>::version=5.6.2&hash=8c6c40"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10c0/94eb47e130d3edd964b76da85975601dcb3604b0c848a36f63ac448d0104e93819d94c8bdf6b07c00120f2ce9c05256b8b6092d23cf5cf1c6fa911159e4d572f
   languageName: node
   linkType: hard
 
