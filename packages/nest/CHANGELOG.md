@@ -2,6 +2,28 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.0](https://github.com/SeedCompany/libs/compare/nest-0.2.1...nest-1.0.0) (2024-09-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* **nest:** ESM only & drop node 16-19
+
+### Features
+
+* **nest:** add enum entry getter ([4092835](https://github.com/SeedCompany/libs/commit/4092835825975aab931fb03a73bbfaa68f5fa92f))
+* **nest:** human labels for enums ([8257afd](https://github.com/SeedCompany/libs/commit/8257afd84edf5b2fe0ffa7a2084f4c70f3e51eeb))
+
+
+### Bug Fixes
+
+* **nest:** enum type assignability to looser shape ([dd3ce3e](https://github.com/SeedCompany/libs/commit/dd3ce3e307fa032c9278db17075472610bbbb777))
+
+
+### Miscellaneous Chores
+
+* **nest:** esm only & node 20 ([11bbc22](https://github.com/SeedCompany/libs/commit/11bbc22e88b22d2dcafc286e5006855f853ea462))
+
 ## [0.2.1](https://github.com/SeedCompany/libs/compare/nest-0.2.0...nest-0.2.1) (2024-04-18)
 
 
