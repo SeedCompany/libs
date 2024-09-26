@@ -9,15 +9,11 @@ targets:
       commitMessageFormat: >
         release(${projectName}): ${version}
       postTargets:
-        - cache:copy-assets-to-dist
         - cache:publish-npm
         - cache:publish-github
-  copy-assets-to-dist:
-    options:
-      cwd: packages/cache
   publish-npm:
     options:
-      distFolderPath: packages/cache/dist
+      distFolderPath: packages/cache
   publish-github:
     options:
       tag: ${tag}

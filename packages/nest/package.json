@@ -36,13 +36,13 @@
     "url": "https://github.com/seedcompany/libs/issues"
   },
   "files": [
-    "*"
+    "dist"
   ],
   "type": "module",
   "exports": {
     ".": {
-      "types": "./index.d.ts",
-      "default": "./index.js"
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     }
   }
 }

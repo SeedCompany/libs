@@ -9,15 +9,11 @@ targets:
       commitMessageFormat: >
         release(${projectName}): ${version}
       postTargets:
-        - nest:copy-assets-to-dist
         - nest:publish-npm
         - nest:publish-github
-  copy-assets-to-dist:
-    options:
-      cwd: packages/nest
   publish-npm:
     options:
-      distFolderPath: packages/nest/dist
+      distFolderPath: packages/nest
   publish-github:
     options:
       tag: ${tag}

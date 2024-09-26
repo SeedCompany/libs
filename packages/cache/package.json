@@ -61,17 +61,17 @@
     "url": "https://github.com/seedcompany/libs/issues"
   },
   "files": [
-    "*"
+    "dist"
   ],
   "type": "module",
   "exports": {
     ".": {
-      "types": "./index.d.ts",
-      "default": "./index.js"
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     },
     "./stores/*": {
-      "types": "./stores/*.d.ts",
-      "default": "./stores/*.js"
+      "types": "./dist/stores/*.d.ts",
+      "default": "./dist/stores/*.js"
     }
   }
 }

@@ -49,17 +49,17 @@
     "url": "https://github.com/seedcompany/libs/issues"
   },
   "files": [
-    "*"
+    "dist"
   ],
   "type": "module",
   "exports": {
     ".": {
-      "types": "./index.d.ts",
-      "default": "./index.js"
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     },
     "./templates": {
-      "types": "./templates/index.d.ts",
-      "default": "./templates/index.js"
+      "types": "./dist/templates/index.d.ts",
+      "default": "./dist/templates/index.js"
     }
   }
 }
