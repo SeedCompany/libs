@@ -54,7 +54,7 @@
     }
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=20"
   },
   "workspaces": [
     "packages/*",
@@ -65,5 +65,5 @@
     "url": "ssh://git@github.com/SeedCompany/libs.git",
     "directory": "."
   },
-  "packageManager": "yarn@4.1.1"
+  "packageManager": "yarn@4.5.0"
 }
