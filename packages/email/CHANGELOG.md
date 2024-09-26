@@ -2,6 +2,22 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.0.0](https://github.com/SeedCompany/libs/compare/email-3.3.3...email-4.0.0) (2024-09-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* **email:** ESM only & drop node 16-19
+
+### Features
+
+* **email:** bump deps ([3aef2de](https://github.com/SeedCompany/libs/commit/3aef2ded4198823112ce3c6cbf787db3f1297c38))
+
+
+### Miscellaneous Chores
+
+* **email:** esm only & node 20 ([0da1948](https://github.com/SeedCompany/libs/commit/0da19485ee4c8d7a80732254ac42c52a55db1c2b))
+
 ## [3.3.3](https://github.com/SeedCompany/libs/compare/email-3.3.2...email-3.3.3) (2024-04-18)
 
 
