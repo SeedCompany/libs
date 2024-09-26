@@ -10,7 +10,9 @@
     "@nestjs/common": "^10",
     "@nestjs/core": "^10",
     "@nestjs/graphql": "^12",
-    "@seedcompany/common": ">0.3 <1"
+    "@seedcompany/common": ">0.3 <1",
+    "change-case": "^5.4.4",
+    "title-case": "^4.3.1"
   },
   "peerDependencies": {
     "@nestjs/common": "^10",
