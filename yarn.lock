@@ -4071,6 +4071,8 @@ __metadata:
     reflect-metadata: "npm:^0.1.12"
     rxjs: "npm:^7.8.1"
     title-case: "npm:^4.3.1"
+    type-fest: "npm:^4.26.1"
+    uuid: "npm:^11.0.0-0"
   peerDependencies:
     "@nestjs/common": ^10
     "@nestjs/core": ^10
@@ -15124,6 +15126,15 @@ __metadata:
   bin:
     uuid: dist/bin/uuid
   checksum: 10c0/1607dd32ac7fc22f2d8f77051e6a64845c9bce5cd3dd8aa0070c074ec73e666a1f63c7b4e0f4bf2bc8b9d59dc85a15e17807446d9d2b17c8485fbc2147b27f9b
+  languageName: node
+  linkType: hard
+
+"uuid@npm:^11.0.0-0":
+  version: 11.0.0-0
+  resolution: "uuid@npm:11.0.0-0"
+  bin:
+    uuid: dist/esm/bin/uuid
+  checksum: 10c0/04415a6b32b82bfcacf1dabc084ae0c64beea9700dfb716bdea4b9f32a2f247f316bd7ec6619813b37fbb00685eeb76efef391d610091413e3a1d53fa13de570
   languageName: node
   linkType: hard
 
