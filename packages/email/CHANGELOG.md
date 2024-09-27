@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.0.1](https://github.com/SeedCompany/libs/compare/email-4.0.0...email-4.0.1) (2024-09-27)
+
+
+### Bug Fixes
+
+* **email:** render import ([c30e5a0](https://github.com/SeedCompany/libs/commit/c30e5a0036939e10a0f2965945f42e85b6b837e6))
+
 ## [4.0.0](https://github.com/SeedCompany/libs/compare/email-3.3.3...email-4.0.0) (2024-09-26)
 
 
