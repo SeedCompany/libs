@@ -1,5 +1,5 @@
 import { SendEmailCommand, SESv2Client as SES } from '@aws-sdk/client-sesv2';
-import { render } from '@faire/mjml-react/utils/render';
+import { render } from '@faire/mjml-react/utils/render.js';
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import { promises as fs } from 'fs';
 import { htmlToText } from 'html-to-text';
