@@ -12,7 +12,9 @@
     "@nestjs/graphql": "^12",
     "@seedcompany/common": ">0.3 <1",
     "change-case": "^5.4.4",
-    "title-case": "^4.3.1"
+    "title-case": "^4.3.1",
+    "type-fest": "^4.26.1",
+    "uuid": "^11.0.0-0"
   },
   "peerDependencies": {
     "@nestjs/common": "^10",
@@ -23,7 +25,7 @@
   "scripts": {
     "build": "tsup",
     "typecheck": "tsc",
-    "test": "jest --passWithNoTests"
+    "test": "jest"
   },
   "devDependencies": {
     "@nestjs/testing": "^10",
