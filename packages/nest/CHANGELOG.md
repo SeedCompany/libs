@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.1.1](https://github.com/SeedCompany/libs/compare/nest-1.1.0...nest-1.1.1) (2024-09-28)
+
+
+### Bug Fixes
+
+* **nest:** remove duplicate storage of method decorator values ([06d9bd5](https://github.com/SeedCompany/libs/commit/06d9bd569915f317db1f1d000f09bf7c3fade562))
+
 ## [1.1.0](https://github.com/SeedCompany/libs/compare/nest-1.0.0...nest-1.1.0) (2024-09-27)
 
 
