@@ -169,14 +169,14 @@ export const createMetadataDecorator = <
         return val;
       }
 
-      // MethodDecorator / PropertyDecorator
       if (property) {
+        // PropertyDecorator
         let val = getMetadata(id, target, property);
         if (val !== undefined) {
           return val;
         }
-        // Fall back to descriptor
-        // aka: get(new Class().method)
+
+        // MethodDecorator
         const descriptor = Object.getOwnPropertyDescriptor(
           target.prototype,
           property,
@@ -267,10 +267,6 @@ export const createMetadataDecorator = <
             type: 'method',
           });
         }
-        // Allow access via: get(Class, 'method')
-        defineMetadata(id, next, staticCls, property!);
-        // Allow access via: get(new Class().method)
-        // NestJS does this
         defineMetadata(id, next, descriptor.value);
         return descriptor;
       }
