@@ -4,5 +4,5 @@ export * from './data-loader.guard';
 export * from './data-loader.strategy';
 export * from './data-loader.type';
 export * from './data-loader-options.type';
-export * from './loader.decorator';
+export { Loader } from './loader.decorator';
 export { lifetimeIdFromExecutionContext } from './lifetime-id-from-execution-context';

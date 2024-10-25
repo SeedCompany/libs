@@ -1,3 +1,4 @@
+import { ExecutionContext } from '@nestjs/common';
 import type DataLoaderLib from 'dataloader';
 import type { DataLoaderStrategy } from './data-loader.strategy';
 
@@ -20,6 +21,8 @@ export interface DataLoaderOptions<T, Key, CachedKey = Key>
     cacheKey: CachedKey;
     typeName: string;
   }) => Error;
+
+  getLifetimeId?: (context: ExecutionContext) => object;
 }
 
 /**

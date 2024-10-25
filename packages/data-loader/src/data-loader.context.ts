@@ -1,8 +1,10 @@
-import { ExecutionContext, Injectable, Type } from '@nestjs/common';
+import { ExecutionContext, Inject, Injectable, Type } from '@nestjs/common';
 import { ContextId, ContextIdFactory } from '@nestjs/core';
 import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-host.js';
 import { cacheable, cached } from '@seedcompany/common';
+import type { DataLoaderOptions } from './data-loader-options.type';
 import { DataLoaderFactory } from './data-loader.factory';
+import { MODULE_OPTIONS_TOKEN } from './data-loader.module-builder';
 import { DataLoaderStrategy } from './data-loader.strategy';
 import { DataLoader } from './data-loader.type';
 import { lifetimeIdFromExecutionContext } from './lifetime-id-from-execution-context';
@@ -20,7 +22,19 @@ export interface LoaderContextType {
 
 @Injectable()
 export class DataLoaderContext {
-  constructor(private readonly factory: DataLoaderFactory) {}
+  private readonly getLifetimeId: DataLoaderOptions<
+    any,
+    any
+  >['getLifetimeId'] & {};
+
+  constructor(
+    private readonly factory: DataLoaderFactory,
+    @Inject(MODULE_OPTIONS_TOKEN)
+    private readonly options: DataLoaderOptions<any, any>,
+  ) {
+    this.getLifetimeId =
+      this.options.getLifetimeId ?? lifetimeIdFromExecutionContext;
+  }
 
   /**
    * Grab a data loader instance for the given type and context.
@@ -31,7 +45,7 @@ export class DataLoaderContext {
   ) {
     const lifetimeId =
       context instanceof ExecutionContextHost
-        ? lifetimeIdFromExecutionContext(context)
+        ? this.getLifetimeId(context)
         : context;
     return await this.forLifetime(lifetimeId).getLoader(type);
   }
@@ -40,7 +54,7 @@ export class DataLoaderContext {
    * Returns (and creates if needed) a loader context for this execution context.
    */
   attachToExecutionContext(context: ExecutionContext): LoaderContextType {
-    return this.forLifetime(lifetimeIdFromExecutionContext(context));
+    return this.forLifetime(this.getLifetimeId(context));
   }
 
   /**
@@ -71,10 +85,6 @@ export class DataLoaderContext {
     return loaderContext;
   }
 }
-
-export const getLoaderContextFromExecutionContext = (
-  context: ExecutionContext,
-) => getLoaderContextFromLifetimeId(lifetimeIdFromExecutionContext(context));
 
 export const getLoaderContextFromLifetimeId = (lifetimeId: object) => {
   const context = loaderContexts.get(lifetimeId);
