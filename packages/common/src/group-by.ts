@@ -18,7 +18,8 @@ export const groupToMapBy = <K, V>(
 ): ReadonlyMap<K, readonly V[]> =>
   [...items].reduce((map, item) => {
     const groupKey = by(item);
-    const prev = map.get(groupKey) ?? [];
+    let prev = map.get(groupKey);
+    prev = prev ? prev : [];
     map.set(groupKey, [...prev, item]);
     return map;
   }, new Map<K, V[]>());

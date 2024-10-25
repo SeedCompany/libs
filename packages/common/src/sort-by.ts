@@ -13,7 +13,9 @@ export function sortBy<T>(
   list: Iterable<T>,
   criteria?: SortCriteria<T>,
 ): readonly T[] {
-  return [...list].sort(cmpBy(criteria ?? ((x: T) => x as SortableValue)));
+  return [...list].sort(
+    cmpBy(criteria ? criteria : (x: T) => x as SortableValue),
+  );
 }
 
 export const cmpBy = <T>(criteria: SortCriteria<T>) => {
