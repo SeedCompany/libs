@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals';
-import { CachedByArg } from './CachedByArg';
+import { CachedByArg } from './CachedByArg.js';
 
 class TestCacheByArg {
   i = 0;

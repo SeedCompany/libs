@@ -2,7 +2,7 @@
 // noinspection BadExpressionStatementJS
 
 import { expect, test } from '@jest/globals';
-import { entries } from './entries';
+import { entries } from './entries.js';
 
 test('entries works', () => {
   const colors = {

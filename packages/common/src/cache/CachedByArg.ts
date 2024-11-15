@@ -1,6 +1,6 @@
-import { cacheable } from './cachable';
-import { CacheableMap } from './CachableMap';
-import { cached } from './cached';
+import { cacheable } from './cachable.js';
+import { type CacheableMap } from './CachableMap.js';
+import { cached } from './cached.js';
 
 /**
  * A method decorator that will cache return values based on the input argument.

@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals';
-import { cacheable } from './cachable';
+import { cacheable } from './cachable.js';
 
 test('cachable', () => {
   const cache = new Map<string, string>();

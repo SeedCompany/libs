@@ -1,6 +1,6 @@
 import { expect, test } from '@jest/globals';
-import { entries } from './entries';
-import { mapOf } from './map-of';
+import { entries } from './entries.js';
+import { mapOf } from './map-of.js';
 
 test('mapOf works', () => {
   const map = mapOf({

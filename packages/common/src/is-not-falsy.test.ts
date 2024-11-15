@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals';
-import { isNotFalsy, isNotNil } from './is-not-falsy';
+import { isNotFalsy, isNotNil } from './is-not-falsy.js';
 
 test('isNotFalsy', () => {
   const list = ['red', false, null, undefined, 0, 'blue', 0n, NaN] as const;

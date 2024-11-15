@@ -1,4 +1,4 @@
-import { asyncIteratorToArray } from './iterator';
+import { asyncIteratorToArray } from './iterator.js';
 
 /**
  * Like {@link Promise.all} but with a limit on the number of promises executing at once.

@@ -1,4 +1,4 @@
-import { isNotFalsy } from './is-not-falsy';
+import { isNotFalsy } from './is-not-falsy.js';
 
 /**
  * Converts a (simple) CSV string into a cleaned list.

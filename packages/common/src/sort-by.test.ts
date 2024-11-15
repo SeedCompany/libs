@@ -1,6 +1,6 @@
 import { describe, expect, jest, test } from '@jest/globals';
 import { DateTime } from 'luxon';
-import { cmpBy, sortBy } from './sort-by';
+import { cmpBy, sortBy } from './sort-by.js';
 
 describe('sortBy', () => {
   describe('simple primitives', () => {

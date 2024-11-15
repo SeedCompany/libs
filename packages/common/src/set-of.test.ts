@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals';
-import { setOf } from './set-of';
+import { setOf } from './set-of.js';
 
 test('setOf works', () => {
   const colors = setOf(['red', 'green', 'blue']);

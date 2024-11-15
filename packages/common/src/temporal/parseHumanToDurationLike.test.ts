@@ -1,6 +1,6 @@
 import { expect, test } from '@jest/globals';
-import { DurationLikeObject } from 'luxon';
-import { parseHumanToDurationLike } from './parseHumanToDurationLike';
+import { type DurationLikeObject } from 'luxon';
+import { parseHumanToDurationLike } from './parseHumanToDurationLike.js';
 
 const full = {
   years: 1,

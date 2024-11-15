@@ -1,4 +1,4 @@
-import { entries } from './entries';
+import { entries } from './entries.js';
 
 /**
  * An easier way to create an immutable map.

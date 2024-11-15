@@ -1,5 +1,5 @@
-import { entries } from './entries';
-import { mapOf } from './map-of';
+import { entries } from './entries.js';
+import { mapOf } from './map-of.js';
 
 const SKIP = Symbol.for('SKIP');
 type SKIP = typeof SKIP;
