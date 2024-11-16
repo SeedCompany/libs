@@ -24,10 +24,12 @@ test('entries works', () => {
       hex === '#0000ff';
     }
   }
-  // @ts-expect-error the array should be declared as readonly
-  fromRecord.push(undefined);
-  // @ts-expect-error the tuple should be declared as readonly
-  fromRecord[0].push(undefined);
+  function _typeCheckOnly() {
+    // @ts-expect-error the array should be declared as readonly
+    fromRecord.push(undefined);
+    // @ts-expect-error the tuple should be declared as readonly
+    fromRecord[0].push(undefined);
+  }
 
   // Map input works
   const colorMap = new Map(Object.entries(colors));
