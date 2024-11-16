@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.13.4](https://github.com/SeedCompany/libs/compare/common-0.13.3...common-0.13.4) (2024-11-16)
+
+
+### Bug Fixes
+
+* **common:** strict esm/type imports ([d87e3da](https://github.com/SeedCompany/libs/commit/d87e3da98465dddd86e7de34656306bf5a2f9743))
+
 ## [0.13.3](https://github.com/SeedCompany/libs/compare/common-0.13.2...common-0.13.3) (2024-10-25)
 
 
