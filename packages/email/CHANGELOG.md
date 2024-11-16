@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.0.2](https://github.com/SeedCompany/libs/compare/email-4.0.1...email-4.0.2) (2024-11-16)
+
+
+### Bug Fixes
+
+* **email:** strict esm/type imports ([ed7ec9d](https://github.com/SeedCompany/libs/commit/ed7ec9db1640b791edb626a4b41f5e00ae7ee952))
+
 ## [4.0.1](https://github.com/SeedCompany/libs/compare/email-4.0.0...email-4.0.1) (2024-09-27)
 
 
