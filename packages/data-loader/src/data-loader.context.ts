@@ -1,11 +1,11 @@
-import { ExecutionContext, Injectable, Type } from '@nestjs/common';
-import { ContextId, ContextIdFactory } from '@nestjs/core';
+import { type ExecutionContext, Injectable, type Type } from '@nestjs/common';
+import { type ContextId, ContextIdFactory } from '@nestjs/core';
 import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-host.js';
 import { cacheable, cached } from '@seedcompany/common';
-import { DataLoaderFactory } from './data-loader.factory';
-import { DataLoaderStrategy } from './data-loader.strategy';
-import { DataLoader } from './data-loader.type';
-import { lifetimeIdFromExecutionContext } from './lifetime-id-from-execution-context';
+import { DataLoaderFactory } from './data-loader.factory.js';
+import type { DataLoaderStrategy } from './data-loader.strategy.js';
+import type { DataLoader } from './data-loader.type.js';
+import { lifetimeIdFromExecutionContext } from './lifetime-id-from-execution-context.js';
 
 export interface LoaderContextType {
   contextId: ContextId;

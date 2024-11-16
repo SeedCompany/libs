@@ -1,5 +1,5 @@
-import { ExecutionContext } from '@nestjs/common';
-import { GqlContextType, GqlExecutionContext } from '@nestjs/graphql';
+import { type ExecutionContext } from '@nestjs/common';
+import { type GqlContextType, GqlExecutionContext } from '@nestjs/graphql';
 
 /**
  * Determines which object contained in the execution context should be used as the lifetime identity.

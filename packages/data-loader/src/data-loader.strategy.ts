@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/method-signature-style */
-import { DataLoaderOptions } from './data-loader-options.type';
-import { LoaderContextType } from './data-loader.context';
+import type { DataLoaderOptions } from './data-loader-options.type.js';
+import type { LoaderContextType } from './data-loader.context.js';
 
 export interface DataLoaderStrategy<Item, Key, CachedKey = Key> {
   loadMany(

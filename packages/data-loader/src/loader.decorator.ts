@@ -1,6 +1,10 @@
-import { createParamDecorator, ExecutionContext, Type } from '@nestjs/common';
-import { getLoaderContextFromExecutionContext } from './data-loader.context';
-import { DataLoaderStrategy } from './data-loader.strategy';
+import {
+  createParamDecorator,
+  type ExecutionContext,
+  type Type,
+} from '@nestjs/common';
+import { getLoaderContextFromExecutionContext } from './data-loader.context.js';
+import type { DataLoaderStrategy } from './data-loader.strategy.js';
 
 type LoaderType = Type<DataLoaderStrategy<any, any>>;
 type LoaderTypeOrFn = LoaderType | (() => LoaderType);

@@ -1,11 +1,11 @@
-import { Inject, Injectable, Type } from '@nestjs/common';
-import { ContextId, ModuleRef } from '@nestjs/core';
+import { Inject, Injectable, type Type } from '@nestjs/common';
+import { type ContextId, ModuleRef } from '@nestjs/core';
 import DataLoaderLib from 'dataloader';
-import type { DataLoaderOptions } from './data-loader-options.type';
-import type { LoaderContextType } from './data-loader.context';
-import { MODULE_OPTIONS_TOKEN } from './data-loader.module-builder';
-import { DataLoaderStrategy } from './data-loader.strategy';
-import { DataLoader } from './data-loader.type';
+import type { DataLoaderOptions } from './data-loader-options.type.js';
+import type { LoaderContextType } from './data-loader.context.js';
+import { MODULE_OPTIONS_TOKEN } from './data-loader.module-builder.js';
+import type { DataLoaderStrategy } from './data-loader.strategy.js';
+import type { DataLoader } from './data-loader.type.js';
 
 type Resolvable = 'cacheKeyFn' | 'name' | 'typeName' | 'createError';
 

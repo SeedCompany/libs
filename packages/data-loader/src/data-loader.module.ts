@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
-import { DataLoaderContext } from './data-loader.context';
-import { DataLoaderFactory } from './data-loader.factory';
-import { DataLoaderGuard } from './data-loader.guard';
-import { ConfigurableModuleClass } from './data-loader.module-builder';
+import { DataLoaderContext } from './data-loader.context.js';
+import { DataLoaderFactory } from './data-loader.factory.js';
+import { DataLoaderGuard } from './data-loader.guard.js';
+import { ConfigurableModuleClass } from './data-loader.module-builder.js';
 
 @Module({
   providers: [
