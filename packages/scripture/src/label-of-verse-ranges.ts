@@ -1,8 +1,8 @@
-import { Verse, VerseLike } from './books';
-import { labelOfVerseRange } from './label-of-verse-range';
-import { mergeVerseRanges } from './merge-to-minimal-set';
-import { mapRange, Range } from './scripture-range';
-import { ScriptureReference } from './scripture-reference.type';
+import { Verse, type VerseLike } from './books.js';
+import { labelOfVerseRange } from './label-of-verse-range.js';
+import { mergeVerseRanges } from './merge-to-minimal-set.js';
+import { mapRange, type Range } from './scripture-range.js';
+import { type ScriptureReference } from './scripture-reference.type.js';
 
 export const labelOfVerseRanges = (
   verseRanges: ReadonlyArray<Range<VerseLike>>,

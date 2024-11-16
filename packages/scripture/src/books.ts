@@ -1,6 +1,6 @@
-import { BookList, BookLookupMap } from './raw-book-data';
-import { Range } from './scripture-range';
-import { ScriptureReference } from './scripture-reference.type';
+import { BookList, BookLookupMap } from './raw-book-data.js';
+import type { Range } from './scripture-range.js';
+import type { ScriptureReference } from './scripture-reference.type.js';
 
 const inspect = Symbol.for('nodejs.util.inspect.custom');
 
