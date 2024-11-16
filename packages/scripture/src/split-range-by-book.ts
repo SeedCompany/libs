@@ -1,5 +1,5 @@
-import { Verse } from './books';
-import { Range } from './scripture-range';
+import { Verse } from './books.js';
+import type { Range } from './scripture-range.js';
 
 export const splitRangeByBook = (
   range: Range<Verse>,

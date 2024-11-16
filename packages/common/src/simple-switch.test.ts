@@ -1,5 +1,5 @@
-import { describe, expect, test } from '@jest/globals';
-import { simpleSwitch } from './simple-switch';
+import { describe, expect, test } from 'vitest';
+import { simpleSwitch } from './simple-switch.js';
 
 describe('simpleSwitch', () => {
   const options = {

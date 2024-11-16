@@ -1,5 +1,5 @@
-import { expect, test } from '@jest/globals';
 import { TSESLint } from '@typescript-eslint/utils';
+import { expect, test } from 'vitest';
 import * as configs from '../src/configs';
 
 test.each(Object.entries(configs))('%s', async (name, config) => {

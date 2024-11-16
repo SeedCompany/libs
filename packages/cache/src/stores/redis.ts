@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import Redis from 'ioredis';
-import { CacheStore, CacheStoreItemOptions } from './store.interface';
+import { CacheStore, type CacheStoreItemOptions } from './store.interface.js';
 
 @Injectable()
 export class RedisStore extends CacheStore {
-  constructor(private readonly redis: Redis) {
+  constructor(private readonly redis: Redis.default) {
     super();
   }
 

@@ -1,4 +1,4 @@
-import { INestApplicationContext } from '@nestjs/common';
+import { type INestApplicationContext } from '@nestjs/common';
 import type { NestApplicationContextOptions } from '@nestjs/common/interfaces/nest-application-context-options.interface.js';
 import { clc } from '@nestjs/common/utils/cli-colors.util.js';
 import { NestFactory } from '@nestjs/core';

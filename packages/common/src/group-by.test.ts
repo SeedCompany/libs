@@ -1,5 +1,5 @@
-import { describe, expect, test } from '@jest/globals';
-import { groupBy, groupToMapBy } from './group-by';
+import { describe, expect, test } from 'vitest';
+import { groupBy, groupToMapBy } from './group-by.js';
 
 const characters = {
   albus: { name: 'Albus Dumbledore', age: 115 },

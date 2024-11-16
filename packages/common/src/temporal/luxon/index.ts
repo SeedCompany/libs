@@ -1,1 +1,1 @@
-export * from './duration';
+export * from './duration.js';

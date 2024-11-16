@@ -1,5 +1,5 @@
-import { CacheableMap } from './CachableMap';
-import { cached } from './cached';
+import { type CacheableMap } from './CachableMap.js';
+import { cached } from './cached.js';
 
 export interface Cacheable<K, V> {
   (key: K): V;

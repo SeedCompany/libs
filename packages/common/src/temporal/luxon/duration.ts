@@ -1,6 +1,6 @@
 import { delayFnImpl, parseHumanToDurationLike } from '@seedcompany/common';
-import { Duration, DurationLike } from 'luxon';
-import { Writable } from 'type-fest';
+import { Duration, type DurationLike } from 'luxon';
+import type { Writable } from 'type-fest';
 import { inspect } from 'util';
 
 /**
@@ -13,7 +13,7 @@ import { inspect } from 'util';
  */
 export type DurationIn = string | DurationLike;
 
-declare module 'luxon/src/duration' {
+declare module 'luxon/src/duration.js' {
   // eslint-disable-next-line @typescript-eslint/no-namespace -- augmenting static class method
   namespace Duration {
     /**

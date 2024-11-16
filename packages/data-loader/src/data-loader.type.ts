@@ -1,5 +1,5 @@
 import DataLoaderLib from 'dataloader';
-import { DataLoaderStrategy } from './data-loader.strategy';
+import type { DataLoaderStrategy } from './data-loader.strategy.js';
 
 /**
  * An actual DataLoader at runtime.

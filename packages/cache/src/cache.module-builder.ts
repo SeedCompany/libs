@@ -1,5 +1,5 @@
 import { ConfigurableModuleBuilder } from '@nestjs/common';
-import { CacheStore } from './stores';
+import { CacheStore } from './stores/index.js';
 
 export interface CacheModuleOptions {
   store: CacheStore;

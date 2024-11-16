@@ -1,5 +1,5 @@
 import type DataLoaderLib from 'dataloader';
-import type { DataLoaderStrategy } from './data-loader.strategy';
+import type { DataLoaderStrategy } from './data-loader.strategy.js';
 
 export interface DataLoaderOptions<T, Key, CachedKey = Key>
   extends DataLoaderLib.Options<Key, T, CachedKey> {

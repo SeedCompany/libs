@@ -1,5 +1,9 @@
-import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
-import { DataLoaderContext } from './data-loader.context';
+import {
+  type CanActivate,
+  type ExecutionContext,
+  Injectable,
+} from '@nestjs/common';
+import { DataLoaderContext } from './data-loader.context.js';
 
 /**
  * This is how the DataLoaderContext is created for each execution context / request.

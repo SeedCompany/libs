@@ -1,5 +1,5 @@
 import type { MessageAttachment } from 'emailjs';
-import { createContext, ReactNode, useContext } from 'react';
+import { createContext, type ReactNode, useContext } from 'react';
 
 export interface AttachmentProps
   extends Partial<Pick<MessageAttachment, 'charset' | 'method'>> {

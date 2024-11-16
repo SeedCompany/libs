@@ -1,14 +1,14 @@
 import { Injectable, Optional } from '@nestjs/common';
 import type { DurationIn } from '@seedcompany/common/temporal/luxon';
 import { Duration } from 'luxon';
-import { Promisable } from 'type-fest';
-import { CacheAdapters } from './adapters/adapters.facade';
-import { resolveOptions } from './resolve-options';
-import { NamespaceStore } from './stores/namespace';
+import type { Promisable } from 'type-fest';
+import { CacheAdapters } from './adapters/adapters.facade.js';
+import { resolveOptions } from './resolve-options.js';
+import { NamespaceStore } from './stores/namespace.js';
 import {
   CacheStore,
   type CacheStoreItemOptions as StoreItemOptions,
-} from './stores/store.interface';
+} from './stores/store.interface.js';
 import '@seedcompany/common/temporal/luxon';
 
 @Injectable()

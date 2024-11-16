@@ -1,5 +1,5 @@
 import { LRUCache } from 'lru-cache';
-import { CacheStore, CacheStoreItemOptions } from './store.interface';
+import { CacheStore, type CacheStoreItemOptions } from './store.interface.js';
 
 export class LruStore extends CacheStore {
   private readonly cache: LRUCache<string, any>;

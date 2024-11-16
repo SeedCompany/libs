@@ -1,13 +1,13 @@
 import { SESv2Client as SES } from '@aws-sdk/client-sesv2';
-import { DynamicModule, Module, Type } from '@nestjs/common';
+import { type DynamicModule, Module, type Type } from '@nestjs/common';
 import {
   EMAIL_MODULE_OPTIONS,
-  EmailModuleOptions,
-  EmailOptions,
+  type EmailModuleOptions,
+  type EmailOptions,
   SES_TOKEN,
-} from './email.options';
-import { EmailService } from './email.service';
-import { MaybeAsync } from './utils';
+} from './email.options.js';
+import { EmailService } from './email.service.js';
+import type { MaybeAsync } from './utils.js';
 
 export interface EmailOptionsFactory {
   createEmailOptions: () => MaybeAsync<EmailModuleOptions>;

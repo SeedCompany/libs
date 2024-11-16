@@ -20,7 +20,7 @@
   "scripts": {
     "build": "tsup",
     "typecheck": "tsc",
-    "test": "node --experimental-vm-modules ../../node_modules/.bin/jest"
+    "test": "node --experimental-vm-modules ../../node_modules/.bin/vitest"
   },
   "repository": {
     "type": "git",

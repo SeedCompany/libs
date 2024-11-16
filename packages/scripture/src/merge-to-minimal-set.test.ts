@@ -1,6 +1,6 @@
-import { describe, expect, it } from '@jest/globals';
-import { labelOfVerseRanges } from './label-of-verse-ranges';
-import { parseScripture } from './parser';
+import { describe, expect, it } from 'vitest';
+import { labelOfVerseRanges } from './label-of-verse-ranges.js';
+import { parseScripture } from './parser.js';
 
 describe('mergeVerseRanges', () => {
   it.each([

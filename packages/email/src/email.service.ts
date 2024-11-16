@@ -4,18 +4,18 @@ import { Inject, Injectable, Logger } from '@nestjs/common';
 import { promises as fs } from 'fs';
 import { htmlToText } from 'html-to-text';
 import openUrl from 'open';
-import { createElement, ReactElement } from 'react';
+import { createElement, type ReactElement } from 'react';
 import { temporaryFile as tempFile } from 'tempy';
 import {
   EMAIL_MODULE_OPTIONS,
   type EmailOptions,
   SES_TOKEN,
-} from './email.options';
-import { EmailMessage } from './message';
-import { AttachmentCollector } from './templates/attachment';
-import { RenderForText } from './templates/text-rendering';
-import { SubjectCollector } from './templates/title';
-import { Many, many, sleep } from './utils';
+} from './email.options.js';
+import { EmailMessage } from './message.js';
+import { AttachmentCollector } from './templates/attachment.js';
+import { RenderForText } from './templates/text-rendering.js';
+import { SubjectCollector } from './templates/title.js';
+import { type Many, many, sleep } from './utils.js';
 
 @Injectable()
 export class EmailService {

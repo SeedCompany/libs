@@ -1,3 +1,3 @@
-export * from './email.options';
-export * from './email.service';
-export * from './email.module';
+export * from './email.options.js';
+export * from './email.service.js';
+export * from './email.module.js';

@@ -82,6 +82,6 @@ namedInputs: # aka "sets of files"
     - default
     - '!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)'
     - '!{projectRoot}/tsconfig.spec.json'
-    - '!{projectRoot}/jest.config.[jt]s'
+    - '!{projectRoot}/vitest.config.ts'
     - '!{projectRoot}/.eslintrc.*'
     - '!{projectRoot}/CHANGELOG.md'

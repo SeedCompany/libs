@@ -25,7 +25,7 @@
   "scripts": {
     "build": "tsup",
     "typecheck": "tsc",
-    "test": "jest"
+    "test": "vitest"
   },
   "devDependencies": {
     "@nestjs/testing": "^10",

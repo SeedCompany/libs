@@ -1,10 +1,15 @@
-import { afterAll, beforeAll, describe, expect, it } from '@jest/globals';
 import { ApolloDriver } from '@nestjs/apollo';
-import { INestApplication, Injectable, Scope } from '@nestjs/common';
+import { type INestApplication, Injectable, Scope } from '@nestjs/common';
 import { Args, GraphQLModule, Query, Resolver } from '@nestjs/graphql';
 import { Test } from '@nestjs/testing';
 import request from 'supertest';
-import { DataLoaderModule, DataLoaderStrategy, Loader, LoaderOf } from '../src';
+import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import {
+  DataLoaderModule,
+  type DataLoaderStrategy,
+  Loader,
+  type LoaderOf,
+} from '../src/index.js';
 
 describe('data-loader', () => {
   let app: INestApplication;

@@ -1,5 +1,5 @@
-import { Message, MessageHeaders } from 'emailjs';
-import { many } from './utils';
+import { Message, type MessageHeaders } from 'emailjs';
+import { many } from './utils.js';
 
 export class EmailMessage extends Message {
   readonly templateName: string;

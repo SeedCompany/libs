@@ -1,4 +1,4 @@
-import { WidenLiteral } from './types';
+import { type WidenLiteral } from './types.js';
 
 /**
  * A type helper to check if a set has a key

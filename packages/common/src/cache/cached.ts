@@ -1,4 +1,4 @@
-import { CacheableMap } from './CachableMap';
+import { type CacheableMap } from './CachableMap.js';
 
 /**
  * A helper to retrieve a value from cache or run calculate function to store for next time.

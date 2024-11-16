@@ -1,6 +1,6 @@
-import { Book, Verse } from './books';
-import { mergeVerseRanges } from './merge-to-minimal-set';
-import { Range } from './scripture-range';
+import { Book, Verse } from './books.js';
+import { mergeVerseRanges } from './merge-to-minimal-set.js';
+import type { Range } from './scripture-range.js';
 
 export const tryParseScripture = (input: string | null | undefined) => {
   if (!input?.trim()) {

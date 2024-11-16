@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import type Keyv from 'keyv';
-import { CacheStore, CacheStoreItemOptions } from './store.interface';
+import { CacheStore, type CacheStoreItemOptions } from './store.interface.js';
 
 @Injectable()
 export class KeyvStore extends CacheStore {

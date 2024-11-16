@@ -1,6 +1,6 @@
-import { describe, expect, it } from '@jest/globals';
-import { parseScripture } from './parser';
-import { mapRange } from './scripture-range';
+import { describe, expect, it } from 'vitest';
+import { parseScripture } from './parser.js';
+import { mapRange } from './scripture-range.js';
 
 describe('parseScripture', () => {
   it.each([

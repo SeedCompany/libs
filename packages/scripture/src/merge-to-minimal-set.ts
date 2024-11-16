@@ -1,5 +1,5 @@
-import { Verse, VerseLike } from './books';
-import { mapRange, Range } from './scripture-range';
+import { Verse, type VerseLike } from './books.js';
+import { mapRange, type Range } from './scripture-range.js';
 
 /**
  * Merges verse ranges into an equivalent minimal set of verse ranges.

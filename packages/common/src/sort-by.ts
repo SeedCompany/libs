@@ -1,5 +1,5 @@
-import { many, Many } from './many';
-import { Nil } from './types';
+import { many, type Many } from './many.js';
+import { type Nil } from './types.js';
 
 export function sortBy<T extends SortableValue>(
   list: Iterable<T>,

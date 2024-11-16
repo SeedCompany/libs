@@ -27,7 +27,7 @@ jobs:
         run: yarn lint:check
 
       - name: Test
-        run: yarn test -- --reporters=github-actions
+        run: yarn test
 
   release:
     name: Release

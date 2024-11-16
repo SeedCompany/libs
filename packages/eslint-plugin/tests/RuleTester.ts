@@ -1,4 +1,3 @@
-import { afterAll } from '@jest/globals';
 import { clearCaches } from '@typescript-eslint/parser';
 import { ParserOptions } from '@typescript-eslint/types';
 import { ESLintUtils, TSESLint } from '@typescript-eslint/utils';
@@ -9,7 +8,8 @@ import {
   ValidTestCase,
 } from '@typescript-eslint/utils/dist/ts-eslint/RuleTester';
 import * as path from 'path';
-import { Writable as Mutable } from 'type-fest';
+import type { Writable as Mutable } from 'type-fest';
+import { afterAll } from 'vitest';
 
 export type InferInvalidTestCaseFromRule<
   TRuleModule extends TSESLint.RuleModule<any, any>,
@@ -146,7 +146,7 @@ export class RuleTester extends TSESLint.RuleTester {
 }
 
 export function getFixturesRootDir(): string {
-  return path.join(process.cwd(), 'tests/fixtures/');
+  return path.join(__dirname, 'fixtures/');
 }
 
 // make sure that the parser doesn't hold onto file handles between tests

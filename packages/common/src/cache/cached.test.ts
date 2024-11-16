@@ -1,5 +1,5 @@
-import { expect, test } from '@jest/globals';
-import { cached } from './cached';
+import { expect, test } from 'vitest';
+import { cached } from './cached.js';
 
 test('cached', () => {
   let i = 0;

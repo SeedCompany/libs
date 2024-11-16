@@ -1,1 +1,1 @@
-export * from './parseHumanToDurationLike';
+export * from './parseHumanToDurationLike.js';

@@ -1,6 +1,6 @@
-import { describe, expect, test } from '@jest/globals';
-import { mapOf } from './map-of';
-import { EntriesResult, mapEntries, mapKeys, mapValues } from './map-to';
+import { describe, expect, test } from 'vitest';
+import { mapOf } from './map-of.js';
+import { EntriesResult, mapEntries, mapKeys, mapValues } from './map-to.js';
 
 const colorList = ['red', 'blue', 'green'] as const;
 const colorRecord = {

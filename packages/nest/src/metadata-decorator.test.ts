@@ -1,8 +1,8 @@
 /* eslint @typescript-eslint/ban-ts-comment: ["error", minimumDescriptionLength: 0] */
-import { describe, expect, test } from '@jest/globals';
 import * as Nest from '@nestjs/common';
 import * as NestConstants from '@nestjs/common/constants.js';
-import { createMetadataDecorator } from './metadata-decorator';
+import { describe, expect, test } from 'vitest';
+import { createMetadataDecorator } from './metadata-decorator.js';
 
 test('TS: Get/Set based on configured types', () => {
   // Not executed to avoid affecting coverage.

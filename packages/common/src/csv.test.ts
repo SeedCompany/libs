@@ -1,5 +1,5 @@
-import { describe, expect, test } from '@jest/globals';
-import { cleanSplit, csv } from './csv';
+import { describe, expect, test } from 'vitest';
+import { cleanSplit, csv } from './csv.js';
 
 describe('csv', () => {
   test('simple & types', () => {

@@ -1,7 +1,7 @@
-import { describe, it } from '@jest/globals';
 import { Test } from '@nestjs/testing';
-import { EmailModule } from './email.module';
-import { EmailService } from './email.service';
+import { describe, it } from 'vitest';
+import { EmailModule } from './email.module.js';
+import { EmailService } from './email.service.js';
 
 describe('EmailModule', () => {
   it('should be creatable with fromRoot()', async () => {
