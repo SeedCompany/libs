@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.3](https://github.com/SeedCompany/libs/compare/scripture-0.3.2...scripture-0.3.3) (2024-11-16)
+
+
+### Bug Fixes
+
+* **scripture:** strict esm/type imports ([8247c5f](https://github.com/SeedCompany/libs/commit/8247c5f5c39193a6a200b105e43fdba83cb892ae))
+
 ## [0.3.2](https://github.com/SeedCompany/libs/compare/scripture-0.3.1...scripture-0.3.2) (2024-04-18)
 
 
