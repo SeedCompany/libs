@@ -8,7 +8,7 @@ import {
   ValidTestCase,
 } from '@typescript-eslint/utils/dist/ts-eslint/RuleTester';
 import * as path from 'path';
-import { Writable as Mutable } from 'type-fest';
+import type { Writable as Mutable } from 'type-fest';
 import { afterAll } from 'vitest';
 
 export type InferInvalidTestCaseFromRule<

@@ -1,6 +1,6 @@
 import { rules } from '@typescript-eslint/eslint-plugin';
 import { TSESLint, TSESTree } from '@typescript-eslint/utils';
-import { Writable } from 'type-fest';
+import type { Writable } from 'type-fest';
 
 const baseRule = rules['no-unused-vars'];
 
