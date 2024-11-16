@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.1.2](https://github.com/SeedCompany/libs/compare/nest-1.1.1...nest-1.1.2) (2024-11-16)
+
+
+### Bug Fixes
+
+* **nest:** strict esm/type imports ([1cecade](https://github.com/SeedCompany/libs/commit/1cecade196a3a9d56b9f00b09ab84c28996b639f))
+
 ## [1.1.1](https://github.com/SeedCompany/libs/compare/nest-1.1.0...nest-1.1.1) (2024-09-28)
 
 
