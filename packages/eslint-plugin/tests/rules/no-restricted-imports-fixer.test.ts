@@ -403,8 +403,8 @@ new RuleTester().run('@seedcompany/no-restricted-imports', rule, {
           pattern: '[a-z]*/macro',
           importNames: 'default',
           replacement: ({ path, localName }) => ({
-            path: `${path}2`,
-            importName: `${localName}2`,
+            path: `${String(path)}2`,
+            importName: `${String(localName)}2`,
           }),
         }),
       ],
