@@ -2,8 +2,8 @@ import type {
   KeyValueCache,
   KeyValueCacheSetOptions,
 } from '@apollo/utils.keyvaluecache';
-import { CacheService, ItemOptions } from '../cache.service';
-import { resolveOptions } from '../resolve-options';
+import { CacheService, type ItemOptions } from '../cache.service.js';
+import { resolveOptions } from '../resolve-options.js';
 
 /**
  * A drop-in adapter for Apollo Server's cache to use our CacheService.

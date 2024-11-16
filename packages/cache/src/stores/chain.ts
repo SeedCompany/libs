@@ -1,4 +1,4 @@
-import { CacheStore, CacheStoreItemOptions } from './store.interface';
+import { CacheStore, type CacheStoreItemOptions } from './store.interface.js';
 
 export class ChainStore extends CacheStore {
   constructor(readonly stores: readonly CacheStore[]) {

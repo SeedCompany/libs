@@ -1,7 +1,7 @@
-import { DurationIn } from '@seedcompany/common/temporal/luxon';
+import { type DurationIn } from '@seedcompany/common/temporal/luxon';
 import type { Store as KeyvStore } from 'keyv';
-import { CacheService, ItemOptions } from '../cache.service';
-import { resolveOptions } from '../resolve-options';
+import { CacheService, type ItemOptions } from '../cache.service.js';
+import { resolveOptions } from '../resolve-options.js';
 
 /**
  * A `keyv` store backed by our CacheService.

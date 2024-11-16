@@ -1,7 +1,10 @@
 import { Inject } from '@nestjs/common';
-import { Except } from 'type-fest';
-import { CacheableCalculationOptions, CacheService } from './cache.service';
-import { resolveOptions } from './resolve-options';
+import type { Except } from 'type-fest';
+import {
+  type CacheableCalculationOptions,
+  CacheService,
+} from './cache.service.js';
+import { resolveOptions } from './resolve-options.js';
 
 const CacheKey = Symbol('CacheService');
 

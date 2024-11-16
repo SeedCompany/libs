@@ -2,10 +2,10 @@ import type {
   CacheStoreSetOptions,
   CacheStore as NestCacheStore,
 } from '@nestjs/cache-manager';
-import { DurationIn } from '@seedcompany/common/temporal/luxon';
+import { type DurationIn } from '@seedcompany/common/temporal/luxon';
 import type { Store as CacheManagerStore } from 'cache-manager';
-import { CacheService, ItemOptions } from '../cache.service';
-import { resolveOptions } from '../resolve-options';
+import { CacheService, type ItemOptions } from '../cache.service.js';
+import { resolveOptions } from '../resolve-options.js';
 
 // noinspection SpellCheckingInspection
 

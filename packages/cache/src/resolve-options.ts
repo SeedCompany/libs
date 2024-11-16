@@ -1,6 +1,6 @@
 import { Duration } from 'luxon';
-import { ItemOptions } from './cache.service';
-import { CacheStoreItemOptions as StoreItemOptions } from './stores';
+import type { ItemOptions } from './cache.service.js';
+import type { CacheStoreItemOptions as StoreItemOptions } from './stores/store.interface.js';
 
 export function resolveOptions(options: ItemOptions): StoreItemOptions {
   const { ttl: rawTtl, ...rest } = options;
