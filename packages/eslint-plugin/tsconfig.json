@@ -1,5 +1,10 @@
 {
   "extends": "tsconfig/tsconfig.base.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "verbatimModuleSyntax": false
+  },
   "include": ["src", "tests"],
   "exclude": ["dist", "node_modules"]
 }

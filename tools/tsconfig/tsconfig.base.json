@@ -1,6 +1,9 @@
 {
   "extends": "@tsconfig/node-lts/tsconfig.json",
   "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "verbatimModuleSyntax": true,
     "strictPropertyInitialization": false,
     "noImplicitReturns": true,
     // We're not compiling with tsc

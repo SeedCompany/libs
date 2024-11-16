@@ -1,6 +1,7 @@
 {
   "extends": "tsconfig/tsconfig.base.json",
   "compilerOptions": {
+    "verbatimModuleSyntax": false,
     "allowJs": true,
     "checkJs": true
   }
