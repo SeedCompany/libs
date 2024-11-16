@@ -2,7 +2,7 @@ import { registerEnumType } from '@nestjs/graphql';
 import { cleanJoin, mapKeys, nonEnumerable } from '@seedcompany/common';
 import { noCase, splitSeparateNumbers } from 'change-case';
 import { titleCase } from 'title-case';
-import { inspect, InspectOptionsStylized } from 'util';
+import { inspect, type InspectOptionsStylized } from 'util';
 
 export type EnumType<Enum> = Enum extends MadeEnum<infer Values, any, any>
   ? Values
