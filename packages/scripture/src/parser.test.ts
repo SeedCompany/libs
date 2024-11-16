@@ -1,4 +1,4 @@
-import { describe, expect, it } from '@jest/globals';
+import { describe, expect, it } from 'vitest';
 import { parseScripture } from './parser.js';
 import { mapRange } from './scripture-range.js';
 

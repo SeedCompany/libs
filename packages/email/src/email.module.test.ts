@@ -1,5 +1,5 @@
-import { describe, it } from '@jest/globals';
 import { Test } from '@nestjs/testing';
+import { describe, it } from 'vitest';
 import { EmailModule } from './email.module.js';
 import { EmailService } from './email.service.js';
 

@@ -1,5 +1,5 @@
-import { describe, expect, it } from '@jest/globals';
 import { Test } from '@nestjs/testing';
+import { describe, expect, it } from 'vitest';
 import { CacheModule } from './cache.module.js';
 import { CacheService } from './cache.service.js';
 import { LruStore } from './stores/lru.js';

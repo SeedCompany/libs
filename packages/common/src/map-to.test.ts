@@ -1,4 +1,4 @@
-import { describe, expect, test } from '@jest/globals';
+import { describe, expect, test } from 'vitest';
 import { mapOf } from './map-of.js';
 import { EntriesResult, mapEntries, mapKeys, mapValues } from './map-to.js';
 

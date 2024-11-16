@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions,@typescript-eslint/no-unnecessary-condition */
 // noinspection BadExpressionStatementJS
 
-import { expect, test } from '@jest/globals';
+import { expect, test } from 'vitest';
 import { entries } from './entries.js';
 
 test('entries works', () => {

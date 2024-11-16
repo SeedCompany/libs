@@ -1,5 +1,5 @@
-import { describe, expect, jest, test } from '@jest/globals';
 import { DateTime } from 'luxon';
+import { describe, expect, test, vitest } from 'vitest';
 import { cmpBy, sortBy } from './sort-by.js';
 
 describe('sortBy', () => {
@@ -63,7 +63,7 @@ describe('sortBy', () => {
     interface Palette {
       hex: string;
     }
-    const sortee = jest.fn((palette: Palette) => palette.hex);
+    const sortee = vitest.fn((palette: Palette) => palette.hex);
     expect(
       sortBy([{ hex: 'blue' }, { hex: 'red' }, { hex: 'green' }], sortee),
     ).toEqual([{ hex: 'blue' }, { hex: 'green' }, { hex: 'red' }]);

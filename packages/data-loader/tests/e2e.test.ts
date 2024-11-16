@@ -1,9 +1,9 @@
-import { afterAll, beforeAll, describe, expect, it } from '@jest/globals';
 import { ApolloDriver } from '@nestjs/apollo';
 import { type INestApplication, Injectable, Scope } from '@nestjs/common';
 import { Args, GraphQLModule, Query, Resolver } from '@nestjs/graphql';
 import { Test } from '@nestjs/testing';
 import request from 'supertest';
+import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import {
   DataLoaderModule,
   type DataLoaderStrategy,
