@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.0.1](https://github.com/SeedCompany/libs/compare/cache-2.0.0...cache-2.0.1) (2024-11-16)
+
+
+### Bug Fixes
+
+* **cache:** strict esm/type imports ([133a196](https://github.com/SeedCompany/libs/commit/133a196150caa51efe930041180869feb79715e2))
+
 ## [1.1.0](https://github.com/SeedCompany/libs/compare/cache-1.0.0...cache-1.1.0) (2024-09-23)
 
 
