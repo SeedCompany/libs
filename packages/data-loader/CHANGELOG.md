@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.1](https://github.com/SeedCompany/libs/compare/data-loader-1.0.0...data-loader-1.0.1) (2024-11-16)
+
+
+### Bug Fixes
+
+* **data-loader:** strict esm/type imports ([ac1c9f0](https://github.com/SeedCompany/libs/commit/ac1c9f0a0ee219c7706fb98e6b38412216910127))
+
 ## [0.6.0](https://github.com/SeedCompany/libs/compare/data-loader-0.5.4...data-loader-0.6.0) (2024-09-17)
 
 
