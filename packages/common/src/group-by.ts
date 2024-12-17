@@ -1,3 +1,5 @@
+import type { NonEmptyArray } from './types.js';
+
 /**
  * Groups the list/iterable of items based on the `by` function given.
  * Returns an array of item groups.
@@ -5,7 +7,7 @@
 export const groupBy = <V>(
   items: Iterable<V>,
   by: (item: V) => unknown,
-): ReadonlyArray<readonly V[]> => [...groupToMapBy(items, by).values()];
+): ReadonlyArray<NonEmptyArray<V>> => [...groupToMapBy(items, by).values()];
 
 /**
  * Groups the list/iterable of items based on the `by` function given.
@@ -15,11 +17,15 @@ export const groupBy = <V>(
 export const groupToMapBy = <K, V>(
   items: Iterable<V>,
   by: (item: V) => K,
-): ReadonlyMap<K, readonly V[]> =>
+): ReadonlyMap<K, NonEmptyArray<V>> =>
   [...items].reduce((map, item) => {
     const groupKey = by(item);
-    let prev = map.get(groupKey);
+    let prev: readonly V[] | undefined = map.get(groupKey);
     prev = prev ? prev : [];
-    map.set(groupKey, [...prev, item]);
+    map.set(
+      groupKey,
+      // @ts-expect-error this is what makes it non-empty
+      [...prev, item],
+    );
     return map;
-  }, new Map<K, V[]>());
+  }, new Map<K, NonEmptyArray<V>>());
