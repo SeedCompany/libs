@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.14.0](https://github.com/SeedCompany/libs/compare/common-0.13.4...common-0.14.0) (2024-12-17)
+
+
+### Features
+
+* **common:** groupBy groups are typed as non-empty ([#39](https://github.com/SeedCompany/libs/issues/39)) ([c6f80b0](https://github.com/SeedCompany/libs/commit/c6f80b0b783ae7ad6eab0c24cb36e815cafb13f5))
+
 ## [0.13.4](https://github.com/SeedCompany/libs/compare/common-0.13.3...common-0.13.4) (2024-11-16)
 
 
