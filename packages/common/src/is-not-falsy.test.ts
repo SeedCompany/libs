@@ -6,7 +6,7 @@ test('isNotFalsy', () => {
   const cleaned = list.filter(isNotFalsy);
   expect(cleaned).toEqual(['red', 'blue']);
   // Check the TS type to be only strings
-  cleaned[0].toUpperCase();
+  cleaned[0]!.toUpperCase();
 });
 
 test('isNotNil', () => {
@@ -14,5 +14,5 @@ test('isNotNil', () => {
   const cleaned = list.filter(isNotNil);
   expect(cleaned).toEqual(['red', 'blue']);
   // Check the TS type to be only strings
-  cleaned[0].toUpperCase();
+  cleaned[0]!.toUpperCase();
 });

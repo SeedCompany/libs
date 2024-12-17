@@ -30,6 +30,8 @@ describe('groupToMapBy', () => {
     expect(grouped).toBeInstanceOf(Map);
     expect([...grouped]).toEqual(entriesGroupedByAge);
 
+    const _groupNotEmptyCheck: string = grouped.get(17)![0].name;
+
     // @ts-expect-error the map should be declared as readonly
     grouped.set(undefined, undefined);
   });
@@ -60,6 +62,8 @@ test('groupBy', () => {
       [characters.albus],
     ]),
   );
+
+  const _groupNotEmptyCheck: string = grouped[0]![0].name;
 
   // @ts-expect-error the array should be declared as readonly
   grouped.push(undefined);
