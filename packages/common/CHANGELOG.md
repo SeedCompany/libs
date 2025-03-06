@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.16.0](https://github.com/SeedCompany/libs/compare/common-0.15.0...common-0.16.0) (2025-03-06)
+
+
+### Features
+
+* **common:** setInspect & setInspectOnClass ([#41](https://github.com/SeedCompany/libs/issues/41)) ([b57e4fa](https://github.com/SeedCompany/libs/commit/b57e4faa3d8cc84b1bd254bd5fe3303957d08c71))
+
 ## [0.15.0](https://github.com/SeedCompany/libs/compare/common-0.14.0...common-0.15.0) (2025-03-06)
 
 
