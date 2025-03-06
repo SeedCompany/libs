@@ -8,6 +8,7 @@ export * from './delay.js';
 export * from './entries.js';
 export * from './group-by.js';
 export * from './is-not-falsy.js';
+export * from './inspect.js';
 export * from './iterator.js';
 export * from './json-col.js';
 export * from './many.js';
