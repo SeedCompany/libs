@@ -14,6 +14,7 @@ export * from './many.js';
 export * from './map-of.js';
 export * from './map-to.js';
 export * from './non-enumerable.js';
+export * from './patch-method.js';
 export * from './set-has.js';
 export * from './set-of.js';
 export * from './simple-switch.js';
