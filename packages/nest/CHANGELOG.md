@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.2.0](https://github.com/SeedCompany/libs/compare/nest-1.1.2...nest-1.2.0) (2025-03-07)
+
+
+### Features
+
+* **nest:** depInjector ([#42](https://github.com/SeedCompany/libs/issues/42)) ([54578e3](https://github.com/SeedCompany/libs/commit/54578e3a297fefcb275f9c79e47d8738ec7eac50))
+
 ## [1.1.2](https://github.com/SeedCompany/libs/compare/nest-1.1.1...nest-1.1.2) (2024-11-16)
 
 
