@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.2.1](https://github.com/SeedCompany/libs/compare/nest-1.2.0...nest-1.2.1) (2025-03-07)
+
+
+### Bug Fixes
+
+* **nest:** missed export ([cfefe3d](https://github.com/SeedCompany/libs/commit/cfefe3d25cbda72a468e4923e7c4d48c1bee9286))
+
 ## [1.2.0](https://github.com/SeedCompany/libs/compare/nest-1.1.2...nest-1.2.0) (2025-03-07)
 
 
