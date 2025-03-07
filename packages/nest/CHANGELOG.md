@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.2.2](https://github.com/SeedCompany/libs/compare/nest-1.2.1...nest-1.2.2) (2025-03-07)
+
+
+### Bug Fixes
+
+* **nest:** declare types field in package.json for JetBrains ([2cbee5f](https://github.com/SeedCompany/libs/commit/2cbee5f30f11a71f0b697dfa2688f3c316e8fb6f))
+
 ## [1.2.1](https://github.com/SeedCompany/libs/compare/nest-1.2.0...nest-1.2.1) (2025-03-07)
 
 
