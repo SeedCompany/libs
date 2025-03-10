@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.3.0](https://github.com/SeedCompany/libs/compare/nest-1.2.2...nest-1.3.0) (2025-03-10)
+
+
+### Features
+
+* **nest:** patchDecoratedMethod ([#43](https://github.com/SeedCompany/libs/issues/43)) ([c566cdc](https://github.com/SeedCompany/libs/commit/c566cdcb8a4bfd66b0a3a2c0d2276a68f553d00b))
+
 ## [1.2.2](https://github.com/SeedCompany/libs/compare/nest-1.2.1...nest-1.2.2) (2025-03-07)
 
 
