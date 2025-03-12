@@ -221,7 +221,7 @@ const wrapInspect = <TThis>(
 const setInspectRaw = <T>(object: T, fn: NativeInspectFn<T>): T =>
   Object.defineProperty(object, inspectSymbol, {
     value: fn,
-    enumerable: false,
+    configurable: true,
   });
 // Not using `inspect.custom` to avoid runtime imports
 const inspectSymbol = Symbol.for('nodejs.util.inspect.custom');
