@@ -20,4 +20,5 @@ export * from './set-has.js';
 export * from './set-of.js';
 export * from './simple-switch.js';
 export * from './sort-by.js';
+export * from './to-string-tag.js';
 export type * from './types.js';
