@@ -2,6 +2,7 @@ import {
   setInspectOnClass,
   setToJson,
   setToPrimitive,
+  setToStringTag,
 } from '@seedcompany/common';
 import { BookList, BookLookupMap } from './raw-book-data.js';
 import type { Range } from './scripture-range.js';
@@ -160,6 +161,7 @@ setToJson(Book, (book) => book.name);
 setToPrimitive(Book, (book, hint) =>
   hint === 'number' ? book.index : book.name,
 );
+setToStringTag(Book, 'Book');
 
 export class Chapter implements Iterable<Verse> {
   /** @internal */
@@ -266,6 +268,7 @@ setToJson(Chapter, (chapter) => ({
 setToPrimitive(Chapter, (chapter, hint) =>
   hint === 'number' ? chapter.index : chapter.label,
 );
+setToStringTag(Chapter, 'Chapter');
 
 export class Verse {
   /** @internal */
@@ -395,6 +398,7 @@ setToJson(Verse, (verse) => verse.reference);
 setToPrimitive(Verse, (verse, hint) =>
   hint === 'number' ? verse.id : verse.label,
 );
+setToStringTag(Verse, 'Verse');
 
 export type VerseLike = ScriptureReference | VerseId | Verse;
 
