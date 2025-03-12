@@ -7,6 +7,7 @@ export * from './clean-join.js';
 export * from './delay.js';
 export * from './entries.js';
 export * from './group-by.js';
+export * from './has-ctor-proto.js';
 export * from './is-not-falsy.js';
 export * from './is-object.js';
 export * from './inspect.js';
