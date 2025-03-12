@@ -436,10 +436,5 @@ export type RelativeOneBasedIndex = number;
 type PrimitiveHint = 'string' | 'number' | 'default';
 
 function setPropValue(obj: object, key: string, value: unknown) {
-  Object.defineProperty(obj, key, {
-    value,
-    writable: false,
-    enumerable: false,
-    configurable: true,
-  });
+  Object.defineProperty(obj, key, { value, configurable: true });
 }
