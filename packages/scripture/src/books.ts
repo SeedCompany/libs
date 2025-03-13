@@ -4,13 +4,17 @@ import {
   setToPrimitive,
   setToStringTag,
 } from '@seedcompany/common';
+import type { LiteralUnion } from 'type-fest';
+import type { BookName } from './book-names.type.js';
 import { BookList, BookLookupMap } from './raw-book-data.js';
 import type { Range } from './scripture-range.js';
 import type { ScriptureReference } from './scripture-reference.type.js';
 
+export type BookNameLike = LiteralUnion<BookName, string>;
+
 export class Book implements Iterable<Chapter> {
   private constructor(
-    readonly name: string,
+    readonly name: BookName,
     readonly index: OneBasedIndex,
     private readonly chapterLengths: readonly number[],
   ) {}
@@ -63,11 +67,11 @@ export class Book implements Iterable<Chapter> {
       index < 0 ? BookList.length + index + 1 : index;
     const book = BookList.at(absoluteIndex - 1);
     return book
-      ? new Book(book.names[0], absoluteIndex, book.chapters)
+      ? new Book(book.names[0] as BookName, absoluteIndex, book.chapters)
       : undefined;
   }
 
-  static named(name: string) {
+  static named(name: BookNameLike) {
     const book = Book.namedMaybe(name);
     if (book) {
       return book;
@@ -75,7 +79,7 @@ export class Book implements Iterable<Chapter> {
     throw new Error(`Book "${name}" does not exist`);
   }
 
-  static namedMaybe(name: string) {
+  static namedMaybe(name: BookNameLike) {
     const index = BookLookupMap.get(name.toLowerCase());
     return index !== undefined ? Book.at(index + 1) : undefined;
   }

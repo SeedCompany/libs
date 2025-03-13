@@ -4015,6 +4015,7 @@ __metadata:
   resolution: "@seedcompany/scripture@workspace:packages/scripture"
   dependencies:
     "@seedcompany/common": "npm:>=0.17 <1.0.0"
+    type-fest: "npm:^4.37.0"
   languageName: unknown
   linkType: soft
 

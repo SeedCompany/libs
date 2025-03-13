@@ -6,7 +6,8 @@
     "node": ">=16"
   },
   "dependencies": {
-    "@seedcompany/common": ">=0.17 <1.0.0"
+    "@seedcompany/common": ">=0.17 <1.0.0",
+    "type-fest": "^4.37.0"
   },
   "scripts": {
     "build": "tsup",
