@@ -182,8 +182,12 @@ NestHttpCacheModule.registerAsync({
   imports: [CacheModule],
   inject: [CacheService],
   useFactory: (cache: CacheService): CacheModuleOptions => ({
-    store: cache.namespace('http:').adaptTo.cacheManager(),
-  }),
+    stores: [
+      new Keyv({
+        store: cache.namespace('http:').adaptTo.keyv()
+      })
+    ]
+  })
 });
 ```
 Continue on with the NestJS docs:
