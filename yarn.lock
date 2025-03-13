@@ -3839,7 +3839,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@seedcompany/common@npm:>0.3 <1, @seedcompany/common@npm:>=0.17 <1.0.0, @seedcompany/common@npm:>=0.3.0 <1.0.0, @seedcompany/common@workspace:packages/common":
+"@seedcompany/common@npm:>0.3 <1, @seedcompany/common@npm:>=0.17 <1, @seedcompany/common@npm:>=0.17 <1.0.0, @seedcompany/common@npm:>=0.3.0 <1.0.0, @seedcompany/common@workspace:packages/common":
   version: 0.0.0-use.local
   resolution: "@seedcompany/common@workspace:packages/common"
   dependencies:
@@ -3962,8 +3962,9 @@ __metadata:
     "@nestjs/core": "npm:^10 || ^11"
     "@nestjs/graphql": "npm:^12 || ^13"
     "@nestjs/testing": "npm:^11.0.11"
-    "@seedcompany/common": "npm:>0.3 <1"
+    "@seedcompany/common": "npm:>=0.17 <1"
     change-case: "npm:^5.4.4"
+    class-transformer: "npm:^0.5.1"
     graphql: "npm:^16.9.0"
     reflect-metadata: "npm:^0.1.12"
     rxjs: "npm:^7.8.1"
@@ -3974,6 +3975,7 @@ __metadata:
     "@nestjs/common": ^10 || ^11
     "@nestjs/core": ^10 || ^11
     "@nestjs/graphql": ^12 || ^13
+    class-transformer: ^0.5.1
     reflect-metadata: ^0.1.12
   languageName: unknown
   linkType: soft
@@ -6105,6 +6107,13 @@ __metadata:
   version: 2.0.0
   resolution: "chownr@npm:2.0.0"
   checksum: 10c0/594754e1303672171cc04e50f6c398ae16128eb134a88f801bf5354fd96f205320f23536a045d9abd8b51024a149696e51231565891d4efdab8846021ecf88e6
+  languageName: node
+  linkType: hard
+
+"class-transformer@npm:^0.5.1":
+  version: 0.5.1
+  resolution: "class-transformer@npm:0.5.1"
+  checksum: 10c0/19809914e51c6db42c036166839906420bb60367df14e15f49c45c8c1231bf25ae661ebe94736ee29cc688b77101ef851a8acca299375cc52fc141b64acde18a
   languageName: node
   linkType: hard
 
