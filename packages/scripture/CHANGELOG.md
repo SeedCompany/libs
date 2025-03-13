@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.5.0](https://github.com/SeedCompany/libs/compare/scripture-0.4.0...scripture-0.5.0) (2025-03-13)
+
+
+### Features
+
+* **scripture:** add testament/full bible range getters ([a5f95cf](https://github.com/SeedCompany/libs/commit/a5f95cfba1ea57a0d5cbfbbb1dd388d940a47d04))
+
 ## [0.4.0](https://github.com/SeedCompany/libs/compare/scripture-0.3.3...scripture-0.4.0) (2025-03-13)
 
 
