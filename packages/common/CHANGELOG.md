@@ -2,6 +2,24 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.17.0](https://github.com/SeedCompany/libs/compare/common-0.16.0...common-0.17.0) (2025-03-13)
+
+
+### Features
+
+* **common:** hasCtor & hasProto ([53b0919](https://github.com/SeedCompany/libs/commit/53b091942be207cbf5f9d588fb07879c92bc042b))
+* **common:** isObjectLike ([0f2d22e](https://github.com/SeedCompany/libs/commit/0f2d22ec42d6543b6c9449b7b8f3b4b440eddc39))
+* **common:** isPlainObject / isRegularObject ([291d8bf](https://github.com/SeedCompany/libs/commit/291d8bf2e30e699d4d29d102fcfdf2d7a4ba0237))
+* **common:** setToJson ([18132e5](https://github.com/SeedCompany/libs/commit/18132e5a8bb1d583c4f19424d5f91d38f638bf0f))
+* **common:** setToPrimitive ([1b4c2ca](https://github.com/SeedCompany/libs/commit/1b4c2cae181bba2ed51eac0362bbc6a2280ba4b3))
+* **common:** setToStringTag ([56187d4](https://github.com/SeedCompany/libs/commit/56187d4b2fb25faf167e268effd7ad173e8cb154))
+* **common:** toStringTag ([359beac](https://github.com/SeedCompany/libs/commit/359beacfa84e643ad57a537733ec219a3243cd02))
+
+
+### Bug Fixes
+
+* **common:** setInspect not being configurable ([e51e3b0](https://github.com/SeedCompany/libs/commit/e51e3b0e54bbda0ff9873379dcaf0e149692cc69))
+
 ## [0.16.0](https://github.com/SeedCompany/libs/compare/common-0.15.0...common-0.16.0) (2025-03-06)
 
 
