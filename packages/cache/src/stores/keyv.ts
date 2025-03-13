@@ -16,8 +16,9 @@ export class KeyvStore extends CacheStore {
     return val;
   }
 
-  async remainingTtl(_key: string) {
-    return Infinity;
+  async remainingTtl(key: string) {
+    const res = await this.keyv.get(key, { raw: true });
+    return res?.expires ?? Infinity;
   }
 
   async set<T>(key: string, value: T, options: CacheStoreItemOptions) {

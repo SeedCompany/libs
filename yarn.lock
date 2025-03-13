@@ -2968,6 +2968,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@keyv/serialize@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "@keyv/serialize@npm:1.0.3"
+  dependencies:
+    buffer: "npm:^6.0.3"
+  checksum: 10c0/24a257870b0548cfe430680c2ae1641751e6a6ec90c573eaf51bfe956839b6cfa462b4d2827157363b6d620872d32d69fa2f37210a864ba488f8ec7158436398
+  languageName: node
+  linkType: hard
+
 "@lukeed/csprng@npm:^1.0.0":
   version: 1.0.1
   resolution: "@lukeed/csprng@npm:1.0.1"
@@ -3003,16 +3012,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/cache-manager@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "@nestjs/cache-manager@npm:2.1.0"
+"@nestjs/cache-manager@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@nestjs/cache-manager@npm:3.0.0"
   peerDependencies:
-    "@nestjs/common": ^9.0.0 || ^10.0.0
-    "@nestjs/core": ^9.0.0 || ^10.0.0
-    cache-manager: <=5
-    reflect-metadata: ^0.1.12
-    rxjs: ^7.0.0
-  checksum: 10c0/8edf02a017dce475c76ff9a9e8507882358acd175fa82f0f109728892f5916103c25a1bda5028307325c1c6856e5754fb5773b2091fc9220c15f1e408f9f5675
+    "@nestjs/common": ^9.0.0 || ^10.0.0 || ^11.0.0
+    "@nestjs/core": ^9.0.0 || ^10.0.0 || ^11.0.0
+    cache-manager: ">=6"
+    rxjs: ^7.8.1
+  checksum: 10c0/9249d693d29f755591f9bc8d5b84c11c9ee80f9676fe5ffe6c8c255fbccb893f14bc7dde12edd872d545eda8e21c31c4ad16a031ac1cb6c6729c000625505c82
   languageName: node
   linkType: hard
 
@@ -3037,7 +3045,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/common@npm:^9 || ^10 || ^11":
+"@nestjs/common@npm:^11, @nestjs/common@npm:^9 || ^10 || ^11":
   version: 11.0.11
   resolution: "@nestjs/common@npm:11.0.11"
   dependencies:
@@ -3086,7 +3094,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/core@npm:^9 || ^10 || ^11":
+"@nestjs/core@npm:^11, @nestjs/core@npm:^9 || ^10 || ^11":
   version: 11.0.11
   resolution: "@nestjs/core@npm:11.0.11"
   dependencies:
@@ -3218,6 +3226,25 @@ __metadata:
     "@nestjs/platform-express":
       optional: true
   checksum: 10c0/a89a54ab9685742b0ed83ebf112a3435d88762c1f53c8b3aae1369fa50b1cc35165ea821a068e82e46a106ce23cd2275a8c88e1fdb927463de5f9c29d7a456af
+  languageName: node
+  linkType: hard
+
+"@nestjs/testing@npm:^11.0.11":
+  version: 11.0.11
+  resolution: "@nestjs/testing@npm:11.0.11"
+  dependencies:
+    tslib: "npm:2.8.1"
+  peerDependencies:
+    "@nestjs/common": ^11.0.0
+    "@nestjs/core": ^11.0.0
+    "@nestjs/microservices": ^11.0.0
+    "@nestjs/platform-express": ^11.0.0
+  peerDependenciesMeta:
+    "@nestjs/microservices":
+      optional: true
+    "@nestjs/platform-express":
+      optional: true
+  checksum: 10c0/1961db7d56707ea756c09022b2b8070662668f422fb296965248525cadbb68dd9cafd69bccd5f198ea9447e70616ce3f86ce6807d5950cac2251e365324f947e
   languageName: node
   linkType: hard
 
@@ -3772,26 +3799,26 @@ __metadata:
   resolution: "@seedcompany/cache@workspace:packages/cache"
   dependencies:
     "@apollo/utils.keyvaluecache": "npm:^2.1.0"
-    "@nestjs/cache-manager": "npm:^2.1.0"
-    "@nestjs/common": "npm:^10"
-    "@nestjs/core": "npm:^10"
-    "@nestjs/testing": "npm:^10.4.4"
+    "@nestjs/cache-manager": "npm:^3.0.0"
+    "@nestjs/common": "npm:^11"
+    "@nestjs/core": "npm:^11"
+    "@nestjs/testing": "npm:^11.0.11"
     "@seedcompany/common": "npm:>0.3 <1"
     "@types/luxon": "npm:^3.2.0"
-    cache-manager: "npm:^5.2.0"
+    cache-manager: "npm:^6.4.1"
     ioredis: "npm:^5.3.1"
-    keyv: "npm:^4.5.4"
+    keyv: "npm:^5.3.1"
     lru-cache: "npm:^11.0.1"
     luxon: "npm:^3.3.0"
     reflect-metadata: "npm:^0.1.12"
     rxjs: "npm:^7.5.7"
     type-fest: "npm:^4.26.1"
   peerDependencies:
-    "@nestjs/cache-manager": ^2
-    "@nestjs/common": ^9 || ^10
-    "@nestjs/core": ^9 || ^10
+    "@nestjs/cache-manager": ^3
+    "@nestjs/common": ^9 || ^10 || ^11
+    "@nestjs/core": ^9 || ^10 || ^11
     ioredis: ^5
-    keyv: ^4
+    keyv: ^5
     lru-cache: ^9 || ^10 || ^11
     reflect-metadata: ^0.1.12
   peerDependenciesMeta:
@@ -5750,6 +5777,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"buffer@npm:^6.0.3":
+  version: 6.0.3
+  resolution: "buffer@npm:6.0.3"
+  dependencies:
+    base64-js: "npm:^1.3.1"
+    ieee754: "npm:^1.2.1"
+  checksum: 10c0/2a905fbbcde73cc5d8bd18d1caa23715d5f83a5935867c2329f0ac06104204ba7947be098fe1317fbd8830e26090ff8e764f08cd14fefc977bb248c3487bcbd0
+  languageName: node
+  linkType: hard
+
 "bundle-name@npm:^4.1.0":
   version: 4.1.0
   resolution: "bundle-name@npm:4.1.0"
@@ -5819,13 +5856,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cache-manager@npm:^5.2.0":
-  version: 5.2.0
-  resolution: "cache-manager@npm:5.2.0"
+"cache-manager@npm:^6.4.1":
+  version: 6.4.1
+  resolution: "cache-manager@npm:6.4.1"
   dependencies:
-    lodash.clonedeep: "npm:^4.5.0"
-    lru-cache: "npm:~7.18.3"
-  checksum: 10c0/b832ade41ecbcdd11f0fca8a3d1195c64ad1262b33974198cb8ab9b3643d0ebfcaf22d0b4f7434bb941febb0ae0799382fb62d01a53f68d0b49769878ae4cc60
+    keyv: "npm:^5.3.1"
+  checksum: 10c0/abed9b208ae466117b6cd5b943b68701da0d3894b13500e6579473f501158840d42d20334ece3bd2e692755ad0fb98897b203e92d6f73046b346d48ce077d223
   languageName: node
   linkType: hard
 
@@ -8910,7 +8946,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ieee754@npm:^1.1.13":
+"ieee754@npm:^1.1.13, ieee754@npm:^1.2.1":
   version: 1.2.1
   resolution: "ieee754@npm:1.2.1"
   checksum: 10c0/b0782ef5e0935b9f12883a2e2aa37baa75da6e66ce6515c168697b42160807d9330de9a32ec1ed73149aea02e0d822e572bca6f1e22bdcbd2149e13b050b17bb
@@ -9548,13 +9584,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"json-buffer@npm:3.0.1":
-  version: 3.0.1
-  resolution: "json-buffer@npm:3.0.1"
-  checksum: 10c0/0d1c91569d9588e7eef2b49b59851f297f3ab93c7b35c7c221e288099322be6b562767d11e4821da500f3219542b9afd2e54c5dc573107c1126ed1080f8e96d7
-  languageName: node
-  linkType: hard
-
 "json-parse-better-errors@npm:^1.0.1":
   version: 1.0.2
   resolution: "json-parse-better-errors@npm:1.0.2"
@@ -9669,12 +9698,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"keyv@npm:^4.5.4":
-  version: 4.5.4
-  resolution: "keyv@npm:4.5.4"
+"keyv@npm:^5.3.1":
+  version: 5.3.1
+  resolution: "keyv@npm:5.3.1"
   dependencies:
-    json-buffer: "npm:3.0.1"
-  checksum: 10c0/aa52f3c5e18e16bb6324876bb8b59dd02acf782a4b789c7b2ae21107fab95fab3890ed448d4f8dba80ce05391eeac4bfabb4f02a20221342982f806fa2cf271e
+    "@keyv/serialize": "npm:^1.0.3"
+  checksum: 10c0/d5ffe3d2d547a50a5e1189d5acbc0480821c22c025082851a8eeb26667d789f3f7b7ee7beb933660d98c239f7e7c403c652a511693670a78a73f06cd411e04fa
   languageName: node
   linkType: hard
 
@@ -9834,13 +9863,6 @@ __metadata:
   version: 4.3.0
   resolution: "lodash.camelcase@npm:4.3.0"
   checksum: 10c0/fcba15d21a458076dd309fce6b1b4bf611d84a0ec252cb92447c948c533ac250b95d2e00955801ebc367e5af5ed288b996d75d37d2035260a937008e14eaf432
-  languageName: node
-  linkType: hard
-
-"lodash.clonedeep@npm:^4.5.0":
-  version: 4.5.0
-  resolution: "lodash.clonedeep@npm:4.5.0"
-  checksum: 10c0/2caf0e4808f319d761d2939ee0642fa6867a4bbf2cfce43276698828380756b99d4c4fa226d881655e6ac298dd453fe12a5ec8ba49861777759494c534936985
   languageName: node
   linkType: hard
 
@@ -10059,7 +10081,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lru-cache@npm:^7.10.1, lru-cache@npm:^7.14.1, lru-cache@npm:^7.7.1, lru-cache@npm:~7.18.3":
+"lru-cache@npm:^7.10.1, lru-cache@npm:^7.14.1, lru-cache@npm:^7.7.1":
   version: 7.18.3
   resolution: "lru-cache@npm:7.18.3"
   checksum: 10c0/b3a452b491433db885beed95041eb104c157ef7794b9c9b4d647be503be91769d11206bb573849a16b4cc0d03cbd15ffd22df7960997788b74c1d399ac7a4fed
