@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.0.1](https://github.com/SeedCompany/libs/compare/cache-3.0.0...cache-3.0.1) (2025-03-13)
+
+
+### Bug Fixes
+
+* **cache:** accidentally dropped support for nest 10 ([db34bc1](https://github.com/SeedCompany/libs/commit/db34bc11d415c062c68f359245f490b54457e905))
+
 ## [3.0.0](https://github.com/SeedCompany/libs/compare/cache-2.0.1...cache-3.0.0) (2025-03-13)
 
 
