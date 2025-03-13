@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.4.0](https://github.com/SeedCompany/libs/compare/nest-1.3.0...nest-1.4.0) (2025-03-13)
+
+
+### Features
+
+* **nest:** add patch for class-transformer incorrectly re-transforming class instances ([21930cb](https://github.com/SeedCompany/libs/commit/21930cb017eca26708a755d3bd91024873ec2884))
+* **nest:** declare support for Nest 11 ([7cf36bc](https://github.com/SeedCompany/libs/commit/7cf36bc540b1ffef6ef9f8e9912b43fe7514cf4c))
+
 ## [1.3.0](https://github.com/SeedCompany/libs/compare/nest-1.2.2...nest-1.3.0) (2025-03-10)
 
 
