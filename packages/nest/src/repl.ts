@@ -11,13 +11,18 @@ import { dirname } from 'node:path';
 import { promisify } from 'node:util';
 import { createContext, runInContext } from 'node:vm';
 
+// Nestjs doesn't export this type, so we have to do this.
+type IEntryNestModule = Parameters<
+  (typeof NestFactory)['createApplicationContext']
+>[0];
+
 export const runRepl = ({
   module,
   options,
   extraContext,
   historyFile = '.cache/repl_history',
 }: {
-  module: () => Promise<unknown>;
+  module: () => Promise<IEntryNestModule>;
   options?: () => Promise<NestApplicationContextOptions>;
   extraContext?: (
     app: INestApplicationContext,
@@ -25,7 +30,10 @@ export const runRepl = ({
   historyFile?: string | false;
 }) => {
   (async () => {
-    const app = await NestFactory.createApplicationContext(await module(), {
+    // @ts-expect-error I'm not sure what this is on about.
+    const entry: IEntryNestModule = await module();
+
+    const app = await NestFactory.createApplicationContext(entry, {
       abortOnError: false,
       logger: new ReplLogger(),
       ...(options ? await options() : {}),
