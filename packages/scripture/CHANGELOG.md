@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.4.0](https://github.com/SeedCompany/libs/compare/scripture-0.3.3...scripture-0.4.0) (2025-03-13)
+
+
+### Features
+
+* **scripture:** declared toStringTags for Book/Chapter/Verse ([0f99a79](https://github.com/SeedCompany/libs/commit/0f99a79919695b79776d7f363afeb7a4dc9e3bab))
+
 ## [0.3.3](https://github.com/SeedCompany/libs/compare/scripture-0.3.2...scripture-0.3.3) (2024-11-16)
 
 
