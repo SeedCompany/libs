@@ -1,9 +1,11 @@
 import {
   createParamDecorator,
   type ExecutionContext,
+  Injectable,
+  type PipeTransform,
   type Type,
 } from '@nestjs/common';
-import { getLoaderContextFromExecutionContext } from './data-loader.context.js';
+import { DataLoaderContext } from './data-loader.context.js';
 import type { DataLoaderStrategy } from './data-loader.strategy.js';
 
 type LoaderType = Type<DataLoaderStrategy<any, any>>;
@@ -23,16 +25,31 @@ export const Loader =
       );
     }
 
-    LoaderInner(type)(target, key, index);
+    LoaderInner(type, InjectLoaderPipe)(target, key, index);
   };
 
 const LoaderInner = createParamDecorator(
-  (type: LoaderTypeOrFn, context: ExecutionContext) => {
+  (
+    type: LoaderTypeOrFn,
+    context: ExecutionContext,
+  ): IntermediateLoaderObject => {
     const resolvedType = type.prototype
       ? (type as LoaderType)
       : (type as () => LoaderType)();
-
-    const loaderContext = getLoaderContextFromExecutionContext(context);
-    return loaderContext.getLoader(resolvedType);
+    return { context, type: resolvedType };
   },
 );
+
+interface IntermediateLoaderObject {
+  type: LoaderType;
+  context: ExecutionContext;
+}
+
+@Injectable()
+export class InjectLoaderPipe implements PipeTransform {
+  constructor(private readonly dataLoaderContext: DataLoaderContext) {}
+
+  async transform({ type, context }: IntermediateLoaderObject) {
+    return await this.dataLoaderContext.getLoader(type, context);
+  }
+}

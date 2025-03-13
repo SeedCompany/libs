@@ -1,3 +1,4 @@
+import type { ExecutionContext } from '@nestjs/common';
 import type DataLoaderLib from 'dataloader';
 import type { DataLoaderStrategy } from './data-loader.strategy.js';
 
@@ -20,6 +21,12 @@ export interface DataLoaderOptions<T, Key, CachedKey = Key>
     cacheKey: CachedKey;
     typeName: string;
   }) => Error;
+
+  /**
+   * Determines which object contained in the execution context should be used as the lifetime identity.
+   * This is typically the request or the transport context object.
+   */
+  getLifetimeId?: (context: ExecutionContext) => object;
 }
 
 /**
