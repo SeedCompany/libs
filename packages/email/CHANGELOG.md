@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.1.0](https://github.com/SeedCompany/libs/compare/email-4.0.2...email-4.1.0) (2025-03-13)
+
+
+### Features
+
+* **email:** declare support for Nest 11 ([#46](https://github.com/SeedCompany/libs/issues/46)) ([9de2ac1](https://github.com/SeedCompany/libs/commit/9de2ac1fa7ebcf556c2268e9dd218777f2a178e5))
+
 ## [4.0.2](https://github.com/SeedCompany/libs/compare/email-4.0.1...email-4.0.2) (2024-11-16)
 
 
