@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.0.2](https://github.com/SeedCompany/libs/compare/cache-3.0.1...cache-3.0.2) (2025-03-13)
+
+
+### Bug Fixes
+
+* **cache:** declare types field in package.json for JetBrains ([0383116](https://github.com/SeedCompany/libs/commit/0383116fa28a9ace07a26d3beecd1950fab0e748))
+
 ## [3.0.1](https://github.com/SeedCompany/libs/compare/cache-3.0.0...cache-3.0.1) (2025-03-13)
 
 
