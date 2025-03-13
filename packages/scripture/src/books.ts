@@ -208,6 +208,14 @@ export class Chapter implements Iterable<Verse> {
     return Book.fromRef(ref).chapter(ref.chapter);
   }
 
+  get isOldTestament() {
+    return this.book.index <= 39;
+  }
+
+  get isNewTestament() {
+    return this.book.index >= 40;
+  }
+
   get full() {
     return this.firstVerse.to(this.lastVerse);
   }
