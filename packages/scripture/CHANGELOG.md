@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.6.0](https://github.com/SeedCompany/libs/compare/scripture-0.5.0...scripture-0.6.0) (2025-03-13)
+
+
+### Features
+
+* **scripture:** strict book name strings ([512ce10](https://github.com/SeedCompany/libs/commit/512ce10f1f30a6008106b273d56c283d8441b7a8))
+
 ## [0.5.0](https://github.com/SeedCompany/libs/compare/scripture-0.4.0...scripture-0.5.0) (2025-03-13)
 
 
