@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.1.1](https://github.com/SeedCompany/libs/compare/email-4.1.0...email-4.1.1) (2025-03-13)
+
+
+### Bug Fixes
+
+* **email:** declare types field in package.json for JetBrains ([8349123](https://github.com/SeedCompany/libs/commit/8349123ca34ae9b218808869a9a162146b3e4ff2))
+
 ## [4.1.0](https://github.com/SeedCompany/libs/compare/email-4.0.2...email-4.1.0) (2025-03-13)
 
 
