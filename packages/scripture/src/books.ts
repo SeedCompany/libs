@@ -15,6 +15,27 @@ export class Book implements Iterable<Chapter> {
     private readonly chapterLengths: readonly number[],
   ) {}
 
+  static get fullBible(): Range<Verse> {
+    return {
+      start: Book.first.firstChapter.firstVerse,
+      end: Book.last.lastChapter.lastVerse,
+    };
+  }
+
+  static get oldTestament(): Range<Verse> {
+    return {
+      start: Book.first.firstChapter.firstVerse,
+      end: Book.named('Malachi').lastChapter.lastVerse,
+    };
+  }
+
+  static get newTestament(): Range<Verse> {
+    return {
+      start: Book.named('Matthew').firstChapter.firstVerse,
+      end: Book.last.lastChapter.lastVerse,
+    };
+  }
+
   static get first() {
     return Book.at(1);
   }
