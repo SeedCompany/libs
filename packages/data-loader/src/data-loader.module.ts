@@ -1,16 +1,11 @@
 import { Module } from '@nestjs/common';
-import { APP_GUARD } from '@nestjs/core';
 import { DataLoaderContext } from './data-loader.context.js';
 import { DataLoaderFactory } from './data-loader.factory.js';
-import { DataLoaderGuard } from './data-loader.guard.js';
 import { ConfigurableModuleClass } from './data-loader.module-builder.js';
+import { InjectLoaderPipe } from './loader.decorator.js';
 
 @Module({
-  providers: [
-    { provide: APP_GUARD, useClass: DataLoaderGuard },
-    DataLoaderFactory,
-    DataLoaderContext,
-  ],
+  providers: [DataLoaderFactory, DataLoaderContext, InjectLoaderPipe],
   exports: [DataLoaderContext],
 })
 export class DataLoaderModule extends ConfigurableModuleClass {}

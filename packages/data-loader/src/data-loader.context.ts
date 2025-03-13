@@ -20,6 +20,8 @@ export interface LoaderContextType {
 
 @Injectable()
 export class DataLoaderContext {
+  private readonly loaderContexts = new WeakMap<object, LoaderContextType>();
+
   constructor(private readonly factory: DataLoaderFactory) {}
 
   /**
@@ -50,7 +52,7 @@ export class DataLoaderContext {
     lifetimeId: object,
     notFoundAction: 'throw' | 'create' = 'create',
   ): LoaderContextType {
-    return cached(loaderContexts, lifetimeId, () => {
+    return cached(this.loaderContexts, lifetimeId, () => {
       if (notFoundAction === 'create') {
         return this.createContext();
       }
@@ -71,27 +73,3 @@ export class DataLoaderContext {
     return loaderContext;
   }
 }
-
-export const getLoaderContextFromExecutionContext = (
-  context: ExecutionContext,
-) => getLoaderContextFromLifetimeId(lifetimeIdFromExecutionContext(context));
-
-export const getLoaderContextFromLifetimeId = (lifetimeId: object) => {
-  const context = loaderContexts.get(lifetimeId);
-  if (!context) {
-    throw new Error(
-      'Loader context not found. Maybe this execution is called too early?',
-    );
-  }
-  return context;
-};
-
-/**
- * A global variable isn't my favorite, but it needs to be separate from a service
- * so that the loader decorator can access it.
- * We could mutate the lifetime object and store the loader context on a symbol there.
- * But this is better because it doesn't modify that object.
- * This will only be a problem if there are multiple versions of the library in use,
- * which would then have different maps.
- */
-const loaderContexts = new WeakMap<object, LoaderContextType>();
