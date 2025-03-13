@@ -1,8 +1,12 @@
+import {
+  setInspectOnClass,
+  setToJson,
+  setToPrimitive,
+  setToStringTag,
+} from '@seedcompany/common';
 import { BookList, BookLookupMap } from './raw-book-data.js';
 import type { Range } from './scripture-range.js';
 import type { ScriptureReference } from './scripture-reference.type.js';
-
-const inspect = Symbol.for('nodejs.util.inspect.custom');
 
 export class Book implements Iterable<Chapter> {
   private constructor(
@@ -148,23 +152,16 @@ export class Book implements Iterable<Chapter> {
       yield this.chapter(chapter + 1);
     }
   }
-
-  [Symbol.toPrimitive](hint: PrimitiveHint) {
-    if (hint === 'number') {
-      return this.index;
-    }
-    return this.name;
-  }
-
-  /** @internal Don't call directly. Only for JSON.stringify */
-  toJSON() {
-    return this.name;
-  }
-
-  [inspect]() {
-    return `[Book] ${this.name}`;
-  }
 }
+setInspectOnClass(Book, (book) => ({
+  collapsedId: book.name,
+  include: ['name', 'index'],
+}));
+setToJson(Book, (book) => book.name);
+setToPrimitive(Book, (book, hint) =>
+  hint === 'number' ? book.index : book.name,
+);
+setToStringTag(Book, 'Book');
 
 export class Chapter implements Iterable<Verse> {
   /** @internal */
@@ -259,23 +256,19 @@ export class Chapter implements Iterable<Verse> {
   get verses(): readonly Verse[] {
     return Array.from(this);
   }
-
-  [Symbol.toPrimitive](hint: PrimitiveHint) {
-    if (hint === 'number') {
-      return this.index;
-    }
-    return this.label;
-  }
-
-  /** @internal Don't call directly. Only for JSON.stringify */
-  toJSON() {
-    return { book: this.book, chapter: this.index };
-  }
-
-  [inspect]() {
-    return `[Chapter] ${this.label}`;
-  }
 }
+setInspectOnClass(Chapter, (chapter) => ({
+  collapsedId: chapter.label,
+  include: [],
+}));
+setToJson(Chapter, (chapter) => ({
+  book: chapter.book,
+  chapter: chapter.index,
+}));
+setToPrimitive(Chapter, (chapter, hint) =>
+  hint === 'number' ? chapter.index : chapter.label,
+);
+setToStringTag(Chapter, 'Chapter');
 
 export class Verse {
   /** @internal */
@@ -396,23 +389,16 @@ export class Verse {
       verse: this.index,
     };
   }
-
-  [Symbol.toPrimitive](hint: PrimitiveHint) {
-    if (hint === 'number') {
-      return this.id;
-    }
-    return this.label;
-  }
-
-  /** @internal Don't call directly. Only for JSON.stringify */
-  toJSON() {
-    return this.reference;
-  }
-
-  [inspect]() {
-    return `[Verse] ${this.label}`;
-  }
 }
+setInspectOnClass(Verse, (verse) => ({
+  collapsedId: verse.label,
+  include: [],
+}));
+setToJson(Verse, (verse) => verse.reference);
+setToPrimitive(Verse, (verse, hint) =>
+  hint === 'number' ? verse.id : verse.label,
+);
+setToStringTag(Verse, 'Verse');
 
 export type VerseLike = ScriptureReference | VerseId | Verse;
 
@@ -432,8 +418,6 @@ export type OneBasedIndex = number;
  * Negative numbers can be used to reference items starting from the end of the list, just like {@link Array.at}
  */
 export type RelativeOneBasedIndex = number;
-
-type PrimitiveHint = 'string' | 'number' | 'default';
 
 function setPropValue(obj: object, key: string, value: unknown) {
   Object.defineProperty(obj, key, { value, configurable: true });

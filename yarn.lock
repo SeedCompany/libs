@@ -3746,7 +3746,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@seedcompany/common@npm:>0.3 <1, @seedcompany/common@npm:>=0.10.0 <1.0.0, @seedcompany/common@npm:>=0.3.0 <1.0.0, @seedcompany/common@workspace:packages/common":
+"@seedcompany/common@npm:>0.3 <1, @seedcompany/common@npm:>=0.17 <1.0.0, @seedcompany/common@npm:>=0.3.0 <1.0.0, @seedcompany/common@workspace:packages/common":
   version: 0.0.0-use.local
   resolution: "@seedcompany/common@workspace:packages/common"
   dependencies:
@@ -3919,7 +3919,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@seedcompany/scripture@workspace:packages/scripture"
   dependencies:
-    "@seedcompany/common": "npm:>=0.10.0 <1.0.0"
+    "@seedcompany/common": "npm:>=0.17 <1.0.0"
   languageName: unknown
   linkType: soft
 
