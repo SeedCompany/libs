@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.0.0](https://github.com/SeedCompany/libs/compare/cache-2.0.1...cache-3.0.0) (2025-03-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* **cache:** Drop support for keyv 4 & cache-manager 5
+
+### Features
+
+* **cache:** nest 11 / keyv 5 / cache-manager 6 ([#47](https://github.com/SeedCompany/libs/issues/47)) ([5531e00](https://github.com/SeedCompany/libs/commit/5531e00f59a271b05c128e6213654d04734591f2))
+
 ## [2.0.1](https://github.com/SeedCompany/libs/compare/cache-2.0.0...cache-2.0.1) (2024-11-16)
 
 
