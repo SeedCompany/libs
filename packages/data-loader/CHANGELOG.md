@@ -2,6 +2,24 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.0.0](https://github.com/SeedCompany/libs/compare/data-loader-1.0.1...data-loader-2.0.0) (2025-03-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* **data-loader:** The guard and global getLoaderContextFromLifetimeId function have been removed.
+These were really internal and shouldn't affect normal usage.
+
+### Features
+
+* **data-loader:** allow customizing lifetime id ([f8b43d2](https://github.com/SeedCompany/libs/commit/f8b43d2aa58105b68775916e64ac7c498376aabb))
+* **data-loader:** declare support for Nest 11 ([c571a96](https://github.com/SeedCompany/libs/commit/c571a96d3ca6cd04d497c54a662a2f0286cf5d8c))
+
+
+### Code Refactoring
+
+* **data-loader:** inject context into decorator via pipe ([44efd34](https://github.com/SeedCompany/libs/commit/44efd343e2a445161540a267494d2b8a223d0d67))
+
 ## [1.0.1](https://github.com/SeedCompany/libs/compare/data-loader-1.0.0...data-loader-1.0.1) (2024-11-16)
 
 
