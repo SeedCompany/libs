@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.0.1](https://github.com/SeedCompany/libs/compare/data-loader-2.0.0...data-loader-2.0.1) (2025-03-13)
+
+
+### Bug Fixes
+
+* **data-loader:** declare types field in package.json for JetBrains ([4387ea8](https://github.com/SeedCompany/libs/commit/4387ea88cb21611b2a16ffcfbe933cb27985efcc))
+
 ## [2.0.0](https://github.com/SeedCompany/libs/compare/data-loader-1.0.1...data-loader-2.0.0) (2025-03-13)
 
 
