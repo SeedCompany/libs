@@ -24,14 +24,14 @@
     "test": "node --experimental-vm-modules ../../node_modules/.bin/vitest"
   },
   "devDependencies": {
-    "@apollo/server": "^4.7.5",
-    "@nestjs/apollo": "^12.0.7",
-    "@nestjs/graphql": "^12.0.8",
-    "@nestjs/platform-express": "^10.1.0",
-    "@nestjs/testing": "^10.1.0",
+    "@apollo/server": "^4.11.3",
+    "@nestjs/apollo": "^13.0.3",
+    "@nestjs/graphql": "^13.0.3",
+    "@nestjs/platform-express": "^11.0.11",
+    "@nestjs/testing": "^11.0.11",
     "@types/supertest": "^2.0.12",
-    "express": "^4.18.2",
-    "graphql": "^16",
+    "express": "^5.0.1",
+    "graphql": "^16.10.0",
     "reflect-metadata": "^0.1.12",
     "rxjs": "^7.5.7",
     "supertest": "^6.3.3"
