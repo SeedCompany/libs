@@ -186,6 +186,10 @@ export class Book implements Iterable<Chapter> {
     }
   }
 }
+Object.defineProperty(Book, 'name', {
+  value: 'Book',
+  configurable: true,
+});
 setInspectOnClass(Book, (book) => ({
   collapsedId: book.name,
   include: ['name', 'index'],
@@ -298,6 +302,10 @@ export class Chapter implements Iterable<Verse> {
     return Array.from(this);
   }
 }
+Object.defineProperty(Chapter, 'name', {
+  value: 'Chapter',
+  configurable: true,
+});
 setInspectOnClass(Chapter, (chapter) => ({
   collapsedId: chapter.label,
   include: [],
@@ -439,6 +447,10 @@ export class Verse {
     };
   }
 }
+Object.defineProperty(Verse, 'name', {
+  value: 'Verse',
+  configurable: true,
+});
 setInspectOnClass(Verse, (verse) => ({
   collapsedId: verse.label,
   include: [],
