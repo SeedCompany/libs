@@ -60,7 +60,7 @@ export class Book implements Iterable<Chapter> {
   }
 
   static atMaybe(index: RelativeOneBasedIndex): Book | undefined {
-    if (index === 0) {
+    if (!Number.isInteger(index) || index === 0) {
       return undefined;
     }
     const absoluteIndex: OneBasedIndex =
@@ -161,6 +161,9 @@ export class Book implements Iterable<Chapter> {
   }
 
   chapterMaybe(index: RelativeOneBasedIndex) {
+    if (!Number.isInteger(index)) {
+      return undefined;
+    }
     const absoluteIndex: OneBasedIndex =
       index < 0 ? this.totalChapters + index + 1 : index;
     const totalVerses = this.chapterLengths.at(absoluteIndex - 1);
@@ -280,7 +283,7 @@ export class Chapter implements Iterable<Verse> {
   }
 
   verseMaybe(verseNumber: RelativeOneBasedIndex) {
-    if (verseNumber === 0) {
+    if (!Number.isInteger(verseNumber) || verseNumber === 0) {
       return undefined;
     }
     if (verseNumber < 0) {
@@ -345,6 +348,10 @@ export class Verse {
   }
 
   static fromId(verseId: VerseId) {
+    if (!Number.isInteger(verseId) || verseId < 0) {
+      throw new Error('Invalid verse number');
+    }
+
     // Start by converting the 0-indexed number to the 1-indexed verse total
     let versesRemaining = verseId + 1;
 
