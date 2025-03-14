@@ -88,6 +88,14 @@ export class Book implements Iterable<Chapter> {
     return Book.named(ref.book);
   }
 
+  get isOldTestament() {
+    return this.index <= 39;
+  }
+
+  get isNewTestament() {
+    return this.index >= 40;
+  }
+
   get full() {
     return this.firstChapter.firstVerse.to(this.lastChapter.lastVerse);
   }
@@ -209,11 +217,11 @@ export class Chapter implements Iterable<Verse> {
   }
 
   get isOldTestament() {
-    return this.book.index <= 39;
+    return this.book.isOldTestament;
   }
 
   get isNewTestament() {
-    return this.book.index >= 40;
+    return this.book.isNewTestament;
   }
 
   get full() {
@@ -363,6 +371,14 @@ export class Verse {
   to(other: VerseLike): Range<Verse> {
     const v = Verse.from(other);
     return v.id <= this.id ? { start: v, end: this } : { start: this, end: v };
+  }
+
+  get isOldTestament() {
+    return this.book.isOldTestament;
+  }
+
+  get isNewTestament() {
+    return this.book.isNewTestament;
   }
 
   get full() {
