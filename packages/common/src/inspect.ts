@@ -157,6 +157,9 @@ export const setInspectOnClass = <T>(
 ) =>
   setInspectRaw(cls.prototype, function inspect(...args) {
     const inspect = onInspect.call(this, this);
+    if (typeof inspect !== 'function') {
+      inspect.type = inspect.type ? inspect.type : cls.name;
+    }
     return wrapInspect(inspect).apply(this, args);
   });
 
