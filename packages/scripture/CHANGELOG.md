@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.8.1](https://github.com/SeedCompany/libs/compare/scripture-0.8.0...scripture-0.8.1) (2025-03-14)
+
+
+### Bug Fixes
+
+* **scripture:** inspection on Chapter/Verse ([145d6b4](https://github.com/SeedCompany/libs/commit/145d6b4ff81a32a0cf732883f5994a8934b9de4c))
+* **scripture:** mangling of Book/Chapter/Verse class names in build ([1056355](https://github.com/SeedCompany/libs/commit/1056355934a694fe056faecc090b8e1e9ac3a668))
+
 ## [0.8.0](https://github.com/SeedCompany/libs/compare/scripture-0.7.0...scripture-0.8.0) (2025-03-14)
 
 
