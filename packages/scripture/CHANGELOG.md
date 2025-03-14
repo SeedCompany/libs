@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.8.0](https://github.com/SeedCompany/libs/compare/scripture-0.7.0...scripture-0.8.0) (2025-03-14)
+
+
+### Features
+
+* **scripture:** add book is testament getters to Book & Verse ([a9292bc](https://github.com/SeedCompany/libs/commit/a9292bc392d9b265f245b420b2e76f1af6df77d9))
+
 ## [0.7.0](https://github.com/SeedCompany/libs/compare/scripture-0.6.0...scripture-0.7.0) (2025-03-13)
 
 
