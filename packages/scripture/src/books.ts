@@ -306,10 +306,9 @@ Object.defineProperty(Chapter, 'name', {
   value: 'Chapter',
   configurable: true,
 });
-setInspectOnClass(Chapter, (chapter) => ({
-  collapsedId: chapter.label,
-  include: [],
-}));
+setInspectOnClass(Chapter, (chapter) => ({ collapsed }) => {
+  return collapsed(chapter.label);
+});
 setToJson(Chapter, (chapter) => ({
   book: chapter.book,
   chapter: chapter.index,
@@ -451,10 +450,9 @@ Object.defineProperty(Verse, 'name', {
   value: 'Verse',
   configurable: true,
 });
-setInspectOnClass(Verse, (verse) => ({
-  collapsedId: verse.label,
-  include: [],
-}));
+setInspectOnClass(Verse, (verse) => ({ collapsed }) => {
+  return collapsed(verse.label);
+});
 setToJson(Verse, (verse) => verse.reference);
 setToPrimitive(Verse, (verse, hint) =>
   hint === 'number' ? verse.id : verse.label,
