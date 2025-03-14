@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.8.2](https://github.com/SeedCompany/libs/compare/scripture-0.8.1...scripture-0.8.2) (2025-03-14)
+
+
+### Bug Fixes
+
+* **scripture:** add runtime checks for bad input ([b02ae40](https://github.com/SeedCompany/libs/commit/b02ae4033c5bc573eb3d392c4e424051b3df45b8))
+
 ## [0.8.1](https://github.com/SeedCompany/libs/compare/scripture-0.8.0...scripture-0.8.1) (2025-03-14)
 
 
