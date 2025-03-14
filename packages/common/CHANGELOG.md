@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.17.1](https://github.com/SeedCompany/libs/compare/common-0.17.0...common-0.17.1) (2025-03-14)
+
+
+### Bug Fixes
+
+* **common:** setInspectOnClass missing class name while using the shortcut object ([d913f9d](https://github.com/SeedCompany/libs/commit/d913f9d5fcf99ff70f8c28dfd5538468013fba0d))
+
 ## [0.17.0](https://github.com/SeedCompany/libs/compare/common-0.16.0...common-0.17.0) (2025-03-13)
 
 
