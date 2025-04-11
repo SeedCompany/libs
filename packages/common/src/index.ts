@@ -20,6 +20,7 @@ export * from './non-enumerable.js';
 export * from './patch-method.js';
 export * from './set-has.js';
 export * from './set-of.js';
+export * from './settled.js';
 export * from './simple-switch.js';
 export * from './sort-by.js';
 export * from './to-json.js';
