@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.18.0](https://github.com/SeedCompany/libs/compare/common-0.17.1...common-0.18.0) (2025-04-11)
+
+
+### Features
+
+* **common:** helpers for `Promise.allSettled` ([#50](https://github.com/SeedCompany/libs/issues/50)) ([a5a776e](https://github.com/SeedCompany/libs/commit/a5a776e7443ddf816e0041dd51b1f6900d81bdb6))
+
 ## [0.17.1](https://github.com/SeedCompany/libs/compare/common-0.17.0...common-0.17.1) (2025-03-14)
 
 
