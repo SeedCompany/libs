@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.9.0](https://github.com/SeedCompany/libs/compare/scripture-0.8.2...scripture-0.9.0) (2025-04-15)
+
+
+### Features
+
+* **scripture:** parse/label full bible ([e54ef6d](https://github.com/SeedCompany/libs/commit/e54ef6d13a3dd21088876648762c4d0cd513ec5e))
+
 ## [0.8.2](https://github.com/SeedCompany/libs/compare/scripture-0.8.1...scripture-0.8.2) (2025-03-14)
 
 
