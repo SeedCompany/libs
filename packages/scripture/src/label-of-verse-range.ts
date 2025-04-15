@@ -53,6 +53,9 @@ export const labelOfVerseRange = (
     }
   } else if (start.isFirst && end.isLast) {
     if (start.chapter.isFirst && end.chapter.isLast) {
+      if (start.book.name === 'Genesis' && end.book.name === 'Revelation') {
+        return 'Full Bible';
+      }
       if (start.book.name === 'Genesis' && end.book.name === 'Malachi') {
         return 'Old Testament';
       }

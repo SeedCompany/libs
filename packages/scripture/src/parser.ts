@@ -28,6 +28,10 @@ export const parseScripture = (
     return [];
   }
 
+  if (input.toLowerCase() === 'full bible') {
+    return [Book.fullBible];
+  }
+
   const rawRefs = input
     .replace(/ and /gi, ' , ')
     .split(/[,;&]/)

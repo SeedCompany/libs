@@ -4,6 +4,7 @@ import { parseScripture } from './parser.js';
 
 describe('labelOfVerseRange', () => {
   it.each([
+    ['Full Bible'],
     ['Genesis 1'],
     ['Genesis 1:1'],
     ['Genesis 1–2'],
