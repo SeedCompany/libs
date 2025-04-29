@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.18.1](https://github.com/SeedCompany/libs/compare/common-0.18.0...common-0.18.1) (2025-04-29)
+
+
+### Bug Fixes
+
+* **common:** avoid ?? because our UI toolchain is ancient ([79c1d9e](https://github.com/SeedCompany/libs/commit/79c1d9ea6899cd891923fbbdf07cb313b6068e17))
+
 ## [0.18.0](https://github.com/SeedCompany/libs/compare/common-0.17.1...common-0.18.0) (2025-04-11)
 
 
