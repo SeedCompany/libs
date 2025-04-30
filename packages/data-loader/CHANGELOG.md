@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.1.0](https://github.com/SeedCompany/libs/compare/data-loader-2.0.1...data-loader-2.1.0) (2025-04-30)
+
+
+### Features
+
+* **data-loader:** allow reflect-metadata 0.2 ([2874e2f](https://github.com/SeedCompany/libs/commit/2874e2f17f4da821cea5c657ca8feae595b539aa))
+
 ## [2.0.1](https://github.com/SeedCompany/libs/compare/data-loader-2.0.0...data-loader-2.0.1) (2025-03-13)
 
 
