@@ -4000,14 +4000,14 @@ __metadata:
     open: "npm:^10.1.0"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
-    reflect-metadata: "npm:^0.1.13"
+    reflect-metadata: "npm:^0.2.2"
     rxjs: "npm:^7.8.1"
     tempy: "npm:^3.1.0"
   peerDependencies:
     "@nestjs/common": ">=7"
     react: ">=17.0.0"
     react-dom: ">=17.0.0"
-    reflect-metadata: ^0.1.12
+    reflect-metadata: ^0.1.12 || ^0.2.0
   languageName: unknown
   linkType: soft
 
@@ -12387,7 +12387,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"reflect-metadata@npm:^0.1.12, reflect-metadata@npm:^0.1.13":
+"reflect-metadata@npm:^0.1.12":
   version: 0.1.14
   resolution: "reflect-metadata@npm:0.1.14"
   checksum: 10c0/3a6190c7f6cb224f26a012d11f9e329360c01c1945e2cbefea23976a8bacf9db6b794aeb5bf18adcb673c448a234fbc06fc41853c00a6c206b30f0777ecf019e
