@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.2.0](https://github.com/SeedCompany/libs/compare/email-4.1.1...email-4.2.0) (2025-04-30)
+
+
+### Features
+
+* **email:** allow reflect-metadata 0.2 ([b93fb26](https://github.com/SeedCompany/libs/commit/b93fb265ea9196da74f4fda4dd9d68f758f17a0c))
+
 ## [4.1.1](https://github.com/SeedCompany/libs/compare/email-4.1.0...email-4.1.1) (2025-03-13)
 
 
