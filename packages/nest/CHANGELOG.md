@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.5.0](https://github.com/SeedCompany/libs/compare/nest-1.4.0...nest-1.5.0) (2025-04-30)
+
+
+### Features
+
+* **nest:** allow reflect-metadata 0.2 ([c8222d4](https://github.com/SeedCompany/libs/commit/c8222d474bc1d88dc5f19c201f327955f36ad1dd))
+
 ## [1.4.0](https://github.com/SeedCompany/libs/compare/nest-1.3.0...nest-1.4.0) (2025-03-13)
 
 
