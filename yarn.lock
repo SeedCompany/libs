@@ -3967,7 +3967,7 @@ __metadata:
     change-case: "npm:^5.4.4"
     class-transformer: "npm:^0.5.1"
     graphql: "npm:^16.9.0"
-    reflect-metadata: "npm:^0.1.12"
+    reflect-metadata: "npm:^0.2.2"
     rxjs: "npm:^7.8.1"
     title-case: "npm:^4.3.1"
     type-fest: "npm:^4.26.1"
@@ -3977,7 +3977,7 @@ __metadata:
     "@nestjs/core": ^10 || ^11
     "@nestjs/graphql": ^12 || ^13
     class-transformer: ^0.5.1
-    reflect-metadata: ^0.1.12
+    reflect-metadata: ^0.1.12 || ^0.2.0
   languageName: unknown
   linkType: soft
 
@@ -12384,13 +12384,6 @@ __metadata:
   dependencies:
     redis-errors: "npm:^1.0.0"
   checksum: 10c0/ee16ac4c7b2a60b1f42a2cdaee22b005bd4453eb2d0588b8a4939718997ae269da717434da5d570fe0b05030466eeb3f902a58cf2e8e1ca058bf6c9c596f632f
-  languageName: node
-  linkType: hard
-
-"reflect-metadata@npm:^0.1.12":
-  version: 0.1.14
-  resolution: "reflect-metadata@npm:0.1.14"
-  checksum: 10c0/3a6190c7f6cb224f26a012d11f9e329360c01c1945e2cbefea23976a8bacf9db6b794aeb5bf18adcb673c448a234fbc06fc41853c00a6c206b30f0777ecf019e
   languageName: node
   linkType: hard
 
