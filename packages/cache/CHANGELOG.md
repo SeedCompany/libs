@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.1.0](https://github.com/SeedCompany/libs/compare/cache-3.0.2...cache-3.1.0) (2025-04-30)
+
+
+### Features
+
+* **cache:** allow reflect-metadata 0.2 ([15f1937](https://github.com/SeedCompany/libs/commit/15f1937082d0a5aaf7e826888c72c39b25624416))
+
 ## [3.0.2](https://github.com/SeedCompany/libs/compare/cache-3.0.1...cache-3.0.2) (2025-03-13)
 
 
