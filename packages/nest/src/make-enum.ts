@@ -1,5 +1,10 @@
 import { registerEnumType } from '@nestjs/graphql';
-import { cleanJoin, mapKeys, nonEnumerable } from '@seedcompany/common';
+import {
+  cleanJoin,
+  isPlainObject,
+  mapKeys,
+  nonEnumerable,
+} from '@seedcompany/common';
 import { noCase, splitSeparateNumbers } from 'change-case';
 import { titleCase } from 'title-case';
 import { inspect, type InspectOptionsStylized } from 'util';
@@ -72,7 +77,10 @@ interface EnumOptions<
 /**
  * Create a better enum object that can be used in both TS & GraphQL.
  */
-export const makeEnum = <
+export function makeEnum<const Value extends string>(
+  input: Iterable<Value>,
+): MadeEnum<Value>;
+export function makeEnum<
   const ValueDeclaration extends EnumValueDeclarationShape,
   const Extra extends Record<string, any> = never,
 >(
@@ -81,7 +89,13 @@ export const makeEnum = <
   ValuesOfDeclarations<ValueDeclaration>,
   NormalizedValueDeclaration<ValueDeclaration>,
   [Extra] extends [never] ? unknown : Extra
-> => {
+>;
+export function makeEnum(
+  raw: Iterable<string> | EnumOptions<any, any>,
+): MadeEnum<string> {
+  const input: EnumOptions<any, any> = isPlainObject(raw)
+    ? raw
+    : ({ values: raw } as any);
   const {
     name,
     description,
@@ -165,7 +179,7 @@ export const makeEnum = <
   }
 
   return object as any;
-};
+}
 
 type EnumValueDeclarationShape<Value extends string = string> =
   | Value
