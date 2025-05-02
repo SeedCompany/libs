@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.19.0](https://github.com/SeedCompany/libs/compare/common-0.18.1...common-0.19.0) (2025-05-02)
+
+
+### Features
+
+* **common:** asNonEmptyArray ([db3aba5](https://github.com/SeedCompany/libs/commit/db3aba53cafae98b07feb90607e9a175d771a30e))
+
 ## [0.18.1](https://github.com/SeedCompany/libs/compare/common-0.18.0...common-0.18.1) (2025-04-29)
 
 
