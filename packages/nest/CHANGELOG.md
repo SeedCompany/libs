@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.7.0](https://github.com/SeedCompany/libs/compare/nest-1.6.1...nest-1.7.0) (2025-05-02)
+
+
+### Features
+
+* **nest:** set string tag for made enums to Enum ([62dfa7b](https://github.com/SeedCompany/libs/commit/62dfa7b9163bbc33d920c6b1648bdbcd87964aac))
+
 ## [1.6.1](https://github.com/SeedCompany/libs/compare/nest-1.6.0...nest-1.6.1) (2025-05-02)
 
 
