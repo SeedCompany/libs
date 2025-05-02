@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.6.0](https://github.com/SeedCompany/libs/compare/nest-1.5.0...nest-1.6.0) (2025-05-02)
+
+
+### Features
+
+* **nest:** makeEnum - allow values to be any iterable ([8e2337f](https://github.com/SeedCompany/libs/commit/8e2337ffd556beac21b090653b0898b6d716c25c))
+* **nest:** makeEnum - allow values to be given directly ([df9bf92](https://github.com/SeedCompany/libs/commit/df9bf92cd642fccfa157d5d43f14969773ef9ae3))
+
 ## [1.5.0](https://github.com/SeedCompany/libs/compare/nest-1.4.0...nest-1.5.0) (2025-04-30)
 
 
