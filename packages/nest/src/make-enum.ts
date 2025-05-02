@@ -44,7 +44,7 @@ interface EnumOptions<
    * The values/members of the enum.
    * These can be strings or objects with extra metadata.
    */
-  readonly values: readonly ValueDeclaration[];
+  readonly values: Iterable<ValueDeclaration>;
 
   /**
    * Expose the order of the enum values to GraphQL.
@@ -90,7 +90,7 @@ export const makeEnum = <
     extra: extraFn,
   } = input;
 
-  const entries = valuesIn.map(
+  const entries = [...valuesIn].map(
     (value: EnumValueDeclarationShape): EnumValueDeclarationObjectShape =>
       typeof value === 'string' ? { value } : value,
   );
