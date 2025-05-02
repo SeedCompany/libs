@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.6.1](https://github.com/SeedCompany/libs/compare/nest-1.6.0...nest-1.6.1) (2025-05-02)
+
+
+### Bug Fixes
+
+* **nest:** prevent duplicates in makeEnum().entries list ([f2c16ee](https://github.com/SeedCompany/libs/commit/f2c16ee16c4a692e12d524fa45cb9da3ddfd32fd))
+
 ## [1.6.0](https://github.com/SeedCompany/libs/compare/nest-1.5.0...nest-1.6.0) (2025-05-02)
 
 

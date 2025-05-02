@@ -1,6 +1,6 @@
 {
   "name": "@seedcompany/nest",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Common NestJS functionality for Seed Company",
   "license": "MIT",
   "engines": {
