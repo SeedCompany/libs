@@ -5,6 +5,7 @@ import {
   mapKeys,
   mapValues,
   nonEnumerable,
+  setToStringTag,
 } from '@seedcompany/common';
 import { noCase, splitSeparateNumbers } from 'change-case';
 import { titleCase } from 'title-case';
@@ -113,6 +114,7 @@ export function makeEnum(
   const entries = [...entryMap.values()];
 
   const object = mapValues(entryMap, (k) => k).asRecord;
+  setToStringTag(object, 'Enum');
 
   const valueList = Object.keys(object);
   const values = new Set(valueList);
