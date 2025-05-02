@@ -12,8 +12,6 @@ export type IterableItem<T> = T extends {
 
 export type ArrayItem<T> = IterableItem<T>;
 
-export type NonEmptyArray<T> = readonly [T, ...(readonly T[])];
-
 /**
  * Only use as a generic constraint.
  * @example

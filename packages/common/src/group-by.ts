@@ -1,4 +1,4 @@
-import type { NonEmptyArray } from './types.js';
+import { asNonEmptyArray, type NonEmptyArray } from './non-empty-array.js';
 
 /**
  * Groups the list/iterable of items based on the `by` function given.
@@ -22,10 +22,6 @@ export const groupToMapBy = <K, V>(
     const groupKey = by(item);
     let prev: readonly V[] | undefined = map.get(groupKey);
     prev = prev ? prev : [];
-    map.set(
-      groupKey,
-      // @ts-expect-error this is what makes it non-empty
-      [...prev, item],
-    );
+    map.set(groupKey, asNonEmptyArray([...prev, item])!);
     return map;
   }, new Map<K, NonEmptyArray<V>>());
