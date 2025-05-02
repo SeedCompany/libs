@@ -3,6 +3,7 @@ import {
   cleanJoin,
   isPlainObject,
   mapKeys,
+  mapValues,
   nonEnumerable,
 } from '@seedcompany/common';
 import { noCase, splitSeparateNumbers } from 'change-case';
@@ -104,13 +105,14 @@ export function makeEnum(
     extra: extraFn,
   } = input;
 
-  const entries = [...valuesIn].map(
+  const valuesNormalized = [...valuesIn].map(
     (value: EnumValueDeclarationShape): EnumValueDeclarationObjectShape =>
       typeof value === 'string' ? { value } : value,
   );
-  const entryMap = mapKeys.fromList(entries, (e) => e.value).asMap;
+  const entryMap = mapKeys.fromList(valuesNormalized, (e) => e.value).asMap;
+  const entries = [...entryMap.values()];
 
-  const object = Object.fromEntries(entries.map((v) => [v.value, v.value]));
+  const object = mapValues(entryMap, (k) => k).asRecord;
 
   const valueList = Object.keys(object);
   const values = new Set(valueList);
