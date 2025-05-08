@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.19.2](https://github.com/SeedCompany/libs/compare/common-0.19.1...common-0.19.2) (2025-05-08)
+
+
+### Bug Fixes
+
+* **common:** sortBy/cmpBy with mixed types & unsortable objects cycling ([17ffe88](https://github.com/SeedCompany/libs/commit/17ffe889405a210cb34be0c9cb894119aff1a00e))
+
 ## [0.19.1](https://github.com/SeedCompany/libs/compare/common-0.19.0...common-0.19.1) (2025-05-02)
 
 
