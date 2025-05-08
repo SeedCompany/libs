@@ -37,31 +37,36 @@ export const cmpBy = <T>(criteria: SortCriteria<T>) => {
 };
 
 const compareSortables = (a: SortableValue, b: SortableValue) => {
-  let diff = 0;
   if (a == null || b == null) {
-    diff = a == null ? (b == null ? 0 : 1) : -1;
-  } else if (
-    (typeof a === 'number' && typeof b === 'number') ||
-    (typeof a === 'bigint' && typeof b === 'bigint')
-  ) {
-    diff = a < b ? -1 : a > b ? 1 : 0;
-  } else if (typeof a === 'string' && typeof b === 'string') {
+    return a == null ? (b == null ? 0 : 1) : -1;
+  }
+  a = toPrimitive(a);
+  b = toPrimitive(b);
+
+  let diff = 0;
+  if (typeof a === 'string' && typeof b === 'string') {
     diff = a.localeCompare(b);
-  } else if (typeof a === 'object' && typeof b === 'object') {
-    if (Symbol.toPrimitive in a && Symbol.toPrimitive in b) {
-      diff = compareSortables(
-        a[Symbol.toPrimitive]('number'),
-        b[Symbol.toPrimitive]('number'),
-      );
-    } else if ('valueOf' in a && 'valueOf' in b) {
-      diff = compareSortables(
-        a.valueOf() as SortableValue,
-        b.valueOf() as SortableValue,
-      );
-    }
+  } else {
+    diff = a < b ? -1 : a > b ? 1 : 0;
   }
   return diff;
 };
+
+function toPrimitive(v: SortableValue & {}) {
+  if (typeof v !== 'object') {
+    return v;
+  }
+  if (Symbol.toPrimitive in v) {
+    return v[Symbol.toPrimitive]('number');
+  }
+  const vo = v.valueOf();
+  // Implicit functionality on objects is to return themselves.
+  // Guard against that, since we're looking for actual primitives here.
+  if (vo !== v) {
+    return vo;
+  }
+  return vo.toString();
+}
 
 // Is this multiple criteria or a criterion tuple?
 const isSortee = <T>(criteria: SortCriteria<T>): criteria is SorteeWithDir<T> =>
@@ -76,8 +81,10 @@ type Sortee<T> = (item: T) => SortableValue;
  * A sortable value.
  *
  * I'm ignoring `.toString()` coercion here because it is rarely what is intended.
- * If custom string coercion is desired, the custom object can implement `Symbol.toPrimitive`.
- * We'll call it with `number` as the hint.
+ * If crafting a custom type, just declare the {@link Symbol.toPrimitive} method to make it sortable.
+ *
+ * However, we do support this now.
+ * But adding this type here is essentially `object`, essentially making this any.
  */
 type SortableValue =
   | string

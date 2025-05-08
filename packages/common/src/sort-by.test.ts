@@ -94,7 +94,7 @@ describe('sortBy', () => {
     ]);
   });
 
-  test('custom object', () => {
+  test('Symbol.toPrimitive conversion', () => {
     class YearQuarter {
       constructor(public year: number, public quarter: number) {}
       [Symbol.toPrimitive](hint: string) {
@@ -133,6 +133,56 @@ describe('sortBy', () => {
         new YearQuarter(2019, 1),
       ].map((s) => String(s)),
     ).toEqual(['Q1 2020', 'Q4 2019', 'Q2 2020', 'Q3 2019', 'Q1 2019']);
+  });
+
+  test('mixed primitive conversion', () => {
+    const unsorted = [
+      new Date('2020-01-01'),
+      DateTime.fromISO('2020-01-04'),
+      new Date('2020-01-03'),
+      new Date('2020-01-02').valueOf(),
+    ];
+    const sorted = [
+      new Date('2020-01-01'),
+      new Date('2020-01-02').valueOf(),
+      new Date('2020-01-03'),
+      DateTime.fromISO('2020-01-04'),
+    ];
+    expect(sortBy(unsorted)).toEqual(sorted);
+  });
+
+  test('unsortable succeeds unsorted', () => {
+    const unsorted = [{ foo: 'b' }, { foo: 'c' }, { foo: 'a' }];
+    // @ts-expect-error unsortable type, but ensuring runtime safety
+    expect(sortBy(unsorted)).toEqual(unsorted);
+  });
+
+  // Supported at runtime to prevent surprises with loose types,
+  // even though type wise we disallow this.
+  test('toString() sorting with mixed items', () => {
+    class Name {
+      constructor(public last: string, public first: string) {}
+      toString() {
+        return `${this.last}, ${this.first}`;
+      }
+    }
+    const unsorted: any = [
+      new Name('Smith', 'John'),
+      'Adams, Amy',
+      new Name('Johnson', 'Bob'),
+      'Davis, David',
+      new Name('Brown', 'Alice'),
+      'Carter, Chris',
+    ];
+    const sorted = [
+      'Adams, Amy',
+      new Name('Brown', 'Alice'),
+      'Carter, Chris',
+      'Davis, David',
+      new Name('Johnson', 'Bob'),
+      new Name('Smith', 'John'),
+    ];
+    expect(sortBy(unsorted)).toEqual(sorted);
   });
 
   test('kitchen sink', () => {
