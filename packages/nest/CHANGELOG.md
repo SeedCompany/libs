@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.8.0](https://github.com/SeedCompany/libs/compare/nest-1.7.0...nest-1.8.0) (2025-05-09)
+
+
+### Features
+
+* **nest:** enum indexOf ([c01948a](https://github.com/SeedCompany/libs/commit/c01948aa67b7a0a45f7ff45d50e699dacef15ea0))
+
 ## [1.7.0](https://github.com/SeedCompany/libs/compare/nest-1.6.1...nest-1.7.0) (2025-05-02)
 
 
