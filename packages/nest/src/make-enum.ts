@@ -131,6 +131,7 @@ export function makeEnum(
       }
       return entry;
     },
+    indexOf: (value: string) => entries.indexOf(entryMap.get(value)!),
     [inspect.custom]: (
       depth: number,
       options: InspectOptionsStylized,
@@ -242,6 +243,7 @@ interface EnumHelpers<Values extends string, ValueDeclaration> {
   readonly values: ReadonlySet<Values>;
   readonly entries: ReadonlyArray<Readonly<ValueDeclaration>>;
   readonly entry: <V extends Values>(value: V) => Readonly<ValueDeclaration>;
+  readonly indexOf: <V extends Values>(value: V) => number;
   readonly has: <In extends string>(
     value: In & {},
   ) => value is In & Values & {};
