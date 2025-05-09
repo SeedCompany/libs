@@ -71,7 +71,9 @@ export class Book implements Iterable<Chapter> {
       : undefined;
   }
 
-  static named(name: BookNameLike) {
+  static named<const Name extends BookNameLike>(
+    name: string extends Name ? Name : Name extends BookName ? Name : never,
+  ) {
     const book = Book.namedMaybe(name);
     if (book) {
       return book;
@@ -79,7 +81,9 @@ export class Book implements Iterable<Chapter> {
     throw new Error(`Book "${name}" does not exist`);
   }
 
-  static namedMaybe(name: BookNameLike) {
+  static namedMaybe<const Name extends BookNameLike>(
+    name: string extends Name ? Name : Name extends BookName ? Name : never,
+  ) {
     const index = BookLookupMap.get(name.toLowerCase());
     return index !== undefined ? Book.at(index + 1) : undefined;
   }
