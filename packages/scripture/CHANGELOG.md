@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.9.1](https://github.com/SeedCompany/libs/compare/scripture-0.9.0...scripture-0.9.1) (2025-05-09)
+
+
+### Bug Fixes
+
+* **scripture:** disallow invalid book names when given as string literal ([aa60d1a](https://github.com/SeedCompany/libs/commit/aa60d1a42fa419c3a2cefbd667de7336fb71e9d4))
+
 ## [0.9.0](https://github.com/SeedCompany/libs/compare/scripture-0.8.2...scripture-0.9.0) (2025-04-15)
 
 
