@@ -27,4 +27,5 @@ export * from './sort-by.js';
 export * from './to-json.js';
 export * from './to-primitive.js';
 export * from './to-string-tag.js';
+export * from './uniq.js';
 export type * from './types.js';
