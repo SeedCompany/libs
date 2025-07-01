@@ -1,14 +1,14 @@
-import type { MessageAttachment } from 'emailjs';
 import { createContext, type ReactNode, useContext } from 'react';
 
-export interface AttachmentProps
-  extends Partial<Pick<MessageAttachment, 'charset' | 'method'>> {
+export interface AttachmentProps {
   /** The file data */
   data: string;
   /** The file's content-type */
   type: string;
   /** The file's name */
   name: string;
+  charset?: string;
+  method?: string;
 }
 
 const AttachmentContext = createContext<AttachmentProps[]>([]);

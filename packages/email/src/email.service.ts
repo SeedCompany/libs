@@ -94,7 +94,10 @@ export class EmailService {
   }
 
   async sendMessage(msg: EmailMessage) {
-    const encoded = await msg.readAsync();
+    // "dynamic" import to hide library source usage
+    const EmailJS = await import(String('emailjs'));
+    const encoded: string = await new EmailJS.Message(msg.headers).readAsync();
+
     const command = new SendEmailCommand({
       Content: {
         Raw: {
@@ -137,7 +140,7 @@ export class EmailService {
         table: (el, walk, builder, options) =>
           el.attribs.role === 'presentation'
             ? walk(el.children, builder)
-            : builder.options.formatters.dataTable(el, walk, builder, options),
+            : builder.options.formatters.dataTable!(el, walk, builder, options),
       },
     });
 
