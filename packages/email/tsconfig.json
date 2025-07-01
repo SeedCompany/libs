@@ -3,6 +3,7 @@
   "include": ["src"],
   "exclude": ["dist", "node_modules"],
   "compilerOptions": {
+    "noUncheckedIndexedAccess": true,
     "jsx": "react-jsx"
   }
 }
