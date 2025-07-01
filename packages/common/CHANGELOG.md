@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.20.0](https://github.com/SeedCompany/libs/compare/common-0.19.2...common-0.20.0) (2025-07-01)
+
+
+### Features
+
+* **common:** uniq() ([1e0e04e](https://github.com/SeedCompany/libs/commit/1e0e04ed39bbd98a6fa9afb3791adba833dd77e7))
+
 ## [0.19.2](https://github.com/SeedCompany/libs/compare/common-0.19.1...common-0.19.2) (2025-05-08)
 
 
