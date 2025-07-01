@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.2.1](https://github.com/SeedCompany/libs/compare/email-4.2.0...email-4.2.1) (2025-07-01)
+
+
+### Bug Fixes
+
+* **email:** hide emailjs usage from TS ([#51](https://github.com/SeedCompany/libs/issues/51)) ([7ee9a4e](https://github.com/SeedCompany/libs/commit/7ee9a4eaea9056829ba62aa4a6631da94f3fbf51))
+
 ## [4.2.0](https://github.com/SeedCompany/libs/compare/email-4.1.1...email-4.2.0) (2025-04-30)
 
 

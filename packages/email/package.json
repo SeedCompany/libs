@@ -1,6 +1,6 @@
 {
   "name": "@seedcompany/nestjs-email",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "description": "NestJS library to generate emails via JSX and send them via AWS",
   "license": "MIT",
   "engines": {
