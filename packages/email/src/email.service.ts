@@ -26,6 +26,14 @@ export class EmailService {
     @Inject(EMAIL_MODULE_OPTIONS) private readonly options: EmailOptions,
   ) {}
 
+  withOptions(options: Omit<Partial<EmailOptions>, 'ses'>) {
+    return new EmailService(this.ses, {
+      ...this.options,
+      ...options,
+      wrappers: [...this.options.wrappers, ...(options.wrappers ?? [])],
+    });
+  }
+
   async send<P extends object>(
     to: Many<string>,
     template: (props: P) => ReactElement,
