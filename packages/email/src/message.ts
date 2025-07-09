@@ -1,4 +1,4 @@
-import { many } from '@seedcompany/common';
+import { type Many, many } from '@seedcompany/common';
 import type { PathLike } from 'node:fs';
 import type { Readable } from 'node:stream';
 
@@ -21,35 +21,33 @@ export class EmailMessage {
 }
 
 // Below is inlined from the `emailjs` library to avoid using their loose source files
+// I changed to immutable
 
-interface MessageHeaders {
+type MessageHeaders = Readonly<{
   [index: string]:
     | boolean
-    | string
-    | string[]
+    | Many<string>
     | null
     | undefined
-    | MessageAttachment
-    | MessageAttachment[];
+    | Many<MessageAttachment>;
   'content-type'?: string;
   'message-id'?: string;
   'return-path'?: string | null;
   date?: string;
-  from: string | string[];
-  to: string | string[];
-  cc?: string | string[];
-  bcc?: string | string[];
+  from: Many<string>;
+  to: Many<string>;
+  cc?: Many<string>;
+  bcc?: Many<string>;
   subject: string;
   text: string | null;
-  attachment?: MessageAttachment | MessageAttachment[];
-}
+  attachment?: Many<MessageAttachment>;
+}>;
 
-interface MessageAttachment {
+type MessageAttachment = Readonly<{
   [index: string]:
     | string
     | boolean
-    | MessageAttachment
-    | MessageAttachment[]
+    | Many<MessageAttachment>
     | MessageAttachmentHeaders
     | Readable
     | PathLike
@@ -58,7 +56,7 @@ interface MessageAttachment {
   headers?: MessageAttachmentHeaders;
   inline?: boolean;
   alternative?: MessageAttachment | boolean;
-  related?: MessageAttachment[];
+  related?: readonly MessageAttachment[];
   data?: string;
   encoded?: boolean;
   stream?: Readable;
@@ -66,11 +64,11 @@ interface MessageAttachment {
   type?: string;
   charset?: string;
   method?: string;
-}
+}>;
 
-interface MessageAttachmentHeaders {
+type MessageAttachmentHeaders = Readonly<{
   [index: string]: string | undefined;
   'content-type'?: string;
   'content-transfer-encoding'?: BufferEncoding | '7bit' | '8bit';
   'content-disposition'?: string;
-}
+}>;
