@@ -3991,6 +3991,7 @@ __metadata:
     "@nestjs/core": "npm:^10.4.4"
     "@nestjs/platform-express": "npm:^10.4.4"
     "@nestjs/testing": "npm:^10.4.4"
+    "@seedcompany/common": "npm:>=0.3.0 <1.0.0"
     "@types/html-to-text": "npm:^9.0.4"
     "@types/mjml-core": "npm:^4.15.0"
     "@types/react": "npm:^18.3.9"

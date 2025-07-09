@@ -1,6 +1,7 @@
 import { SendEmailCommand, SESv2Client as SES } from '@aws-sdk/client-sesv2';
 import { render } from '@faire/mjml-react/utils/render.js';
 import { Inject, Injectable, Logger } from '@nestjs/common';
+import { delay, many, type Many } from '@seedcompany/common';
 import { promises as fs } from 'fs';
 import { htmlToText } from 'html-to-text';
 import openUrl from 'open';
@@ -15,7 +16,6 @@ import { EmailMessage } from './message.js';
 import { AttachmentCollector } from './templates/attachment.js';
 import { RenderForText } from './templates/text-rendering.js';
 import { SubjectCollector } from './templates/title.js';
-import { type Many, many, sleep } from './utils.js';
 
 @Injectable()
 export class EmailService {
@@ -152,7 +152,7 @@ export class EmailService {
     await fs.writeFile(temp, html);
     await openUrl(`file://${temp}`);
     // try to wait for chrome to open before deleting the temp file
-    void sleep(10_000)
+    void delay(10_000)
       .then(() => fs.rm(temp, { recursive: true, force: true, maxRetries: 2 }))
       .catch();
   }

@@ -1,6 +1,6 @@
+import { many } from '@seedcompany/common';
 import type { PathLike } from 'node:fs';
 import type { Readable } from 'node:stream';
-import { many } from './utils.js';
 
 export class EmailMessage {
   readonly templateName: string;
