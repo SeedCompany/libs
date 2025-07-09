@@ -5,7 +5,11 @@ import { delay, many, type Many } from '@seedcompany/common';
 import { promises as fs } from 'fs';
 import { htmlToText } from 'html-to-text';
 import openUrl from 'open';
-import { createElement, type ReactElement } from 'react';
+import {
+  type FunctionComponent as Component,
+  createElement,
+  type ReactElement as Element,
+} from 'react';
 import { temporaryFile as tempFile } from 'tempy';
 import {
   EMAIL_MODULE_OPTIONS,
@@ -36,7 +40,7 @@ export class EmailService {
 
   async send<P extends object>(
     to: Many<string>,
-    template: (props: P) => ReactElement,
+    template: Component<P>,
     props: P,
   ): Promise<void> {
     const { send, open } = this.options;
@@ -60,7 +64,7 @@ export class EmailService {
 
   async render<P extends object>(
     to: Many<string>,
-    template: (props: P) => ReactElement,
+    template: Component<P>,
     props: P,
   ) {
     const subjectRef = new SubjectCollector();
@@ -71,7 +75,7 @@ export class EmailService {
       subjectRef.collect,
       attachmentsRef.collect,
     ].reduceRight(
-      (prev: ReactElement, wrap) => wrap(prev),
+      (prev: Element, wrap) => wrap(prev),
       createElement(template, props),
     );
 
@@ -127,12 +131,12 @@ export class EmailService {
     }
   }
 
-  private renderHtml(templateEl: ReactElement) {
+  private renderHtml(templateEl: Element) {
     const { html } = render(templateEl);
     return html;
   }
 
-  private renderText(templateEl: ReactElement) {
+  private renderText(templateEl: Element) {
     const { html: htmlForText } = render(
       createElement(RenderForText, null, templateEl),
     );
