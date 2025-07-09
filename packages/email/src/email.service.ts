@@ -48,7 +48,7 @@ export class EmailService {
     const msg = this.render(template, props).with({ to });
 
     if (send) {
-      await this.sendMessage(msg);
+      await this.transportMessage(msg);
       return;
     }
     this.logger.debug(
@@ -121,7 +121,14 @@ export class EmailService {
     return Promise.resolve(message);
   }
 
+  /**
+   * @deprecated
+   */
   async sendMessage(msg: EmailMessage) {
+    await this.transportMessage(msg);
+  }
+
+  private async transportMessage(msg: EmailMessage) {
     // "dynamic" import to hide library source usage
     const EmailJS = await import(String('emailjs'));
     const encoded: string = await new EmailJS.Message(msg.headers).readAsync();
