@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.3.0](https://github.com/SeedCompany/libs/compare/email-4.2.1...email-4.3.0) (2025-07-09)
+
+
+### Features
+
+* **email:** add `EmailMessage.with()` to easily allow additional headers ([39dabee](https://github.com/SeedCompany/libs/commit/39dabee4970b6ce78634b545d8928a9a37321545))
+* **email:** add `EmailService.withOptions()` to adjust options/wrapper per email message ([c3c90d7](https://github.com/SeedCompany/libs/commit/c3c90d70869e3dc38e9babb313d6f610f950ff66))
+* **email:** allow `send` to accept rendered messages ([c011ec2](https://github.com/SeedCompany/libs/commit/c011ec269ebc830b730dad65e334d35b0a733a5d))
+* **email:** allow chaining `render().send()` ([ebddffd](https://github.com/SeedCompany/libs/commit/ebddffda375c7c31429b2fe6fd989812ad69c421))
+* **email:** Better header composition & service API ([#52](https://github.com/SeedCompany/libs/issues/52)) ([75d4f75](https://github.com/SeedCompany/libs/commit/75d4f75662f3f4ace7e8e3b02ba0fffb692c57b8))
+* **email:** export `EmailMessage` class ([5067ab8](https://github.com/SeedCompany/libs/commit/5067ab88b6051376bf8aebdf63deb7c1dcbec205))
+
 ## [4.2.1](https://github.com/SeedCompany/libs/compare/email-4.2.0...email-4.2.1) (2025-07-01)
 
 
