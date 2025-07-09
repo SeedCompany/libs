@@ -1,10 +1,15 @@
 import { SendEmailCommand, SESv2Client as SES } from '@aws-sdk/client-sesv2';
 import { render } from '@faire/mjml-react/utils/render.js';
 import { Inject, Injectable, Logger } from '@nestjs/common';
+import { delay, many, type Many } from '@seedcompany/common';
 import { promises as fs } from 'fs';
 import { htmlToText } from 'html-to-text';
 import openUrl from 'open';
-import { createElement, type ReactElement } from 'react';
+import {
+  type FunctionComponent as Component,
+  createElement,
+  type ReactElement as Element,
+} from 'react';
 import { temporaryFile as tempFile } from 'tempy';
 import {
   EMAIL_MODULE_OPTIONS,
@@ -15,7 +20,6 @@ import { EmailMessage } from './message.js';
 import { AttachmentCollector } from './templates/attachment.js';
 import { RenderForText } from './templates/text-rendering.js';
 import { SubjectCollector } from './templates/title.js';
-import { type Many, many, sleep } from './utils.js';
 
 @Injectable()
 export class EmailService {
@@ -26,17 +30,34 @@ export class EmailService {
     @Inject(EMAIL_MODULE_OPTIONS) private readonly options: EmailOptions,
   ) {}
 
+  withOptions(options: Omit<Partial<EmailOptions>, 'ses'>) {
+    return new EmailService(this.ses, {
+      ...this.options,
+      ...options,
+      wrappers: [...this.options.wrappers, ...(options.wrappers ?? [])],
+    });
+  }
+
+  async send(message: EmailMessage): Promise<void>;
   async send<P extends object>(
     to: Many<string>,
-    template: (props: P) => ReactElement,
+    template: Component<P>,
     props: P,
+  ): Promise<void>;
+  async send<P extends object>(
+    to: Many<string> | EmailMessage,
+    template?: Component<P>,
+    props?: P,
   ): Promise<void> {
     const { send, open } = this.options;
 
-    const msg = await this.render(to, template, props);
+    const msg =
+      to instanceof EmailMessage
+        ? to
+        : this.render(template!, props!).with({ to });
 
     if (send) {
-      await this.sendMessage(msg);
+      await this.transportMessage(msg);
       return;
     }
     this.logger.debug(
@@ -50,11 +71,29 @@ export class EmailService {
     }
   }
 
-  async render<P extends object>(
-    to: Many<string>,
-    template: (props: P) => ReactElement,
+  render<P extends object>(
+    template: Component<P>,
     props: P,
+  ): SendableEmailMessage;
+  /**
+   * @deprecated use render(...).with({ to }) instead
+   */
+  render<P extends object>(
+    to: Many<string>,
+    template: Component<P>,
+    props: P,
+  ): Promise<EmailMessage>;
+  render<P extends object>(
+    _toOrTemplate: Many<string> | Component<P>,
+    _templateOrProps: P | Component<P>,
+    _propsMaybe?: P,
   ) {
+    const to = _propsMaybe ? many(_toOrTemplate as Many<string>) : undefined;
+    const template = (
+      _propsMaybe ? _templateOrProps : _toOrTemplate
+    ) as Component<P>;
+    const props = _propsMaybe ?? (_templateOrProps as P);
+
     const subjectRef = new SubjectCollector();
     const attachmentsRef = new AttachmentCollector();
 
@@ -63,7 +102,7 @@ export class EmailService {
       subjectRef.collect,
       attachmentsRef.collect,
     ].reduceRight(
-      (prev: ReactElement, wrap) => wrap(prev),
+      (prev: Element, wrap) => wrap(prev),
       createElement(template, props),
     );
 
@@ -71,7 +110,7 @@ export class EmailService {
     const text = this.renderText(docEl);
     const message = new EmailMessage({
       templateName: template.name,
-      to: to as string[],
+      to,
       from: this.options.from,
       ...(!this.options.replyTo || this.options.replyTo.length === 0
         ? {}
@@ -86,14 +125,22 @@ export class EmailService {
         ...attachmentsRef.attachments.map((file) => ({ ...file })),
       ],
     });
-    this.logger.debug(
-      `Rendered ${message.templateName} email for ${message.to.join(', ')}`,
-    );
 
-    return message;
+    if (!to) {
+      return new SendableEmailMessage(this, message);
+    }
+
+    return Promise.resolve(message);
   }
 
+  /**
+   * @deprecated
+   */
   async sendMessage(msg: EmailMessage) {
+    await this.transportMessage(msg);
+  }
+
+  private async transportMessage(msg: EmailMessage) {
     // "dynamic" import to hide library source usage
     const EmailJS = await import(String('emailjs'));
     const encoded: string = await new EmailJS.Message(msg.headers).readAsync();
@@ -119,12 +166,12 @@ export class EmailService {
     }
   }
 
-  private renderHtml(templateEl: ReactElement) {
+  private renderHtml(templateEl: Element) {
     const { html } = render(templateEl);
     return html;
   }
 
-  private renderText(templateEl: ReactElement) {
+  private renderText(templateEl: Element) {
     const { html: htmlForText } = render(
       createElement(RenderForText, null, templateEl),
     );
@@ -152,8 +199,26 @@ export class EmailService {
     await fs.writeFile(temp, html);
     await openUrl(`file://${temp}`);
     // try to wait for chrome to open before deleting the temp file
-    void sleep(10_000)
+    void delay(10_000)
       .then(() => fs.rm(temp, { recursive: true, force: true, maxRetries: 2 }))
       .catch();
+  }
+}
+
+export class SendableEmailMessage extends EmailMessage {
+  constructor(private readonly service: EmailService, msg: EmailMessage) {
+    super({
+      templateName: msg.templateName,
+      html: msg.html,
+      ...msg.headers,
+    });
+  }
+
+  with(headers: Parameters<EmailMessage['with']>[0]) {
+    return new SendableEmailMessage(this.service, super.with(headers));
+  }
+
+  async send() {
+    await this.service.send(this);
   }
 }

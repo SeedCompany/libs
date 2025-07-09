@@ -4,6 +4,10 @@
   "exclude": ["dist", "node_modules"],
   "compilerOptions": {
     "noUncheckedIndexedAccess": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@seedcompany/common": ["../common/src"],
+    }
   }
 }
