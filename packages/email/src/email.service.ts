@@ -71,7 +71,10 @@ export class EmailService {
     }
   }
 
-  render<P extends object>(template: Component<P>, props: P): EmailMessage;
+  render<P extends object>(
+    template: Component<P>,
+    props: P,
+  ): SendableEmailMessage;
   /**
    * @deprecated use render(...).with({ to }) instead
    */
@@ -124,7 +127,7 @@ export class EmailService {
     });
 
     if (!to) {
-      return message;
+      return new SendableEmailMessage(this, message);
     }
 
     return Promise.resolve(message);
@@ -199,5 +202,23 @@ export class EmailService {
     void delay(10_000)
       .then(() => fs.rm(temp, { recursive: true, force: true, maxRetries: 2 }))
       .catch();
+  }
+}
+
+export class SendableEmailMessage extends EmailMessage {
+  constructor(private readonly service: EmailService, msg: EmailMessage) {
+    super({
+      templateName: msg.templateName,
+      html: msg.html,
+      ...msg.headers,
+    });
+  }
+
+  with(headers: Parameters<EmailMessage['with']>[0]) {
+    return new SendableEmailMessage(this.service, super.with(headers));
+  }
+
+  async send() {
+    await this.service.send(this);
   }
 }
