@@ -18,6 +18,15 @@ export class EmailMessage {
     this.html = html;
     this.headers = headers;
   }
+
+  with(headers: Partial<MessageHeaders>) {
+    return new EmailMessage({
+      ...this.headers,
+      ...headers,
+      templateName: this.templateName,
+      html: this.html,
+    });
+  }
 }
 
 // Below is inlined from the `emailjs` library to avoid using their loose source files
