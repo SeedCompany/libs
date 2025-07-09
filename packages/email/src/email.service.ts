@@ -45,7 +45,7 @@ export class EmailService {
   ): Promise<void> {
     const { send, open } = this.options;
 
-    const msg = await this.render(to, template, props);
+    const msg = this.render(template, props).with({ to });
 
     if (send) {
       await this.sendMessage(msg);
@@ -62,11 +62,26 @@ export class EmailService {
     }
   }
 
-  async render<P extends object>(
+  render<P extends object>(template: Component<P>, props: P): EmailMessage;
+  /**
+   * @deprecated use render(...).with({ to }) instead
+   */
+  render<P extends object>(
     to: Many<string>,
     template: Component<P>,
     props: P,
+  ): Promise<EmailMessage>;
+  render<P extends object>(
+    _toOrTemplate: Many<string> | Component<P>,
+    _templateOrProps: P | Component<P>,
+    _propsMaybe?: P,
   ) {
+    const to = _propsMaybe ? many(_toOrTemplate as Many<string>) : undefined;
+    const template = (
+      _propsMaybe ? _templateOrProps : _toOrTemplate
+    ) as Component<P>;
+    const props = _propsMaybe ?? (_templateOrProps as P);
+
     const subjectRef = new SubjectCollector();
     const attachmentsRef = new AttachmentCollector();
 
@@ -83,7 +98,7 @@ export class EmailService {
     const text = this.renderText(docEl);
     const message = new EmailMessage({
       templateName: template.name,
-      to: to as string[],
+      to,
       from: this.options.from,
       ...(!this.options.replyTo || this.options.replyTo.length === 0
         ? {}
@@ -98,11 +113,12 @@ export class EmailService {
         ...attachmentsRef.attachments.map((file) => ({ ...file })),
       ],
     });
-    this.logger.debug(
-      `Rendered ${message.templateName} email for ${message.to.join(', ')}`,
-    );
 
-    return message;
+    if (!to) {
+      return message;
+    }
+
+    return Promise.resolve(message);
   }
 
   async sendMessage(msg: EmailMessage) {
