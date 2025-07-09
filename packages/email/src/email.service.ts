@@ -38,14 +38,23 @@ export class EmailService {
     });
   }
 
+  async send(message: EmailMessage): Promise<void>;
   async send<P extends object>(
     to: Many<string>,
     template: Component<P>,
     props: P,
+  ): Promise<void>;
+  async send<P extends object>(
+    to: Many<string> | EmailMessage,
+    template?: Component<P>,
+    props?: P,
   ): Promise<void> {
     const { send, open } = this.options;
 
-    const msg = this.render(template, props).with({ to });
+    const msg =
+      to instanceof EmailMessage
+        ? to
+        : this.render(template!, props!).with({ to });
 
     if (send) {
       await this.transportMessage(msg);
