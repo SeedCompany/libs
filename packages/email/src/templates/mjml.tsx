@@ -33,4 +33,5 @@ export {
   MjmlTitle as Title,
   MjmlWrapper as Wrapper,
   Mjml,
+  Mjml as Doc,
 } from '@faire/mjml-react';
