@@ -30,7 +30,7 @@ export {
   MjmlStyle as Style,
   MjmlTable as Table,
   MjmlText as Text,
-  // MjmlTitle as Title, we have custom wrap title with context
+  MjmlTitle as Title,
   MjmlWrapper as Wrapper,
   Mjml,
 } from '@faire/mjml-react';
