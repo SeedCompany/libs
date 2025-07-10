@@ -16,7 +16,7 @@ import {
   type EmailOptions,
   SES_TOKEN,
 } from './email.options.js';
-import { EmailMessage } from './message.js';
+import { EmailMessage, SendableEmailMessage } from './message.js';
 import { AttachmentCollector } from './templates/attachment.js';
 import { RenderForText } from './templates/text-rendering.js';
 import { SubjectCollector } from './templates/title.js';
@@ -202,23 +202,5 @@ export class EmailService {
     void delay(10_000)
       .then(() => fs.rm(temp, { recursive: true, force: true, maxRetries: 2 }))
       .catch();
-  }
-}
-
-export class SendableEmailMessage extends EmailMessage {
-  constructor(private readonly service: EmailService, msg: EmailMessage) {
-    super({
-      templateName: msg.templateName,
-      html: msg.html,
-      ...msg.headers,
-    });
-  }
-
-  with(headers: Parameters<EmailMessage['with']>[0]) {
-    return new SendableEmailMessage(this.service, super.with(headers));
-  }
-
-  async send() {
-    await this.service.send(this);
   }
 }

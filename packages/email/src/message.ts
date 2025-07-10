@@ -27,3 +27,26 @@ export class EmailMessage {
     });
   }
 }
+
+export class SendableEmailMessage extends EmailMessage {
+  constructor(
+    private readonly sender: {
+      send: (msg: EmailMessage) => Promise<void>;
+    },
+    msg: EmailMessage,
+  ) {
+    super({
+      templateName: msg.templateName,
+      html: msg.html,
+      ...msg.headers,
+    });
+  }
+
+  with(headers: Parameters<EmailMessage['with']>[0]) {
+    return new SendableEmailMessage(this.sender, super.with(headers));
+  }
+
+  async send() {
+    await this.sender.send(this);
+  }
+}
