@@ -38,14 +38,27 @@ export class EmailService {
     });
   }
 
-  async send(message: EmailMessage): Promise<void>;
+  compose<P extends object>(
+    template: Component<P>,
+    props: P,
+  ): SendableEmailMessage<P> {
+    const message = new EmailMessage(template, props, {
+      from: this.options.from,
+      ...(!(!this.options.replyTo || this.options.replyTo.length === 0) && {
+        'reply-to': many(this.options.replyTo).join(', '),
+      }),
+    });
+    return new SendableEmailMessage(this, message);
+  }
+
+  async send<P extends object>(message: EmailMessage<P>): Promise<void>;
   async send<P extends object>(
     to: Many<string>,
     template: Component<P>,
     props: P,
   ): Promise<void>;
   async send<P extends object>(
-    to: Many<string> | EmailMessage,
+    to: Many<string> | EmailMessage<P>,
     template?: Component<P>,
     props?: P,
   ): Promise<void> {
@@ -54,10 +67,11 @@ export class EmailService {
     const msg =
       to instanceof EmailMessage
         ? to
-        : this.render(template!, props!).with({ to });
+        : this.compose(template!, props!).with({ to });
 
     if (send) {
-      await this.transportMessage(msg);
+      const rendered = await this.render(msg);
+      await this.sendMessage(rendered);
       return;
     }
     this.logger.debug(
@@ -67,33 +81,12 @@ export class EmailService {
     );
 
     if (open) {
-      await this.openEmail(msg.html);
+      const rendered = await this.render(msg);
+      await this.openMessage(rendered);
     }
   }
 
-  render<P extends object>(
-    template: Component<P>,
-    props: P,
-  ): SendableEmailMessage;
-  /**
-   * @deprecated use render(...).with({ to }) instead
-   */
-  render<P extends object>(
-    to: Many<string>,
-    template: Component<P>,
-    props: P,
-  ): Promise<EmailMessage>;
-  render<P extends object>(
-    _toOrTemplate: Many<string> | Component<P>,
-    _templateOrProps: P | Component<P>,
-    _propsMaybe?: P,
-  ) {
-    const to = _propsMaybe ? many(_toOrTemplate as Many<string>) : undefined;
-    const template = (
-      _propsMaybe ? _templateOrProps : _toOrTemplate
-    ) as Component<P>;
-    const props = _propsMaybe ?? (_templateOrProps as P);
-
+  private async render<P extends object>(msg: EmailMessage<P>) {
     const subjectRef = new SubjectCollector();
     const attachmentsRef = new AttachmentCollector();
 
@@ -103,44 +96,61 @@ export class EmailService {
       attachmentsRef.collect,
     ].reduceRight(
       (prev: Element, wrap) => wrap(prev),
-      createElement(template, props),
+      createElement(msg.template, msg.props),
     );
 
-    const html = this.renderHtml(docEl);
-    const text = this.renderText(docEl);
-    const message = new EmailMessage({
-      templateName: template.name,
-      to,
-      from: this.options.from,
-      ...(!this.options.replyTo || this.options.replyTo.length === 0
-        ? {}
-        : {
-            'reply-to': many(this.options.replyTo).join(', '),
-          }),
-      subject: subjectRef.subject,
-      text,
-      html,
-      attachment: [
-        { data: html, alternative: true },
-        ...attachmentsRef.attachments.map((file) => ({ ...file })),
+    const html = await this.renderHtml(docEl);
+    const text = await this.renderText(docEl);
+
+    const renderedTemplate: Component<{ html: string }> = () => {
+      throw new Error('Cannot re-render a rendered email message');
+    };
+    renderedTemplate.displayName = msg.templateName;
+    return new EmailMessage(
+      renderedTemplate,
+      { html },
+      {
+        subject: subjectRef.subject,
+        text,
+        ...msg.headers,
+        attachment: [
+          { data: html, alternative: true },
+          ...attachmentsRef.attachments.map((file) => ({ ...file })),
+          ...many(msg.headers.attachment ?? []),
+        ],
+      },
+    );
+  }
+
+  private async renderHtml(templateEl: Element) {
+    const { html } = render(templateEl);
+    return html;
+  }
+
+  private async renderText(templateEl: Element) {
+    const { html: htmlForText } = render(
+      createElement(RenderForText, null, templateEl),
+    );
+
+    const text = htmlToText(htmlForText, {
+      selectors: [
+        { selector: 'img', format: 'skip' },
+        { selector: 'a', options: { hideLinkHrefIfSameAsText: true } },
       ],
+      formatters: {
+        // mjml uses `role="presentation"` for non-table tables, skip those.
+        // actual tables get rendered as normal.
+        table: (el, walk, builder, options) =>
+          el.attribs.role === 'presentation'
+            ? walk(el.children, builder)
+            : builder.options.formatters.dataTable!(el, walk, builder, options),
+      },
     });
 
-    if (!to) {
-      return new SendableEmailMessage(this, message);
-    }
-
-    return Promise.resolve(message);
+    return text;
   }
 
-  /**
-   * @deprecated
-   */
-  async sendMessage(msg: EmailMessage) {
-    await this.transportMessage(msg);
-  }
-
-  private async transportMessage(msg: EmailMessage) {
+  private async sendMessage(msg: EmailMessage<{ html: string }>) {
     // "dynamic" import to hide library source usage
     const EmailJS = await import(String('emailjs'));
     const encoded: string = await new EmailJS.Message(msg.headers).readAsync();
@@ -166,37 +176,9 @@ export class EmailService {
     }
   }
 
-  private renderHtml(templateEl: Element) {
-    const { html } = render(templateEl);
-    return html;
-  }
-
-  private renderText(templateEl: Element) {
-    const { html: htmlForText } = render(
-      createElement(RenderForText, null, templateEl),
-    );
-
-    const text = htmlToText(htmlForText, {
-      selectors: [
-        { selector: 'img', format: 'skip' },
-        { selector: 'a', options: { hideLinkHrefIfSameAsText: true } },
-      ],
-      formatters: {
-        // mjml uses `role="presentation"` for non-table tables, skip those.
-        // actual tables get rendered as normal.
-        table: (el, walk, builder, options) =>
-          el.attribs.role === 'presentation'
-            ? walk(el.children, builder)
-            : builder.options.formatters.dataTable!(el, walk, builder, options),
-      },
-    });
-
-    return text;
-  }
-
-  private async openEmail(html: string) {
+  private async openMessage(msg: EmailMessage<{ html: string }>) {
     const temp = tempFile({ extension: 'html' });
-    await fs.writeFile(temp, html);
+    await fs.writeFile(temp, msg.props.html);
     await openUrl(`file://${temp}`);
     // try to wait for chrome to open before deleting the temp file
     void delay(10_000)

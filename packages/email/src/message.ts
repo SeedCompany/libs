@@ -1,48 +1,45 @@
 import { many } from '@seedcompany/common';
+import { type FunctionComponent as Component } from 'react';
 import type { MessageHeaders } from './headers.type.js';
 
-export class EmailMessage {
-  readonly templateName: string;
-  readonly to: readonly string[];
-  readonly html: string;
-  readonly headers: Partial<MessageHeaders>;
+export class EmailMessage<Props extends object = object> {
+  /** @internal */
+  constructor(
+    readonly template: Component<Props>,
+    readonly props: Props,
+    readonly headers: Partial<MessageHeaders> = {},
+  ) {}
 
-  constructor({
-    templateName,
-    html,
-    ...headers
-  }: Partial<MessageHeaders> & { templateName: string; html: string }) {
-    this.templateName = templateName;
-    this.to = headers.to ? many(headers.to) : [];
-    this.html = html;
-    this.headers = headers;
+  get templateName() {
+    return this.template.displayName ?? this.template.name;
+  }
+
+  get to() {
+    return this.headers.to ? many(this.headers.to) : [];
   }
 
   with(headers: Partial<MessageHeaders>) {
-    return new EmailMessage({
+    return new EmailMessage(this.template, this.props, {
       ...this.headers,
       ...headers,
-      templateName: this.templateName,
-      html: this.html,
     });
   }
 }
 
-export class SendableEmailMessage extends EmailMessage {
+export class SendableEmailMessage<
+  Props extends object = object,
+> extends EmailMessage<Props> {
+  /** @internal */
   constructor(
     private readonly sender: {
-      send: (msg: EmailMessage) => Promise<void>;
+      send: (msg: EmailMessage<any>) => Promise<void>;
     },
-    msg: EmailMessage,
+    msg: EmailMessage<Props>,
   ) {
-    super({
-      templateName: msg.templateName,
-      html: msg.html,
-      ...msg.headers,
-    });
+    super(msg.template, msg.props, msg.headers);
   }
 
-  with(headers: Parameters<EmailMessage['with']>[0]) {
+  with(headers: Partial<MessageHeaders>) {
     return new SendableEmailMessage(this.sender, super.with(headers));
   }
 
