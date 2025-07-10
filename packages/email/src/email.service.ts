@@ -1,9 +1,10 @@
 import { SendEmailCommand, SESv2Client as SES } from '@aws-sdk/client-sesv2';
-import { render } from '@faire/mjml-react/utils/render.js';
 import { Inject, Injectable, Logger } from '@nestjs/common';
+import { render } from '@react-email/render';
 import { delay, many, type Many } from '@seedcompany/common';
 import { promises as fs } from 'fs';
 import { htmlToText } from 'html-to-text';
+import mjml2html from 'mjml';
 import openUrl from 'open';
 import {
   type FunctionComponent as Component,
@@ -123,12 +124,16 @@ export class EmailService {
   }
 
   private async renderHtml(templateEl: Element) {
-    const { html } = render(templateEl);
+    let html = await render(templateEl);
+    if (html.includes('<mjml')) {
+      const res = mjml2html(html);
+      html = res.html;
+    }
     return html;
   }
 
   private async renderText(templateEl: Element) {
-    const { html: htmlForText } = render(
+    const htmlForText = await this.renderHtml(
       createElement(RenderForText, null, templateEl),
     );
 
