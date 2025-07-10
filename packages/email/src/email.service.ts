@@ -19,8 +19,8 @@ import {
 } from './email.options.js';
 import { EmailMessage, SendableEmailMessage } from './message.js';
 import { AttachmentCollector } from './templates/attachment.js';
+import { SubjectCollector } from './templates/subject.js';
 import { RenderForText } from './templates/text-rendering.js';
-import { SubjectCollector } from './templates/title.js';
 
 @Injectable()
 export class EmailService {
