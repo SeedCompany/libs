@@ -3658,6 +3658,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-email/render@npm:^1.1.3":
+  version: 1.1.3
+  resolution: "@react-email/render@npm:1.1.3"
+  dependencies:
+    html-to-text: "npm:^9.0.5"
+    prettier: "npm:^3.5.3"
+    react-promise-suspense: "npm:^0.3.4"
+  peerDependencies:
+    react: ^18.0 || ^19.0 || ^19.0.0-rc
+    react-dom: ^18.0 || ^19.0 || ^19.0.0-rc
+  checksum: 10c0/d230346d05c30b5ac3becdea73e6e4a4774a3bc7bf9f93b4edf2b4058a0050835edf54622375be4e5cb924e589b14908643165ebcf301fe3d0286cc3f5cd1e23
+  languageName: node
+  linkType: hard
+
 "@rollup/pluginutils@npm:^5.1.0":
   version: 5.1.3
   resolution: "@rollup/pluginutils@npm:5.1.3"
@@ -3991,8 +4005,10 @@ __metadata:
     "@nestjs/core": "npm:^10.4.4"
     "@nestjs/platform-express": "npm:^10.4.4"
     "@nestjs/testing": "npm:^10.4.4"
+    "@react-email/render": "npm:^1.1.3"
     "@seedcompany/common": "npm:>=0.3.0 <1.0.0"
     "@types/html-to-text": "npm:^9.0.4"
+    "@types/mjml": "npm:^4.7.4"
     "@types/mjml-core": "npm:^4.15.0"
     "@types/react": "npm:^18.3.9"
     emailjs: "npm:^4.0.3"
@@ -4779,10 +4795,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mjml-core@npm:^4.15.0":
-  version: 4.15.0
-  resolution: "@types/mjml-core@npm:4.15.0"
-  checksum: 10c0/8e99b8da13952518dc62aae9b1c8a5b8a18fdc10645412dea12282e70384da23c21acdc800cbda091819acb9eb3aad30ba45f728057ab08cbd4eff260a46def6
+"@types/mjml-core@npm:*, @types/mjml-core@npm:^4.15.0":
+  version: 4.15.2
+  resolution: "@types/mjml-core@npm:4.15.2"
+  checksum: 10c0/551333a7f884fe59d0d62683bfa52432e941bf5ccb3e6913b82743056a5a70a4853a98dd64cfd360948da4ca5cbf1d1b74427009bda4b04090eebdb56e7e35cc
+  languageName: node
+  linkType: hard
+
+"@types/mjml@npm:^4.7.4":
+  version: 4.7.4
+  resolution: "@types/mjml@npm:4.7.4"
+  dependencies:
+    "@types/mjml-core": "npm:*"
+  checksum: 10c0/6f4bbdf709e1f6c9b26be67146b1e4c759142fb4ddfa4c079b600835701bb2039c60cd530d016f1d2f1aef4256580e30cdc942c3acd6935e2fe56b5a665795ae
   languageName: node
   linkType: hard
 
@@ -8173,6 +8198,13 @@ __metadata:
     iconv-lite: "npm:^0.4.24"
     tmp: "npm:^0.0.33"
   checksum: 10c0/c98f1ba3efdfa3c561db4447ff366a6adb5c1e2581462522c56a18bf90dfe4da382f9cd1feee3e330108c3595a854b218272539f311ba1b3298f841eb0fbf339
+  languageName: node
+  linkType: hard
+
+"fast-deep-equal@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "fast-deep-equal@npm:2.0.1"
+  checksum: 10c0/1602e0d6ed63493c865cc6b03f9070d6d3926e8cd086a123060b58f80a295f3f08b1ecfb479ae7c45b7fd45535202aea7cf5b49bc31bffb81c20b1502300be84
   languageName: node
   linkType: hard
 
@@ -12096,6 +12128,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"prettier@npm:^3.5.3":
+  version: 3.6.2
+  resolution: "prettier@npm:3.6.2"
+  bin:
+    prettier: bin/prettier.cjs
+  checksum: 10c0/488cb2f2b99ec13da1e50074912870217c11edaddedeadc649b1244c749d15ba94e846423d062e2c4c9ae683e2d65f754de28889ba06e697ac4f988d44f45812
+  languageName: node
+  linkType: hard
+
 "process-nextick-args@npm:~2.0.0":
   version: 2.0.1
   resolution: "process-nextick-args@npm:2.0.1"
@@ -12264,6 +12305,15 @@ __metadata:
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: 10c0/33977da7a5f1a287936a0c85639fec6ca74f4f15ef1e59a6bc20338fc73dc69555381e211f7a3529b8150a1f71e4225525b41b60b52965bda53ce7d47377ada1
+  languageName: node
+  linkType: hard
+
+"react-promise-suspense@npm:^0.3.4":
+  version: 0.3.4
+  resolution: "react-promise-suspense@npm:0.3.4"
+  dependencies:
+    fast-deep-equal: "npm:^2.0.1"
+  checksum: 10c0/ab7a22f5400f9e9933995537bf6430a4c79e33a121aedb51864968e7604e5c40421fd539ead62554f32300b7d49755c79636de06caa36fe52973b626b4ddfebf
   languageName: node
   linkType: hard
 
