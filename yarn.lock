@@ -3993,8 +3993,10 @@ __metadata:
     "@nestjs/testing": "npm:^10.4.4"
     "@seedcompany/common": "npm:>=0.3.0 <1.0.0"
     "@types/html-to-text": "npm:^9.0.4"
+    "@types/mjml": "npm:^4.7.4"
     "@types/mjml-core": "npm:^4.15.0"
     "@types/react": "npm:^18.3.9"
+    "@types/react-dom": "npm:^18.3.7"
     emailjs: "npm:^4.0.3"
     html-to-text: "npm:^9.0.5"
     mjml: "npm:^4.15.3"
@@ -4006,8 +4008,8 @@ __metadata:
     tempy: "npm:^3.1.0"
   peerDependencies:
     "@nestjs/common": ">=7"
-    react: ">=17.0.0"
-    react-dom: ">=17.0.0"
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
     reflect-metadata: ^0.1.12 || ^0.2.0
   languageName: unknown
   linkType: soft
@@ -4779,10 +4781,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mjml-core@npm:^4.15.0":
-  version: 4.15.0
-  resolution: "@types/mjml-core@npm:4.15.0"
-  checksum: 10c0/8e99b8da13952518dc62aae9b1c8a5b8a18fdc10645412dea12282e70384da23c21acdc800cbda091819acb9eb3aad30ba45f728057ab08cbd4eff260a46def6
+"@types/mjml-core@npm:*, @types/mjml-core@npm:^4.15.0":
+  version: 4.15.2
+  resolution: "@types/mjml-core@npm:4.15.2"
+  checksum: 10c0/551333a7f884fe59d0d62683bfa52432e941bf5ccb3e6913b82743056a5a70a4853a98dd64cfd360948da4ca5cbf1d1b74427009bda4b04090eebdb56e7e35cc
+  languageName: node
+  linkType: hard
+
+"@types/mjml@npm:^4.7.4":
+  version: 4.7.4
+  resolution: "@types/mjml@npm:4.7.4"
+  dependencies:
+    "@types/mjml-core": "npm:*"
+  checksum: 10c0/6f4bbdf709e1f6c9b26be67146b1e4c759142fb4ddfa4c079b600835701bb2039c60cd530d016f1d2f1aef4256580e30cdc942c3acd6935e2fe56b5a665795ae
   languageName: node
   linkType: hard
 
@@ -4835,6 +4846,15 @@ __metadata:
   version: 1.2.4
   resolution: "@types/range-parser@npm:1.2.4"
   checksum: 10c0/8e3c3cda88675efd9145241bcb454449715b7d015a7fb80d018dcb3d441fa1938b302242cc0dfa6b02c5d014dd8bc082ae90091e62b1e816cae3ec36c2a7dbcb
+  languageName: node
+  linkType: hard
+
+"@types/react-dom@npm:^18.3.7":
+  version: 18.3.7
+  resolution: "@types/react-dom@npm:18.3.7"
+  peerDependencies:
+    "@types/react": ^18.0.0
+  checksum: 10c0/8bd309e2c3d1604a28a736a24f96cbadf6c05d5288cfef8883b74f4054c961b6b3a5e997fd5686e492be903c8f3380dba5ec017eff3906b1256529cd2d39603e
   languageName: node
   linkType: hard
 
