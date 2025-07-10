@@ -31,11 +31,11 @@ export class EmailService {
     @Inject(EMAIL_MODULE_OPTIONS) private readonly options: EmailOptions,
   ) {}
 
-  withOptions(options: Omit<Partial<EmailOptions>, 'ses'>) {
+  withOptions(options: Partial<EmailOptions>) {
     return new EmailService(this.ses, {
       ...this.options,
       ...options,
-      wrappers: [...this.options.wrappers, ...(options.wrappers ?? [])],
+      wrappers: [...(this.options.wrappers ?? []), ...(options.wrappers ?? [])],
     });
   }
 
@@ -92,7 +92,7 @@ export class EmailService {
     const attachmentsRef = new AttachmentCollector();
 
     const docEl = [
-      ...this.options.wrappers,
+      ...(this.options.wrappers ?? []),
       subjectRef.collect,
       attachmentsRef.collect,
     ].reduceRight(
