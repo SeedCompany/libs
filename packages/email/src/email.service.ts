@@ -4,7 +4,6 @@ import { render } from '@react-email/render';
 import { delay, many, type Many } from '@seedcompany/common';
 import { promises as fs } from 'fs';
 import { htmlToText } from 'html-to-text';
-import mjml2html from 'mjml';
 import openUrl from 'open';
 import {
   type FunctionComponent as Component,
@@ -126,7 +125,8 @@ export class EmailService {
   private async renderHtml(templateEl: Element) {
     let html = await render(templateEl);
     if (html.includes('<mjml')) {
-      const res = mjml2html(html);
+      const mjml2html = await import('mjml');
+      const res = mjml2html.default(html);
       html = res.html;
     }
     return html;
