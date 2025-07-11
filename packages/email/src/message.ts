@@ -1,83 +1,49 @@
-import { type Many, many } from '@seedcompany/common';
-import type { PathLike } from 'node:fs';
-import type { Readable } from 'node:stream';
+import { many } from '@seedcompany/common';
+import { type FunctionComponent as Component } from 'react';
+import type { MessageHeaders } from './headers.type.js';
 
-export class EmailMessage {
-  readonly templateName: string;
-  readonly to: readonly string[];
-  readonly html: string;
-  readonly headers: Partial<MessageHeaders>;
+export class EmailMessage<Props extends object = object> {
+  /** @internal */
+  constructor(
+    readonly template: Component<Props>,
+    readonly props: Props,
+    readonly headers: Partial<MessageHeaders> = {},
+  ) {}
 
-  constructor({
-    templateName,
-    html,
-    ...headers
-  }: Partial<MessageHeaders> & { templateName: string; html: string }) {
-    this.templateName = templateName;
-    this.to = headers.to ? many(headers.to) : [];
-    this.html = html;
-    this.headers = headers;
+  get templateName() {
+    return this.template.displayName ?? this.template.name;
+  }
+
+  get to() {
+    return this.headers.to ? many(this.headers.to) : [];
   }
 
   with(headers: Partial<MessageHeaders>) {
-    return new EmailMessage({
+    return new EmailMessage(this.template, this.props, {
       ...this.headers,
       ...headers,
-      templateName: this.templateName,
-      html: this.html,
     });
   }
 }
 
-// Below is inlined from the `emailjs` library to avoid using their loose source files
-// I changed to immutable
+export class SendableEmailMessage<
+  Props extends object = object,
+> extends EmailMessage<Props> {
+  /** @internal */
+  constructor(
+    private readonly sender: {
+      send: (msg: EmailMessage<any>) => Promise<void>;
+    },
+    msg: EmailMessage<Props>,
+  ) {
+    super(msg.template, msg.props, msg.headers);
+  }
 
-type MessageHeaders = Readonly<{
-  [index: string]:
-    | boolean
-    | Many<string>
-    | null
-    | undefined
-    | Many<MessageAttachment>;
-  'content-type'?: string;
-  'message-id'?: string;
-  'return-path'?: string | null;
-  date?: string;
-  from: Many<string>;
-  to: Many<string>;
-  cc?: Many<string>;
-  bcc?: Many<string>;
-  subject: string;
-  text: string | null;
-  attachment?: Many<MessageAttachment>;
-}>;
+  with(headers: Partial<MessageHeaders>) {
+    return new SendableEmailMessage(this.sender, super.with(headers));
+  }
 
-type MessageAttachment = Readonly<{
-  [index: string]:
-    | string
-    | boolean
-    | Many<MessageAttachment>
-    | MessageAttachmentHeaders
-    | Readable
-    | PathLike
-    | undefined;
-  name?: string;
-  headers?: MessageAttachmentHeaders;
-  inline?: boolean;
-  alternative?: MessageAttachment | boolean;
-  related?: readonly MessageAttachment[];
-  data?: string;
-  encoded?: boolean;
-  stream?: Readable;
-  path?: PathLike;
-  type?: string;
-  charset?: string;
-  method?: string;
-}>;
-
-type MessageAttachmentHeaders = Readonly<{
-  [index: string]: string | undefined;
-  'content-type'?: string;
-  'content-transfer-encoding'?: BufferEncoding | '7bit' | '8bit';
-  'content-disposition'?: string;
-}>;
+  async send() {
+    await this.sender.send(this);
+  }
+}

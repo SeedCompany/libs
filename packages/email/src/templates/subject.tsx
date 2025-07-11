@@ -1,4 +1,3 @@
-import { MjmlTitle } from '@faire/mjml-react';
 import { createContext, type ReactNode, useContext } from 'react';
 
 interface SubjectContextType {
@@ -29,11 +28,8 @@ export class SubjectCollector {
   }
 }
 
-/**
- * Wrap mjml title to also make the title the email's subject
- */
-export const Title = ({ children }: { children: string }) => {
+export const Subject = ({ children }: { children: string }) => {
   const context = useContext(SubjectContext);
   context.subject = children;
-  return <MjmlTitle>{children}</MjmlTitle>;
+  return null;
 };

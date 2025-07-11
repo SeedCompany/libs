@@ -4,10 +4,10 @@ import { EmailModule } from './email.module.js';
 import { EmailService } from './email.service.js';
 
 describe('EmailModule', () => {
-  it('should be creatable with fromRoot()', async () => {
+  it('should be creatable with registerAsync()', async () => {
     const module = await Test.createTestingModule({
       imports: [
-        EmailModule.forRoot({
+        EmailModule.register({
           from: 'unknown@email.com',
         }),
       ],
@@ -17,10 +17,10 @@ describe('EmailModule', () => {
     await app.close();
   });
 
-  it('should be creatable with fromRootAsync()', async () => {
+  it('should be creatable with registerAsync()', async () => {
     const module = await Test.createTestingModule({
       imports: [
-        EmailModule.forRootAsync({
+        EmailModule.registerAsync({
           useFactory: () => ({
             from: 'unknown@email.com',
           }),
