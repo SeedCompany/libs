@@ -17,6 +17,7 @@ import {
   type EmailOptions,
   SES_TOKEN,
 } from './email.options.js';
+import type { MessageHeaders } from './headers.type.js';
 import { EmailMessage, SendableEmailMessage } from './message.js';
 import { AttachmentCollector } from './templates/attachment.js';
 import { SubjectCollector } from './templates/subject.js';
@@ -72,12 +73,23 @@ export class EmailService {
     body: Element<P, Component<P>>,
   ): Promise<void>;
   async send<P extends object>(
+    // eslint-disable-next-line @typescript-eslint/unified-signatures -- I want the specific param name
+    headers: Partial<MessageHeaders>,
+    body: Element<P, Component<P>>,
+  ): Promise<void>;
+  async send<P extends object>(
     to: Many<string>,
     template: Component<P>,
     props: P,
   ): Promise<void>;
   async send<P extends object>(
-    to: Many<string> | EmailMessage<P>,
+    // eslint-disable-next-line @typescript-eslint/unified-signatures -- I want the specific param name
+    headers: Partial<MessageHeaders>,
+    template: Component<P>,
+    props: P,
+  ): Promise<void>;
+  async send<P extends object>(
+    to: Many<string> | EmailMessage<P> | Partial<MessageHeaders>,
     template?: Element<P, Component<P>> | Component<P>,
     props?: P,
   ): Promise<void> {
@@ -89,7 +101,11 @@ export class EmailService {
         : (isValidElement(template)
             ? this.compose(template as Element<P, Component<P>>)
             : this.compose(template as Component<P>, props!)
-          ).with({ to });
+          ).with(
+            typeof to === 'string' || Array.isArray(to)
+              ? { to }
+              : (to as Partial<MessageHeaders>),
+          );
 
     if (send) {
       const rendered = await this.render(msg);
