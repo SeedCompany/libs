@@ -9,6 +9,7 @@ import {
   type FunctionComponent as Component,
   createElement,
   type ReactElement as Element,
+  isValidElement,
 } from 'react';
 import { temporaryFile as tempFile } from 'tempy';
 import {
@@ -39,10 +40,24 @@ export class EmailService {
   }
 
   compose<P extends object>(
+    body: Element<P, Component<P>>,
+  ): SendableEmailMessage<P>;
+  compose<P extends object>(
     template: Component<P>,
     props: P,
+  ): SendableEmailMessage<P>;
+  compose<P extends object>(
+    template: Element<P> | Component<P>,
+    props?: P,
   ): SendableEmailMessage<P> {
-    const message = new EmailMessage(template, props, {
+    if (!props && !isValidElement(template)) {
+      throw new Error('Template is not a valid React element');
+    }
+    const body = props
+      ? createElement<P>(template as Component<P>, props)
+      : (template as Element<P, Component<P>>);
+
+    const message = new EmailMessage(body, {
       from: this.options.from,
       ...(!(!this.options.replyTo || this.options.replyTo.length === 0) && {
         'reply-to': many(this.options.replyTo).join(', '),
@@ -54,12 +69,16 @@ export class EmailService {
   async send<P extends object>(message: EmailMessage<P>): Promise<void>;
   async send<P extends object>(
     to: Many<string>,
+    body: Element<P, Component<P>>,
+  ): Promise<void>;
+  async send<P extends object>(
+    to: Many<string>,
     template: Component<P>,
     props: P,
   ): Promise<void>;
   async send<P extends object>(
     to: Many<string> | EmailMessage<P>,
-    template?: Component<P>,
+    template?: Element<P, Component<P>> | Component<P>,
     props?: P,
   ): Promise<void> {
     const { send, open } = this.options;
@@ -67,7 +86,10 @@ export class EmailService {
     const msg =
       to instanceof EmailMessage
         ? to
-        : this.compose(template!, props!).with({ to });
+        : (isValidElement(template)
+            ? this.compose(template as Element<P, Component<P>>)
+            : this.compose(template as Component<P>, props!)
+          ).with({ to });
 
     if (send) {
       const rendered = await this.render(msg);
@@ -94,32 +116,27 @@ export class EmailService {
       ...(this.options.wrappers ?? []),
       subjectRef.collect,
       attachmentsRef.collect,
-    ].reduceRight(
-      (prev: Element, wrap) => wrap(prev),
-      createElement(msg.template, msg.props),
-    );
+    ].reduceRight((prev, wrap) => wrap(prev), msg.body);
 
     const html = await this.renderHtml(docEl);
     const text = await this.renderText(docEl);
 
-    const renderedTemplate: Component<{ html: string }> = () => {
+    const RenderedComp: Component<{ html: string }> = () => {
       throw new Error('Cannot re-render a rendered email message');
     };
-    renderedTemplate.displayName = msg.templateName;
-    return new EmailMessage(
-      renderedTemplate,
-      { html },
-      {
-        subject: subjectRef.subject,
-        text,
-        ...msg.headers,
-        attachment: [
-          { data: html, alternative: true },
-          ...attachmentsRef.attachments.map((file) => ({ ...file })),
-          ...many(msg.headers.attachment ?? []),
-        ],
-      },
-    );
+    RenderedComp.displayName = msg.templateName;
+    const rendered = createElement(RenderedComp, { html });
+
+    return new EmailMessage(rendered, {
+      subject: subjectRef.subject,
+      text,
+      ...msg.headers,
+      attachment: [
+        { data: html, alternative: true },
+        ...attachmentsRef.attachments.map((file) => ({ ...file })),
+        ...many(msg.headers.attachment ?? []),
+      ],
+    });
   }
 
   private async renderHtml(templateEl: Element) {
@@ -183,7 +200,7 @@ export class EmailService {
 
   private async openMessage(msg: EmailMessage<{ html: string }>) {
     const temp = tempFile({ extension: 'html' });
-    await fs.writeFile(temp, msg.props.html);
+    await fs.writeFile(temp, msg.body.props.html);
     await openUrl(`file://${temp}`);
     // try to wait for chrome to open before deleting the temp file
     void delay(10_000)

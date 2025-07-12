@@ -1,17 +1,19 @@
 import { many } from '@seedcompany/common';
-import { type FunctionComponent as Component } from 'react';
+import {
+  type ComponentType as Component,
+  type ReactElement as Element,
+} from 'react';
 import type { MessageHeaders } from './headers.type.js';
 
 export class EmailMessage<Props extends object = object> {
   /** @internal */
   constructor(
-    readonly template: Component<Props>,
-    readonly props: Props,
+    readonly body: Element<Props, Component<Props>>,
     readonly headers: Partial<MessageHeaders> = {},
   ) {}
 
-  get templateName() {
-    return this.template.displayName ?? this.template.name;
+  get templateName(): string {
+    return this.body.type.displayName ?? this.body.type.name;
   }
 
   get to() {
@@ -19,7 +21,7 @@ export class EmailMessage<Props extends object = object> {
   }
 
   with(headers: Partial<MessageHeaders>) {
-    return new EmailMessage(this.template, this.props, {
+    return new EmailMessage(this.body, {
       ...this.headers,
       ...headers,
     });
@@ -36,7 +38,7 @@ export class SendableEmailMessage<
     },
     msg: EmailMessage<Props>,
   ) {
-    super(msg.template, msg.props, msg.headers);
+    super(msg.body, msg.headers);
   }
 
   with(headers: Partial<MessageHeaders>) {
