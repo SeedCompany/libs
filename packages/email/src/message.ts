@@ -1,4 +1,5 @@
 import { type Many, many } from '@seedcompany/common';
+import { AsyncLocalStorage } from 'node:async_hooks';
 import {
   type FunctionComponent as Component,
   createElement,
@@ -8,12 +9,21 @@ import {
 import type { HasRequiredKeys } from 'type-fest';
 import type { MessageHeaders } from './headers.type.js';
 
+export const asyncScope = Symbol('asyncScope');
+type WithAsyncScope = ReturnType<typeof AsyncLocalStorage.snapshot>;
+
 export class EmailMessage<Props extends object = object> {
+  /** @internal */
+  [asyncScope]: WithAsyncScope;
+
   /** @internal */
   constructor(
     readonly body: Element<Props>,
-    readonly headers: Partial<MessageHeaders> = {},
-  ) {}
+    readonly headers: Partial<MessageHeaders>,
+    scope?: WithAsyncScope,
+  ) {
+    this[asyncScope] = scope ?? AsyncLocalStorage.snapshot();
+  }
 
   static from<P extends object>(body: Body<P>): EmailMessage<P>;
   static from<P extends object>(
@@ -50,10 +60,14 @@ export class EmailMessage<Props extends object = object> {
   }
 
   withHeaders(headers: Partial<MessageHeaders>) {
-    return new EmailMessage(this.body, {
-      ...this.headers,
-      ...headers,
-    });
+    return new EmailMessage(
+      this.body,
+      {
+        ...this.headers,
+        ...headers,
+      },
+      this[asyncScope],
+    );
   }
 
   withBody<PP extends object>(body: Body<PP>) {
@@ -71,7 +85,7 @@ export class SendableEmailMessage<
     },
     msg: EmailMessage<Props>,
   ) {
-    super(msg.body, msg.headers);
+    super(msg.body, msg.headers, msg[asyncScope]);
   }
 
   withHeaders(headers: Partial<MessageHeaders>) {

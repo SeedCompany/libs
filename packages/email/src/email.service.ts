@@ -17,7 +17,12 @@ import {
   SES_TOKEN,
 } from './email.options.js';
 import type { MessageHeaders } from './headers.type.js';
-import { type Body, EmailMessage, SendableEmailMessage } from './message.js';
+import {
+  asyncScope,
+  type Body,
+  EmailMessage,
+  SendableEmailMessage,
+} from './message.js';
 import { AttachmentCollector } from './templates/attachment.js';
 import { SubjectCollector } from './templates/subject.js';
 import { RenderForText } from './templates/text-rendering.js';
@@ -89,8 +94,11 @@ export class EmailService {
       attachmentsRef.collect,
     ].reduceRight((prev, wrap) => wrap(prev), msg.body);
 
-    const html = await this.renderHtml(docEl);
-    const text = await this.renderText(docEl);
+    const { html, text } = await msg[asyncScope](async () => {
+      const html = await this.renderHtml(docEl);
+      const text = await this.renderText(docEl);
+      return { html, text };
+    });
 
     const RenderedComp: Component<{ html: string }> = () => {
       throw new Error('Cannot re-render a rendered email message');
