@@ -8,8 +8,7 @@ import openUrl from 'open';
 import {
   type FunctionComponent as Component,
   createElement,
-  type ReactElement as Element,
-  isValidElement,
+  type FunctionComponentElement as Element,
 } from 'react';
 import { temporaryFile as tempFile } from 'tempy';
 import {
@@ -18,7 +17,7 @@ import {
   SES_TOKEN,
 } from './email.options.js';
 import type { MessageHeaders } from './headers.type.js';
-import { EmailMessage, SendableEmailMessage } from './message.js';
+import { type Body, EmailMessage, SendableEmailMessage } from './message.js';
 import { AttachmentCollector } from './templates/attachment.js';
 import { SubjectCollector } from './templates/subject.js';
 import { RenderForText } from './templates/text-rendering.js';
@@ -40,72 +39,28 @@ export class EmailService {
     });
   }
 
+  compose<P extends object>(body: Body<P>): SendableEmailMessage<P>;
   compose<P extends object>(
-    body: Element<P, Component<P>>,
+    to: Many<string>,
+    body: Body<P>,
   ): SendableEmailMessage<P>;
   compose<P extends object>(
-    template: Component<P>,
-    props: P,
+    // eslint-disable-next-line @typescript-eslint/unified-signatures -- I want the specific param name
+    headers: Partial<MessageHeaders>,
+    body: Body<P>,
   ): SendableEmailMessage<P>;
-  compose<P extends object>(
-    template: Element<P> | Component<P>,
-    props?: P,
-  ): SendableEmailMessage<P> {
-    if (!props && !isValidElement(template)) {
-      throw new Error('Template is not a valid React element');
-    }
-    const body = props
-      ? createElement<P>(template as Component<P>, props)
-      : (template as Element<P, Component<P>>);
-
-    const message = new EmailMessage(body, {
-      from: this.options.from,
-      ...(!(!this.options.replyTo || this.options.replyTo.length === 0) && {
-        'reply-to': many(this.options.replyTo).join(', '),
-      }),
-    });
+  compose(...args: any[]): SendableEmailMessage {
+    // @ts-expect-error it is the same overload signatures
+    const message = EmailMessage.from(...args);
     return new SendableEmailMessage(this, message);
   }
 
-  async send<P extends object>(message: EmailMessage<P>): Promise<void>;
-  async send<P extends object>(
-    to: Many<string>,
-    body: Element<P, Component<P>>,
-  ): Promise<void>;
-  async send<P extends object>(
-    // eslint-disable-next-line @typescript-eslint/unified-signatures -- I want the specific param name
-    headers: Partial<MessageHeaders>,
-    body: Element<P, Component<P>>,
-  ): Promise<void>;
-  async send<P extends object>(
-    to: Many<string>,
-    template: Component<P>,
-    props: P,
-  ): Promise<void>;
-  async send<P extends object>(
-    // eslint-disable-next-line @typescript-eslint/unified-signatures -- I want the specific param name
-    headers: Partial<MessageHeaders>,
-    template: Component<P>,
-    props: P,
-  ): Promise<void>;
-  async send<P extends object>(
-    to: Many<string> | EmailMessage<P> | Partial<MessageHeaders>,
-    template?: Element<P, Component<P>> | Component<P>,
-    props?: P,
-  ): Promise<void> {
+  async send<P extends object>(msg: EmailMessage<P>) {
     const { send, open } = this.options;
 
-    const msg =
-      to instanceof EmailMessage
-        ? to
-        : (isValidElement(template)
-            ? this.compose(template as Element<P, Component<P>>)
-            : this.compose(template as Component<P>, props!)
-          ).with(
-            typeof to === 'string' || Array.isArray(to)
-              ? { to }
-              : (to as Partial<MessageHeaders>),
-          );
+    if (msg.to.length === 0) {
+      throw new Error('Cannot send email to no recipients');
+    }
 
     if (send) {
       const rendered = await this.render(msg);
@@ -144,6 +99,10 @@ export class EmailService {
     const rendered = createElement(RenderedComp, { html });
 
     return new EmailMessage(rendered, {
+      from: this.options.from,
+      ...(!(!this.options.replyTo || this.options.replyTo.length === 0) && {
+        'reply-to': many(this.options.replyTo).join(', '),
+      }),
       subject: subjectRef.subject,
       text,
       ...msg.headers,
@@ -155,7 +114,7 @@ export class EmailService {
     });
   }
 
-  private async renderHtml(templateEl: Element) {
+  private async renderHtml(templateEl: Element<any>) {
     let html = await render(templateEl);
     if (html.includes('<mjml')) {
       const mjml2html = await import('mjml');
@@ -165,7 +124,7 @@ export class EmailService {
     return html;
   }
 
-  private async renderText(templateEl: Element) {
+  private async renderText(templateEl: Element<any>) {
     const htmlForText = await this.renderHtml(
       createElement(RenderForText, null, templateEl),
     );
