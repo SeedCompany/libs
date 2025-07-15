@@ -63,10 +63,6 @@ export class EmailService {
   async send<P extends object>(msg: EmailMessage<P>) {
     const { send, open } = this.options;
 
-    if (msg.to.length === 0) {
-      throw new Error('Cannot send email to no recipients');
-    }
-
     if (send) {
       const rendered = await this.render(msg);
       await this.sendMessage(rendered);
@@ -158,7 +154,13 @@ export class EmailService {
   private async sendMessage(msg: EmailMessage<{ html: string }>) {
     // "dynamic" import to hide library source usage
     const EmailJS = await import(String('emailjs'));
-    const encoded: string = await new EmailJS.Message(msg.headers).readAsync();
+    const message = new EmailJS.Message(msg.headers);
+    const { validationError } = message.checkValidity();
+    if (validationError) {
+      throw new Error(validationError);
+    }
+
+    const encoded: string = await message.readAsync();
 
     const command = new SendEmailCommand({
       Content: {
