@@ -103,10 +103,7 @@ export class EmailService {
     const rendered = createElement(RenderedComp, { html });
 
     return new EmailMessage(rendered, {
-      from: this.options.from,
-      ...(!(!this.options.replyTo || this.options.replyTo.length === 0) && {
-        'reply-to': many(this.options.replyTo).join(', '),
-      }),
+      ...this.options.defaultHeaders,
       subject: subjectRef.subject,
       text,
       ...msg.headers,

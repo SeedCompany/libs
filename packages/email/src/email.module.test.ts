@@ -8,7 +8,9 @@ describe('EmailModule', () => {
     const module = await Test.createTestingModule({
       imports: [
         EmailModule.register({
-          from: 'unknown@email.com',
+          defaultHeaders: {
+            from: 'unknown@email.com',
+          },
         }),
       ],
     }).compile();
@@ -22,7 +24,9 @@ describe('EmailModule', () => {
       imports: [
         EmailModule.registerAsync({
           useFactory: () => ({
-            from: 'unknown@email.com',
+            defaultHeaders: {
+              from: 'unknown@email.com',
+            },
           }),
         }),
       ],
