@@ -55,8 +55,9 @@ export class EmailMessage<Props extends object = object> {
     return this.body.type.displayName ?? this.body.type.name;
   }
 
-  get to() {
-    return this.headers.to ? many(this.headers.to) : [];
+  get primaryRecipients() {
+    const best = this.headers.to ?? this.headers.cc ?? this.headers.bcc;
+    return best ? many(best) : [];
   }
 
   withHeaders(headers: Partial<MessageHeaders>) {

@@ -67,10 +67,12 @@ export class EmailService {
       await this.sendMessage(rendered);
       return;
     }
+    const recipients = msg.primaryRecipients.join(', ');
     this.logger.debug(
-      `Would have sent ${msg.templateName} email if enabled to ${msg.to.join(
-        ', ',
-      )}`,
+      `Would have sent ${msg.templateName} email if enabled${
+        // maybe be defined by render, which hasn't happened
+        recipients ? ` to ${recipients}` : ''
+      }`,
     );
 
     if (open) {
@@ -169,7 +171,7 @@ export class EmailService {
     try {
       await this.ses.send(command);
       this.logger.debug(
-        `Sent ${msg.templateName} email to ${msg.to.join(', ')}`,
+        `Sent ${msg.templateName} email to ${msg.primaryRecipients.join(', ')}`,
       );
     } catch (e) {
       this.logger.error(
