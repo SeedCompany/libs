@@ -91,7 +91,7 @@ export class EmailService {
           ].reduceRight((prev, wrap) => wrap(prev), msg.body!);
 
           const html = await this.renderHtml(docEl);
-          const text = await this.renderText(docEl);
+          const text = msg.headers.text ?? (await this.renderText(docEl));
 
           const RenderedComp: Component<RenderedProps & {}> = () => {
             throw new Error('Cannot re-render a rendered email message');
@@ -173,7 +173,9 @@ export class EmailService {
   }
 }
 
-type RenderedProps = { html: string; text: string } | undefined;
+type RenderedProps =
+  | { html: string; text: MessageHeaders['text'] & {} }
+  | undefined;
 
 function tryRenderText(text: MessageHeaders['text']) {
   if (!text) {
