@@ -4031,6 +4031,7 @@ __metadata:
   peerDependencies:
     "@faire/mjml-react": ^3.5.0
     "@nestjs/common": ">=7"
+    "@types/react": ">=17.0.0"
     mjml: ^4.15.3
     react: ">=17.0.0"
     react-dom: ">=17.0.0"
