@@ -20,7 +20,7 @@ export class EmailMessage<Props extends object = object> {
 
   /** @internal */
   constructor(
-    readonly body: Element<Props, Component<Props>>,
+    readonly body: Element<Props, Component<Props>> | undefined,
     readonly headers: MessageHeaders,
     scope?: WithAsyncScope,
   ) {
@@ -35,14 +35,19 @@ export class EmailMessage<Props extends object = object> {
   static from<P extends object>(
     // eslint-disable-next-line @typescript-eslint/unified-signatures -- I want the specific param name
     headers: MessageHeaders,
-    body: Body<P>,
+    body?: Body<P>,
   ): EmailMessage<P>;
   static from(
     headersOrBody: Many<string> | MessageHeaders | Body,
     bodyMaybe?: Body,
   ): EmailMessage {
-    const body: Body = bodyMaybe ?? (headersOrBody as Body);
-    const headersRaw = !bodyMaybe
+    const firstArgIsBody =
+      isValidElement(headersOrBody) ||
+      typeof headersOrBody === 'function' ||
+      (Array.isArray(headersOrBody) && typeof headersOrBody[0] === 'function');
+    const body =
+      bodyMaybe ?? (firstArgIsBody ? (headersOrBody as Body) : undefined);
+    const headersRaw = firstArgIsBody
       ? undefined
       : (headersOrBody as Many<string> | MessageHeaders);
     const headers =
@@ -50,11 +55,11 @@ export class EmailMessage<Props extends object = object> {
         ? { to: headersRaw }
         : ((headersRaw ?? {}) as MessageHeaders);
 
-    return new EmailMessage(bodyToElement(body), headers);
+    return new EmailMessage(body ? bodyToElement(body) : undefined, headers);
   }
 
-  get templateName(): string {
-    return this.body.type.displayName ?? this.body.type.name;
+  get templateName() {
+    return this.body?.type.displayName ?? this.body?.type.name;
   }
 
   get primaryRecipients() {

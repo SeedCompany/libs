@@ -3,6 +3,7 @@ import { render } from '@react-email/render';
 import { delay, many, type Many } from '@seedcompany/common';
 import { promises as fs } from 'fs';
 import { htmlToText } from 'html-to-text';
+import type { Readable } from 'node:stream';
 import openUrl from 'open';
 import {
   type FunctionComponent as Component,
@@ -48,7 +49,7 @@ export class EmailService {
   compose<P extends object>(
     // eslint-disable-next-line @typescript-eslint/unified-signatures -- I want the specific param name
     headers: MessageHeaders,
-    body: Body<P>,
+    body?: Body<P>,
   ): SendableEmailMessage<P>;
   compose(...args: any[]): SendableEmailMessage {
     // @ts-expect-error it is the same overload signatures
@@ -66,7 +67,7 @@ export class EmailService {
     }
     const recipients = msg.primaryRecipients.join(', ');
     this.logger.debug(
-      `Would have sent ${msg.templateName} email if enabled${
+      `Would have sent ${msg.templateName ?? 'some'} email if enabled${
         // maybe be defined by render, which hasn't happened
         recipients ? ` to ${recipients}` : ''
       }`,
@@ -81,30 +82,33 @@ export class EmailService {
   private async render<P extends object>(msg: EmailMessage<P>) {
     const headerCollector = new HeaderCollector();
 
-    const docEl = [
-      ...(this.options.wrappers ?? []),
-      headerCollector.collect,
-    ].reduceRight((prev, wrap) => wrap(prev), msg.body);
+    const renderedBody = msg.body
+      ? await msg[asyncScope](async () => {
+          const docEl = [
+            ...(this.options.wrappers ?? []),
+            headerCollector.collect,
+          ].reduceRight((prev, wrap) => wrap(prev), msg.body!);
 
-    const { html, text } = await msg[asyncScope](async () => {
-      const html = await this.renderHtml(docEl);
-      const text = await this.renderText(docEl);
-      return { html, text };
-    });
+          const html = await this.renderHtml(docEl);
+          const text = await this.renderText(docEl);
 
-    const RenderedComp: Component<{ html: string }> = () => {
-      throw new Error('Cannot re-render a rendered email message');
-    };
-    RenderedComp.displayName = msg.templateName;
-    const rendered = createElement(RenderedComp, { html });
+          const RenderedComp: Component<{
+            html: string;
+            text: string;
+          }> = () => {
+            throw new Error('Cannot re-render a rendered email message');
+          };
+          RenderedComp.displayName = msg.templateName;
+          return createElement(RenderedComp, { html, text });
+        })
+      : undefined;
 
     const { attachments, ...headersFromBody } = headerCollector.headers;
 
-    return new EmailMessage(rendered, {
+    return new EmailMessage(renderedBody, {
       ...this.options.defaultHeaders,
       ...headersFromBody,
-      text,
-      html,
+      ...renderedBody?.props,
       ...msg.headers,
       attachments: [
         ...Object.values(attachments ?? {}),
@@ -146,20 +150,39 @@ export class EmailService {
     return text;
   }
 
-  private async sendMessage(msg: EmailMessage<{ html: string }>) {
+  private async sendMessage(msg: EmailMessage<any>) {
     await this.transporter.sendMail(
       // revert deep readonly
       msg.headers as WritableDeep<typeof msg.headers>,
     );
   }
 
-  private async openMessage(msg: EmailMessage<{ html: string }>) {
-    const temp = tempFile({ extension: 'html' });
-    await fs.writeFile(temp, msg.body.props.html);
+  private async openMessage(msg: EmailMessage<{ html: string; text: string }>) {
+    const temp = tempFile({
+      extension: msg.body ? 'html' : msg.headers.text ? 'txt' : 'json',
+    });
+    await fs.writeFile(
+      temp,
+      msg.body?.props.html ??
+        tryRenderText(msg.headers.text) ??
+        JSON.stringify(msg.headers),
+    );
     await openUrl(`file://${temp}`);
     // try to wait for chrome to open before deleting the temp file
     void delay(10_000)
       .then(() => fs.rm(temp, { recursive: true, force: true, maxRetries: 2 }))
       .catch();
   }
+}
+
+function tryRenderText(text: MessageHeaders['text']) {
+  if (!text) {
+    return undefined;
+  }
+  if (typeof text === 'string') {
+    return text;
+  }
+  return 'content' in text
+    ? text.content
+    : (text as string | Buffer | Readable);
 }
