@@ -3,7 +3,7 @@ import { AsyncLocalStorage } from 'node:async_hooks';
 import {
   type FunctionComponent as Component,
   createElement,
-  type FunctionComponentElement as Element,
+  type ReactElement as Element,
   isValidElement,
 } from 'react';
 import type { HasRequiredKeys } from 'type-fest';
@@ -18,7 +18,7 @@ export class EmailMessage<Props extends object = object> {
 
   /** @internal */
   constructor(
-    readonly body: Element<Props>,
+    readonly body: Element<Props, Component<Props>>,
     readonly headers: Partial<MessageHeaders>,
     scope?: WithAsyncScope,
   ) {
@@ -105,7 +105,7 @@ export class SendableEmailMessage<
 }
 
 export type Body<P extends object = object> =
-  | Element<P>
+  | Element<P, Component<P>>
   | ComponentWithProps<P>;
 
 export type ComponentWithProps<Props extends object> = Props extends Record<
@@ -117,18 +117,17 @@ export type ComponentWithProps<Props extends object> = Props extends Record<
   ? [component: Component<Props>, props: Props]
   : Component<Props> | [component: Component<Props>, props?: Props];
 
-function bodyToElement<P extends object>(body: Body<P>): Element<P> {
+function bodyToElement<P extends object>(
+  body: Body<P>,
+): Element<P, Component<P>> {
   if (isValidElement(body)) {
     if (typeof body.type !== 'function') {
       throw new Error(
         'Body must be a React element of a user defined component, not intrinsic elements',
       );
     }
-    return body as Element<P>;
+    return body as Element<P, Component<P>>;
   }
-  const [comp, props] = many(body as ComponentWithProps<P>) as [
-    Component<P>,
-    P?,
-  ];
+  const [comp, props] = many(body) as [Component<P>, P?];
   return createElement(comp, props ?? ({} as unknown as P));
 }

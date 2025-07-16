@@ -8,7 +8,7 @@ import openUrl from 'open';
 import {
   type FunctionComponent as Component,
   createElement,
-  type FunctionComponentElement as Element,
+  type ReactElement as Element,
 } from 'react';
 import { temporaryFile as tempFile } from 'tempy';
 import {
@@ -115,7 +115,7 @@ export class EmailService {
     });
   }
 
-  private async renderHtml(templateEl: Element<any>) {
+  private async renderHtml(templateEl: Element) {
     let html = await render(templateEl);
     if (html.includes('<mjml')) {
       const mjml2html = await import('mjml');
@@ -125,7 +125,7 @@ export class EmailService {
     return html;
   }
 
-  private async renderText(templateEl: Element<any>) {
+  private async renderText(templateEl: Element) {
     const htmlForText = await this.renderHtml(
       createElement(RenderForText, null, templateEl),
     );
