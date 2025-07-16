@@ -13,8 +13,8 @@ import {
 import { createTransport } from 'nodemailer';
 import type { DistributedOmit } from 'type-fest';
 import { EMAIL_MODULE_OPTIONS, type EmailOptions } from './email.options.js';
-import { EmailService } from './email.service.js';
 import { NodeMailerLoggerAdapter } from './logger.js';
+import { MailerService } from './mailer.service.js';
 import { Transporter } from './transporter.js';
 
 type TransporterProvider = DistributedOmit<
@@ -63,8 +63,8 @@ const { ConfigurableModuleClass, OPTIONS_TYPE, ASYNC_OPTIONS_TYPE } =
     .build();
 
 @Module({
-  providers: [EmailService],
-  exports: [EmailService],
+  providers: [MailerService],
+  exports: [MailerService],
 })
 export class EmailModule extends ConfigurableModuleClass {}
 

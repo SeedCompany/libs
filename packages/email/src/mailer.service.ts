@@ -25,8 +25,8 @@ import { RenderForText } from './templates/text-rendering.js';
 import { Transporter } from './transporter.js';
 
 @Injectable()
-export class EmailService {
-  private readonly logger = new Logger(EmailService.name);
+export class MailerService {
+  private readonly logger = new Logger(MailerService.name);
 
   constructor(
     private readonly transporter: Transporter,
@@ -34,7 +34,7 @@ export class EmailService {
   ) {}
 
   withOptions(options: Partial<EmailOptions>) {
-    return new EmailService(this.transporter, {
+    return new MailerService(this.transporter, {
       ...this.options,
       ...options,
       wrappers: [...(this.options.wrappers ?? []), ...(options.wrappers ?? [])],
