@@ -23,8 +23,7 @@ import {
   EmailMessage,
   SendableEmailMessage,
 } from './message.js';
-import { AttachmentCollector } from './templates/attachment.js';
-import { SubjectCollector } from './templates/subject.js';
+import { HeaderCollector } from './templates/headers.js';
 import { RenderForText } from './templates/text-rendering.js';
 
 @Injectable()
@@ -81,13 +80,11 @@ export class EmailService {
   }
 
   private async render<P extends object>(msg: EmailMessage<P>) {
-    const subjectRef = new SubjectCollector();
-    const attachmentsRef = new AttachmentCollector();
+    const headerCollector = new HeaderCollector();
 
     const docEl = [
       ...(this.options.wrappers ?? []),
-      subjectRef.collect,
-      attachmentsRef.collect,
+      headerCollector.collect,
     ].reduceRight((prev, wrap) => wrap(prev), msg.body);
 
     const { html, text } = await msg[asyncScope](async () => {
@@ -102,14 +99,17 @@ export class EmailService {
     RenderedComp.displayName = msg.templateName;
     const rendered = createElement(RenderedComp, { html });
 
+    const { attachment: attachments = {}, ...headersFromBody } =
+      headerCollector.headers;
+
     return new EmailMessage(rendered, {
       ...this.options.defaultHeaders,
-      subject: subjectRef.subject,
+      ...headersFromBody,
       text,
       ...msg.headers,
       attachment: [
         { data: html, alternative: true },
-        ...attachmentsRef.attachments.map((file) => ({ ...file })),
+        ...Object.values(attachments).map((file) => ({ ...file })),
         ...many(msg.headers.attachment ?? []),
       ],
     });

@@ -1,3 +1,2 @@
-export { Attachment } from './attachment.js';
+export { Headers } from './headers.js';
 export { HideInText, inText, InText } from './text-rendering.js';
-export { Subject } from './subject.js';
