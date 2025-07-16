@@ -4015,10 +4015,11 @@ __metadata:
     "@types/html-to-text": "npm:^9.0.4"
     "@types/mjml": "npm:^4.7.4"
     "@types/mjml-core": "npm:^4.15.0"
+    "@types/nodemailer": "npm:^6.4.17"
     "@types/react": "npm:^18.3.9"
-    emailjs: "npm:^4.0.3"
     html-to-text: "npm:^9.0.5"
     mjml: "npm:^4.15.3"
+    nodemailer: "npm:^7.0.5"
     open: "npm:^10.1.0"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
@@ -4841,6 +4842,15 @@ __metadata:
   dependencies:
     undici-types: "npm:~5.26.4"
   checksum: 10c0/da8a015833e4e2d2da3dbc1129b0ce6681d7b5b6a0eb8884e618cc7a28bc2cdf24724c481536f1ddf5fb769208604b7d5502f566106f26068dc8abe72375fd4f
+  languageName: node
+  linkType: hard
+
+"@types/nodemailer@npm:^6.4.17":
+  version: 6.4.17
+  resolution: "@types/nodemailer@npm:6.4.17"
+  dependencies:
+    "@types/node": "npm:*"
+  checksum: 10c0/689abb3005cf36cf89c2abe56f0aa4469a37e0814633a73fbeb35732e856f4b0d7ab32b6d91585038b6941f5b70db58ec2bd147ebe9f73e528eb6c99604f4e82
   languageName: node
   linkType: hard
 
@@ -7323,18 +7333,6 @@ __metadata:
   version: 1.4.335
   resolution: "electron-to-chromium@npm:1.4.335"
   checksum: 10c0/d0ff0c169a268f979ab1680be31993a2a3f5c35473c636bd76bf9f0d7e6650b059b16739be8cbe37d688c3923d537d0439a64275e71a4b3e0004c270c5b5f2d0
-  languageName: node
-  linkType: hard
-
-"emailjs@npm:^4.0.3":
-  version: 4.0.3
-  resolution: "emailjs@npm:4.0.3"
-  peerDependencies:
-    typescript: ">=4.3.5"
-  peerDependenciesMeta:
-    typescript:
-      optional: true
-  checksum: 10c0/5cb831bce7f15953bd3727bc2781dfc8030a4533f5efce24def913523809a21415a269f8e1159ccbd24f3443ec2021b1ced7bdbac8d8dde14c40a3168adbaab2
   languageName: node
   linkType: hard
 
@@ -11419,6 +11417,13 @@ __metadata:
   version: 2.0.10
   resolution: "node-releases@npm:2.0.10"
   checksum: 10c0/90947653e8e3d85bda4bcbf28d019693ccfb5d5947838ca64e91208b51d7bfc13ba930b8216389a4faffbad8145b2c616bf1f7a09c97a1a9ac57fd6ef6d01c5c
+  languageName: node
+  linkType: hard
+
+"nodemailer@npm:^7.0.5":
+  version: 7.0.5
+  resolution: "nodemailer@npm:7.0.5"
+  checksum: 10c0/8fcd417a5dc6cdde4193c3f27c8ae07f6998527578c1e70adfa5f2f00121471fcaa14abbf26b2a8c513ac8505c956f437aa2c2a693606eb0e8c68bc712698fa7
   languageName: node
   linkType: hard
 

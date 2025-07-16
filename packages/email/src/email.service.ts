@@ -1,4 +1,3 @@
-import { SendEmailCommand, SESv2Client as SES } from '@aws-sdk/client-sesv2';
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import { render } from '@react-email/render';
 import { delay, many, type Many } from '@seedcompany/common';
@@ -11,32 +10,30 @@ import {
   type ReactElement as Element,
 } from 'react';
 import { temporaryFile as tempFile } from 'tempy';
-import {
-  EMAIL_MODULE_OPTIONS,
-  type EmailOptions,
-  SES_TOKEN,
-} from './email.options.js';
-import type { MessageHeaders } from './headers.type.js';
+import type { WritableDeep } from 'type-fest';
+import { EMAIL_MODULE_OPTIONS, type EmailOptions } from './email.options.js';
 import {
   asyncScope,
   type Body,
   EmailMessage,
+  type MessageHeaders,
   SendableEmailMessage,
 } from './message.js';
 import { HeaderCollector } from './templates/headers.js';
 import { RenderForText } from './templates/text-rendering.js';
+import { Transporter } from './transporter.js';
 
 @Injectable()
 export class EmailService {
   private readonly logger = new Logger(EmailService.name);
 
   constructor(
-    @Inject(SES_TOKEN) private readonly ses: SES,
+    private readonly transporter: Transporter,
     @Inject(EMAIL_MODULE_OPTIONS) private readonly options: EmailOptions,
   ) {}
 
   withOptions(options: Partial<EmailOptions>) {
-    return new EmailService(this.ses, {
+    return new EmailService(this.transporter, {
       ...this.options,
       ...options,
       wrappers: [...(this.options.wrappers ?? []), ...(options.wrappers ?? [])],
@@ -50,7 +47,7 @@ export class EmailService {
   ): SendableEmailMessage<P>;
   compose<P extends object>(
     // eslint-disable-next-line @typescript-eslint/unified-signatures -- I want the specific param name
-    headers: Partial<MessageHeaders>,
+    headers: MessageHeaders,
     body: Body<P>,
   ): SendableEmailMessage<P>;
   compose(...args: any[]): SendableEmailMessage {
@@ -101,18 +98,17 @@ export class EmailService {
     RenderedComp.displayName = msg.templateName;
     const rendered = createElement(RenderedComp, { html });
 
-    const { attachment: attachments = {}, ...headersFromBody } =
-      headerCollector.headers;
+    const { attachments, ...headersFromBody } = headerCollector.headers;
 
     return new EmailMessage(rendered, {
       ...this.options.defaultHeaders,
       ...headersFromBody,
       text,
+      html,
       ...msg.headers,
-      attachment: [
-        { data: html, alternative: true },
-        ...Object.values(attachments).map((file) => ({ ...file })),
-        ...many(msg.headers.attachment ?? []),
+      attachments: [
+        ...Object.values(attachments ?? {}),
+        ...many(msg.headers.attachments ?? []),
       ],
     });
   }
@@ -151,35 +147,10 @@ export class EmailService {
   }
 
   private async sendMessage(msg: EmailMessage<{ html: string }>) {
-    // "dynamic" import to hide library source usage
-    const EmailJS = await import(String('emailjs'));
-    const message = new EmailJS.Message(msg.headers);
-    const { validationError } = message.checkValidity();
-    if (validationError) {
-      throw new Error(validationError);
-    }
-
-    const encoded: string = await message.readAsync();
-
-    const command = new SendEmailCommand({
-      Content: {
-        Raw: {
-          Data: Buffer.from(encoded),
-        },
-      },
-    });
-    try {
-      await this.ses.send(command);
-      this.logger.debug(
-        `Sent ${msg.templateName} email to ${msg.primaryRecipients.join(', ')}`,
-      );
-    } catch (e) {
-      this.logger.error(
-        'Failed to send email',
-        e instanceof Error ? e.stack : e,
-      );
-      throw e;
-    }
+    await this.transporter.sendMail(
+      // revert deep readonly
+      msg.headers as WritableDeep<typeof msg.headers>,
+    );
   }
 
   private async openMessage(msg: EmailMessage<{ html: string }>) {

@@ -1,13 +1,15 @@
 import { type Many, many } from '@seedcompany/common';
 import { AsyncLocalStorage } from 'node:async_hooks';
+import type { SendMailOptions } from 'nodemailer';
 import {
   type FunctionComponent as Component,
   createElement,
   type ReactElement as Element,
   isValidElement,
 } from 'react';
-import type { HasRequiredKeys } from 'type-fest';
-import type { MessageHeaders } from './headers.type.js';
+import type { HasRequiredKeys, ReadonlyDeep } from 'type-fest';
+
+export type MessageHeaders = ReadonlyDeep<SendMailOptions>;
 
 export const asyncScope = Symbol('asyncScope');
 type WithAsyncScope = ReturnType<typeof AsyncLocalStorage.snapshot>;
@@ -19,7 +21,7 @@ export class EmailMessage<Props extends object = object> {
   /** @internal */
   constructor(
     readonly body: Element<Props, Component<Props>>,
-    readonly headers: Partial<MessageHeaders>,
+    readonly headers: MessageHeaders,
     scope?: WithAsyncScope,
   ) {
     this[asyncScope] = scope ?? AsyncLocalStorage.snapshot();
@@ -32,21 +34,21 @@ export class EmailMessage<Props extends object = object> {
   ): EmailMessage<P>;
   static from<P extends object>(
     // eslint-disable-next-line @typescript-eslint/unified-signatures -- I want the specific param name
-    headers: Partial<MessageHeaders>,
+    headers: MessageHeaders,
     body: Body<P>,
   ): EmailMessage<P>;
   static from(
-    headersOrBody: Many<string> | Partial<MessageHeaders> | Body,
+    headersOrBody: Many<string> | MessageHeaders | Body,
     bodyMaybe?: Body,
   ): EmailMessage {
     const body: Body = bodyMaybe ?? (headersOrBody as Body);
     const headersRaw = !bodyMaybe
       ? undefined
-      : (headersOrBody as Many<string> | Partial<MessageHeaders>);
+      : (headersOrBody as Many<string> | MessageHeaders);
     const headers =
       typeof headersRaw === 'string' || Array.isArray(headersRaw)
         ? { to: headersRaw }
-        : ((headersRaw ?? {}) as Partial<MessageHeaders>);
+        : ((headersRaw ?? {}) as MessageHeaders);
 
     return new EmailMessage(bodyToElement(body), headers);
   }
@@ -60,7 +62,7 @@ export class EmailMessage<Props extends object = object> {
     return best ? many(best) : [];
   }
 
-  withHeaders(headers: Partial<MessageHeaders>) {
+  withHeaders(headers: MessageHeaders) {
     return new EmailMessage(
       this.body,
       {
@@ -89,7 +91,7 @@ export class SendableEmailMessage<
     super(msg.body, msg.headers, msg[asyncScope]);
   }
 
-  withHeaders(headers: Partial<MessageHeaders>) {
+  withHeaders(headers: MessageHeaders) {
     return new SendableEmailMessage(this.sender, super.withHeaders(headers));
   }
 

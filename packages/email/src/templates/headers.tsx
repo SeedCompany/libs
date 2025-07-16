@@ -1,12 +1,12 @@
-import { many } from '@seedcompany/common';
 import { createContext, type ReactNode, useContext, useId } from 'react';
 import type { Merge, Writable } from 'type-fest';
-import type { MessageHeaders } from '../headers.type.js';
+import type { MessageHeaders } from '../message.js';
 
+type Attachment = (MessageHeaders['attachments'] & {})[number];
 type HeaderContextType = Merge<
-  Writable<Partial<MessageHeaders>>,
+  Writable<MessageHeaders>,
   {
-    attachment?: Record<string, MessageHeaders['attachment']>;
+    attachments?: Record<string, Attachment>;
   }
 >;
 
@@ -37,16 +37,16 @@ export class HeaderCollector {
  * Defining the same header multiple times is an undefined behavior, and only one value will apply.
  * Except for attachments which can be defined multiple times, for multiple attachments.
  */
-export const Headers = (props: Partial<MessageHeaders>) => {
+export const Headers = (
+  props: Omit<MessageHeaders, 'attachments'> & { attachment?: Attachment },
+) => {
   const context = useContext(HeaderContext);
   const id = useId();
-  const { attachment: attachments, ...simple } = props;
+  const { attachment, ...simple } = props;
   Object.assign(context, simple);
-  if (attachments) {
-    for (const [i, attachment] of many(attachments).entries()) {
-      context.attachment ??= {};
-      context.attachment[id + (attachment.name ?? String(i))] = attachment;
-    }
+  if (attachment) {
+    context.attachments ??= {};
+    context.attachments[attachment.filename || id] = attachment;
   }
   return null;
 };
