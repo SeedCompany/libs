@@ -14,13 +14,15 @@ export type MessageHeaders = ReadonlyDeep<SendMailOptions>;
 export const asyncScope = Symbol('asyncScope');
 type WithAsyncScope = ReturnType<typeof AsyncLocalStorage.snapshot>;
 
-export class EmailMessage<Props extends object = object> {
+export class EmailMessage<Props = undefined> {
   /** @internal */
   [asyncScope]: WithAsyncScope;
 
   /** @internal */
   constructor(
-    readonly body: Element<Props, Component<Props>> | undefined,
+    readonly body:
+      | (Props extends object ? Element<Props, Component<Props>> : never)
+      | (Props extends undefined ? undefined : never),
     readonly headers: MessageHeaders,
     scope?: WithAsyncScope,
   ) {
@@ -35,18 +37,19 @@ export class EmailMessage<Props extends object = object> {
   static from<P extends object>(
     // eslint-disable-next-line @typescript-eslint/unified-signatures -- I want the specific param name
     headers: MessageHeaders,
-    body?: Body<P>,
+    body: Body<P>,
   ): EmailMessage<P>;
+  static from(headers: MessageHeaders): EmailMessage;
   static from(
-    headersOrBody: Many<string> | MessageHeaders | Body,
-    bodyMaybe?: Body,
+    headersOrBody: Many<string> | MessageHeaders | Body<any>,
+    bodyMaybe?: Body<any>,
   ): EmailMessage {
     const firstArgIsBody =
       isValidElement(headersOrBody) ||
       typeof headersOrBody === 'function' ||
       (Array.isArray(headersOrBody) && typeof headersOrBody[0] === 'function');
     const body =
-      bodyMaybe ?? (firstArgIsBody ? (headersOrBody as Body) : undefined);
+      bodyMaybe ?? (firstArgIsBody ? (headersOrBody as Body<any>) : undefined);
     const headersRaw = firstArgIsBody
       ? undefined
       : (headersOrBody as Many<string> | MessageHeaders);
@@ -84,7 +87,7 @@ export class EmailMessage<Props extends object = object> {
 }
 
 export class SendableEmailMessage<
-  Props extends object = object,
+  Props = undefined,
 > extends EmailMessage<Props> {
   /** @internal */
   constructor(
@@ -100,10 +103,14 @@ export class SendableEmailMessage<
     return new SendableEmailMessage(this.sender, super.withHeaders(headers));
   }
 
-  withBody<PP extends object>(body: Body<PP>) {
-    return new SendableEmailMessage(
+  withBody<PP extends object>(body: Body<PP>): SendableEmailMessage<PP>;
+  withBody(body: undefined): SendableEmailMessage;
+  withBody<PP extends object>(body?: Body<PP>) {
+    return new SendableEmailMessage<any>(
       this.sender,
-      EmailMessage.from(this.headers, body),
+      body
+        ? EmailMessage.from(this.headers, body)
+        : EmailMessage.from(this.headers),
     );
   }
 

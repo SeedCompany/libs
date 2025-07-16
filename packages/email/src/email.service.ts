@@ -49,11 +49,12 @@ export class EmailService {
   compose<P extends object>(
     // eslint-disable-next-line @typescript-eslint/unified-signatures -- I want the specific param name
     headers: MessageHeaders,
-    body?: Body<P>,
+    body: Body<P>,
   ): SendableEmailMessage<P>;
+  compose(headers: MessageHeaders): SendableEmailMessage;
   compose(...args: any[]): SendableEmailMessage {
     // @ts-expect-error it is the same overload signatures
-    const message = EmailMessage.from(...args);
+    const message = EmailMessage.from<any>(...args);
     return new SendableEmailMessage(this, message);
   }
 
@@ -79,7 +80,7 @@ export class EmailService {
     }
   }
 
-  private async render<P extends object>(msg: EmailMessage<P>) {
+  private async render(msg: EmailMessage<object | undefined>) {
     const headerCollector = new HeaderCollector();
 
     const renderedBody = msg.body
@@ -92,10 +93,7 @@ export class EmailService {
           const html = await this.renderHtml(docEl);
           const text = await this.renderText(docEl);
 
-          const RenderedComp: Component<{
-            html: string;
-            text: string;
-          }> = () => {
+          const RenderedComp: Component<RenderedProps & {}> = () => {
             throw new Error('Cannot re-render a rendered email message');
           };
           RenderedComp.displayName = msg.templateName;
@@ -105,7 +103,7 @@ export class EmailService {
 
     const { attachments, ...headersFromBody } = headerCollector.headers;
 
-    return new EmailMessage(renderedBody, {
+    return new EmailMessage<RenderedProps>(renderedBody, {
       ...this.options.defaultHeaders,
       ...headersFromBody,
       ...renderedBody?.props,
@@ -150,14 +148,14 @@ export class EmailService {
     return text;
   }
 
-  private async sendMessage(msg: EmailMessage<any>) {
+  private async sendMessage(msg: EmailMessage<RenderedProps>) {
     await this.transporter.sendMail(
       // revert deep readonly
       msg.headers as WritableDeep<typeof msg.headers>,
     );
   }
 
-  private async openMessage(msg: EmailMessage<{ html: string; text: string }>) {
+  private async openMessage(msg: EmailMessage<RenderedProps>) {
     const temp = tempFile({
       extension: msg.body ? 'html' : msg.headers.text ? 'txt' : 'json',
     });
@@ -174,6 +172,8 @@ export class EmailService {
       .catch();
   }
 }
+
+type RenderedProps = { html: string; text: string } | undefined;
 
 function tryRenderText(text: MessageHeaders['text']) {
   if (!text) {
