@@ -4017,7 +4017,11 @@ __metadata:
     "@types/mjml-core": "npm:^4.15.0"
     "@types/nodemailer": "npm:^6.4.17"
     "@types/react": "npm:^18.3.9"
+    dom-serializer: "npm:^2.0.0"
+    domhandler: "npm:^5.0.3"
+    domutils: "npm:^3.2.2"
     html-to-text: "npm:^9.0.5"
+    htmlparser2: "npm:^8.0.2"
     mjml: "npm:^4.15.3"
     nodemailer: "npm:^7.0.5"
     open: "npm:^10.1.0"
@@ -7239,7 +7243,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"domutils@npm:^3.0.1, domutils@npm:^3.1.0":
+"domutils@npm:^3.0.1, domutils@npm:^3.1.0, domutils@npm:^3.2.2":
   version: 3.2.2
   resolution: "domutils@npm:3.2.2"
   dependencies:

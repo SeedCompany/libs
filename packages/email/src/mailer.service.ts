@@ -5,11 +5,7 @@ import { promises as fs } from 'fs';
 import { htmlToText } from 'html-to-text';
 import type { Readable } from 'node:stream';
 import openUrl from 'open';
-import {
-  type FunctionComponent as Component,
-  createElement,
-  type ReactElement as Element,
-} from 'react';
+import { type FunctionComponent as Component, createElement } from 'react';
 import { temporaryFile as tempFile } from 'tempy';
 import type { WritableDeep } from 'type-fest';
 import { EMAIL_MODULE_OPTIONS, type EmailOptions } from './email.options.js';
@@ -20,8 +16,8 @@ import {
   type MessageHeaders,
   SendableEmailMessage,
 } from './message.js';
+import * as renderOnly from './processRenderOnlyElements.js';
 import { HeaderCollector } from './templates/headers.js';
-import { RenderForText } from './templates/text-rendering.js';
 import { Transporter } from './transporter.js';
 
 @Injectable()
@@ -90,8 +86,20 @@ export class MailerService {
             headerCollector.collect,
           ].reduceRight((prev, wrap) => wrap(prev), msg.body!);
 
-          const html = await this.renderHtml(docEl);
-          const text = msg.headers.text ?? (await this.renderText(docEl));
+          const generateText = !msg.headers.text;
+
+          const rawHtml = await render(docEl);
+          const htmlByOutput = this.transformSplitRenderOnly(
+            rawHtml,
+            generateText,
+          );
+
+          const html = await this.transformMjml(htmlByOutput.html);
+          const text = generateText
+            ? // It is possible the text transformation doesn't need MJML rendered.
+              // However, that probably requires additional selector configuration targeting MJML elements.
+              this.transformText(await this.transformMjml(htmlByOutput.text!))
+            : msg.headers.text;
 
           const RenderedComp: Component<RenderedProps & {}> = () => {
             throw new Error('Cannot re-render a rendered email message');
@@ -115,8 +123,17 @@ export class MailerService {
     });
   }
 
-  private async renderHtml(templateEl: Element) {
-    let html = await render(templateEl);
+  private transformSplitRenderOnly(rawHtml: string, includeText: boolean) {
+    const domHtml = renderOnly.parse(rawHtml);
+    const domText = includeText ? domHtml.cloneNode(true) : undefined;
+    const html = renderOnly.serialize(renderOnly.process(domHtml, 'html'));
+    const text = domText
+      ? renderOnly.serialize(renderOnly.process(domText, 'text'))
+      : undefined;
+    return { html, text };
+  }
+
+  private async transformMjml(html: string) {
     if (html.includes('<mjml')) {
       const mjml2html = await import('mjml');
       const res = mjml2html.default(html);
@@ -125,12 +142,8 @@ export class MailerService {
     return html;
   }
 
-  private async renderText(templateEl: Element) {
-    const htmlForText = await this.renderHtml(
-      createElement(RenderForText, null, templateEl),
-    );
-
-    const text = htmlToText(htmlForText, {
+  private transformText(html: string) {
+    const text = htmlToText(html, {
       selectors: [
         { selector: 'img', format: 'skip' },
         { selector: 'a', options: { hideLinkHrefIfSameAsText: true } },
