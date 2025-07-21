@@ -20,6 +20,8 @@ import * as renderOnly from './processRenderOnlyElements.js';
 import { HeaderCollector } from './templates/headers.js';
 import { Transporter } from './transporter.js';
 
+let mjml2html: typeof import('mjml') | undefined;
+
 @Injectable()
 export class MailerService {
   private readonly logger = new Logger(MailerService.name);
@@ -134,12 +136,14 @@ export class MailerService {
   }
 
   private async transformMjml(html: string) {
-    if (html.includes('<mjml')) {
-      const mjml2html = await import('mjml');
-      const res = mjml2html.default(html);
-      html = res.html;
+    if (!html.includes('<mjml')) {
+      return html;
     }
-    return html;
+    if (!mjml2html) {
+      mjml2html = await import('mjml').then((m) => m.default);
+    }
+    const res = mjml2html!(html);
+    return res.html;
   }
 
   private transformText(html: string) {
