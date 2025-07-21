@@ -1,4 +1,5 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
+import { ModuleRef } from '@nestjs/core';
 import { render } from '@react-email/render';
 import { delay, many, type Many } from '@seedcompany/common';
 import { promises as fs } from 'fs';
@@ -18,6 +19,7 @@ import {
 } from './message.js';
 import * as renderOnly from './processRenderOnlyElements.js';
 import { HeaderCollector } from './templates/headers.js';
+import { ModuleRefWrapper } from './templates/module-ref.js';
 import { Transporter } from './transporter.js';
 
 let mjml2html: typeof import('mjml') | undefined;
@@ -28,11 +30,12 @@ export class MailerService {
 
   constructor(
     private readonly transporter: Transporter,
+    private readonly moduleRef: ModuleRef,
     @Inject(EMAIL_MODULE_OPTIONS) private readonly options: EmailOptions,
   ) {}
 
   withOptions(options: Partial<EmailOptions>) {
-    return new MailerService(this.transporter, {
+    return new MailerService(this.transporter, this.moduleRef, {
       ...this.options,
       ...options,
       wrappers: [...(this.options.wrappers ?? []), ...(options.wrappers ?? [])],
@@ -85,6 +88,7 @@ export class MailerService {
       ? await msg[asyncScope](async () => {
           const docEl = [
             ...(this.options.wrappers ?? []),
+            ModuleRefWrapper(this.moduleRef),
             headerCollector.collect,
           ].reduceRight((prev, wrap) => wrap(prev), msg.body!);
 
