@@ -1,33 +1,23 @@
-import { createContext, type ReactNode, useContext } from 'react';
+import { type ReactNode } from 'react';
 
 interface ChildrenProp {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
-const RenderForTextContext = createContext(false);
-
 /**
- * Hook for whether we are rendering for text.
+ * Only show the children of this element when in HTML.
  */
-export const inText = () => useContext(RenderForTextContext);
-
-/**
- * Hide the children of this element when converting to text.
- */
-export const HideInText = ({ children }: ChildrenProp) =>
-  inText() ? null : <>{children}</>;
+export const InHtml = ({ children }: ChildrenProp) => (
+  <div data-render-only="html" data-render-inline>
+    {children}
+  </div>
+);
 
 /**
  * Only show the children of this element when converting to text.
  */
-export const InText = ({ children }: ChildrenProp) =>
-  inText() ? <>{children}</> : null;
-
-export const RenderForText = ({
-  value,
-  children,
-}: { value?: boolean } & ChildrenProp) => (
-  <RenderForTextContext.Provider value={value ?? true}>
+export const InText = ({ children }: ChildrenProp) => (
+  <div data-render-only="text" data-render-inline>
     {children}
-  </RenderForTextContext.Provider>
+  </div>
 );
