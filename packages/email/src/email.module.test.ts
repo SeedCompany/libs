@@ -1,14 +1,16 @@
 import { Test } from '@nestjs/testing';
 import { describe, it } from 'vitest';
 import { EmailModule } from './email.module.js';
-import { EmailService } from './email.service.js';
+import { MailerService } from './mailer.service.js';
 
 describe('EmailModule', () => {
-  it('should be creatable with fromRoot()', async () => {
+  it('should be creatable with registerAsync()', async () => {
     const module = await Test.createTestingModule({
       imports: [
-        EmailModule.forRoot({
-          from: 'unknown@email.com',
+        EmailModule.register({
+          defaultHeaders: {
+            from: 'unknown@email.com',
+          },
         }),
       ],
     }).compile();
@@ -17,19 +19,21 @@ describe('EmailModule', () => {
     await app.close();
   });
 
-  it('should be creatable with fromRootAsync()', async () => {
+  it('should be creatable with registerAsync()', async () => {
     const module = await Test.createTestingModule({
       imports: [
-        EmailModule.forRootAsync({
+        EmailModule.registerAsync({
           useFactory: () => ({
-            from: 'unknown@email.com',
+            defaultHeaders: {
+              from: 'unknown@email.com',
+            },
           }),
         }),
       ],
     }).compile();
     const app = module.createNestApplication();
     await app.init();
-    app.get(EmailService);
+    app.get(MailerService);
     await app.close();
   });
 });
