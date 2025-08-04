@@ -2,6 +2,56 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [5.0.0](https://github.com/SeedCompany/libs/compare/email-4.3.0...email-5.0.0) (2025-08-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* **email:** unify react render for text/html split
+* **email:** rename EmailService to MailerService
+* **email:** support "bodiless" / text-only messages
+* **email:** switch to nodemailer for message compilation and transport
+* **email:** replace `EmailMessage.to` with `primaryRecipients` to account for cc/bcc
+* **email:** replace <Subject>/<Attachment> with <Headers>
+* **email:** replace specific from/replyTo headers with any `defaultHeaders` option
+* **email:** rewrite signatures for message creation/modification
+* **email:** support passing in elements
+* **email:** make MJML optional
+* **email:** move mjml to its own subpath export
+* **email:** use nest's configurable module builder
+* **email:** `<Title>` -> `<Subject>` & no auto mjml title
+* **email:** lazily render template
+
+### Features
+
+* **email:** add experimental module ref hook for accessing services in templates ([64f1b7f](https://github.com/SeedCompany/libs/commit/64f1b7f8521495be5576267de56bbfc35501a8e1))
+* **email:** allow text header to override plain-text rendering from the body ([d87eb8e](https://github.com/SeedCompany/libs/commit/d87eb8e339b4dbe07093f8901803bf484a2c3e7d))
+* **email:** make MJML optional ([0a35a03](https://github.com/SeedCompany/libs/commit/0a35a0300c7f072c96f9886fb819a1115cd6b3ce))
+* **email:** support "bodiless" / text-only messages ([fd5dcb7](https://github.com/SeedCompany/libs/commit/fd5dcb71a0566d1666f6b292100a7c6a61efcd99))
+* **email:** support passing headers to send ([d0ff949](https://github.com/SeedCompany/libs/commit/d0ff949ab01f090693da8c83bc892bcba7cc9b94))
+* **email:** support passing in elements ([bf45155](https://github.com/SeedCompany/libs/commit/bf4515564bae4ec921154184b6e6adfdf44a315d))
+* **email:** support Suspense / RSC with React 19 ([db8da14](https://github.com/SeedCompany/libs/commit/db8da14dbe8c06d0cb36c517f9dadb86420ef29a))
+* **email:** switch to nodemailer for message compilation and transport ([f9ba7ac](https://github.com/SeedCompany/libs/commit/f9ba7ac167b420d8b9c5890dcb4c866d29f94b13))
+* **email:** unify react render for text/html split ([2f6d39c](https://github.com/SeedCompany/libs/commit/2f6d39c6b696e4bd6d037baa2aa50a9ed1b47c05))
+
+
+### Bug Fixes
+
+* **email:** mark @types/react as peer dep since it's used in public surface area ([698c442](https://github.com/SeedCompany/libs/commit/698c442e277f64481900b326a97276af7889cc34))
+
+
+### Code Refactoring
+
+* **email:** `<Title>` -> `<Subject>` & no auto mjml title ([bfa33d0](https://github.com/SeedCompany/libs/commit/bfa33d0d08a7836e801a9f9be615dea63703c19b))
+* **email:** lazily render template ([7c43147](https://github.com/SeedCompany/libs/commit/7c43147c3e666a4a878573ae5261c20c98881a38))
+* **email:** move mjml to its own subpath export ([17cc158](https://github.com/SeedCompany/libs/commit/17cc1583a1b0163c4ab7eadba25725b5797ce96f))
+* **email:** rename EmailService to MailerService ([e2af78a](https://github.com/SeedCompany/libs/commit/e2af78a362161c2b79f576435d152dd3dedca971))
+* **email:** replace `EmailMessage.to` with `primaryRecipients` to account for cc/bcc ([d47a53c](https://github.com/SeedCompany/libs/commit/d47a53caf7b7c5cb8f8ea83fb7ec8ad9abb20512))
+* **email:** replace <Subject>/<Attachment> with <Headers> ([dba0b7d](https://github.com/SeedCompany/libs/commit/dba0b7db8bae42a0cb5a7f9a3f95f56777566411))
+* **email:** replace specific from/replyTo headers with any `defaultHeaders` option ([815bfbc](https://github.com/SeedCompany/libs/commit/815bfbcac402149ece0d166924b14d4fb00d9357))
+* **email:** rewrite signatures for message creation/modification ([0fcd87e](https://github.com/SeedCompany/libs/commit/0fcd87efdedccceaccec3ea43055c49faab93784))
+* **email:** use nest's configurable module builder ([0f757c8](https://github.com/SeedCompany/libs/commit/0f757c804b7cb967df06ae94fc05482a605e127e))
+
 ## [4.3.0](https://github.com/SeedCompany/libs/compare/email-4.2.1...email-4.3.0) (2025-07-09)
 
 
