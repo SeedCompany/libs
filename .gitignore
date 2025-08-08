@@ -15,3 +15,9 @@ node_modules
 
 nx.json
 project.json
+
+# IDE - VSCode
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json

@@ -17,6 +17,8 @@ describe('mergeVerseRanges', () => {
     ['Genesis 1:1, 1:2', 'Genesis 1:1–2'],
     ['Genesis 1:1, 1:3', 'Genesis 1:1, 1:3'],
     ['Genesis 1:3, 1:1', 'Genesis 1:1, 1:3'],
+    ['Genesis 1, Genesis 2, Genesis 3, Genesis 4', 'Genesis 1–4'],
+    ['Genesis 1, Genesis 2, Genesis 4, Genesis 5', 'Genesis 1–2, 4–5'],
   ])('%s', (input, output) => {
     expect(labelOfVerseRanges(parseScripture(input))).toEqual(output);
   });
