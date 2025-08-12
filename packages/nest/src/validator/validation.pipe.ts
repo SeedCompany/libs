@@ -6,7 +6,8 @@ import {
 } from '@nestjs/common';
 import { ModuleRef } from '@nestjs/core';
 import { useContainer, type ValidatorOptions } from 'class-validator';
-import { MODULE_OPTIONS_TOKEN } from './validator.module.js';
+
+export const VALIDATOR_OPTIONS_TOKEN = Symbol('ValidatorOptions');
 
 /**
  * Wraps Nest's ValidationPipe to support injectable constraints.
@@ -14,7 +15,7 @@ import { MODULE_OPTIONS_TOKEN } from './validator.module.js';
 @Injectable()
 export class ValidationPipe extends BaseValidationPipe {
   constructor(
-    @Inject(MODULE_OPTIONS_TOKEN) options: ValidationPipeOptions,
+    @Inject(VALIDATOR_OPTIONS_TOKEN) options: ValidationPipeOptions,
     private readonly moduleRef: ModuleRef,
   ) {
     super(options);

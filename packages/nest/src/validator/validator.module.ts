@@ -6,12 +6,12 @@ import {
 } from '@nestjs/common';
 import { APP_PIPE } from '@nestjs/core';
 import { Validator } from 'class-validator';
-import { ValidationPipe } from './validation.pipe.js';
+import { ValidationPipe, VALIDATOR_OPTIONS_TOKEN } from './validation.pipe.js';
 
-const { ConfigurableModuleClass, MODULE_OPTIONS_TOKEN } =
-  new ConfigurableModuleBuilder<ValidationPipeOptions>().build();
-
-export { MODULE_OPTIONS_TOKEN };
+const { ConfigurableModuleClass } =
+  new ConfigurableModuleBuilder<ValidationPipeOptions>({
+    optionsInjectionToken: VALIDATOR_OPTIONS_TOKEN,
+  }).build();
 
 /**
  * The missing module to register the class-validator as a global pipe.
