@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.9.0](https://github.com/SeedCompany/libs/compare/nest-1.8.0...nest-1.9.0) (2025-08-12)
+
+
+### Features
+
+* **nest:** add validator module to register global pipe & support injectable constraints ([#57](https://github.com/SeedCompany/libs/issues/57)) ([37e4017](https://github.com/SeedCompany/libs/commit/37e4017f05a23fb3d1e3c1cc5110ebc9d938dfe3))
+
 ## [1.8.0](https://github.com/SeedCompany/libs/compare/nest-1.7.0...nest-1.8.0) (2025-05-09)
 
 
