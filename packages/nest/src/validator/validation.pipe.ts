@@ -28,7 +28,7 @@ export class ValidationPipe extends BaseValidationPipe {
         // Return null to fall back to default logic, which just calls constructor once.
         return null;
       }
-      return this.moduleRef.get(type);
+      return this.moduleRef.get(type, { strict: false });
     },
   };
 
