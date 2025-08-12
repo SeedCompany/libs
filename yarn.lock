@@ -2686,16 +2686,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@faire/mjml-react@npm:^3.5.0":
-  version: 3.5.0
-  resolution: "@faire/mjml-react@npm:3.5.0"
+"@faire/mjml-react@npm:^3.5.1":
+  version: 3.5.1
+  resolution: "@faire/mjml-react@npm:3.5.1"
   dependencies:
     lodash.kebabcase: "npm:^4.1.1"
   peerDependencies:
     mjml: ^4.13.0
     react: ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
     react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10c0/0f0a7367cc3f5818f20be81fb4522a2d6c57339a884859f11a8607e39069996a8356c0e649c48895c8b8b0357848ac40a9544f751ce82d520e1538242528f4b2
+  checksum: 10c0/699dd9da78cb26bb9e94644e344b67ea811a8f3c377fbf42f280f139cf7c849e63540a5415ed74c5b7dc6540ca1c31d0fac14a498800f7a57a95510a27437cf9
   languageName: node
   linkType: hard
 
@@ -4005,7 +4005,7 @@ __metadata:
   resolution: "@seedcompany/nestjs-email@workspace:packages/email"
   dependencies:
     "@aws-sdk/client-sesv2": "npm:^3.658.1"
-    "@faire/mjml-react": "npm:^3.5.0"
+    "@faire/mjml-react": "npm:^3.5.1"
     "@nestjs/common": "npm:^10.4.4"
     "@nestjs/core": "npm:^10.4.4"
     "@nestjs/platform-express": "npm:^10.4.4"
