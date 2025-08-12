@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.9.2](https://github.com/SeedCompany/libs/compare/nest-1.9.1...nest-1.9.2) (2025-08-12)
+
+
+### Bug Fixes
+
+* **nest:** look for constraints in all modules ([b392bc8](https://github.com/SeedCompany/libs/commit/b392bc80eea678e9cab4195e98545d5cf7c0db27))
+
 ## [1.9.1](https://github.com/SeedCompany/libs/compare/nest-1.9.0...nest-1.9.1) (2025-08-12)
 
 
