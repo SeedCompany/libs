@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.9.1](https://github.com/SeedCompany/libs/compare/nest-1.9.0...nest-1.9.1) (2025-08-12)
+
+
+### Bug Fixes
+
+* **nest:** import cycle on validator options ([04a48f3](https://github.com/SeedCompany/libs/commit/04a48f33dd584499516ffcb2d8239a85699d1df9))
+
 ## [1.9.0](https://github.com/SeedCompany/libs/compare/nest-1.8.0...nest-1.9.0) (2025-08-12)
 
 
