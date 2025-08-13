@@ -2706,6 +2706,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@golevelup/nestjs-discovery@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "@golevelup/nestjs-discovery@npm:5.0.0"
+  dependencies:
+    lodash: "npm:^4.17.21"
+  peerDependencies:
+    "@nestjs/common": ^11.0.20
+    "@nestjs/core": ^11.0.20
+  checksum: 10c0/4ad3551156873cdb27586bf516660c741015ad9c55d09f0492d6f1f799498749b60149457fe6e09470db7369c9a78eda3e88f7e9019ed2728f4de485cfc02e75
+  languageName: node
+  linkType: hard
+
 "@graphql-tools/merge@npm:9.0.19":
   version: 9.0.19
   resolution: "@graphql-tools/merge@npm:9.0.19"
@@ -3978,6 +3990,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@seedcompany/nest@workspace:packages/nest"
   dependencies:
+    "@golevelup/nestjs-discovery": "npm:^5.0.0"
     "@nestjs/common": "npm:^10 || ^11"
     "@nestjs/core": "npm:^10 || ^11"
     "@nestjs/graphql": "npm:^12 || ^13"
