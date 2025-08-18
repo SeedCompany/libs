@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.10.0](https://github.com/SeedCompany/libs/compare/nest-1.9.2...nest-1.10.0) (2025-08-18)
+
+
+### Features
+
+* **nest:** add type getter for metadata decorator's value stored ([d68a95d](https://github.com/SeedCompany/libs/commit/d68a95d1075f45257bafd72b7a2cacc9e1e0c4c8))
+
 ## [1.9.2](https://github.com/SeedCompany/libs/compare/nest-1.9.1...nest-1.9.2) (2025-08-12)
 
 
