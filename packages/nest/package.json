@@ -60,6 +60,10 @@
       "types": "./dist/patches/index.d.ts",
       "default": "./dist/patches/index.js"
     },
+    "./hooks": {
+      "types": "./dist/hooks/index.d.ts",
+      "default": "./dist/hooks/index.js"
+    },
     "./discovery": {
       "types": "./dist/discovery/index.d.ts",
       "default": "./dist/discovery/index.js"
