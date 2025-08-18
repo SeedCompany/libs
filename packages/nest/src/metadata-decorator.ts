@@ -30,6 +30,11 @@ export type MetadataDecorator<
    * Inherited values are not considered with this getter.
    */
   getOwn: GetterForTypes<Types, ValueStored | undefined>;
+  /**
+   * A __TYPE__ for the stored value.
+   * This doesn't exist at runtime.
+   */
+  $value: ValueStored;
 };
 
 export interface MetadataDecoratorOptions<
