@@ -5,17 +5,17 @@ import {
   type PipeTransform,
   type Type,
 } from '@nestjs/common';
+import type { ValOrFn } from '@seedcompany/common';
 import { DataLoaderContext } from './data-loader.context.js';
 import type { DataLoaderStrategy } from './data-loader.strategy.js';
 
 type LoaderType = Type<DataLoaderStrategy<any, any>>;
-type LoaderTypeOrFn = LoaderType | (() => LoaderType);
 
 /**
  * The decorator to be used within a Controller/Resolver.
  */
 export const Loader =
-  (type: LoaderTypeOrFn): ParameterDecorator =>
+  (type: ValOrFn<LoaderType>): ParameterDecorator =>
   (target, key, index) => {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- this is a runtime check
     if (!type) {
@@ -30,7 +30,7 @@ export const Loader =
 
 const LoaderInner = createParamDecorator(
   (
-    type: LoaderTypeOrFn,
+    type: ValOrFn<LoaderType>,
     context: ExecutionContext,
   ): IntermediateLoaderObject => {
     const resolvedType = type.prototype
