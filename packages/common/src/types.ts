@@ -24,6 +24,13 @@ export type FnLike = (...args: any[]) => any;
  */
 export type UnknownFn = (...args: unknown[]) => unknown;
 
+/**
+ * Input that can be either a value or a function returning the value.
+ */
+export type ValOrFn<T, Args extends unknown[] = []> =
+  | T
+  | ((...args: Args) => T);
+
 export type WidenLiteral<T> = T extends string
   ? string
   : T extends number
