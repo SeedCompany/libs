@@ -1,5 +1,10 @@
 import { DiscoverableMetaHostCollection } from '@nestjs/core/discovery/discoverable-meta-host-collection.js';
-import { type FnLike, type IterableItem, setOf } from '@seedcompany/common';
+import {
+  type FnLike,
+  type IterableItem,
+  setOf,
+  type ValOrFn,
+} from '@seedcompany/common';
 import type {
   AbstractClass,
   ConditionalExcept,
@@ -68,6 +73,29 @@ export interface MetadataDecoratorOptions<
    * For example, this could enable lists to be merged.
    */
   merge?: (args: MergeArgs<ValueStored>) => ValueStored;
+  /**
+   * Add additional decorators to apply with this decorator.
+   * @example
+   * ```ts
+   * const Tag = createMetadataDecorator({
+   *   setter: (name: string) => ({ name }),
+   *   additionalDecorators: (name: string) => [
+   *     Directive(`@key(fields: "${name}")`)
+   *   ],
+   * });
+   * ```
+   * @example
+   * ```ts
+   * const Tag = createMetadataDecorator({
+   *   types: ['class'],
+   *   additionalDecorators: [Injectable()],
+   * });
+   * ```
+   */
+  additionalDecorators?: ValOrFn<
+    ReadonlyArray<DecoratorForTypes<Types>>,
+    ArgsIn
+  >;
   /**
    * Whether this metadata is discoverable.
    * This only applies to classes & methods.
@@ -169,6 +197,7 @@ export const createMetadataDecorator = <
     types: typesIn,
     setter = () => true as ValueStored,
     merge,
+    additionalDecorators,
     discoverable = true,
   } = options;
   const id = keyIn ?? uuid.v7();
@@ -218,11 +247,27 @@ export const createMetadataDecorator = <
     | PropertyDecorator
     | ParameterDecorator => {
     const value = setter(...args);
-    return (
-      target: object,
-      property?: string | symbol,
-      indexOrDescriptor?: number | TypedPropertyDescriptor<any>,
-    ) => {
+    return (...decoratorArgs: any[]) => {
+      if (additionalDecorators) {
+        const decorators = Array.isArray(additionalDecorators)
+          ? (additionalDecorators as ReadonlyArray<DecoratorForTypes<Types>>)
+          : (
+              additionalDecorators as (
+                ...args: ArgsIn
+              ) => ReadonlyArray<DecoratorForTypes<Types>>
+            )(...args);
+        for (const decorator of decorators) {
+          (decorator as any)(...decoratorArgs);
+        }
+      }
+
+      const target: object = decoratorArgs[0];
+      const property: string | symbol | undefined = decoratorArgs[1];
+      const indexOrDescriptor:
+        | number
+        | TypedPropertyDescriptor<any>
+        | undefined = decoratorArgs[2];
+
       let next = value;
 
       // ClassDecorator

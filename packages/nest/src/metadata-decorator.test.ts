@@ -1,7 +1,7 @@
 /* eslint @typescript-eslint/ban-ts-comment: ["error", minimumDescriptionLength: 0] */
 import * as Nest from '@nestjs/common';
 import * as NestConstants from '@nestjs/common/constants.js';
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test, vi } from 'vitest';
 import { createMetadataDecorator } from './metadata-decorator.js';
 
 test('TS: Get/Set based on configured types', () => {
@@ -535,4 +535,77 @@ describe('Compatibility with NestJS decorators using reflect-metadata', () => {
       expect(value).toEqual([{ name: 'color', value: 'red' }]);
     });
   });
+});
+
+describe('Additional Decorators', () => {
+  test('should allow additional decorators to be applied', () => {
+    const extra = vi.fn();
+    const Word = createMetadataDecorator({
+      setter: (word: string) => word,
+      additionalDecorators: [extra],
+    });
+    @Word('hello')
+    class _Example {}
+
+    expect(extra).toHaveBeenCalledTimes(1);
+  });
+
+  test('can use metadata input', () => {
+    const extraDecoration = vi.fn();
+    const extra = vi.fn().mockImplementation(() => extraDecoration);
+    const Word = createMetadataDecorator({
+      setter: (word: string) => word,
+      additionalDecorators: (word) => [extra(word)],
+    });
+    @Word('hello')
+    class _Example {}
+
+    expect(extra).toHaveBeenCalledWith('hello');
+    expect(extraDecoration).toHaveBeenCalledTimes(1);
+  });
+
+  /* eslint-disable @seedcompany/no-unused-vars */
+  function typeAssertions() {
+    createMetadataDecorator({
+      types: ['class'],
+      additionalDecorators: [
+        // @ts-expect-error method decorator, which is invalid for class decoration
+        (
+          target: object,
+          prop: string | symbol,
+          descriptor: TypedPropertyDescriptor<any>,
+        ) => {
+          //
+        },
+      ],
+    });
+
+    createMetadataDecorator({
+      types: ['class', 'method'],
+      additionalDecorators: [
+        // @ts-expect-error method decorator, but it could be called without these args if used in class decoration
+        (
+          target: object,
+          prop: string | symbol,
+          descriptor: TypedPropertyDescriptor<any>,
+        ) => {
+          //
+        },
+      ],
+    });
+    createMetadataDecorator({
+      types: ['class', 'method'],
+      additionalDecorators: [
+        // this properly conveys that it is aware it could be called with both a class or method decoration
+        (
+          target: object,
+          prop?: string | symbol,
+          descriptor?: TypedPropertyDescriptor<any>,
+        ) => {
+          //
+        },
+      ],
+    });
+  }
+  /* eslint-enable @seedcompany/no-unused-vars */
 });
