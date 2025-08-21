@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.21.0](https://github.com/SeedCompany/libs/compare/common-0.20.0...common-0.21.0) (2025-08-21)
+
+
+### Features
+
+* **common:** `ValOrFn` type ([63bade5](https://github.com/SeedCompany/libs/commit/63bade5342c3f28a8fa18639d1ad8fd3aae630b5))
+
 ## [0.20.0](https://github.com/SeedCompany/libs/compare/common-0.19.2...common-0.20.0) (2025-07-01)
 
 
