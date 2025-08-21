@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.11.0](https://github.com/SeedCompany/libs/compare/nest-1.10.0...nest-1.11.0) (2025-08-21)
+
+
+### Features
+
+* **nest:** additional decorators with metadata decorator ([#61](https://github.com/SeedCompany/libs/issues/61)) ([784c216](https://github.com/SeedCompany/libs/commit/784c2160ff1ff4c9a04fb6ab6fd9b56d2ec8730e))
+* **nest:** metadata discovery ([#58](https://github.com/SeedCompany/libs/issues/58)) ([a56b87a](https://github.com/SeedCompany/libs/commit/a56b87a0ead92fa880aeb59d869f888f415bfd38))
+
 ## [1.10.0](https://github.com/SeedCompany/libs/compare/nest-1.9.2...nest-1.10.0) (2025-08-18)
 
 
