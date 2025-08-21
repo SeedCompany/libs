@@ -1,4 +1,5 @@
-import type { ArrayItem, FnLike } from '@seedcompany/common';
+import { DiscoverableMetaHostCollection } from '@nestjs/core/discovery/discoverable-meta-host-collection.js';
+import { type FnLike, type IterableItem, setOf } from '@seedcompany/common';
 import type {
   AbstractClass,
   ConditionalExcept,
@@ -12,9 +13,9 @@ import 'reflect-metadata';
 const { defineMetadata } = Reflect;
 
 export type MetadataDecorator<
-  Types extends DecoratorTypes,
-  ArgsIn extends unknown[],
-  ValueStored,
+  ValueStored = unknown,
+  Types extends DecoratorTypes = DecoratorTypes,
+  ArgsIn extends unknown[] = any[],
 > = ((...args: ArgsIn) => DecoratorForTypes<Types>) & {
   /**
    * The given or created metadata key used in storage.
@@ -30,6 +31,10 @@ export type MetadataDecorator<
    * Inherited values are not considered with this getter.
    */
   getOwn: GetterForTypes<Types, ValueStored | undefined>;
+  /**
+   * The allowed decoration sites.
+   */
+  types: ReadonlySet<Types>;
   /**
    * A __TYPE__ for the stored value.
    * This doesn't exist at runtime.
@@ -63,6 +68,12 @@ export interface MetadataDecoratorOptions<
    * For example, this could enable lists to be merged.
    */
   merge?: (args: MergeArgs<ValueStored>) => ValueStored;
+  /**
+   * Whether this metadata is discoverable.
+   * This only applies to classes & methods.
+   * @default true
+   */
+  discoverable?: boolean;
 }
 
 interface MergeArgs<ValueStored> {
@@ -152,12 +163,13 @@ export const createMetadataDecorator = <
   const Types extends DecoratorTypes = DecoratorTypes,
 >(
   options: MetadataDecoratorOptions<Types, ArgsIn, ValueStored> = {},
-): MetadataDecorator<Types, ArgsIn, ValueStored> => {
+): MetadataDecorator<ValueStored, Types, ArgsIn> => {
   const {
     key: keyIn,
-    // types: typesIn,
+    types: typesIn,
     setter = () => true as ValueStored,
     merge,
+    discoverable = true,
   } = options;
   const id = keyIn ?? uuid.v7();
 
@@ -226,6 +238,12 @@ export const createMetadataDecorator = <
           });
         }
         defineMetadata(id, next, target);
+        if (discoverable) {
+          DiscoverableMetaHostCollection.addClassMetaHostLink(
+            target as AbstractClass<any>,
+            id as string,
+          );
+        }
         return;
       }
 
@@ -273,6 +291,12 @@ export const createMetadataDecorator = <
           });
         }
         defineMetadata(id, next, descriptor.value);
+        if (discoverable) {
+          DiscoverableMetaHostCollection.addClassMetaHostLink(
+            target.constructor,
+            id as string,
+          );
+        }
         return descriptor;
       }
 
@@ -297,11 +321,16 @@ export const createMetadataDecorator = <
     };
   };
 
-  return Object.assign(decorator, { KEY: id, get, getOwn }) as any;
+  return Object.assign(decorator, {
+    KEY: id,
+    get,
+    getOwn,
+    types: typesIn ? setOf(typesIn) : allDecoratorTypes,
+  }) as any;
 };
 
-const allDecoratorTypes = ['class', 'property', 'method', 'parameter'] as const;
-type DecoratorTypes = ArrayItem<typeof allDecoratorTypes>;
+const allDecoratorTypes = setOf(['class', 'property', 'method', 'parameter']);
+export type DecoratorTypes = IterableItem<typeof allDecoratorTypes>;
 
 type DecoratorForTypes<Types extends DecoratorTypes> = UnionToIntersection<
   | (Types extends 'class' ? ClassDecorator : never)
