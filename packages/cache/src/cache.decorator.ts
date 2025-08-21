@@ -1,4 +1,5 @@
 import { Inject } from '@nestjs/common';
+import type { ValOrFn } from '@seedcompany/common';
 import type { Except } from 'type-fest';
 import {
   type CacheableCalculationOptions,
@@ -9,9 +10,6 @@ import { resolveOptions } from './resolve-options.js';
 const CacheKey = Symbol('CacheService');
 
 type CacheOptions = Except<CacheableCalculationOptions<unknown>, 'calculate'>;
-type CacheOptionsOrFn<Args extends any[]> =
-  | CacheOptions
-  | ((...args: Args) => CacheOptions);
 
 /**
  * Cache result of this method.
@@ -37,7 +35,7 @@ type CacheOptionsOrFn<Args extends any[]> =
  * ```
  */
 export const Cache =
-  <Args extends any[]>(options: CacheOptionsOrFn<Args>) =>
+  <Args extends any[]>(options: ValOrFn<CacheOptions, Args>) =>
   <Result>(
     target: any,
     methodName: string | symbol,
@@ -53,7 +51,7 @@ export const Cache =
       target[CacheKey] = null;
     }
 
-    const resolvedOptions: CacheOptionsOrFn<Args> =
+    const resolvedOptions: ValOrFn<CacheOptions, Args> =
       typeof options !== 'function'
         ? (resolveOptions(options) as CacheOptions)
         : options;

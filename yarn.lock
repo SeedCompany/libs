@@ -3854,7 +3854,7 @@ __metadata:
     "@nestjs/core": "npm:^10 || ^11"
     "@nestjs/platform-express": "npm:^11.1.0"
     "@nestjs/testing": "npm:^11.0.11"
-    "@seedcompany/common": "npm:>0.3 <1"
+    "@seedcompany/common": "npm:>=0.21 <1"
     "@types/luxon": "npm:^3.2.0"
     cache-manager: "npm:^6.4.1"
     ioredis: "npm:^5.3.1"
@@ -3884,7 +3884,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@seedcompany/common@npm:>0.3 <1, @seedcompany/common@npm:>=0.17 <1, @seedcompany/common@npm:>=0.17 <1.0.0, @seedcompany/common@npm:>=0.3.0 <1.0.0, @seedcompany/common@workspace:packages/common":
+"@seedcompany/common@npm:>=0.17 <1, @seedcompany/common@npm:>=0.17 <1.0.0, @seedcompany/common@npm:>=0.21 <1, @seedcompany/common@npm:>=0.3.0 <1.0.0, @seedcompany/common@workspace:packages/common":
   version: 0.0.0-use.local
   resolution: "@seedcompany/common@workspace:packages/common"
   dependencies:
