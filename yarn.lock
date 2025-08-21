@@ -3884,7 +3884,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@seedcompany/common@npm:>=0.17 <1, @seedcompany/common@npm:>=0.17 <1.0.0, @seedcompany/common@npm:>=0.21 <1, @seedcompany/common@npm:>=0.3.0 <1.0.0, @seedcompany/common@workspace:packages/common":
+"@seedcompany/common@npm:>=0.17 <1.0.0, @seedcompany/common@npm:>=0.21 <1, @seedcompany/common@npm:>=0.3.0 <1.0.0, @seedcompany/common@workspace:packages/common":
   version: 0.0.0-use.local
   resolution: "@seedcompany/common@workspace:packages/common"
   dependencies:
@@ -4008,7 +4008,7 @@ __metadata:
     "@nestjs/core": "npm:^10 || ^11"
     "@nestjs/graphql": "npm:^12 || ^13"
     "@nestjs/testing": "npm:^11.0.11"
-    "@seedcompany/common": "npm:>=0.17 <1"
+    "@seedcompany/common": "npm:>=0.21 <1"
     change-case: "npm:^5.4.4"
     class-transformer: "npm:^0.5.1"
     class-validator: "npm:^0.14.2"
