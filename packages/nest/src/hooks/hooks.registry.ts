@@ -1,46 +1,45 @@
 import type { Type } from '@nestjs/common';
-import { cached, cmpBy } from '@seedcompany/common';
+import { cached } from '@seedcompany/common';
+import { PrioritySet, ReadonlyPrioritySet } from '../prioritySet.js';
 
 export type HookListener = (hook: object) => Promise<void> | void;
 export interface HookRegistration {
   hook: Type;
   listener: HookListener;
-  priority: number;
+  priority?: number;
 }
 
 /**
  * Holds hook listeners with their priorities.
  *
  * Listeners can be manually added or removed here whenever.
- *
- * It is up to you to ensure that the listeners aren't registered multiple times.
  */
 export class HooksRegistry {
-  private listeners: HookRegistration[] = [];
-  private readonly orderedCache = new Map<Type, HookListener[]>();
+  private readonly listeners = new Map<Type, PrioritySet<HookListener>>();
 
-  get(hook: Type): readonly HookListener[] {
-    return cached(this.orderedCache, hook, () =>
-      this.listeners
-        .filter((registration) => registration.hook === hook)
-        .sort(cmpBy((registration) => registration.priority))
-        .map((registration) => registration.listener),
-    );
+  getAll(): ReadonlyMap<Type, ReadonlyPrioritySet<HookListener>> {
+    return this.listeners;
   }
 
-  add(hook: Type, listener: HookListener, priority = 0) {
-    this.addAll([{ hook, listener, priority }]);
+  *get(hook: Type): Iterable<HookListener> {
+    yield* this.listeners.get(hook) ?? [];
   }
 
-  addAll(registrations: readonly HookRegistration[]) {
-    this.listeners.push(...registrations);
-    this.orderedCache.clear();
+  add(hook: Type, listener: HookListener, priority?: number) {
+    this.upsert(hook).add(listener, priority);
+  }
+
+  addAll(registrations: Iterable<HookRegistration>) {
+    for (const { hook, listener, priority } of registrations) {
+      this.upsert(hook).add(listener, priority);
+    }
   }
 
   remove(hook: Type, listener: HookListener) {
-    this.listeners = this.listeners.filter(
-      (registration) =>
-        !(registration.hook === hook && registration.listener === listener),
-    );
+    this.listeners.get(hook)?.delete(listener);
+  }
+
+  private upsert(hook: Type) {
+    return cached(this.listeners, hook, () => new PrioritySet());
   }
 }

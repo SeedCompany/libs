@@ -29,5 +29,10 @@ export class HooksDiscovery implements OnModuleInit {
         })),
       ),
     ]);
+
+    // Pre-compute ordered lists now that all-ish hooks are registered.
+    for (const listeners of this.registry.getAll().values()) {
+      void listeners.values();
+    }
   }
 }
