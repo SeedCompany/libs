@@ -20,7 +20,7 @@ import { HooksRegistry } from './hooks.registry.js';
  */
 @Injectable()
 export class Hooks {
-  constructor(private readonly registry: HooksRegistry) {}
+  constructor(readonly registry: HooksRegistry) {}
 
   async run<Hook extends object>(hook: Hook): Promise<Hook> {
     const hookType = hook.constructor as Type;

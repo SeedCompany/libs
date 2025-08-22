@@ -1,11 +1,14 @@
 import type { Type } from '@nestjs/common';
 import { cached } from '@seedcompany/common';
+import type { NoInfer } from 'type-fest/source/is-any.js';
 import { PrioritySet, ReadonlyPrioritySet } from '../prioritySet.js';
 
-export type HookListener = (hook: object) => Promise<void> | void;
-export interface HookRegistration {
-  hook: Type;
-  listener: HookListener;
+export type HookListener<Hook extends object = object> = (
+  hook: Hook,
+) => Promise<void> | void;
+export interface HookRegistration<Hook extends object> {
+  hook: Type<Hook>;
+  listener: HookListener<NoInfer<Hook>>;
   priority?: number;
 }
 
@@ -21,25 +24,36 @@ export class HooksRegistry {
     return this.listeners;
   }
 
-  *get(hook: Type): Iterable<HookListener> {
+  *get<Hook extends object>(hook: Type<Hook>): Iterable<HookListener<Hook>> {
     yield* this.listeners.get(hook) ?? [];
   }
 
-  add(hook: Type, listener: HookListener, priority?: number) {
-    this.upsert(hook).add(listener, priority);
+  add<Hook extends object>(
+    hook: Type<Hook>,
+    listener: HookListener<NoInfer<Hook>>,
+    priority?: number,
+  ) {
+    this.upsert(hook).add(listener as HookListener<Hook>, priority);
   }
 
-  addAll(registrations: Iterable<HookRegistration>) {
+  addAll(registrations: Iterable<HookRegistration<any>>) {
     for (const { hook, listener, priority } of registrations) {
       this.upsert(hook).add(listener, priority);
     }
   }
 
-  remove(hook: Type, listener: HookListener) {
-    this.listeners.get(hook)?.delete(listener);
+  remove<Hook extends object>(
+    hook: Type<Hook>,
+    listener: HookListener<NoInfer<Hook>>,
+  ) {
+    this.listeners.get(hook)?.delete(listener as HookListener);
   }
 
-  private upsert(hook: Type) {
-    return cached(this.listeners, hook, () => new PrioritySet());
+  private upsert<Hook extends object>(hook: Type<Hook>) {
+    return cached(
+      this.listeners,
+      hook,
+      () => new PrioritySet<HookListener<Hook>>(),
+    );
   }
 }
