@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.12.0](https://github.com/SeedCompany/libs/compare/nest-1.11.0...nest-1.12.0) (2025-08-22)
+
+
+### Features
+
+* **nest:** `PrioritySet` ([9c7b37d](https://github.com/SeedCompany/libs/commit/9c7b37da4d216a94ec06b2c24c36badd9bc9f8a2))
+* **nest:** add hooks module ([ceba879](https://github.com/SeedCompany/libs/commit/ceba879ac5d8c33c2af29ebb343bfe2f9215d414))
+
 ## [1.11.0](https://github.com/SeedCompany/libs/compare/nest-1.10.0...nest-1.11.0) (2025-08-21)
 
 
