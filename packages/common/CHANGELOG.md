@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.22.0](https://github.com/SeedCompany/libs/compare/common-0.21.0...common-0.22.0) (2025-08-27)
+
+
+### Features
+
+* **common:** polls ([#62](https://github.com/SeedCompany/libs/issues/62)) ([2647d4b](https://github.com/SeedCompany/libs/commit/2647d4b6c268f20201c6a6d627574a8d00861e67))
+
 ## [0.21.0](https://github.com/SeedCompany/libs/compare/common-0.20.0...common-0.21.0) (2025-08-21)
 
 
