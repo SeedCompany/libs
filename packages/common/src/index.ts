@@ -19,6 +19,7 @@ export * from './map-to.js';
 export * from './non-empty-array.js';
 export * from './non-enumerable.js';
 export * from './patch-method.js';
+export * as Polls from './polls.js';
 export * from './set-has.js';
 export * from './set-of.js';
 export * from './settled.js';
