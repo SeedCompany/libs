@@ -67,6 +67,10 @@
     "./discovery": {
       "types": "./dist/discovery/index.d.ts",
       "default": "./dist/discovery/index.js"
+    },
+    "./repl": {
+      "types": "./dist/repl/index.d.ts",
+      "default": "./dist/repl/index.js"
     }
   }
 }
