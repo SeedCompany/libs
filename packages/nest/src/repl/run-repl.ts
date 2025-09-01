@@ -10,6 +10,11 @@ import { mkdir } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { promisify } from 'node:util';
 import { createContext, runInContext } from 'node:vm';
+import { prependReplCompleter } from './repl-completer.js';
+import {
+  type ImportCommandOptions,
+  ReplImportCommand,
+} from './repl-import-command.js';
 
 // Nestjs doesn't export this type, so we have to do this.
 type IEntryNestModule = Parameters<
@@ -20,6 +25,7 @@ export const runRepl = ({
   module,
   options,
   extraContext,
+  import: importOptions,
   historyFile = '.cache/repl_history',
 }: {
   module: () => Promise<IEntryNestModule>;
@@ -28,6 +34,7 @@ export const runRepl = ({
     app: INestApplicationContext,
   ) => Promise<Record<string, unknown>>;
   historyFile?: string | false;
+  import?: ImportCommandOptions;
 }) => {
   (async () => {
     // @ts-expect-error I'm not sure what this is on about.
@@ -61,6 +68,15 @@ export const runRepl = ({
     replServer.on('exit', () => void app.close());
 
     assignToObject(replServer.context, replContext);
+
+    if (importOptions) {
+      const importCommand = await ReplImportCommand.create(importOptions);
+      importCommand.install(replServer);
+      prependReplCompleter(
+        replServer,
+        importCommand.completer.bind(importCommand),
+      );
+    }
 
     if (historyFile) {
       await mkdir(dirname(historyFile), { recursive: true });
