@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.13.0](https://github.com/SeedCompany/libs/compare/nest-1.12.0...nest-1.13.0) (2025-09-01)
+
+
+### Features
+
+* **nest:** repl import command with completion ([#63](https://github.com/SeedCompany/libs/issues/63)) ([dc4fad3](https://github.com/SeedCompany/libs/commit/dc4fad31c0e10e50bde478232b311d1716c56ce4))
+
 ## [1.12.0](https://github.com/SeedCompany/libs/compare/nest-1.11.0...nest-1.12.0) (2025-08-22)
 
 
