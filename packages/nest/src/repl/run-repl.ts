@@ -8,6 +8,7 @@ import { ReplLogger } from '@nestjs/core/repl/repl-logger.js';
 import { bufferFromStream } from '@seedcompany/common';
 import { mkdir } from 'node:fs/promises';
 import { dirname } from 'node:path';
+import * as process from 'node:process';
 import { promisify } from 'node:util';
 import { createContext, runInContext } from 'node:vm';
 import { prependReplCompleter } from './repl-completer.js';
@@ -80,7 +81,20 @@ export const runRepl = ({
 
     if (historyFile) {
       await mkdir(dirname(historyFile), { recursive: true });
-      await promisify(replServer.setupHistory.bind(replServer))(historyFile);
+      const setupHistory = promisify(replServer.setupHistory.bind(replServer));
+      const nodeVersionXY = Number(
+        process.versions.node.split('.').slice(0, 2).join('.'),
+      );
+      const supportsHistoryConfig = nodeVersionXY >= 24.2;
+      if (supportsHistoryConfig) {
+        await setupHistory({
+          filePath: historyFile,
+          size: 200,
+          removeHistoryDuplicates: true,
+        } as any);
+      } else {
+        await setupHistory(historyFile);
+      }
     }
   })().catch((err) => {
     // eslint-disable-next-line no-console
