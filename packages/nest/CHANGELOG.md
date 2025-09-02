@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.14.0](https://github.com/SeedCompany/libs/compare/nest-1.13.0...nest-1.14.0) (2025-09-02)
+
+
+### Features
+
+* **nest:** increase repl history size 30 -> 200 when node 24.2+ ([#64](https://github.com/SeedCompany/libs/issues/64)) ([d1c46b5](https://github.com/SeedCompany/libs/commit/d1c46b576b266b841d6f7a77d9c1c19f660c8bd1))
+
 ## [1.13.0](https://github.com/SeedCompany/libs/compare/nest-1.12.0...nest-1.13.0) (2025-09-01)
 
 
