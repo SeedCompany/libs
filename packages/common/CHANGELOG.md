@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.23.0](https://github.com/SeedCompany/libs/compare/common-0.22.0...common-0.23.0) (2025-09-03)
+
+
+### Features
+
+* **common:** `CachedGetter` ([#65](https://github.com/SeedCompany/libs/issues/65)) ([73dafde](https://github.com/SeedCompany/libs/commit/73dafdea27646cf372142d55713c61a5cc08fba6))
+
 ## [0.22.0](https://github.com/SeedCompany/libs/compare/common-0.21.0...common-0.22.0) (2025-08-27)
 
 
