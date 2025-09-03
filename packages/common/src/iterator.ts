@@ -1,9 +1,8 @@
 /**
  * Convert an async iterable into an array.
  *
- * Two upcoming ESMA proposals will make this obsolete:
- * https://tc39.es/proposal-async-iterator-helpers/
- * https://tc39.es/proposal-array-from-async/
+ * @deprecated Use {@link Array.fromAsync} instead.
+ * Available in Node 22+ & all browsers.
  */
 export const asyncIteratorToArray = async <T>(
   iterator: AsyncIterable<T> | AsyncIterableIterator<T>,
