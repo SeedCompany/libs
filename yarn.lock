@@ -4017,7 +4017,6 @@ __metadata:
     rxjs: "npm:^7.8.1"
     title-case: "npm:^4.3.1"
     type-fest: "npm:^4.26.1"
-    uuid: "npm:^11.0.0-0"
   peerDependencies:
     "@nestjs/common": ^10 || ^11
     "@nestjs/core": ^10 || ^11
@@ -14589,15 +14588,6 @@ __metadata:
   version: 1.0.1
   resolution: "utils-merge@npm:1.0.1"
   checksum: 10c0/02ba649de1b7ca8854bfe20a82f1dfbdda3fb57a22ab4a8972a63a34553cf7aa51bc9081cf7e001b035b88186d23689d69e71b510e610a09a4c66f68aa95b672
-  languageName: node
-  linkType: hard
-
-"uuid@npm:^11.0.0-0":
-  version: 11.0.0-0
-  resolution: "uuid@npm:11.0.0-0"
-  bin:
-    uuid: dist/esm/bin/uuid
-  checksum: 10c0/04415a6b32b82bfcacf1dabc084ae0c64beea9700dfb716bdea4b9f32a2f247f316bd7ec6619813b37fbb00685eeb76efef391d610091413e3a1d53fa13de570
   languageName: node
   linkType: hard
 

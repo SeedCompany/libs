@@ -5,6 +5,7 @@ import {
   setOf,
   type ValOrFn,
 } from '@seedcompany/common';
+import { randomUUID } from 'node:crypto';
 import type {
   AbstractClass,
   ConditionalExcept,
@@ -12,7 +13,6 @@ import type {
   StringKeyOf,
   UnionToIntersection,
 } from 'type-fest';
-import * as uuid from 'uuid';
 import 'reflect-metadata';
 
 const { defineMetadata } = Reflect;
@@ -200,7 +200,7 @@ export const createMetadataDecorator = <
     additionalDecorators,
     discoverable = true,
   } = options;
-  const id = keyIn ?? uuid.v7();
+  const id = keyIn ?? randomUUID();
 
   const makeGetter =
     (getMetadata: typeof Reflect.getMetadata) =>
