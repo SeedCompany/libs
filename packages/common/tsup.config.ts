@@ -1,7 +1,12 @@
 import { defineConfig } from 'tsup';
 
 export const tsup = defineConfig({
-  entry: ['src/index.ts', 'src/temporal/luxon/index.ts', '!src/**/*.test.ts'],
+  entry: [
+    'src/index.ts',
+    'src/case/index.ts',
+    'src/temporal/luxon/index.ts',
+    '!src/**/*.test.ts',
+  ],
   esbuildOptions: (opts) => {
     opts.sourceRoot = './dist/';
   },
