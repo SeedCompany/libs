@@ -7,8 +7,7 @@ import {
   nonEnumerable,
   setToStringTag,
 } from '@seedcompany/common';
-import { noCase, splitSeparateNumbers } from 'change-case';
-import { titleCase } from 'title-case';
+import { Case } from '@seedcompany/common/case';
 import { inspect, type InspectOptionsStylized } from 'util';
 
 export type EnumType<Enum> = Enum extends MadeEnum<infer Values, any, any>
@@ -178,8 +177,10 @@ export function makeEnum(
 
   for (const entry of entries) {
     // @ts-expect-error ignoring immutable here.
-    entry.label ??= titleCase(
-      noCase(entry.value, { split: splitSeparateNumbers }),
+    entry.label ??= Case.title(
+      Case.advanced.no(entry.value, {
+        split: Case.advanced.splitSeparateNumbers,
+      }),
     ).replace(/ and /g, ' & ');
   }
 
