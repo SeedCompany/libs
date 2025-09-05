@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.14.1](https://github.com/SeedCompany/libs/compare/nest-1.14.0...nest-1.14.1) (2025-09-05)
+
 ## [1.14.0](https://github.com/SeedCompany/libs/compare/nest-1.13.0...nest-1.14.0) (2025-09-02)
 
 
