@@ -13,6 +13,7 @@ export * from './is-object.js';
 export * from './inspect.js';
 export * from './iterator.js';
 export * from './json-col.js';
+export * from './keys.js';
 export * from './many.js';
 export * from './map-of.js';
 export * from './map-to.js';
