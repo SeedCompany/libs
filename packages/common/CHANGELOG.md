@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.25.0](https://github.com/SeedCompany/libs/compare/common-0.24.0...common-0.25.0) (2025-10-02)
+
+
+### Features
+
+* **common:** keys ([#69](https://github.com/SeedCompany/libs/issues/69)) ([77aaf91](https://github.com/SeedCompany/libs/commit/77aaf91a9779d2c0b91c49d45011f1d9c8dab1f4))
+
 ## [0.24.0](https://github.com/SeedCompany/libs/compare/common-0.23.0...common-0.24.0) (2025-09-05)
 
 
