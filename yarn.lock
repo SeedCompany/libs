@@ -3884,22 +3884,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@seedcompany/common@npm:>=0.21 <1":
-  version: 0.25.0
-  resolution: "@seedcompany/common@npm:0.25.0"
-  dependencies:
-    change-case: "npm:^5.4.4"
-    title-case: "npm:^4.3.2"
-    type-fest: "npm:^4.37.0"
-  peerDependencies:
-    luxon: ^3.3.0
-  peerDependenciesMeta:
-    luxon:
-      optional: true
-  checksum: 10c0/5377baef09c81dd6bb6cee5f4b9653e0485120d50973cae426f1ccf690810809f3d5bf157a05a2476ee02014506bba81e1cf180945c62af12f26aad7b24182c8
-  languageName: node
-  linkType: hard
-
 "@seedcompany/common@npm:^1.0.0, @seedcompany/common@workspace:packages/common":
   version: 0.0.0-use.local
   resolution: "@seedcompany/common@workspace:packages/common"
@@ -3928,7 +3912,7 @@ __metadata:
     "@nestjs/graphql": "npm:^13.0.3"
     "@nestjs/platform-express": "npm:^11.0.11"
     "@nestjs/testing": "npm:^11.0.11"
-    "@seedcompany/common": "npm:>=0.21 <1"
+    "@seedcompany/common": "npm:^1.0.0"
     "@types/supertest": "npm:^2.0.12"
     dataloader: "npm:^2.2.2"
     express: "npm:^5.0.1"
@@ -14349,13 +14333,6 @@ __metadata:
   version: 2.19.0
   resolution: "type-fest@npm:2.19.0"
   checksum: 10c0/a5a7ecf2e654251613218c215c7493574594951c08e52ab9881c9df6a6da0aeca7528c213c622bc374b4e0cb5c443aa3ab758da4e3c959783ce884c3194e12cb
-  languageName: node
-  linkType: hard
-
-"type-fest@npm:^4.37.0":
-  version: 4.41.0
-  resolution: "type-fest@npm:4.41.0"
-  checksum: 10c0/f5ca697797ed5e88d33ac8f1fec21921839871f808dc59345c9cf67345bfb958ce41bd821165dbf3ae591cedec2bf6fe8882098dfdd8dc54320b859711a2c1e4
   languageName: node
   linkType: hard
 

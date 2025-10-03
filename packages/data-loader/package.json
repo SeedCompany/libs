@@ -9,7 +9,7 @@
   "dependencies": {
     "@nestjs/common": "^9 || ^10 || ^11",
     "@nestjs/core": "^9 || ^10 || ^11",
-    "@seedcompany/common": ">=0.21 <1",
+    "@seedcompany/common": "^1.0.0",
     "dataloader": "^2.2.2"
   },
   "peerDependencies": {
