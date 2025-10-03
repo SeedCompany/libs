@@ -24,7 +24,7 @@ export class HeaderCollector {
     );
   };
 
-  get headers() {
+  get headers(): HeaderContextType {
     return this.context;
   }
 }

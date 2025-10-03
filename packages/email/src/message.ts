@@ -65,7 +65,9 @@ export class EmailMessage<Props = undefined> {
     return this.body?.type.displayName ?? this.body?.type.name;
   }
 
-  get primaryRecipients() {
+  get primaryRecipients(): ReadonlyArray<
+    string | Readonly<{ name: string; address: string }>
+  > {
     const best = this.headers.to ?? this.headers.cc ?? this.headers.bcc;
     return best ? many(best) : [];
   }
