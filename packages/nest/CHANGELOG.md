@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.0.0](https://github.com/SeedCompany/libs/compare/nest-1.14.2...nest-2.0.0) (2025-10-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **nest:** drops support for TS 5.8-
+
+### Features
+
+* **nest:** type-fest v5 ([1b2fba0](https://github.com/SeedCompany/libs/commit/1b2fba0aad1718b1a9410f99568b8a6d71a3f8aa))
+
 ## [1.14.2](https://github.com/SeedCompany/libs/compare/nest-1.14.1...nest-1.14.2) (2025-09-05)
 
 ## [1.14.1](https://github.com/SeedCompany/libs/compare/nest-1.14.0...nest-1.14.1) (2025-09-05)
