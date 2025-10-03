@@ -2,6 +2,23 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.0](https://github.com/SeedCompany/libs/compare/scripture-0.9.1...scripture-1.0.0) (2025-10-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **scripture:** drop support for Node 16 & 18
+* **scripture:** drops support for TS 5.8-
+
+### Features
+
+* **scripture:** type-fest v5 ([63e5475](https://github.com/SeedCompany/libs/commit/63e547535c5813721ec8e8437ffe72e483171a8a))
+
+
+### Code Refactoring
+
+* **scripture:** drop support for Node 16 & 18 ([203b881](https://github.com/SeedCompany/libs/commit/203b8814b0d7f345ecaa137b97fb4b241d800eb1))
+
 ## [0.9.1](https://github.com/SeedCompany/libs/compare/scripture-0.9.0...scripture-0.9.1) (2025-05-09)
 
 
