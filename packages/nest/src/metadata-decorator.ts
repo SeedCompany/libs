@@ -10,7 +10,7 @@ import type {
   AbstractClass,
   ConditionalExcept,
   ConditionalKeys,
-  StringKeyOf,
+  KeyAsString as StringKeyOf,
   UnionToIntersection,
 } from 'type-fest';
 import 'reflect-metadata';

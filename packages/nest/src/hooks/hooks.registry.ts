@@ -1,7 +1,9 @@
 import type { Type } from '@nestjs/common';
 import { cached } from '@seedcompany/common';
-import type { NoInfer } from 'type-fest/source/is-any.js';
 import { PrioritySet, ReadonlyPrioritySet } from '../prioritySet.js';
+
+// Can eventually be replaced with the built-in once this library supports TS5.4+ only.
+type NoInfer<T> = T extends infer U ? U : never;
 
 export type HookListener<Hook extends object = object> = (
   hook: Hook,
