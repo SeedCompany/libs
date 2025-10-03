@@ -16,7 +16,7 @@
   "dependencies": {
     "change-case": "^5.4.4",
     "title-case": "^4.3.2",
-    "type-fest": "^4.37.0"
+    "type-fest": "^5.0.1"
   },
   "devDependencies": {
     "@types/luxon": "^3.2.0",

@@ -6,15 +6,9 @@ import { nonEnumerable } from '../index.js';
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace Case {
   /** @example "fooBar" */
-  export type Camel<S extends string> = typefest.CamelCase<
-    NoPunctuation<S>,
-    { preserveConsecutiveUppercase: false }
-  >;
+  export type Camel<S extends string> = typefest.CamelCase<NoPunctuation<S>>;
   /** @example "FooBar" */
-  export type Pascal<S extends string> = typefest.PascalCase<
-    NoPunctuation<S>,
-    { preserveConsecutiveUppercase: false }
-  >;
+  export type Pascal<S extends string> = typefest.PascalCase<NoPunctuation<S>>;
   /** @example "FOO_BAR" */
   export type Constant<S extends string> = typefest.ScreamingSnakeCase<
     NoPunctuation<S>
