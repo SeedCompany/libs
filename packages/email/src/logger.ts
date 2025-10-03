@@ -1,6 +1,6 @@
 import type { Logger as NestLogger } from '@nestjs/common';
 import { format } from 'node:util';
-import type { Logger as NodeMailerLogger } from 'nodemailer/lib/shared';
+import type { Logger as NodeMailerLogger } from 'nodemailer/lib/shared/index.js';
 
 export class NodeMailerLoggerAdapter implements NodeMailerLogger {
   constructor(

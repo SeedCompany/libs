@@ -119,6 +119,7 @@ export class RuleTester extends TSESLint.RuleTester {
           throw new Error(errorMessage);
         }
         if (!test.filename) {
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
           (test as Mutable<typeof test>).filename = this.getFilename(
             test.parserOptions,
           );
