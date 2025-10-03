@@ -1,6 +1,5 @@
 import type { Type } from '@nestjs/common';
 import { cached } from '@seedcompany/common';
-import type { NoInfer } from 'type-fest/source/is-any.js';
 import { PrioritySet, ReadonlyPrioritySet } from '../prioritySet.js';
 
 export type HookListener<Hook extends object = object> = (
