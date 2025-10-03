@@ -4058,7 +4058,7 @@ __metadata:
     reflect-metadata: "npm:^0.2.2"
     rxjs: "npm:^7.8.1"
     tempy: "npm:^3.1.0"
-    type-fest: "npm:^4.37.0"
+    type-fest: "npm:^5.0.1"
   peerDependencies:
     "@faire/mjml-react": ^3.5.0
     "@nestjs/common": ">=7"
@@ -14336,7 +14336,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"type-fest@npm:^4.26.1, type-fest@npm:^4.37.0":
+"type-fest@npm:^4.26.1":
   version: 4.41.0
   resolution: "type-fest@npm:4.41.0"
   checksum: 10c0/f5ca697797ed5e88d33ac8f1fec21921839871f808dc59345c9cf67345bfb958ce41bd821165dbf3ae591cedec2bf6fe8882098dfdd8dc54320b859711a2c1e4
