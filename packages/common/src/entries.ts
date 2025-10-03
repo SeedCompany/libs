@@ -24,7 +24,7 @@ export function entries<T extends object>(
   object: T,
 ): ReadonlyArray<EntryOf<Required<T>>>;
 export function entries<K, V>(o: any): ReadonlyArray<readonly [K, V]> {
-  return Symbol.iterator in o ? [...o] : Object.entries(o);
+  return Symbol.iterator in o ? [...o] : (Object.entries(o) as any);
 }
 
 export type EntryOf<T extends object> = {

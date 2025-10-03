@@ -205,7 +205,7 @@ const wrapInspect = <TThis>(
       inspect: (inner, overrideOptions) =>
         inspect(inner, {
           ...options,
-          depth: depth! - 1,
+          depth: depth - 1,
           ...overrideOptions,
         }),
       collapsed: (id, type) =>
