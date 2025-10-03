@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.0.0](https://github.com/SeedCompany/libs/compare/cache-3.1.0...cache-4.0.0) (2025-10-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **cache:** drops support for TS 5.8-
+
+### Features
+
+* **cache:** type-fest v5 ([a01eda5](https://github.com/SeedCompany/libs/commit/a01eda5b6b12b7aa015f416ae06bd93061be3573))
+
 ## [3.1.0](https://github.com/SeedCompany/libs/compare/cache-3.0.2...cache-3.1.0) (2025-04-30)
 
 
