@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@seedcompany/common": ">=0.17 <1.0.0",
-    "type-fest": "^4.37.0"
+    "type-fest": "^5.0.1"
   },
   "scripts": {
     "build": "tsup",
