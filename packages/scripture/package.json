@@ -3,7 +3,7 @@
   "version": "0.9.1",
   "license": "MIT",
   "engines": {
-    "node": ">=16"
+    "node": ">=20"
   },
   "dependencies": {
     "@seedcompany/common": ">=0.17 <1.0.0",
