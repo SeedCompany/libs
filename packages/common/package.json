@@ -3,7 +3,7 @@
   "version": "0.25.0",
   "license": "MIT",
   "engines": {
-    "node": ">=16"
+    "node": ">=20"
   },
   "peerDependencies": {
     "luxon": "^3.3.0"
