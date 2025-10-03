@@ -12,7 +12,7 @@
     "@seedcompany/common": ">=0.21 <1",
     "@types/luxon": "^3.2.0",
     "luxon": "^3.3.0",
-    "type-fest": "^4.26.1"
+    "type-fest": "^5.0.1"
   },
   "peerDependencies": {
     "@nestjs/cache-manager": "^3",
