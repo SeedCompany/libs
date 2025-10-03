@@ -3884,7 +3884,39 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@seedcompany/common@npm:>=0.17 <1.0.0, @seedcompany/common@npm:>=0.21 <1, @seedcompany/common@npm:>=0.24 <1, @seedcompany/common@npm:>=0.3.0 <1.0.0, @seedcompany/common@workspace:packages/common":
+"@seedcompany/common@npm:>=0.21 <1, @seedcompany/common@npm:>=0.24 <1, @seedcompany/common@npm:>=0.3.0 <1.0.0":
+  version: 0.25.0
+  resolution: "@seedcompany/common@npm:0.25.0"
+  dependencies:
+    change-case: "npm:^5.4.4"
+    title-case: "npm:^4.3.2"
+    type-fest: "npm:^4.37.0"
+  peerDependencies:
+    luxon: ^3.3.0
+  peerDependenciesMeta:
+    luxon:
+      optional: true
+  checksum: 10c0/5377baef09c81dd6bb6cee5f4b9653e0485120d50973cae426f1ccf690810809f3d5bf157a05a2476ee02014506bba81e1cf180945c62af12f26aad7b24182c8
+  languageName: node
+  linkType: hard
+
+"@seedcompany/common@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@seedcompany/common@npm:1.0.0"
+  dependencies:
+    change-case: "npm:^5.4.4"
+    title-case: "npm:^4.3.2"
+    type-fest: "npm:^5.0.1"
+  peerDependencies:
+    luxon: ^3.3.0
+  peerDependenciesMeta:
+    luxon:
+      optional: true
+  checksum: 10c0/c35138f101901c57e88e22cbced3169389052942e6c12699d1699a556b5d1de259fa0d4ac86976af94827d64e09ba0c920b63d709fc98d08474cebee3a588e9a
+  languageName: node
+  linkType: hard
+
+"@seedcompany/common@workspace:packages/common":
   version: 0.0.0-use.local
   resolution: "@seedcompany/common@workspace:packages/common"
   dependencies:
@@ -4079,8 +4111,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@seedcompany/scripture@workspace:packages/scripture"
   dependencies:
-    "@seedcompany/common": "npm:>=0.17 <1.0.0"
-    type-fest: "npm:^4.37.0"
+    "@seedcompany/common": "npm:^1.0.0"
+    type-fest: "npm:^5.0.1"
   languageName: unknown
   linkType: soft
 
