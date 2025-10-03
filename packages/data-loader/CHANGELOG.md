@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.0.0](https://github.com/SeedCompany/libs/compare/data-loader-2.1.0...data-loader-3.0.0) (2025-10-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **data-loader:** drops support for TS 5.8-
+
+### Features
+
+* **data-loader:** common v1 ([6282214](https://github.com/SeedCompany/libs/commit/62822148bfafb244e1e7148d66ba3525ad00a2a9))
+
 ## [2.1.0](https://github.com/SeedCompany/libs/compare/data-loader-2.0.1...data-loader-2.1.0) (2025-04-30)
 
 
