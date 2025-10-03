@@ -2,6 +2,23 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.0](https://github.com/SeedCompany/libs/compare/common-0.25.0...common-1.0.0) (2025-10-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **common:** drop support for Node 16 & 18
+* **common:** drops support for TS 5.8-
+
+### Features
+
+* **common:** type-fest v5 ([93bf815](https://github.com/SeedCompany/libs/commit/93bf8155e9a1eabb6bb1a40928bea3288a76e51d))
+
+
+### Code Refactoring
+
+* **common:** drop support for Node 16 & 18 ([9c91d48](https://github.com/SeedCompany/libs/commit/9c91d48cf1b0330d59ca76dbb629c0890184aac3))
+
 ## [0.25.0](https://github.com/SeedCompany/libs/compare/common-0.24.0...common-0.25.0) (2025-10-02)
 
 
