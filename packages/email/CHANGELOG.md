@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.0.0](https://github.com/SeedCompany/libs/compare/email-5.0.0...email-6.0.0) (2025-10-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **email:** drops support for TS 5.8-
+
+### Features
+
+* **email:** type-fest v5 ([f81894d](https://github.com/SeedCompany/libs/commit/f81894d0f61b44cf5ef63878bf598510b7891f23))
+
 ## [5.0.0](https://github.com/SeedCompany/libs/compare/email-4.3.0...email-5.0.0) (2025-08-04)
 
 
