@@ -19,8 +19,8 @@
     "type-fest": "^5.0.1"
   },
   "devDependencies": {
-    "@types/luxon": "^3.2.0",
-    "luxon": "^3.3.0"
+    "@types/luxon": "^3.7.1",
+    "luxon": "^3.7.2"
   },
   "scripts": {
     "build": "tsup",

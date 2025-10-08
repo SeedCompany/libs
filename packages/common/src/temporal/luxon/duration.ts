@@ -13,7 +13,7 @@ import { inspect } from 'util';
  */
 export type DurationIn = string | DurationLike;
 
-declare module 'luxon/src/duration.js' {
+declare module 'luxon' {
   // eslint-disable-next-line @typescript-eslint/no-namespace -- augmenting static class method
   namespace Duration {
     /**
