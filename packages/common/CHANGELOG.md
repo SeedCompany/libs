@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.1.1](https://github.com/SeedCompany/libs/compare/common-1.1.0...common-1.1.1) (2025-10-08)
+
+
+### Bug Fixes
+
+* **common:** upgrade luxon types & fix duration augment ([67667b1](https://github.com/SeedCompany/libs/commit/67667b1b5df42a664bb846cdca25d45f6ef6f747))
+
 ## [1.1.0](https://github.com/SeedCompany/libs/compare/common-1.0.0...common-1.1.0) (2025-10-08)
 
 
