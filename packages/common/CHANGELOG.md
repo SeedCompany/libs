@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.1.0](https://github.com/SeedCompany/libs/compare/common-1.0.0...common-1.1.0) (2025-10-08)
+
+
+### Features
+
+* **common:** file handle classes ([19405bc](https://github.com/SeedCompany/libs/commit/19405bcd54a55a955408ddbd13dca71f7e85f58e))
+* **common:** load once ([f53a683](https://github.com/SeedCompany/libs/commit/f53a683b8fa932d051421f00383440169b24a3ee))
+
 ## [1.0.0](https://github.com/SeedCompany/libs/compare/common-0.25.0...common-1.0.0) (2025-10-03)
 
 
