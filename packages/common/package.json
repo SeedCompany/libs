@@ -51,6 +51,10 @@
       "types": "./src/case/index.ts",
       "import": "./src/case/index.ts"
     },
+    "./node": {
+      "types": "./src/node/index.ts",
+      "import": "./src/node/index.ts"
+    },
     "./temporal/luxon": {
       "types": "./src/temporal/luxon/index.ts",
       "import": "./src/temporal/luxon/index.ts",

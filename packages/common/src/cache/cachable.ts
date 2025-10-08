@@ -7,7 +7,7 @@ export interface Cacheable<K, V> {
 }
 
 /**
- * An alternative signature to {@see cached}.
+ * An alternative signature to {@link cached}.
  * @example
  * const getUser = cacheable(new LRUCache(), (id) => fetchUser(id));
  * const user = await getUser('123');
