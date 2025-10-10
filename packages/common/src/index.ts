@@ -18,6 +18,7 @@ export * from './many.js';
 export * from './map-of.js';
 export * from './map-to.js';
 export * from './non-empty-array.js';
+export * from './non-empty-object.js';
 export * from './non-enumerable.js';
 export * from './patch-method.js';
 export * from './pick-deep.js';
