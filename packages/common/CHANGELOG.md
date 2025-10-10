@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.2.0](https://github.com/SeedCompany/libs/compare/common-1.1.1...common-1.2.0) (2025-10-10)
+
+
+### Features
+
+* **common:** alt cacheable signature with better type inference ([9d7077d](https://github.com/SeedCompany/libs/commit/9d7077dc103f0fdcc68e0d1c91a1c66538c2632e))
+
 ## [1.1.1](https://github.com/SeedCompany/libs/compare/common-1.1.0...common-1.1.1) (2025-10-08)
 
 
