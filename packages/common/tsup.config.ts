@@ -12,6 +12,7 @@ export const tsup = defineConfig({
     opts.sourceRoot = './dist/';
   },
   external: ['@seedcompany/common'],
+  target: 'es2019',
   format: ['cjs', 'esm'],
   dts: true,
   sourcemap: true,
