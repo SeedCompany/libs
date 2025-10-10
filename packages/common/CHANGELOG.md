@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.2.1](https://github.com/SeedCompany/libs/compare/common-1.2.0...common-1.2.1) (2025-10-10)
+
+
+### Bug Fixes
+
+* **common:** drop compilation target to es2019, for some of our old ui compilers ([6eda1f8](https://github.com/SeedCompany/libs/commit/6eda1f80ee5d833d9abe1ebaab70bfdbb5767ac7))
+
 ## [1.2.0](https://github.com/SeedCompany/libs/compare/common-1.1.1...common-1.2.0) (2025-10-10)
 
 
