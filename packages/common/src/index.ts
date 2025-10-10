@@ -1,3 +1,4 @@
+export * from './as-partial-deep.js';
 export * from './cache/index.js';
 export * from './csv.js';
 export * from './temporal/index.js';
