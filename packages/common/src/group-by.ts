@@ -20,8 +20,7 @@ export const groupToMapBy = <K, V>(
 ): ReadonlyMap<K, NonEmptyArray<V>> =>
   [...items].reduce((map, item) => {
     const groupKey = by(item);
-    let prev: readonly V[] | undefined = map.get(groupKey);
-    prev = prev ? prev : [];
+    const prev: readonly V[] | undefined = map.get(groupKey) ?? [];
     map.set(groupKey, asNonEmptyArray([...prev, item])!);
     return map;
   }, new Map<K, NonEmptyArray<V>>());

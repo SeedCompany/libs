@@ -198,7 +198,7 @@ const wrapInspect = <TThis>(
         };
 
   return function (depth, options, inspect) {
-    depth = depth != null ? depth : Infinity;
+    depth ??= Infinity;
     return fn.call(this, {
       ...options,
       depth,
