@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.1.1](https://github.com/SeedCompany/libs/compare/nest-2.1.0...nest-2.1.1) (2025-10-15)
+
+
+### Bug Fixes
+
+* **nest:** use correct logger interface on DurableBroadcaster ([37fb139](https://github.com/SeedCompany/libs/commit/37fb1396f1d27a1ebe269e301ffbfb03a150f175))
+
 ## [2.1.0](https://github.com/SeedCompany/libs/compare/nest-2.0.0...nest-2.1.0) (2025-10-15)
 
 
