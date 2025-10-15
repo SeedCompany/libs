@@ -1,6 +1,7 @@
 import {
   Injectable,
   Logger,
+  type LoggerService,
   type OnModuleDestroy,
   Optional,
   type Type,
@@ -33,14 +34,16 @@ export class DurableBroadcaster
   constructor(
     private readonly transport: Transport,
     @Optional()
-    private readonly logger: Logger | null = new Logger(IBroadcaster.name),
+    private readonly logger: LoggerService | null = new Logger(
+      IBroadcaster.name,
+    ),
   ) {
     super();
   }
 
   private readonly channels = new Map<string, WeakRef<IChannel>>();
   private readonly cleanup = new FinalizationRegistry<string>((channel) => {
-    this.logger?.debug(`Destroying channel ${channel}`);
+    this.logger?.debug?.(`Destroying channel ${channel}`);
     this.channels.delete(channel);
   });
   /**
@@ -71,7 +74,7 @@ export class DurableBroadcaster
     if (prev) {
       return prev;
     }
-    this.logger?.debug(`Creating channel ${name}`);
+    this.logger?.debug?.(`Creating channel ${name}`);
 
     const channel: IChannel<any> = new BroadcastChannel(this, name);
     this.channels.set(name, new WeakRef(channel));
