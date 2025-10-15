@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.3.0](https://github.com/SeedCompany/libs/compare/common-1.2.1...common-1.3.0) (2025-10-15)
+
+
+### Features
+
+* **common:** asNonEmptyObject ([9fbe1f0](https://github.com/SeedCompany/libs/commit/9fbe1f094399869d1f78c61da705133a0f8e98eb))
+* **common:** asPartialDeep ([5e56a0e](https://github.com/SeedCompany/libs/commit/5e56a0eb0435c18671540f81268141f4be469027))
+* **common:** pickDeep ([d9828b9](https://github.com/SeedCompany/libs/commit/d9828b98cca2cfef5e6c99bf2277f4852221c8e8))
+
 ## [1.2.1](https://github.com/SeedCompany/libs/compare/common-1.2.0...common-1.2.1) (2025-10-10)
 
 
