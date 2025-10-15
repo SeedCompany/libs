@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.1.0](https://github.com/SeedCompany/libs/compare/nest-2.0.0...nest-2.1.0) (2025-10-15)
+
+
+### Features
+
+* **nest:** broadcaster / pubsub ([#73](https://github.com/SeedCompany/libs/issues/73)) ([ebeda93](https://github.com/SeedCompany/libs/commit/ebeda93d2e7b1dfff68e2733e5ba9a146a7c9f86))
+
 ## [2.0.0](https://github.com/SeedCompany/libs/compare/nest-1.14.2...nest-2.0.0) (2025-10-03)
 
 
