@@ -10,6 +10,9 @@ import {
 import type { DistributedPick, ValueOf } from 'type-fest';
 import { toAsyncIterable } from '../to-async-iterable.js';
 
+// Despite rxjs typing this, it is not a native symbol yet.
+const observable: typeof Symbol.observable = '@@observable' as any;
+
 /**
  * Declare event names and their event shape with this interface via declaring merging.
  */
@@ -105,7 +108,7 @@ export abstract class BroadcastChannel<Data = unknown>
    * @example
    * rx.from(Broadcaster.channel('foo'))
    */
-  [Symbol.observable]() {
+  [observable]() {
     return this;
   }
 
