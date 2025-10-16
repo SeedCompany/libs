@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.1.2](https://github.com/SeedCompany/libs/compare/nest-2.1.1...nest-2.1.2) (2025-10-16)
+
+
+### Bug Fixes
+
+* **nest:** interop observable symbol not defined at runtime ([7d5e453](https://github.com/SeedCompany/libs/commit/7d5e4531140bfec13e2e335a3b635f35b57dff35))
+
 ## [2.1.1](https://github.com/SeedCompany/libs/compare/nest-2.1.0...nest-2.1.1) (2025-10-15)
 
 
