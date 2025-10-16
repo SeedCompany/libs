@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.1.3](https://github.com/SeedCompany/libs/compare/nest-2.1.2...nest-2.1.3) (2025-10-16)
+
+
+### Bug Fixes
+
+* **nest:** broadcaster subscriptions losing ALS context ([c30aa0b](https://github.com/SeedCompany/libs/commit/c30aa0b2804cd06bfab63e73f4a44787d040242a))
+
 ## [2.1.2](https://github.com/SeedCompany/libs/compare/nest-2.1.1...nest-2.1.2) (2025-10-16)
 
 
