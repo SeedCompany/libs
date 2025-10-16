@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.1.4](https://github.com/SeedCompany/libs/compare/nest-2.1.3...nest-2.1.4) (2025-10-16)
+
+
+### Bug Fixes
+
+* **nest:** withAsyncContext resolve snapshot more eagerly ([a2f3f52](https://github.com/SeedCompany/libs/commit/a2f3f527af07d44644d09e7a3ce6577b57ef9b48))
+
 ## [2.1.3](https://github.com/SeedCompany/libs/compare/nest-2.1.2...nest-2.1.3) (2025-10-16)
 
 
