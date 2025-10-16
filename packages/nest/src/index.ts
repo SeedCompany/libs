@@ -7,3 +7,4 @@ export { markSkipClassTransformation } from './patches/class-transformer.patch.j
 export { ValidatorModule } from './validator/validator.module.js';
 export * from './prioritySet.js';
 export * from './to-async-iterable.js';
+export * from './with-async-context.js';
