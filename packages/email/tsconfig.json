@@ -1,6 +1,6 @@
 {
   "extends": "tsconfig/tsconfig.nestjs.json",
-  "include": ["src"],
+  "include": ["src", "tests"],
   "exclude": ["dist", "node_modules"],
   "compilerOptions": {
     "noUncheckedIndexedAccess": true,
