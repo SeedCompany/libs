@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.3.1](https://github.com/SeedCompany/libs/compare/common-1.3.0...common-1.3.1) (2025-12-02)
+
+
+### Bug Fixes
+
+* **common:** add default to exports map ([43c9816](https://github.com/SeedCompany/libs/commit/43c98162d0df8a5e71be5e62296ec5eefa06913b))
+
 ## [1.3.0](https://github.com/SeedCompany/libs/compare/common-1.2.1...common-1.3.0) (2025-10-15)
 
 
