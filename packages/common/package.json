@@ -45,20 +45,24 @@
     ".": {
       "types": "./src/index.ts",
       "import": "./src/index.ts",
-      "require": "./src/index.ts"
+      "require": "./src/index.ts",
+      "default": "./src/index.ts"
     },
     "./case": {
       "types": "./src/case/index.ts",
-      "import": "./src/case/index.ts"
+      "import": "./src/case/index.ts",
+      "default": "./src/case/index.ts"
     },
     "./node": {
       "types": "./src/node/index.ts",
-      "import": "./src/node/index.ts"
+      "import": "./src/node/index.ts",
+      "default": "./src/node/index.ts"
     },
     "./temporal/luxon": {
       "types": "./src/temporal/luxon/index.ts",
       "import": "./src/temporal/luxon/index.ts",
-      "require": "./src/temporal/luxon/index.ts"
+      "require": "./src/temporal/luxon/index.ts",
+      "default": "./src/temporal/luxon/index.ts"
     }
   }
 }
