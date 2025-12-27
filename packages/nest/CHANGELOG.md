@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.2.0](https://github.com/SeedCompany/libs/compare/nest-2.1.4...nest-2.2.0) (2025-12-27)
+
+
+### Features
+
+* **nest:** withAsyncContextIterator ([d694e82](https://github.com/SeedCompany/libs/commit/d694e82e8646f9495077071c45d5a5c11dd5ee44))
+
 ## [2.1.4](https://github.com/SeedCompany/libs/compare/nest-2.1.3...nest-2.1.4) (2025-10-16)
 
 
