@@ -4,7 +4,7 @@ import { type MonoTypeOperatorFunction, Observable } from 'rxjs';
 /**
  * Ensures that the subscriber's ALS context is preserved for the observed stream.
  */
-export const withAsyncContext = <T>(): MonoTypeOperatorFunction<T> => {
+export const withAsyncContext$ = <T>(): MonoTypeOperatorFunction<T> => {
   const scoped = AsyncLocalStorage.snapshot();
   return (source) =>
     new Observable<T>((subscriber) =>
@@ -15,3 +15,8 @@ export const withAsyncContext = <T>(): MonoTypeOperatorFunction<T> => {
       }),
     );
 };
+
+/**
+ * @deprecated Use {@link withAsyncContext$} instead.
+ */
+export const withAsyncContext = withAsyncContext$;

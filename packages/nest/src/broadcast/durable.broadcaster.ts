@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { CachedByArg, setInspectOnClass } from '@seedcompany/common';
 import { from, Observable, share, type Subscriber } from 'rxjs';
-import { withAsyncContext } from '../with-async-context.js';
+import { withAsyncContext$ } from '../with-async-context.js';
 import {
   Broadcaster as IBroadcaster,
   BroadcastChannel as IChannel,
@@ -90,7 +90,7 @@ export class DurableBroadcaster
   doObserve(channel: BroadcastChannel & {}): Observable<unknown> {
     // Ensure that each subscriber gets their current async context.
     // The underlying transport can still be context-unaware/shared for the entire process.
-    return this.observeTransport(channel).pipe(withAsyncContext());
+    return this.observeTransport(channel).pipe(withAsyncContext$());
   }
 
   @CachedByArg({ weak: true })
