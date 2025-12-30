@@ -68,9 +68,8 @@ export class DurableBroadcaster
       return nameIn;
     }
     const name =
-      typeof nameIn === 'string'
-        ? nameIn
-        : nameIn.name + (id != null ? `:${id}` : '');
+      (typeof nameIn === 'string' ? nameIn : nameIn.name) +
+      (id != null ? `:${id}` : '');
     const prev = this.channels.get(name)?.deref();
     if (prev) {
       return prev;
