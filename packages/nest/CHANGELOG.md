@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.2.5](https://github.com/SeedCompany/libs/compare/nest-2.2.4...nest-2.2.5) (2025-12-30)
+
+
+### Bug Fixes
+
+* **nest:** durable broadcaster channel with id, parentheses miss ([dd9b8bc](https://github.com/SeedCompany/libs/commit/dd9b8bc28620cf49cedc31a01b50e87541541233))
+
 ## [2.2.4](https://github.com/SeedCompany/libs/compare/nest-2.2.3...nest-2.2.4) (2025-12-27)
 
 
