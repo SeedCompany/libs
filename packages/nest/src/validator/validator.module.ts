@@ -24,6 +24,6 @@ const { ConfigurableModuleClass } =
     { provide: NestValidationPipe, useExisting: ValidationPipe },
     { provide: APP_PIPE, useExisting: ValidationPipe },
   ],
-  exports: [ValidationPipe],
+  exports: [NestValidationPipe],
 })
 export class ValidatorModule extends ConfigurableModuleClass {}
