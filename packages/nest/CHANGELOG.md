@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.2.6](https://github.com/SeedCompany/libs/compare/nest-2.2.5...nest-2.2.6) (2026-02-12)
+
+
+### Bug Fixes
+
+* **nest:** correct export for base pipe ([6412cec](https://github.com/SeedCompany/libs/commit/6412cecc73424625f33c17549bbb60fb3c003649))
+
 ## [2.2.5](https://github.com/SeedCompany/libs/compare/nest-2.2.4...nest-2.2.5) (2025-12-30)
 
 
