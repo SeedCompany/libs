@@ -17,7 +17,7 @@
     "domutils": "^3.2.2",
     "html-to-text": "^9.0.5",
     "htmlparser2": "^8.0.2",
-    "nodemailer": "^7.0.5",
+    "nodemailer": "^8.0.1",
     "open": "^10.1.0",
     "reflect-metadata": "^0.2.2",
     "tempy": "^3.1.0",
@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@faire/mjml-react": "^3.5.1",
-    "@nestjs/common": "^10.4.4",
+    "@nestjs/common": "^11.1.14",
     "@nestjs/core": "^10.4.4",
     "@nestjs/platform-express": "^10.4.4",
     "@nestjs/testing": "^10.4.4",
