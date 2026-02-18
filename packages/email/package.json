@@ -17,7 +17,7 @@
     "domutils": "^3.2.2",
     "html-to-text": "^9.0.5",
     "htmlparser2": "^8.0.2",
-    "nodemailer": "^7.0.5",
+    "nodemailer": "^7.0.11",
     "open": "^10.1.0",
     "reflect-metadata": "^0.2.2",
     "tempy": "^3.1.0",

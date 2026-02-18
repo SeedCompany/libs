@@ -4084,7 +4084,7 @@ __metadata:
     html-to-text: "npm:^9.0.5"
     htmlparser2: "npm:^8.0.2"
     mjml: "npm:^4.15.3"
-    nodemailer: "npm:^7.0.5"
+    nodemailer: "npm:^7.0.11"
     open: "npm:^10.1.0"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
@@ -11670,10 +11670,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nodemailer@npm:^7.0.5":
-  version: 7.0.5
-  resolution: "nodemailer@npm:7.0.5"
-  checksum: 10c0/8fcd417a5dc6cdde4193c3f27c8ae07f6998527578c1e70adfa5f2f00121471fcaa14abbf26b2a8c513ac8505c956f437aa2c2a693606eb0e8c68bc712698fa7
+"nodemailer@npm:^7.0.11":
+  version: 7.0.13
+  resolution: "nodemailer@npm:7.0.13"
+  checksum: 10c0/b26aa5b9fa4a033bbc1e1c16ef75ee2a9c8641fd290c00a8361d6a251b3c1b8bad545a23efa627f59cb266340a448891ea8aa49d8a9307c767b8505219d95079
   languageName: node
   linkType: hard
 
