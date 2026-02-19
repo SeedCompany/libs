@@ -9,7 +9,7 @@
   "dependencies": {
     "@graphql-yoga/redis-event-target": "^3.0.3",
     "@graphql-yoga/typed-event-target": "^3.0.2",
-    "@nestjs/common": "^10 || ^11",
+    "@nestjs/common": "^10",
     "@nestjs/core": "^10 || ^11",
     "@nestjs/graphql": "^12 || ^13",
     "@repeaterjs/repeater": "^3.0.6",
@@ -21,7 +21,7 @@
     "type-fest": "^5.0.1"
   },
   "peerDependencies": {
-    "@nestjs/common": "^10 || ^11",
+    "@nestjs/common": "^10",
     "@nestjs/core": "^10 || ^11",
     "@nestjs/graphql": "^12 || ^13",
     "class-transformer": "^0.5.1",
