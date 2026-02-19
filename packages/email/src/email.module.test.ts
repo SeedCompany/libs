@@ -4,8 +4,8 @@ import { EmailModule } from './email.module.js';
 import { MailerService } from './mailer.service.js';
 
 describe('EmailModule', () => {
-  it('should be creatable with registerAsync()', async () => {
-    const module = await Test.createTestingModule({
+  it('should be creatable with register()', async () => {
+    const app = await Test.createTestingModule({
       imports: [
         EmailModule.register({
           defaultHeaders: {
@@ -14,13 +14,13 @@ describe('EmailModule', () => {
         }),
       ],
     }).compile();
-    const app = module.createNestApplication();
     await app.init();
+    app.get(MailerService);
     await app.close();
   });
 
   it('should be creatable with registerAsync()', async () => {
-    const module = await Test.createTestingModule({
+    const app = await Test.createTestingModule({
       imports: [
         EmailModule.registerAsync({
           useFactory: () => ({
@@ -31,7 +31,6 @@ describe('EmailModule', () => {
         }),
       ],
     }).compile();
-    const app = module.createNestApplication();
     await app.init();
     app.get(MailerService);
     await app.close();

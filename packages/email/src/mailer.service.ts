@@ -1,6 +1,5 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import { ModuleRef } from '@nestjs/core';
-import { render } from '@react-email/render';
 import { delay, many, type Many } from '@seedcompany/common';
 import { promises as fs } from 'fs';
 import { htmlToText } from 'html-to-text';
@@ -18,6 +17,7 @@ import {
   SendableEmailMessage,
 } from './message.js';
 import * as renderOnly from './processRenderOnlyElements.js';
+import { render } from './render.js';
 import { HeaderCollector } from './templates/headers.js';
 import { ModuleRefWrapper } from './templates/module-ref.js';
 import { Transporter } from './transporter.js';
