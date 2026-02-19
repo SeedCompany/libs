@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.0.1](https://github.com/SeedCompany/libs/compare/email-6.0.0...email-6.0.1) (2026-02-19)
+
+
+### Bug Fixes
+
+* **email:** bump rendering library ([366f79c](https://github.com/SeedCompany/libs/commit/366f79cf9fa39bfaabc5d7e36df83f3c3d292672))
+* **email:** rendering errors get thrown ([140d4f9](https://github.com/SeedCompany/libs/commit/140d4f92e7ee19ba12f1dcfc4956922d6f83a58e))
+
 ## [6.0.0](https://github.com/SeedCompany/libs/compare/email-5.0.0...email-6.0.0) (2025-10-03)
 
 
