@@ -24,8 +24,12 @@ export const render = async (node: ReactNode) => {
           {
             progressiveChunkSize: Number.POSITIVE_INFINITY,
             onError(error) {
+              // Carson replaced this line
+              // Throwing just triggered React to resolve the rendering with the error, and the error never bubbled out.
+              // https://github.com/resend/react-email/pull/2852
+              reject(error);
               // Throw immediately when an error occurs to prevent CSR fallback
-              throw error;
+              // throw error;
             },
           },
         )
